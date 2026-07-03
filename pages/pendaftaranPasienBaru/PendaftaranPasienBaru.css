@@ -1,8 +1,9 @@
-.boxshadow{
-    -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.18); 
-    box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.18);
+.header {
+    /* flex items-center gap-2 */
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
-
 .card{
     background-color: #fff;
     border-radius: 14px;
@@ -11,3 +12,42 @@
     flex-direction: column;
     gap: 32px;
 }
+
+.radioButton {
+    border-radius: 6px;
+    padding: 12px 20px 12px 12px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.selected{
+    background-color: #628ECE;
+    color: #fff;
+}
+
+label{
+    font-size: var(--lg-font-size-subheaderText);
+    font-weight: 600;
+}
+
+/* border-[#D2D2D2] border-2 rounded-[10px] h-11 w-[40vw] */
+select{
+    border-width: 2px;
+    border-color: #D2D2D2;
+    border-radius: 10px;
+    height: 44px;
+    color: #D2D2D2;
+}
+
+select:required:invalid,
+select option[value=""] {
+    color: #D2D2D2;
+}
+
+select option{
+    color: #111827;
+}
+
+select:valid {
+    color: #111827; /* item lain, warna normal */
+}
+

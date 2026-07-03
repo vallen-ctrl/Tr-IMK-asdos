@@ -1,37 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="./PendaftaranPasienBaru.css">
     <link rel="stylesheet" href="../../public/global.css">
-    
+
     <title>Pendaftaran</title>
 </head>
+
 <body class="bg-[#F0F3FA] w-full h-screen flex justify-center">
-    <div class="max-w-[50vw]">
+    <div class="max-w-[50vw] flex flex-col gap-10">
         <div class="card boxshadow">
-            <div name="header" class="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                <span class="font-bold">Data Pasien</span>
+            <div name="header" class="header">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-user-icon lucide-user">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </div>
+                <span class="font-bold headerText">Data Pasien</span>
             </div>
             <div class="flex flex-col">
-                <label for="input nama" class="font-semibold text-[16px]">Nama</label>
-                <select class="border-[#D2D2D2] border-2 rounded-[10px]">
+                <label for="input nama">Nama</label>
+                <select class="w-[40vw]">
                     <option>hi</option>
                 </select>
             </div>
             <div>
-                <span>
+                <label>
                     Tipe
-                </span>
-                <div>
-                    <button>BPJS</button>
-                    <button>Mandiri</button>
+                </label>
+                <div class="flex gap-4">
+                    <button class="flex gap-1 items-center subheaderText radioButton">
+                        <div class="w-7">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-id-card-icon lucide-id-card">
+                                <path d="M16 10h2" />
+                                <path d="M16 14h2" />
+                                <path d="M6.17 15a3 3 0 0 1 5.66 0" />
+                                <circle cx="9" cy="11" r="2" />
+                                <rect x="2" y="5" width="20" height="14" rx="2" />
+                            </svg>
+                        </div>
+                        <span>BPJS</span>
+                    </button>
+                    <button class="flex gap-1 items-center subheaderText radioButton selected">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-hand-coins-icon lucide-hand-coins">
+                                <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17" />
+                                <path
+                                    d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" />
+                                <path d="m2 16 6 6" />
+                                <circle cx="16" cy="9" r="2.9" />
+                                <circle cx="6" cy="5" r="3" />
+                            </svg>
+                        </div>
+                        <span>Mandiri</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card boxshadow">
+            <div class="header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-hospital-icon lucide-hospital">
+                    <path d="M12 7v4" />
+                    <path d="M14 21v-3a2 2 0 0 0-4 0v3" />
+                    <path d="M14 9h-4" />
+                    <path d="M18 11h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2" />
+                    <path d="M18 21V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16" />
+                </svg>
+                <span class="font-bold headerText">Klinik</span>
+            </div>
+            <div class="flex flex-col">
+                <div class="flex">
+                    <div class="flex flex-col">
+                        <label for="">
+                            Pilih cabang
+                        </label>
+                        <select name="" id="" required>
+                            <option value="" disabled selected hidden>Pilih cabang</option>
+                            <option value="a">Cabang A</option>
+                            <option value="b">Cabang B</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="">
+                            Kelas
+                        </label>
+                        <select name="cabang" id="cabang" required>
+                            <option value="" disabled selected hidden>Pilih kelas..</option>
+                            <option value="a">Cabang A</option>
+                            <option value="b">Cabang B</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
