@@ -16,7 +16,7 @@
 }
 
 .footerText{
-    font-style: var(--lg-font-size-footerText);
+    font-size: var(--lg-font-size-footerText);
 }
 
 .boxshadow{

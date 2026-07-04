@@ -5,7 +5,7 @@
     gap: 4px;
 }
 .card{
-    background-color: #fff;
+    background-color: #F0F3FA;
     border-radius: 14px;
     padding: 32px;
     display: flex;
@@ -38,6 +38,7 @@ select, input{
     height: 44px;
     color: #111827;
     padding: 0px 12px 0px 12px;
+    cursor: pointer;
 }
 
 select:has(option[value=""]:checked){
@@ -52,8 +53,17 @@ input[type="text"]:not(:placeholder-shown){
     border-color: #111827;
 }
 
+input[type="date"]{
+    color: #D2D2D2;
+}
+
+input[type="date"]:valid{
+    color: #111827;
+}
+
 select option{
     color: #111827;
+    border-radius: 20px;
 }
 
 select:valid {
