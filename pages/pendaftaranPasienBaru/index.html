@@ -12,6 +12,108 @@
 </head>
 
 <body class="bg-[#F0F3FA] w-full h-screen flex justify-center gap-12">
+    <div id="payment-overlay"
+        class="hidden fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+        <div class="relative w-full max-w-sm bg-blue-100 rounded-3xl shadow-2xl overflow-hidden">
+
+            <!-- Dekorasi wave biru di atas -->
+            <div class="absolute top-0 left-0 w-full h-32 bg-blue-300/70 wave-top"></div>
+
+            <!-- Dekorasi wave biru di bawah -->
+            <div class="absolute bottom-0 left-0 w-full h-72 bg-blue-300/70 wave-bottom"></div>
+
+            <!-- Konten -->
+            <div class="relative z-10">
+
+                <!-- Header -->
+                <div class="flex items-center justify-between px-6 pt-6 pb-4">
+                    <button onclick="document.getElementById('payment-overlay').classList.add('hidden')"
+                        class="text-slate-800 hover:text-slate-600 transition" aria-label="Kembali">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <h2 class="text-lg font-bold text-slate-900">Lakukan pembayaran</h2>
+                    <div class="w-6"></div> <!-- spacer biar judul center -->
+                </div>
+
+                <!-- Waktu tersisa -->
+                <div class="px-6 pb-2 text-right text-sm text-slate-700">
+                    Waktu yang tersisa: <span id="payment-timer" class="font-bold">15:00</span>
+                </div>
+
+                <!-- Total pembayaran -->
+                <div class="mx-0 bg-blue-50/80 px-6 py-3 flex items-center justify-between">
+                    <span class="font-bold text-slate-900 text-sm">Total yang harus dibayar:</span>
+                    <span class="font-bold text-slate-900 text-sm">Rp. 2.000.000</span>
+                </div>
+
+                <!-- QR Code -->
+                <div class="flex flex-col items-center justify-center py-8 px-6">
+                    <div class="bg-white p-4 rounded-2xl shadow-sm ">
+                        <span id="loader" class="hidden loader "></span>
+                        <img id="imgqr" class=""
+                            src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=00020101021126"
+                            alt="QR Code Pembayaran" class="w-52 h-52">
+                        <div id="pembayaranSukses" class="flex flex-col justify-center w-full hidden">
+                            <div class="flex justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-circle-check-icon lucide-circle-check">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="m9 12 2 2 4-4" />
+                                </svg>
+                            </div>
+                            <span class="text-green-600 font-bold">Pembayaran berhasil</span>
+                        </div>
+                    </div>
+
+
+                    <!-- Logo QRIS -->
+                    <div class="flex items-center gap-2 mt-4">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="1" width="8" height="8" rx="1" stroke="black" stroke-width="1.5" />
+                            <rect x="15" y="1" width="8" height="8" rx="1" stroke="black" stroke-width="1.5" />
+                            <rect x="1" y="15" width="8" height="8" rx="1" stroke="black" stroke-width="1.5" />
+                            <rect x="3.5" y="3.5" width="3" height="3" fill="black" />
+                            <rect x="17.5" y="3.5" width="3" height="3" fill="black" />
+                            <rect x="3.5" y="17.5" width="3" height="3" fill="black" />
+                            <rect x="13" y="13" width="4" height="4" fill="black" />
+                            <rect x="19" y="19" width="4" height="4" fill="black" />
+                        </svg>
+                        <div class="leading-tight">
+                            <p class="text-xs font-bold text-slate-900">QRIS</p>
+                            <p class="text-[10px] text-slate-600">QR Code Standar<br>Pembayaran Nasional</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tombol cek status -->
+                <div class="px-6 pb-8">
+                    <button onclick="
+                          
+                            this.disabled = true;
+                            document.getElementById('loader').classList.remove('hidden');
+                            document.getElementById('loader').classList.add('inline-block');
+                            document.getElementById('imgqr').classList.add('hidden');
+                            setTimeout(()=>{
+                                document.getElementById('loader').classList.remove('inline-block');
+                                document.getElementById('loader').classList.add('hidden');
+                                // this.disabled = false;
+                                document.getElementById('pembayaranSukses').classList.remove('hidden');
+                                document.getElementById('btnbtn').innerHTML = 'Memindahkan halaman'
+                                statusPembayaran = true;
+                            }, 5000);
+                        " id="btnbtn"
+                        class="disabled:bg-slate-400 w-full py-3 rounded-full bg-slate-700 text-white font-medium hover:bg-slate-800 transition">
+                        Chek status pembayaran
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <div class="flex gap-12 h-fit">
         <div class="max-w-[50vw] flex flex-col gap-10">
             <div class="card boxshadow">
@@ -212,16 +314,43 @@
                 <div class="mt-7">
                     <div class="flex items-center gap-2">
                         <input type="checkbox" class="w-4 cursor-pointer">
-                        <span class="footerText">Dengan ini saya menyetujui <a href="" class="text-blue-500 underline">syarat</a> dan <a href="" class="text-blue-500 underline">Ketentuan</a> yang terbuat</span> 
+                        <span class="footerText">Dengan ini saya menyetujui <a href=""
+                                class="text-blue-500 underline">syarat</a> dan <a href=""
+                                class="text-blue-500 underline">Ketentuan</a> yang terbuat</span>
                     </div>
-                    <button class="w-full bg-[#395886] text-white p-2 rounded-lg cursor-pointer">
-                    Bayar
-                </button>
+                    <button onclick="
+                            bayar()
+                            document.getElementById('payment-overlay').classList.remove('hidden')
+                        
+                        " class="w-full bg-[#395886] text-white p-2 rounded-lg cursor-pointer">
+                        Bayar
+                    </button>
                 </div>
-                
+
             </div>
         </div>
     </div>
+
+
+    <script>
+        let statusPembayaran = false
+        // Contoh sederhana hitung mundur timer 15 menit
+
+        function bayar() {
+            let totalSeconds = 15 * 60;
+            const timerEl = document.getElementById('payment-timer');
+            const createInterval = setInterval(()=>{
+                if (totalSeconds <= 0 || !statusPembayaran) clearInterval(createInterval);
+                console.log(statusPembayaran)
+                totalSeconds--;
+                const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+                const s = (totalSeconds % 60).toString().padStart(2, '0');
+                timerEl.textContent = `${m}:${s}`;
+            }, 1000)
+            
+        }
+
+    </script>
 </body>
 
 </html>
