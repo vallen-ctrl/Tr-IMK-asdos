@@ -27,12 +27,14 @@
             </div>
             <div class="flex flex-col">
                 <label for="input nama">Nama</label>
-                <select class="w-[40vw]">
-                    <option>hi</option>
+                <select class="w-[40vw]" required>
+                    <option value="" disabled selected hidden>hi</option>
+                    <option value="hi" >hi</option>
+                    <option value="ho" >hi</option>
                 </select>
             </div>
-            <div>
-                <label>
+            <div class="flex flex-col">
+                <label for="as">
                     Tipe
                 </label>
                 <div class="flex gap-4">
@@ -82,18 +84,18 @@
                 <span class="font-bold headerText">Klinik</span>
             </div>
             <div class="flex flex-col">
-                <div class="flex">
-                    <div class="flex flex-col">
+                <div class="flex gap-4">
+                    <div class="flex flex-col w-[70%]">
                         <label for="">
                             Pilih cabang
                         </label>
-                        <select name="" id="" required>
+                        <select name="" id="" required class="w-full">
                             <option value="" disabled selected hidden>Pilih cabang</option>
                             <option value="a">Cabang A</option>
                             <option value="b">Cabang B</option>
                         </select>
                     </div>
-                    <div class="flex flex-col">
+                    <div class="flex flex-col w-[30%]">
                         <label for="">
                             Kelas
                         </label>
@@ -102,6 +104,24 @@
                             <option value="a">Cabang A</option>
                             <option value="b">Cabang B</option>
                         </select>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <div class="flex flex-col w-full">
+                    <label for="">
+                        Nama penanggung jawab
+                    </label>
+                    <input type="text" name="" id="" placeholder="inpuyt">
+                </div>
+                <div class="w-full flex flex-col gap-2">
+                    <div >
+                        <label for="" class="mb-0">Lama reservasi</label>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <input type="date" name="" id="">
+                        <hr class="w-3 border-1">
+                        <input type="date" name="" id="">
                     </div>
                 </div>
             </div>
