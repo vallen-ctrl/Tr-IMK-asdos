@@ -1,137 +1,308 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const questions = [
-    "Seberapa tenang suasana hati Anda hari ini?",
-    "Seberapa bersemangat Anda menjalani aktivitas hari ini?",
-    "Apakah Anda merasa ada hal Pots yang membuat pikiran Anda terbebani hari ini?",
-    "Seberapa baik Anda dapat fokus pada aktivitas hari ini?",
-    "Apakah Anda merasa memiliki energi yang cukup hari ini?",
-    "Seberapa sering Anda merasa cemas atau khawatir hari ini?",
-    "Seberapa nyaman Anda dengan keadaan yang terjadi hari ini?",
-    "Apakah Anda merasa mudah tersinggung atau emosi hari ini?",
-    "Seberapa puas Anda dengan hari yang sedang Anda jalani?",
-    "Secara keseluruhan, bagaimana kondisi perasaan Anda hari ini?"
-  ];
-
-  const options = [
-    { text: "😔 Sangat Buruk", score: 1 },
-    { text: "🙁 Kurang Baik", score: 2 },
-    { text: "😐 Biasa Saja", score: 3 },
-    { text: "🙂 Cukup Baik", score: 4 },
-    { text: "😄 Sangat Baik", score: 5 }
-  ];
-
-  let currentQuestionIndex = 0;
-  let userAnswers = new Array(questions.length).fill(null);
-
-  // DOM Elements
-  const questionText = document.getElementById("question-text");
-  const optionsContainer = document.getElementById("options-container");
-  const questionIndicator = document.getElementById("question-indicator");
-  const progressBarFill = document.getElementById("progress-bar-fill");
   
-  const btnCancelQuiz = document.getElementById("btn-cancel-quiz");
-  const btnNavBack = document.getElementById("btn-nav-back");
-  const btnNavNext = document.getElementById("btn-nav-next");
-
-  function renderQuestion() {
-    if (!questionText || !optionsContainer) return;
-
-    // 1. Atur Teks Soal & Indikator Angka
-    questionText.innerText = questions[currentQuestionIndex];
-    questionIndicator.innerText = `PERTANYAAN ${currentQuestionIndex + 1}/${questions.length}`;
+  // ==========================================
+  // LOGIKA 1: UNTUK HALAMAN UTAMA (DASHBOARD)
+  // ==========================================
+  const chartContainer = document.getElementById("chart-container");
+  
+  if (chartContainer) {
+    let savedScore = localStorage.getItem("userStressScore");
+    let weeklyDataStorage = localStorage.getItem("userWeeklyStressData");
     
-    // 2. Update Progress Bar
-    const progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100;
-    progressBarFill.style.width = `${progressPercent}%`;
+    const scoreText = document.getElementById("score-text");
+    const scoreLabel = document.getElementById("score-label");
+    const stressStatusText = document.getElementById("stress-status-text");
+    const dominantEmotionText = document.getElementById("dominant-emotion-text");
+    const scoreEmoji = document.getElementById("score-emoji");
+    const progressRing = document.getElementById("score-progress-ring");
 
-    // 3. Logika Visibilitas Tombol Cancel Atas (<) vs Navigasi Kembali Bawah
-    if (currentQuestionIndex === 0) {
-      btnCancelQuiz.classList.remove("hidden"); // Muncul hanya di soal pertama
-      btnNavBack.disabled = true;               // Tombol navigasi bawah mati di soal pertama
-    } else {
-      btnCancelQuiz.classList.add("hidden");    // Sembunyikan tombol atas di soal berikutnya
-      btnNavBack.disabled = false;              // Aktifkan tombol navigasi bawah
-    }
-
-    // 4. Ubah Teks Tombol Next Menjadi "Selesai" di Pertanyaan Terakhir
-    if (currentQuestionIndex === questions.length - 1) {
-      btnNavNext.innerText = "Selesai";
-    } else {
-      btnNavNext.innerText = "Selanjutnya";
-    }
-
-    // 5. Render Pilihan Jawaban
-    optionsContainer.innerHTML = "";
-    options.forEach(opt => {
-      const button = document.createElement("button");
-      button.className = "w-full py-3.5 px-5 rounded-xl font-medium text-sm text-left transition-all duration-200 border shadow-sm";
-      button.innerText = opt.text;
-
-      // Cek apakah opsi ini sedang dipilih oleh user
-      if (userAnswers[currentQuestionIndex] === opt.score) {
-        // Gaya saat dipilih: Background biru tegas dengan teks putih halus
-        button.className += " bg-[#5B84C4] text-white border-[#5B84C4] font-semibold";
-      } else {
-        // Gaya normal: Putih bersih abadi
-        button.className += " bg-white text-gray-700 border-gray-200 hover:bg-gray-50";
+    if (savedScore === null) {
+      // -------------------------------------------------------
+      // KONDISI A: BELUM PERNAH INPUT SAMA SEKALI (KOSONGAN)
+      // -------------------------------------------------------
+      if (scoreText) scoreText.innerText = "-";
+      if (scoreLabel) scoreLabel.innerText = "-";
+      if (stressStatusText) stressStatusText.innerText = "Belum melakukan pengukuran stres";
+      
+      if (dominantEmotionText) {
+        dominantEmotionText.innerText = "-";
+        dominantEmotionText.className = "text-sm font-bold text-gray-400 mb-2";
+      }
+      
+      if (scoreEmoji) {
+        scoreEmoji.src = "./images/netral.png"; 
+        scoreEmoji.alt = "Belum Mengukur";
       }
 
-      // Klik simpan pilihan jawaban (tanpa lompat otomatis ke soal berikutnya)
-      button.addEventListener("click", () => {
-        userAnswers[currentQuestionIndex] = opt.score;
-        renderQuestion(); // Render ulang untuk memperbarui efek visual highlight pilihan
+      if (progressRing) {
+        progressRing.style.strokeDasharray = "251.2";
+        progressRing.style.strokeDashoffset = "251.2"; 
+        progressRing.className.baseVal = "stroke-gray-300 transition-all duration-700 ease-out";
+      }
+
+      chartContainer.innerHTML = `
+        <div class="w-full h-36 flex items-center justify-center text-gray-400 text-xs font-medium italic select-none">
+          Silakan lakukan kalkulator kuis terlebih dahulu untuk melihat grafik mingguan.
+        </div>
+      `;
+
+    } else {
+      // -------------------------------------------------------
+      // KONDISI B: SUDAH PERNAH INPUT (GRAFIK BERURUTAN SENIN - MINGGU)
+      // -------------------------------------------------------
+      let score = parseInt(savedScore);
+      
+      let status = "Baik";
+      let statusLong = "Skor Stres Rendah";
+      let ringColor = "stroke-green-500";
+      let textColor = "text-green-500";
+      let emojiSrc = "./images/baik.png";
+
+      if (score > 70) {
+        status = "Sangat Buruk";
+        statusLong = "Skor Stres Tinggi";
+        ringColor = "stroke-red-500";
+        textColor = "text-red-500";
+        emojiSrc = "./images/sangat-buruk.png";
+      } else if (score > 50) {
+        status = "Buruk";
+        statusLong = "Skor Stres Sedang";
+        ringColor = "stroke-orange-500";
+        textColor = "text-orange-500";
+        emojiSrc = "./images/buruk.png";
+      } else if (score > 35) {
+        status = "Biasa Saja";
+        statusLong = "Skor Stres Normal";
+        ringColor = "stroke-yellow-500";
+        textColor = "text-yellow-500";
+        emojiSrc = "./images/netral.png";
+      }
+
+      if (scoreText) scoreText.innerText = score;
+      if (scoreLabel) scoreLabel.innerText = status;
+      if (stressStatusText) stressStatusText.innerText = statusLong;
+      
+      if (dominantEmotionText) {
+        dominantEmotionText.innerText = status;
+        dominantEmotionText.className = `text-sm font-bold ${textColor} mb-2`;
+      }
+      
+      if (scoreEmoji) {
+        scoreEmoji.src = emojiSrc;
+        scoreEmoji.alt = `Emoji ${status}`;
+      }
+
+      if (progressRing) {
+        const radius = 40;
+        const circumference = 2 * Math.PI * radius;
+        const offset = circumference - (score / 100) * circumference;
+        
+        progressRing.style.strokeDasharray = `${circumference}`;
+        progressRing.style.strokeDashoffset = offset;
+        progressRing.className.baseVal = `transition-all duration-700 ease-out ${ringColor}`;
+      }
+
+      // AMBIL DATA DARI LOCALSTORAGE ATAU BUAT TEMPLATE BARU (6 - 12 JULI 2026)
+      let dataMingguan;
+      if (weeklyDataStorage) {
+        dataMingguan = JSON.parse(weeklyDataStorage);
+      } else {
+        dataMingguan = [
+          { hari: "Sen", tanggal: "Senin, 6 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+          { hari: "Sel", tanggal: "Selasa, 7 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+          { hari: "Rab", tanggal: "Rabu, 8 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+          { hari: "Kam", tanggal: "Kamis, 9 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+          { hari: "Jum", tanggal: "Jumat, 10 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+          { hari: "Sab", tanggal: "Sabtu, 11 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+          { hari: "Min", tanggal: "Minggu, 12 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false }
+        ];
+      }
+
+      chartContainer.innerHTML = "";
+
+      dataMingguan.forEach(item => {
+        const column = document.createElement("div");
+        column.className = "flex flex-col items-center flex-1 group relative"; 
+
+        // Sembunyikan tiang (tinggi 0%) atau buat transparan abu-abu jika belum terbuka lewat kuis
+        const currentHeight = item.terisi ? item.tinggi : 0;
+        const currentBg = item.terisi ? item.warna : "bg-transparent";
+
+        column.innerHTML = `
+          <div class="w-full h-36 flex items-end justify-center px-1 relative cursor-pointer">
+            <div class="w-6 md:w-8 ${currentBg} rounded-t-md transition-all duration-700 ease-out" style="height: ${currentHeight}%;"></div>
+          </div>
+          
+          <span class="text-xs text-gray-500 mt-2 font-medium">${item.hari}</span>
+
+          <div class="absolute bottom-16 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] py-1 px-2.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-30 text-center leading-normal">
+            ${item.tanggal} <br> 
+            <span class="font-bold text-yellow-400">Skor Stres: ${currentHeight}%</span>
+          </div>
+        `;
+        
+        chartContainer.appendChild(column);
       });
-
-      optionsContainer.appendChild(button);
-    });
+    }
   }
 
-  // EVENT HANDLERS
+  // ==========================================
+  // LOGIKA 2: UNTUK HALAMAN KALKULATOR (KUIS)
+  // ==========================================
+  if (document.getElementById("question-text")) {
+    const questions = [
+      "Seberapa tenang suasana hati Anda hari ini?",
+      "Seberapa bersemangat Anda menjalani aktivitas hari ini?",
+      "Apakah Anda merasa ada hal yang membuat pikiran Anda terbebani hari ini?",
+      "Seberapa baik Anda dapat fokus pada aktivitas hari ini?",
+      "Apakah Anda merasa memiliki energi yang cukup hari ini?",
+      "Seberapa sering Anda merasa cemas atau khawatir hari ini?",
+      "Seberapa nyaman Anda dengan keadaan yang terjadi hari ini?",
+      "Apakah Anda merasa mudah tersinggung atau emosi hari ini?",
+      "Seberapa puas Anda dengan hari yang sedang Anda jalani?",
+      "Secara keseluruhan, bagaimana kondisi perasaan Anda hari ini?"
+    ];
 
-  // Tombol Cancel Atas (<) -> Kembali ke beranda awal
-  if (btnCancelQuiz) {
-    btnCancelQuiz.addEventListener("click", () => {
-      window.location.href = "index.html"; 
-    });
-  }
+    const options = [
+      { text: "😔 Sangat Buruk", score: 5 },  
+      { text: "🙁 Kurang Baik", score: 4 },
+      { text: "😐 Biasa Saja", score: 3 },
+      { text: "🙂 Cukup Baik", score: 2 },
+      { text: "😄 Sangat Baik", score: 1 }   
+    ];
 
-  // Tombol Navigasi Bawah - Kembali (Back)
-  if (btnNavBack) {
-    btnNavBack.addEventListener("click", () => {
-      if (currentQuestionIndex > 0) {
-        currentQuestionIndex--;
-        renderQuestion();
-      }
-    });
-  }
+    let currentQuestionIndex = 0;
+    let userAnswers = new Array(questions.length).fill(null);
 
-  // Tombol Navigasi Bawah - Selanjutnya (Next) / Selesai
-  if (btnNavNext) {
-    btnNavNext.addEventListener("click", () => {
-      // Validasi: User wajib memilih jawaban sebelum melanjutkan
-      if (userAnswers[currentQuestionIndex] === null) {
-        alert("Silakan pilih salah satu jawaban terlebih dahulu!");
-        return;
-      }
-
-      if (currentQuestionIndex < questions.length - 1) {
-        currentQuestionIndex++;
-        renderQuestion();
-      } else {
-        finishCalculator();
-      }
-    });
-  }
-
-  // Selesai Kuis & Kalkulasi Nilai Akhir
-  function finishCalculator() {
-    const totalScore = userAnswers.reduce((sum, score) => sum + score, 0);
-    const finalCalculatedScore = Math.round((totalScore / (questions.length * 5)) * 100);
+    const questionText = document.getElementById("question-text");
+    const optionsContainer = document.getElementById("options-container");
+    const questionIndicator = document.getElementById("question-indicator");
+    const progressBarFill = document.getElementById("progress-bar-fill");
     
-    alert(`Kalkulasi Selesai! Skor Stres Anda: ${finalCalculatedScore}`);
-    // localStorage.setItem("userStressScore", finalCalculatedScore);
-    // window.location.href = "dashboard_hasil.html";
-  }
+    const btnCancelQuiz = document.getElementById("btn-cancel-quiz");
+    const btnNavBack = document.getElementById("btn-nav-back");
+    const btnNavNext = document.getElementById("btn-nav-next");
 
-  renderQuestion();
+    function renderQuestion() {
+      if (!questionText || !optionsContainer) return;
+
+      questionText.innerText = questions[currentQuestionIndex];
+      if (questionIndicator) questionIndicator.innerText = `PERTANYAAN ${currentQuestionIndex + 1}/${questions.length}`;
+      
+      if (progressBarFill) {
+        const progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100;
+        progressBarFill.style.width = `${progressPercent}%`;
+      }
+
+      if (currentQuestionIndex === 0) {
+        if (btnCancelQuiz) btnCancelQuiz.classList.remove("hidden");
+        if (btnNavBack) btnNavBack.disabled = true;
+      } else {
+        if (btnCancelQuiz) btnCancelQuiz.classList.add("hidden");
+        if (btnNavBack) btnNavBack.disabled = false;
+      }
+
+      if (currentQuestionIndex === questions.length - 1) {
+        if (btnNavNext) btnNavNext.innerText = "Selesai";
+      } else {
+        if (btnNavNext) btnNavNext.innerText = "Selanjutnya";
+      }
+
+      optionsContainer.innerHTML = "";
+      options.forEach(opt => {
+        const button = document.createElement("button");
+        button.className = "w-full py-3.5 px-5 rounded-xl font-medium text-sm text-left transition-all duration-200 border shadow-sm cursor-pointer";
+        button.innerText = opt.text;
+
+        if (userAnswers[currentQuestionIndex] === opt.score) {
+          button.className += " bg-[#5B84C4] text-white border-[#5B84C4] font-semibold";
+        } else {
+          button.className += " bg-white text-gray-700 border-gray-200 hover:bg-gray-50";
+        }
+
+        button.addEventListener("click", () => {
+          userAnswers[currentQuestionIndex] = opt.score;
+          renderQuestion();
+        });
+
+        optionsContainer.appendChild(button);
+      });
+    }
+
+    if (btnCancelQuiz) {
+      btnCancelQuiz.addEventListener("click", () => {
+        window.location.href = "index.html"; 
+      });
+    }
+
+    if (btnNavBack) {
+      btnNavBack.addEventListener("click", () => {
+        if (currentQuestionIndex > 0) {
+          currentQuestionIndex--;
+          renderQuestion();
+        }
+      });
+    }
+
+    if (btnNavNext) {
+      btnNavNext.addEventListener("click", () => {
+        if (userAnswers[currentQuestionIndex] === null) {
+          alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+          return;
+        }
+
+        if (currentQuestionIndex < questions.length - 1) {
+          currentQuestionIndex++;
+          renderQuestion();
+        } else {
+          finishCalculator();
+        }
+      });
+    }
+
+    function finishCalculator() {
+      const totalScore = userAnswers.reduce((sum, score) => sum + score, 0);
+      const finalCalculatedScore = Math.round((totalScore / (questions.length * 5)) * 100);
+
+      // Ambil riwayat grafik lama atau inisialisasi dari template kosong
+      let weeklyDataStorage = localStorage.getItem("userWeeklyStressData");
+      let dataMingguan = weeklyDataStorage ? JSON.parse(weeklyDataStorage) : [
+        { hari: "Sen", tanggal: "Senin, 6 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+        { hari: "Sel", tanggal: "Selasa, 7 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+        { hari: "Rab", tanggal: "Rabu, 8 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+        { hari: "Kam", tanggal: "Kamis, 9 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+        { hari: "Jum", tanggal: "Jumat, 10 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+        { hari: "Sab", tanggal: "Sabtu, 11 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
+        { hari: "Min", tanggal: "Minggu, 12 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false }
+      ];
+
+      // LOGIKA URUTAN: Cari tiang pertama dari kiri (Senin ke Minggu) yang status 'terisi'-nya masih false
+      let targetIndex = dataMingguan.findIndex(item => item.terisi === false);
+
+      // Jika seluruh minggu sudah terisi penuh (0-6 penuh), reset ulang dan mulai lagi dari Senin (0)
+      if (targetIndex === -1) {
+        targetIndex = 0;
+        dataMingguan.forEach(item => item.terisi = false); // Kosongkan status agar mengulang kembali
+      }
+
+      // Tentukan warna tiang berdasarkan skor kuis terbaru
+      let barBgColor = "bg-green-500";
+      if (finalCalculatedScore > 70) barBgColor = "bg-red-500";
+      else if (finalCalculatedScore > 50) barBgColor = "bg-orange-500";
+      else if (finalCalculatedScore > 35) barBgColor = "bg-yellow-500";
+
+      // Isi tiang target
+      dataMingguan[targetIndex].tinggi = finalCalculatedScore;
+      dataMingguan[targetIndex].warna = barBgColor;
+      dataMingguan[targetIndex].terisi = true; // Tandai hari ini sukses terisi!
+
+      localStorage.setItem("userStressScore", finalCalculatedScore);
+      localStorage.setItem("userWeeklyStressData", JSON.stringify(dataMingguan));
+
+      alert(`Kalkulasi Selesai!\nSkor Kesehatan Mental Anda: ${finalCalculatedScore}/100`);
+      window.location.href = "index.html";
+    }
+
+    renderQuestion();
+  }
 });
