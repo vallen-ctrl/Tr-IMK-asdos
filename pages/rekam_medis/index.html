@@ -7,7 +7,7 @@
     <meta name="description" content="Halaman Rekam Medis Pasien - HealthyFlow Klinik">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="../../public/global.css">
-    <link rel="stylesheet" href="../pendaftaranPasienBaru/PendaftaranPasienBaru.css">
+    <link rel="stylesheet" href="../pendaftaran/PendaftaranPasienBaru.css">
     <link rel="stylesheet" href="./rekam_medis.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <title>Rekam Medis Pasien</title>
@@ -499,7 +499,7 @@
                 // Row Kunjungan
                 const row = document.createElement("tr");
                 row.className = "visit-row";
-                row.onclick = function() { toggleDetail(this); };
+                row.onclick = function () { toggleDetail(this); };
                 row.innerHTML = `
                     <td>${visit.date}</td>
                     <td>${visit.time}</td>
@@ -520,7 +520,7 @@
                 detailRow.className = "detail-row";
 
                 const detail = visit.detail;
-                
+
                 // Helper untuk merender list bullet
                 const renderList = (arr) => {
                     if (!arr || arr.length === 0) return "";
