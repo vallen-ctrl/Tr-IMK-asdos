@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klinik - Pendaftaran Poli</title>
+
+  <!-- Global stylesheet (shared across the whole website, handles responsiveness) -->
+  <link rel="stylesheet" href="../global.css">
+  <!-- Page-specific stylesheet -->
+  <link rel="stylesheet" href="poli.css">
+</head>
+<body>
+
+  <!-- Navbar sengaja belum dibuat sesuai instruksi -->
+
+  <main class="page-wrapper">
+
+    <!-- ===================== FORM PENDAFTARAN POLI ===================== -->
+    <section class="card form-card">
+      <h1 class="section-title headerText">
+        <span class="icon-user">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12Z" stroke="#1F2937" stroke-width="1.6"/>
+            <path d="M4 21.8c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#1F2937" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        Pendaftaran Poli
+      </h1>
+
+      <form id="registrationForm" class="registration-form" autocomplete="off">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nama" class="subheaderText">Nama</label>
+            <input type="text" id="nama" name="nama" placeholder="Nama Lengkap Pasien">
+          </div>
+          <div class="form-group">
+            <label for="nik" class="subheaderText">NIK</label>
+            <input type="text" id="nik" name="nik" placeholder="NIK Pasien" inputmode="numeric">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telepon" class="subheaderText">No. Telepon</label>
+            <input type="tel" id="telepon" name="telepon" placeholder="Nomor Telepon Aktif">
+          </div>
+          <div class="form-group">
+            <label for="tanggalLahir" class="subheaderText">Tanggal Lahir</label>
+            <input type="text" id="tanggalLahir" name="tanggalLahir" placeholder="Masukkan Tanggal Lahir" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+          </div>
+          <div class="form-group">
+            <label for="cabang" class="subheaderText">Pilih Cabang</label>
+            <select id="cabang" name="cabang">
+              <option value="" disabled selected hidden>Pilih Cabang</option>
+              <option value="pusat">Klinik Pusat</option>
+              <option value="cabang1">Cabang Salatiga</option>
+              <option value="cabang2">Cabang Semarang</option>
+            </select>
+          </div>
+          <div class="form-group poli-filter-group">
+            <span class="subheaderText">Pilih Poli</span>
+            <div class="poli-filter" id="poliFilter">
+              <button type="button" class="poli-btn active" data-poli="semua">Semua</button>
+              <button type="button" class="poli-btn" data-poli="umum">Umum &amp; Lansia</button>
+              <button type="button" class="poli-btn" data-poli="psikologi">Psikologi</button>
+              <button type="button" class="poli-btn" data-poli="penyakit-dalam">Penyakit Dalam</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===================== PILIH DOKTER ===================== -->
+    <section class="card doctor-card-section">
+      <h2 class="section-title subsection-title headerText">Pilih Dokter</h2>
+      <div class="doctor-grid" id="doctorGrid">
+        <!-- Doctor cards di-render oleh poli.js -->
+      </div>
+      <p class="empty-state footerText" id="emptyState" hidden>Tidak ada dokter untuk poli ini.</p>
+    </section>
+
+  </main>
+
+  <!-- ===================== MODAL: DETAIL DOKTER ===================== -->
+  <div class="modal-overlay" id="detailModalOverlay">
+    <div class="modal detail-modal">
+      <button type="button" class="btn-back" id="detailBackBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 5 8 12l7 7" stroke="#395886" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Kembali
+      </button>
+
+      <div class="detail-content">
+        <img id="detailPhoto" class="detail-photo" src="" alt="Foto dokter">
+
+        <div class="detail-main">
+          <h3 class="detail-name headerText" id="detailName"></h3>
+          <p class="detail-specialization subheaderText" id="detailSpecialization"></p>
+
+          <h4 class="detail-subtitle subheaderText">Tentang Dokter</h4>
+          <p class="detail-about footerText" id="detailAbout"></p>
+        </div>
+      </div>
+
+      <div class="schedule-info">
+        <h4 class="detail-subtitle subheaderText">Jadwal Praktik</h4>
+        <div class="schedule-row">
+          <span class="schedule-day footerText">Senin - Jumat</span>
+          <span class="schedule-time footerText" id="scheduleWeekday"></span>
+        </div>
+        <div class="schedule-row">
+          <span class="schedule-day footerText">Sabtu</span>
+          <span class="schedule-time footerText" id="scheduleSaturday"></span>
+        </div>
+        <div class="schedule-row">
+          <span class="schedule-day footerText">Minggu</span>
+          <span class="schedule-time footerText" id="scheduleSunday"></span>
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary btn-full" id="makeAppointmentBtn">Buat Janji Temu</button>
+    </div>
+  </div>
+
+  <!-- ===================== MODAL: JADWAL JANJI TEMU ===================== -->
+  <div class="modal-overlay" id="scheduleModalOverlay">
+    <div class="modal schedule-modal">
+      <button type="button" class="btn-back" id="scheduleBackBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 5 8 12l7 7" stroke="#395886" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Kembali
+      </button>
+
+      <div class="schedule-doctor-header">
+        <img id="scheduleDoctorPhoto" class="schedule-doctor-photo" src="" alt="Foto dokter">
+        <div>
+          <p class="schedule-doctor-name subheaderText" id="scheduleDoctorName"></p>
+          <p class="schedule-doctor-spec footerText" id="scheduleDoctorSpec"></p>
+        </div>
+      </div>
+
+      <div class="schedule-picker">
+        <div class="date-picker">
+          <p class="picker-title subheaderText">Pilih Tanggal</p>
+          <p class="calendar-month footerText" id="calendarMonth"></p>
+          <div class="calendar-weekdays footerText" id="calendarWeekdays"></div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+
+        <div class="time-picker">
+          <p class="picker-title subheaderText">Pilih Jam</p>
+          <div class="time-grid" id="timeGrid"></div>
+        </div>
+      </div>
+
+      <div class="schedule-actions">
+        <button type="button" class="btn-secondary" id="cancelScheduleBtn">Batal</button>
+        <button type="button" class="btn-primary" id="continueScheduleBtn">Lanjutkan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== TOAST KONFIRMASI ===================== -->
+  <div class="toast" id="toast"></div>
+
+  <script src="poli.js"></script>
+</body>
+</html>
