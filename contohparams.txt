@@ -1,0 +1,42 @@
+Contoh Parameter URL untuk Tiket Reservasi (pages/pendaftaran/ticket/index.html)
+==============================================================================
+
+Untuk mengisi data tiket secara dinamis, Anda dapat menggunakan parameter-parameter query berikut di URL. 
+Jika salah satu atau beberapa parameter tidak disediakan, halaman akan menggunakan nilai default yang telah ada di HTML.
+
+Daftar Parameter yang Tersedia:
+--------------------------------
+1. nama_pasien            : Nama dari pasien (contoh: Dodo)
+2. tipe                   : Tipe jaminan / pendaftaran (contoh: Mandiri, BPJS)
+3. kelas                  : Kelas kamar / layanan (contoh: VVIP, VIP, Kelas 1)
+4. penanggung_jawab       : Nama penanggung jawab pasien (contoh: didit)
+5. klinik_cabang          : Cabang klinik (contoh: Surabaya, Jakarta)
+6. harga                  : Harga per hari (contoh: Rp. 1.000.000 / Hari)
+7. lama_menginap          : Lama menginap (contoh: 2 Hari)
+8. total                  : Total biaya sebelum/sesudah diskon (contoh: Rp. 2.000.000)
+9. diskon                 : Biaya diskon atau total setelah diskon (contoh: Rp. 1.600.000)
+10. metode_pembayaran     : Metode pembayaran yang digunakan (contoh: Qris-scan, Transfer Bank)
+11. status_pembayaran     : Status pembayaran (contoh: Berhasil, Pending, Gagal)
+                            * Catatan: Jika diisi 'Berhasil'/'Lunas'/'Sukses'/'Success' akan berwarna hijau.
+                            * Jika 'Pending'/'Menunggu'/'Proses' akan berwarna kuning.
+                            * Selain itu akan berwarna merah.
+12. kamar_nomor           : Nomor kamar (contoh: 12)
+13. kamar_ruangan         : Nama ruangan (contoh: Melati, Mawar)
+14. kamar_lantai          : Lantai kamar (contoh: 2)
+15. kamar_tanggal_mulai   : Tanggal check-in / mulai menginap (contoh: 20 - 02 - 2026)
+16. kamar_tanggal_selesai : Tanggal check-out / selesai menginap (contoh: 22 - 02 - 2026)
+17. kamar_kasur           : Nomor kasur (contoh: 12/b)
+18. pegawai_nama          : Nama pegawai yang memverifikasi (contoh: Budiyo)
+19. pegawai_kode          : Kode unik pegawai (contoh: 2273662)
+20. pegawai_jabatan       : Jabatan pegawai (contoh: Staf administrasi)
+21. pesanan_masuk         : Tanggal pesanan masuk (contoh: 15 - 02 - 2026)
+22. pesanan_terverifikasi : Tanggal & waktu terverifikasi (contoh: 17 - 02 - 2026/12:32)
+
+
+Contoh URL Lengkap (Query String):
+----------------------------------
+http://localhost:5500/pages/pendaftaran/ticket/index.html?nama_pasien=Dodo&tipe=Mandiri&kelas=VVIP&penanggung_jawab=didit&klinik_cabang=Surabaya&harga=Rp.%201.000.000%20%2F%20Hari&lama_menginap=2%20Hari&total=Rp.%202.000.000&diskon=Rp.%201.600.000&metode_pembayaran=Qris-scan&status_pembayaran=Berhasil&kamar_nomor=12&kamar_ruangan=Melati&kamar_lantai=2&kamar_tanggal_mulai=20%20-%2002%20-%202026&kamar_tanggal_selesai=22%20-%2002%20-%202026&kamar_kasur=12%2Fb&pegawai_nama=Budiyo&pegawai_kode=2273662&pegawai_jabatan=Staf%20administrasi&pesanan_masuk=15%20-%2002%20-%202026&pesanan_terverifikasi=17%20-%2002%20-%202026/12:32
+
+Contoh Format Parameter (Query String Mentah):
+----------------------------------------------
+?nama_pasien=Dodo&tipe=Mandiri&kelas=VVIP&penanggung_jawab=didit&klinik_cabang=Surabaya&harga=Rp. 1.000.000 / Hari&lama_menginap=2 Hari&total=Rp. 2.000.000&diskon=Rp. 1.600.000&metode_pembayaran=Qris-scan&status_pembayaran=Berhasil&kamar_nomor=12&kamar_ruangan=Melati&kamar_lantai=2&kamar_tanggal_mulai=20 - 02 - 2026&kamar_tanggal_selesai=22 - 02 - 2026&kamar_kasur=12/b&pegawai_nama=Budiyo&pegawai_kode=2273662&pegawai_jabatan=Staf administrasi&pesanan_masuk=15 - 02 - 2026&pesanan_terverifikasi=17 - 02 - 2026/12:32

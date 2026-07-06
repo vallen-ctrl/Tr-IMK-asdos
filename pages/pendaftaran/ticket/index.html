@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="../pendaftaranPasienBaru/PendaftaranPasienBaru.css">
-    <link rel="stylesheet" href="../../public/global.css">
-    <title>Document</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../PendaftaranPasienBaru.css">
+    <link rel="stylesheet" href="../../../public/global.css">
+    <title>Tiket Reservasi - HealthFlow</title>
     <style>
   /* Kecil penyesuaian lokal agar sesuai desain, tetap memakai class yang sudah ada */
   .qr-wrapper img, .qr-wrapper svg {
@@ -17,9 +18,75 @@
 </style>
 </head>
 
-<body>
+<body class="bg-[#EAF0FB] min-h-screen flex flex-col">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-[#F0F3FA]/95 backdrop-blur-md border-b border-[#E2ECF8] shadow-sm w-full">
+        <div class="w-full mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="../../../index.html" class="flex items-center gap-2">
+                <img src="../../../public/LOGO.svg" alt="HealthFlow Clinic Logo" class="h-16 w-auto">
+            </a>
 
-    <body class="bg-[#EAF0FB] min-h-screen flex justify-center">
+            <!-- Navigation Links & Icons -->
+            <div class="flex items-center gap-8">
+                <!-- Links -->
+                <nav class="flex items-center gap-6">
+                    <a href="../../../index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Beranda</a>
+                    <a href="../../poli/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Poli</a>
+                    <a href="../../pendaftaran/index.html"
+                        class="subheaderText font-bold text-[#395886] hover:text-[#2C4E80] transition-colors duration-200">Pendaftaran</a>
+                    <a href="../../rekam_medis/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Rekam
+                        Medis</a>
+                    <a href="../../lokasi/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Lokasi</a>
+                    <a href="../../kalkulator/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Kalkulator</a>
+                </nav>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-4 border-l border-slate-300/60 pl-6">
+                    <button class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer"
+                        onclick="window.location.assign('../../notifikasi/index.html')" aria-label="Notifications">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                    </button>
+                    <div class="relative">
+                        <button id="profile-menu-button" onclick="toggleProfileDropdown(event)"
+                            class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer flex items-center justify-center"
+                            aria-label="Profile">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </button>
+                        <!-- Profile Dropdown -->
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-3 w-[220px] bg-white rounded-[24px] shadow-lg border border-[#E2ECF8] p-5 flex flex-col gap-4 z-50">
+                            <!-- Item 1: Profil anda -->
+                            <a href="../../profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="user" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Profil anda</span>
+                            </a>
+                            <!-- Item 2: Pengaturan -->
+                            <a href="#"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="settings" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Pengaturan</span>
+                            </a>
+                            <!-- Item 3: Keluar -->
+                            <a href="#"
+                                class="flex items-center gap-3 hover:bg-red-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="log-out" class="w-5 h-5 text-red-600 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-red-600">keluar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="w-full flex justify-center py-8 px-4 flex-1">
         <!-- Main Content -->
         <main class="max-w-7xl w-[90%]">
             <div class="card boxshadow">
@@ -38,25 +105,30 @@
                         <section class="mb-6">
                             <h2 class="font-semibold text-gray-900 mb-2 subheaderText">Data reservasi</h2>
                             <dl class="space-y-1">
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Nama pasien</dt>
-                                    <dd class="font-bold text-gray-900">Dodo</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Nama pasien</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="reservasi-nama" class="font-bold text-gray-900 ml-auto text-right">Dodo</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Tipe</dt>
-                                    <dd class="text-gray-900">Mandiri</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Tipe</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="reservasi-tipe" class="text-gray-900 ml-auto text-right">Mandiri</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Kelas</dt>
-                                    <dd class="text-gray-900">VVIP</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Kelas</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="reservasi-kelas" class="text-gray-900 ml-auto text-right">VVIP</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Penanggung jawab</dt>
-                                    <dd class="font-bold text-gray-900">didit</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Penanggung jawab</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="reservasi-penanggung-jawab" class="font-bold text-gray-900 ml-auto text-right">didit</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Klinik cabang</dt>
-                                    <dd class="text-gray-900">Surabaya</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Klinik cabang</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="reservasi-klinik-cabang" class="text-gray-900 ml-auto text-right">Surabaya</dd>
                                 </div>
                             </dl>
                         </section>
@@ -65,29 +137,35 @@
                         <section class="mb-6">
                             <h2 class="font-semibold text-gray-900 mb-2 subheaderText">Rincian harga</h2>
                             <dl class="space-y-1">
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Harga</dt>
-                                    <dd class="text-gray-900">Rp. 1.000.000 / Hari</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Harga</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="harga-per-hari" class="text-gray-900 ml-auto text-right">Rp. 1.000.000 / Hari</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Lama menginap</dt>
-                                    <dd class="text-gray-900">2 Hari</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Lama menginap</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="harga-lama-menginap" class="text-gray-900 ml-auto text-right">2 Hari</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Total</dt>
-                                    <dd class="text-gray-900">Rp. 2.000.000</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Total</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="harga-total" class="text-gray-900 ml-auto text-right">Rp. 2.000.000</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Diskon (20%)</dt>
-                                    <dd class="text-gray-900">Rp. 1.600.000</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Diskon (20%)</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="harga-diskon" class="text-gray-900 ml-auto text-right">Rp. 1.600.000</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Metode pembayaran</dt>
-                                    <dd class="text-gray-900">Qris-scan</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Metode pembayaran</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="harga-metode" class="text-gray-900 ml-auto text-right">Qris-scan</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Status pembayaran</dt>
-                                    <dd class="font-bold text-green-600">Berhasil</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Status pembayaran</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="harga-status" class="font-bold text-green-600 ml-auto text-right">Berhasil</dd>
                                 </div>
                             </dl>
                         </section>
@@ -96,26 +174,34 @@
                         <section class="mb-6">
                             <h2 class="font-semibold text-gray-900 mb-2 subheaderText">Kamar</h2>
                             <dl class="space-y-1">
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Nomor</dt>
-                                    <dd class="text-gray-900">12</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Nomor</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="kamar-nomor" class="text-gray-900 ml-auto text-right">12</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Ruangan</dt>
-                                    <dd class="text-gray-900">Melati</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Ruangan</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="kamar-ruangan" class="text-gray-900 ml-auto text-right">Melati</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">lt</dt>
-                                    <dd class="text-gray-900">2</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">lt</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="kamar-lantai" class="text-gray-900 ml-auto text-right">2</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Tanggal</dt>
-                                    <dd class="text-gray-900 flex items-center gap-2">20 - 02 - 2026 <span>&rarr;</span> 22
-                                        - 02 - 2026</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Tanggal</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd class="text-gray-900 flex items-center gap-2 ml-auto text-right justify-end">
+                                        <span id="kamar-tanggal-mulai">20 - 02 - 2026</span>
+                                        <span>&rarr;</span>
+                                        <span id="kamar-tanggal-selesai">22 - 02 - 2026</span>
+                                    </dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Nomor kasur</dt>
-                                    <dd class="text-gray-900">12/b</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Nomor kasur</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="kamar-kasur" class="text-gray-900 ml-auto text-right">12/b</dd>
                                 </div>
                             </dl>
                         </section>
@@ -124,25 +210,30 @@
                         <section class="mb-6">
                             <h2 class="font-semibold text-gray-900 mb-2 subheaderText">Pegawai yang memverifikasi</h2>
                             <dl class="space-y-1">
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Nama</dt>
-                                    <dd class="text-gray-900">Budiyo</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Nama</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="pegawai-nama" class="text-gray-900 ml-auto text-right">Budiyo</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Kode pegawai</dt>
-                                    <dd class="text-gray-900">2273662</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Kode pegawai</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="pegawai-kode" class="text-gray-900 ml-auto text-right">2273662</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Jabatan</dt>
-                                    <dd class="text-gray-900">Staf administrasi</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Jabatan</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="pegawai-jabatan" class="text-gray-900 ml-auto text-right">Staf administrasi</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Pesanan masuk</dt>
-                                    <dd class="text-gray-900">15 - 02 - 2026</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Pesanan masuk</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="pegawai-masuk" class="text-gray-900 ml-auto text-right">15 - 02 - 2026</dd>
                                 </div>
-                                <div class="flex justify-between max-w-lg">
-                                    <dt class="text-gray-700">Pesanan terverifikasi</dt>
-                                    <dd class="text-gray-900">17 - 02 - 2026/12:32</dd>
+                                <div class="flex max-w-lg items-center">
+                                    <dt class="text-gray-700 w-48 shrink-0">Pesanan terverifikasi</dt>
+                                    <span class="text-gray-700 mr-4">:</span>
+                                    <dd id="pegawai-terverifikasi" class="text-gray-900 ml-auto text-right">17 - 02 - 2026/12:32</dd>
                                 </div>
                             </dl>
                         </section>
@@ -205,6 +296,98 @@
             </div>
         </main>
 
-    </body>
+    </div>
+
+    <!-- Script Section -->
+    <script>
+        // Parse URL query parameters and update ticket elements
+        function updateTicketFromParams() {
+            const params = new URLSearchParams(window.location.search);
+            
+            const paramMap = {
+                'nama_pasien': 'reservasi-nama',
+                'tipe': 'reservasi-tipe',
+                'kelas': 'reservasi-kelas',
+                'penanggung_jawab': 'reservasi-penanggung-jawab',
+                'klinik_cabang': 'reservasi-klinik-cabang',
+                'harga': 'harga-per-hari',
+                'lama_menginap': 'harga-lama-menginap',
+                'total': 'harga-total',
+                'diskon': 'harga-diskon',
+                'metode_pembayaran': 'harga-metode',
+                'status_pembayaran': 'harga-status',
+                'kamar_nomor': 'kamar-nomor',
+                'kamar_ruangan': 'kamar-ruangan',
+                'kamar_lantai': 'kamar-lantai',
+                'kamar_tanggal_mulai': 'kamar-tanggal-mulai',
+                'kamar_tanggal_selesai': 'kamar-tanggal-selesai',
+                'kamar_kasur': 'kamar-kasur',
+                'pegawai_nama': 'pegawai-nama',
+                'pegawai_kode': 'pegawai-kode',
+                'pegawai_jabatan': 'pegawai-jabatan',
+                'pesanan_masuk': 'pegawai-masuk',
+                'pesanan_terverifikasi': 'pegawai-terverifikasi'
+            };
+
+            for (const [paramKey, elementId] of Object.entries(paramMap)) {
+                const value = params.get(paramKey);
+                if (value !== null) {
+                    const el = document.getElementById(elementId);
+                    if (el) {
+                        el.textContent = value;
+                        
+                        // Special handling for payment status text color
+                        if (paramKey === 'status_pembayaran') {
+                            const valLower = value.toLowerCase();
+                            if (valLower === 'berhasil' || valLower === 'lunas' || valLower === 'sukses' || valLower === 'success') {
+                                el.className = 'font-bold text-green-600 ml-auto text-right';
+                            } else if (valLower === 'pending' || valLower === 'menunggu' || valLower === 'proses') {
+                                el.className = 'font-bold text-yellow-600 ml-auto text-right';
+                            } else {
+                                el.className = 'font-bold text-red-600 ml-auto text-right';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Run immediately to load values from parameters before full render
+        updateTicketFromParams();
+
+        // Profile Dropdown functions
+        function toggleProfileDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('profile-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('hidden');
+            }
+        }
+
+        // Close profile dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('profile-dropdown');
+            const profileBtn = document.getElementById('profile-menu-button');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                const clickedInsideDropdown = dropdown.contains(e.target);
+                const clickedBtn = profileBtn && (profileBtn === e.target || profileBtn.contains(e.target));
+                if (!clickedInsideDropdown && !clickedBtn) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        });
+
+        // Initialize Lucide icons on page load
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        } else {
+            window.addEventListener('load', () => {
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            });
+        }
+    </script>
+</body>
 
 </html>

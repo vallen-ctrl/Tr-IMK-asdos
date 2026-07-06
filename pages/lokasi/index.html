@@ -13,11 +13,78 @@
     <link rel="stylesheet" href="../../public/global.css">
     <!-- File milikmu: design system (.card, .header, .radioButton, .selected, select/input, .loader) -->
     <link rel="stylesheet" href="../pendaftaran/PendaftaranPasienBaru.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
-<body>
+<body class="bg-[#eef1f6] min-h-screen flex flex-col">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-[#F0F3FA] w-full">
+        <div class="w-full mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="../../index.html" class="flex items-center gap-2">
+                <img src="../../public/LOGO.svg" alt="HealthFlow Clinic Logo" class="h-16 w-auto">
+            </a>
 
-    <div class="min-h-screen bg-[#eef1f6] flex items-start justify-center p-6 sm:p-12 px-4">
+            <!-- Navigation Links & Icons -->
+            <div class="flex items-center gap-8">
+                <!-- Links -->
+                <nav class="flex items-center gap-6">
+                    <a href="../../index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Beranda</a>
+                    <a href="../poli/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Poli</a>
+                    <a href="../pendaftaran/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Pendaftaran</a>
+                    <a href="../rekam_medis/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Rekam
+                        Medis</a>
+                    <a href="../lokasi/index.html"
+                        class="subheaderText font-bold text-[#395886] hover:text-[#2C4E80] transition-colors duration-200">Lokasi</a>
+                    <a href="../kalkulator/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Kalkulator</a>
+                </nav>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-4 border-l border-slate-300/60 pl-6">
+                    <button class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer"
+                        onclick="window.location.assign('../notifikasi/index.html')" aria-label="Notifications">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                    </button>
+                    <div class="relative">
+                        <button id="profile-menu-button" onclick="toggleProfileDropdown(event)"
+                            class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer flex items-center justify-center"
+                            aria-label="Profile">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </button>
+                        <!-- Profile Dropdown -->
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-3 w-[220px] bg-white rounded-[24px] shadow-lg border border-[#E2ECF8] p-5 flex flex-col gap-4 z-50">
+                            <!-- Item 1: Profil anda -->
+                            <a href="../profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="user" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Profil anda</span>
+                            </a>
+                            <!-- Item 2: Pengaturan -->
+                            <a href="#"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="settings" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Pengaturan</span>
+                            </a>
+                            <!-- Item 3: Keluar -->
+                            <a href="#"
+                                class="flex items-center gap-3 hover:bg-red-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="log-out" class="w-5 h-5 text-red-600 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-red-600">keluar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="min-h-[calc(100vh-80px)] bg-[#eef1f6] flex items-start justify-center p-6 sm:p-12 px-4 flex-1">
         <div class="card boxshadow w-full max-w-[1080px] !p-6 !gap-5 sm:!p-8 sm:!gap-8">
 
             <!-- Header -->
@@ -307,7 +374,41 @@
 
         renderPage(1);
 
+        // Profile Dropdown functions
+        function toggleProfileDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('profile-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('hidden');
+            }
+        }
+
+        // Close profile dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('profile-dropdown');
+            const profileBtn = document.getElementById('profile-menu-button');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                const clickedInsideDropdown = dropdown.contains(e.target);
+                const clickedBtn = profileBtn && (profileBtn === e.target || profileBtn.contains(e.target));
+                if (!clickedInsideDropdown && !clickedBtn) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        });
+
+        // Initialize Lucide icons on page load
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        } else {
+            window.addEventListener('load', () => {
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            });
+        }
     </script>
+
+    </div>
 </body>
 
 </html>

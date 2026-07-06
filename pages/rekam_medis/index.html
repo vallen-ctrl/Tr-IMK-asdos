@@ -13,469 +13,536 @@
     <title>Rekam Medis Pasien</title>
 </head>
 
-<body class="bg-[#EAF0FB] min-h-screen flex justify-center py-6 px-4">
+<body class="bg-[#F0F3FA] min-h-screen flex flex-col">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-[#F0F3FA] w-full">
+        <div class="w-full mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="../../index.html" class="flex items-center gap-2">
+                <img src="../../public/LOGO.svg" alt="HealthFlow Clinic Logo" class="h-16 w-auto">
+            </a>
 
-    <main class="max-w-7xl w-full flex flex-col gap-6">
+            <!-- Navigation Links & Icons -->
+            <div class="flex items-center gap-8">
+                <!-- Links -->
+                <nav class="flex items-center gap-6">
+                    <a href="../../index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Beranda</a>
+                    <a href="../poli/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Poli</a>
+                    <a href="../pendaftaran/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Pendaftaran</a>
+                    <a href="../rekam_medis/index.html"
+                        class="subheaderText font-bold text-[#395886] hover:text-[#2C4E80] transition-colors duration-200">Rekam
+                        Medis</a>
+                    <a href="../lokasi/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Lokasi</a>
+                    <a href="../kalkulator/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Kalkulator</a>
+                </nav>
 
-        <!-- ===================== SECTION 1: Patient Info + Health Info + Tickets ===================== -->
-        <div class="flex flex-col lg:flex-row gap-6">
-
-            <!-- ======= LEFT: Patient Profile Card ======= -->
-            <div
-                class="card boxshadow w-full lg:w-[320px] flex-shrink-0 items-center text-center lg:text-left lg:items-start">
-                <!-- Profile Image -->
-                <div class="flex w-full justify-start md:justify-center">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto Pasien" class="profile-img">
-                </div>
-
-                <!-- Patient Data -->
-                <div class="w-full mt-2">
-                    <dl class="space-y-1 text-sm">
-                        <div class="flex gap-4">
-                            <dt class="text-gray-500 w-[110px] flex-shrink-0">Nama</dt>
-                            <dd class="font-semibold text-gray-900">Jhon deo formalin</dd>
+                <!-- Icons -->
+                <div class="flex items-center gap-4 border-l border-slate-300/60 pl-6">
+                    <button class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer"
+                        onclick="window.location.assign('../notifikasi/index.html')" aria-label="Notifications">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                    </button>
+                    <div class="relative">
+                        <button id="profile-menu-button" onclick="toggleProfileDropdown(event)"
+                            class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer flex items-center justify-center"
+                            aria-label="Profile">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </button>
+                        <!-- Profile Dropdown -->
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-3 w-[220px] bg-white rounded-[24px] shadow-lg border border-[#E2ECF8] p-5 flex flex-col gap-4 z-50">
+                            <!-- Item 1: Profil anda -->
+                            <a href="../profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="user" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Profil anda</span>
+                            </a>
+                            <!-- Item 2: Pengaturan -->
+                            <a href="#"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="settings" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Pengaturan</span>
+                            </a>
+                            <!-- Item 3: Keluar -->
+                            <a href="#"
+                                class="flex items-center gap-3 hover:bg-red-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="log-out" class="w-5 h-5 text-red-600 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-red-600">keluar</span>
+                            </a>
                         </div>
-                        <div class="flex gap-4">
-                            <dt class="text-gray-500 w-[110px] flex-shrink-0">Tanggal lahir</dt>
-                            <dd class="text-gray-900">22 - 12 - 1967</dd>
-                        </div>
-                        <div class="flex gap-4">
-                            <dt class="text-gray-500 w-[110px] flex-shrink-0">Umur</dt>
-                            <dd class="text-gray-900">40 Tahun</dd>
-                        </div>
-                        <div class="flex gap-4">
-                            <dt class="text-gray-500 w-[110px] flex-shrink-0">NIK</dt>
-                            <dd class="text-gray-900">136586362396004</dd>
-                        </div>
-                        <div class="flex gap-4">
-                            <dt class="text-gray-500 w-[110px] flex-shrink-0">Jenis kelamin</dt>
-                            <dd class="text-gray-900 gender-icon">Laki-Laki
-                                <i data-lucide="mars" class="w-4 h-4 text-blue-500 inline"></i>
-                            </dd>
-                        </div>
-                        <div class="flex gap-4">
-                            <dt class="text-gray-500 w-[110px] flex-shrink-0">Golongan darah</dt>
-                            <dd class="blood-badge">A+</dd>
-                        </div>
-                    </dl>
-                </div>
-            </div>
-
-            <!-- ======= RIGHT: Health Info + Active Tickets ======= -->
-            <div class="card boxshadow flex-1 !gap-5">
-
-                <!-- Health Information -->
-                <div>
-                    <h1 class="headerText font-bold text-gray-900 mb-3 flex items-center gap-2">
-                        <i data-lucide="heart-pulse" class="w-6 h-6 text-red-500"></i>
-                        Informasi Kesehatan
-                    </h1>
-                    <div class="flex flex-wrap gap-2 items-center">
-                        <span class="badge badge-danger">
-                            Alergi : Ikan laut, udang
-                        </span>
-                        <span class="badge badge-outline">
-                            Riwayat penyakit kronis : Tumor otak, Jantung
-                        </span>
-                    </div>
-                    <div class="flex flex-wrap gap-2 items-center mt-2">
-                        <span class="badge badge-success">
-                            Penyakit bawaan : Diabetes, Hipertensi
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Active Tickets -->
-                <div>
-                    <h2 class="font-bold text-gray-900 text-lg mb-3 flex items-center gap-2">
-                        Tiket Aktif anda
-                        <i data-lucide="ticket" class="w-5 h-5 text-gray-600"></i>
-                    </h2>
-
-                    <!-- Scrollable ticket container -->
-                    <div id="ticketContainer" class="ticket-scroll-container flex flex-col gap-3">
-                        <!-- Dynamic tickets will be rendered here -->
                     </div>
                 </div>
             </div>
         </div>
+    </header>
 
-        <!-- ===================== SECTION 2: Visit History Table ===================== -->
-        <div class="card boxshadow !p-6">
-            <h2 class="headerText font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <i data-lucide="clipboard-list" class="w-6 h-6"></i>
-                Riwayat Kunjungan
-            </h2>
+    <div class="w-full flex justify-center py-8 px-4 md:px-8 flex-1">
+        <main class="max-w-7xl w-full flex flex-col gap-6">
 
-            <div class="visit-table-wrapper">
-                <table class="visit-table" id="visitTable">
-                    <thead>
-                        <tr>
-                            <th>Hari, Tanggal</th>
-                            <th>Waktu</th>
-                            <th>Cabang</th>
-                            <th>Dokter</th>
-                            <th>Spesialisasi</th>
-                            <th>Tujuan Kunjungan</th>
-                            <th>Tipe kunjungan</th>
-                            <th>Harga</th>
-                            <th>Ruangan</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody id="visitTableBody">
-                        <!-- Dynamic rows will be rendered here -->
-                    </tbody>
-                </table>
+            <!-- ===================== SECTION 1: Patient Info + Health Info + Tickets ===================== -->
+            <div class="flex flex-col lg:flex-row gap-6">
+
+                <!-- ======= LEFT: Patient Profile Card ======= -->
+                <div
+                    class="card boxshadow w-full lg:w-[320px] flex-shrink-0 items-center text-center lg:text-left lg:items-start">
+                    <!-- Profile Image -->
+                    <div class="flex w-full justify-start md:justify-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto Pasien" class="profile-img">
+                    </div>
+
+                    <!-- Patient Data -->
+                    <div class="w-full mt-2">
+                        <dl class="space-y-1 text-sm">
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">Nama</dt>
+                                <dd class="font-semibold text-gray-900">Jhon deo formalin</dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">Tanggal lahir</dt>
+                                <dd class="text-gray-900">22 - 12 - 1967</dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">Umur</dt>
+                                <dd class="text-gray-900">40 Tahun</dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">NIK</dt>
+                                <dd class="text-gray-900">136586362396004</dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">Jenis kelamin</dt>
+                                <dd class="text-gray-900 gender-icon">Laki-Laki
+                                    <i data-lucide="mars" class="w-4 h-4 text-blue-500 inline"></i>
+                                </dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">Golongan darah</dt>
+                                <dd class="blood-badge">A+</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+
+                <!-- ======= RIGHT: Health Info + Active Tickets ======= -->
+                <div class="card boxshadow flex-1 !gap-5">
+
+                    <!-- Health Information -->
+                    <div>
+                        <h1 class="headerText font-bold text-gray-900 mb-3 flex items-center gap-2">
+                            <i data-lucide="heart-pulse" class="w-6 h-6 text-red-500"></i>
+                            Informasi Kesehatan
+                        </h1>
+                        <div class="flex flex-wrap gap-2 items-center">
+                            <span class="badge badge-danger">
+                                Alergi : Ikan laut, udang
+                            </span>
+                            <span class="badge badge-outline">
+                                Riwayat penyakit kronis : Tumor otak, Jantung
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 items-center mt-2">
+                            <span class="badge badge-success">
+                                Penyakit bawaan : Diabetes, Hipertensi
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Active Tickets -->
+                    <div>
+                        <h2 class="font-bold text-gray-900 text-lg mb-3 flex items-center gap-2">
+                            Tiket Aktif anda
+                            <i data-lucide="ticket" class="w-5 h-5 text-gray-600"></i>
+                        </h2>
+
+                        <!-- Scrollable ticket container -->
+                        <div id="ticketContainer" class="ticket-scroll-container flex flex-col gap-3">
+                            <!-- Dynamic tickets will be rendered here -->
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-    </main>
+            <!-- ===================== SECTION 2: Visit History Table ===================== -->
+            <div class="card boxshadow !p-6">
+                <h2 class="headerText font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+                    Riwayat Kunjungan
+                </h2>
 
-    <script>
-        // DATA TIKET AKTIF (Bisa diedit langsung di bawah ini)
-        const ticketsData = [
-            {
-                poli: "Poli Penyakit Dalam",
-                doctorName: "dr. Ruben, S. Kes, M. Kes",
-                doctorImg: "https://randomuser.me/api/portraits/men/75.jpg",
-                date: "Kamis, 25 Juni 2025",
-                time: "8:00 WIB",
-                branch: "Surabaya",
-                status: "active", // "active" atau "waiting"
-                qrData: "TICKET-001-AKTIF"
-            },
-            {
-                poli: "Poli Penyakit Dalam",
-                doctorName: "dr. Ruben, S. Kes, M. Kes",
-                doctorImg: "https://randomuser.me/api/portraits/men/75.jpg",
-                date: "Kamis, 25 Juni 2025",
-                time: "8:00 WIB",
-                branch: "Surabaya",
-                status: "waiting", // "active" atau "waiting"
-                qrData: ""
-            },
-            {
-                poli: "Poli Mata",
-                doctorName: "dr. Sari, Sp. M",
-                doctorImg: "https://randomuser.me/api/portraits/women/44.jpg",
-                date: "Jumat, 26 Juni 2025",
-                time: "10:00 WIB",
-                branch: "Surabaya",
-                status: "active",
-                qrData: "TICKET-003-AKTIF"
-            },
-            {
-                poli: "Poli Jantung",
-                doctorName: "dr. Budi, Sp. JP",
-                doctorImg: "https://randomuser.me/api/portraits/men/60.jpg",
-                date: "Senin, 29 Juni 2025",
-                time: "09:00 WIB",
-                branch: "Surabaya",
-                status: "waiting",
-                qrData: ""
-            }
-        ];
+                <div class="visit-table-wrapper">
+                    <table class="visit-table" id="visitTable">
+                        <thead>
+                            <tr>
+                                <th>Hari, Tanggal</th>
+                                <th>Waktu</th>
+                                <th>Cabang</th>
+                                <th>Dokter</th>
+                                <th>Spesialisasi</th>
+                                <th>Tujuan Kunjungan</th>
+                                <th>Tipe kunjungan</th>
+                                <th>Harga</th>
+                                <th>Ruangan</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="visitTableBody">
+                            <!-- Dynamic rows will be rendered here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-        // DATA RIWAYAT KUNJUNGAN (Bisa diedit langsung di bawah ini)
-        const visitsData = [
-            {
-                date: "Sabtu, 29 - 02 - 2023",
-                time: "20:33",
-                branch: "Surabaya",
-                doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
-                specialization: "Penyakit dalam",
-                purpose: "Konsultasi penyakit",
-                type: "BPJS",
-                price: "Rp. 0",
-                room: "G573",
-                detail: {
-                    noRM: "RM-2026-0891",
-                    name: "askjdbl;asdkjb",
-                    age: "45 Tahun",
-                    description: "Pasien datang dengan keluhan nyeri ulu hati yang hebat sejak 2 hari yang lalu. Nyeri dirasakan seperti terbakar dan menjalar hingga ke dada, terutama setelah makan atau saat berbaring. Pasien juga mengeluhkan mual, kembung, dan mulut terasa pahit/asam. Riwayat sering mengonsumsi kopi hitam saat perut kosong dan telat makan karena kesibukan kerja.",
-                    diagnosis: [
-                        "Diagnosis Utama: GERD (Gastroesophageal Reflux Disease) / Penyakit Asam Lambung.",
-                        "Diagnosis Sekunder: Dispepsia Fungsional.",
-                        "Kode ICD-10: K21.9 (Gastro-esophageal reflux disease without esophagitis)."
-                    ],
-                    doctorNotes: [
-                        "Subjective (S): Nyeri ulu hati terasa membakar, mual (+), kembung (+), riwayat pola makan tidak teratur dan konsumsi kafein tinggi.",
-                        "Objective (O): Kesadaran compos mentis, Tekanan Darah: 120/80 mmHg, Nadi: 82x/menit, Suhu: 36.6°C. Pada palpasi abdomen: terdapat nyeri tekan di area epigastrium (ulu hati).",
-                        "Assessment (A): GERD dengan gejala dispepsia akut.",
-                        "Planning (P): Pemberian terapi obat penekan asam lambung dan prokinetik, edukasi modifikasi gaya hidup, serta evaluasi dalam 5 hari."
-                    ],
-                    actions: [
-                        "Melakukan pemeriksaan fisik abdomen (inspeksi, auskultasi, palpasi, perkusi).",
-                        "Memberikan edukasi kepada pasien mengenai posisi tidur (kepala lebih tinggi 15-20 cm), larangan berbaring langsung setelah makan (minimal jeda 2-3 jam), serta menghindari makanan pemicu (pedas, asam, kopi, dan cokelat)."
-                    ],
-                    prescriptions: [
-                        "Omeprazole (Kapsul), 20 mg2 × 1 sehari (30 menit sebelum makan) (Jumlah 10 kapsul)",
-                        "Domperidone (Tablet), 10 mg3 × 1 sehari (15 menit sebelum makan) (Jumlah 15 Tablet)",
-                        "Antasida Doen (Sirup), Suspensi3 × 1 sendok makan (jika nyeri/1 jam setelah makan) (Jumlah 1 Botol)"
-                    ],
-                    payment: {
-                        guarantee: "-",
-                        status: "Lunas (Cashless)",
-                        total: "Rp 0,- (Termasuk jasa konsultasi dokter spesialis, tindakan pemeriksaan, dan tebus obat farmasi)."
-                    }
-                }
-            },
-            {
-                date: "Sabtu, 29 - 02 - 2023",
-                time: "20:33",
-                branch: "Surabaya",
-                doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
-                specialization: "Penyakit dalam",
-                purpose: "Konsultasi penyakit",
-                type: "BPJS",
-                price: "Rp. 0",
-                room: "G573",
-                detail: {
-                    noRM: "RM-2026-0892",
-                    name: "Jhon deo formalin",
-                    age: "45 Tahun",
-                    description: "Pasien datang dengan keluhan batuk berdahak selama 5 hari, disertai demam ringan dan lemas.",
-                    diagnosis: [
-                        "Diagnosis Utama: ISPA (Infeksi Saluran Pernapasan Atas).",
-                        "Kode ICD-10: J06.9 (Acute upper respiratory infection, unspecified)."
-                    ],
-                    doctorNotes: [
-                        "Subjective (S): Batuk berdahak, demam ringan, badan lemas.",
-                        "Objective (O): Suhu 37.8°C, tenggorokan hiperemis.",
-                        "Assessment (A): ISPA akut.",
-                        "Planning (P): Terapi simptomatik, istirahat cukup, dan evaluasi 3 hari."
-                    ],
-                    actions: [],
-                    prescriptions: [
-                        "Paracetamol (Tablet), 500 mg 3 × 1 sehari (Jumlah 9 Tablet)",
-                        "Ambroxol (Tablet), 30 mg 3 × 1 sehari (Jumlah 9 Tablet)"
-                    ],
-                    payment: {
-                        guarantee: "-",
-                        status: "Lunas (Cashless)",
-                        total: "Rp 0,-"
-                    }
-                }
-            },
-            {
-                date: "Sabtu, 29 - 02 - 2023",
-                time: "20:33",
-                branch: "Surabaya",
-                doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
-                specialization: "Penyakit dalam",
-                purpose: "Konsultasi penyakit",
-                type: "BPJS",
-                price: "Rp. 0",
-                room: "G573",
-                detail: {
-                    noRM: "RM-2026-0893",
-                    name: "Jhon deo formalin",
-                    age: "45 Tahun",
-                    description: "Kontrol rutin tekanan darah dan kadar gula darah.",
-                    diagnosis: [
-                        "Diagnosis Utama: Hipertensi esensial terkontrol.",
-                        "Diagnosis Sekunder: Diabetes Mellitus tipe 2."
-                    ],
-                    doctorNotes: [
-                        "Subjective (S): Tidak ada keluhan spesifik, kontrol rutin.",
-                        "Objective (O): TD 130/85 mmHg, GDS 145 mg/dL.",
-                        "Assessment (A): Hipertensi dan DM tipe 2 terkontrol.",
-                        "Planning (P): Lanjutkan terapi, kontrol 1 bulan."
-                    ],
-                    actions: [],
-                    prescriptions: [
-                        "Amlodipine (Tablet), 5 mg 1 × 1 sehari (Jumlah 30 Tablet)",
-                        "Metformin (Tablet), 500 mg 2 × 1 sehari (Jumlah 60 Tablet)"
-                    ],
-                    payment: {
-                        guarantee: "-",
-                        status: "Lunas (Cashless)",
-                        total: "Rp 0,-"
-                    }
-                }
-            },
-            {
-                date: "Sabtu, 29 - 02 - 2023",
-                time: "20:33",
-                branch: "Surabaya",
-                doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
-                specialization: "Penyakit dalam",
-                purpose: "Konsultasi penyakit",
-                type: "BPJS",
-                price: "Rp. 0",
-                room: "G573",
-                detail: {
-                    noRM: "RM-2026-0894",
-                    name: "Jhon deo formalin",
-                    age: "45 Tahun",
-                    description: "Pasien mengeluh nyeri sendi di lutut kanan sejak 1 minggu yang lalu.",
-                    diagnosis: [
-                        "Diagnosis Utama: Osteoarthritis genu dextra."
-                    ],
-                    doctorNotes: [],
-                    actions: [],
-                    prescriptions: [
-                        "Meloxicam (Tablet), 15 mg 1 × 1 sehari (Jumlah 10 Tablet)"
-                    ],
-                    payment: {
-                        guarantee: "-",
-                        status: "Lunas (Cashless)",
-                        total: "Rp 0,-"
-                    }
-                }
-            },
-            {
-                date: "Sabtu, 29 - 02 - 2023",
-                time: "20:33",
-                branch: "Surabaya",
-                doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
-                specialization: "Penyakit dalam",
-                purpose: "Konsultasi penyakit",
-                type: "BPJS",
-                price: "Rp. 0",
-                room: "G573",
-                detail: {
-                    noRM: "RM-2026-0895",
-                    name: "Jhon deo formalin",
-                    age: "45 Tahun",
-                    description: "Pasien datang untuk follow-up pasca rawat inap karena infeksi saluran kemih.",
-                    diagnosis: [
-                        "Diagnosis Utama: ISK (Infeksi Saluran Kemih) - follow-up."
-                    ],
-                    doctorNotes: [],
-                    actions: [],
-                    prescriptions: [
-                        "Ciprofloxacin (Tablet), 500 mg 2 × 1 sehari (Jumlah 14 Tablet)"
-                    ],
-                    payment: {
-                        guarantee: "-",
-                        status: "Lunas (Cashless)",
-                        total: "Rp 0,-"
-                    }
-                }
-            },
-            {
-                date: "Sabtu, 29 - 02 - 2023",
-                time: "20:33",
-                branch: "Surabaya",
-                doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
-                specialization: "Penyakit dalam",
-                purpose: "Konsultasi penyakit",
-                type: "BPJS",
-                price: "Rp. 0",
-                room: "G573",
-                detail: {
-                    noRM: "RM-2026-0896",
-                    name: "Jhon deo formalin",
-                    age: "45 Tahun",
-                    description: "Kontrol rutin tekanan darah.",
-                    diagnosis: [
-                        "Diagnosis Utama: Hipertensi esensial terkontrol."
-                    ],
-                    doctorNotes: [],
-                    actions: [],
-                    prescriptions: [
-                        "Amlodipine (Tablet), 5 mg 1 × 1 sehari (Jumlah 30 Tablet)"
-                    ],
-                    payment: {
-                        guarantee: "-",
-                        status: "Lunas (Cashless)",
-                        total: "Rp 0,-"
-                    }
-                }
-            },
-            {
-                date: "Sabtu, 29 - 02 - 2023",
-                time: "20:33",
-                branch: "Surabaya",
-                doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
-                specialization: "Penyakit dalam",
-                purpose: "Konsultasi penyakit",
-                type: "BPJS",
-                price: "Rp. 0",
-                room: "G573",
-                detail: {
-                    noRM: "RM-2026-0897",
-                    name: "Jhon deo formalin",
-                    age: "45 Tahun",
-                    description: "Keluhan sakit kepala berulang dan pusing.",
-                    diagnosis: [
-                        "Diagnosis Utama: Cephalalgia tension-type."
-                    ],
-                    doctorNotes: [],
-                    actions: [],
-                    prescriptions: [
-                        "Paracetamol (Tablet), 500 mg 3 × 1 sehari (Jumlah 9 Tablet)"
-                    ],
-                    payment: {
-                        guarantee: "-",
-                        status: "Lunas (Cashless)",
-                        total: "Rp 0,-"
-                    }
-                }
-            },
-            {
-                date: "Sabtu, 29 - 02 - 2023",
-                time: "20:33",
-                branch: "Surabaya",
-                doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
-                specialization: "Penyakit dalam",
-                purpose: "Konsultasi penyakit",
-                type: "BPJS",
-                price: "Rp. 0",
-                room: "G573",
-                detail: {
-                    noRM: "RM-2026-0898",
-                    name: "Jhon deo formalin",
-                    age: "45 Tahun",
-                    description: "Pasien datang dengan keluhan nyeri ulu hati kembali muncul setelah konsumsi makanan pedas.",
-                    diagnosis: [
-                        "Diagnosis Utama: GERD relaps."
-                    ],
-                    doctorNotes: [],
-                    actions: [],
-                    prescriptions: [
-                        "Omeprazole (Kapsul), 20 mg 2 × 1 sehari (Jumlah 14 kapsul)",
-                        "Sucralfate Sirup, 3 × 1 sendok makan (Jumlah 1 Botol)"
-                    ],
-                    payment: {
-                        guarantee: "-",
-                        status: "Lunas (Cashless)",
-                        total: "Rp 0,-"
-                    }
-                }
-            }
-        ];
+        </main>
 
-        // RENDER TIKET AKTIF
-        function renderTickets() {
-            const container = document.getElementById("ticketContainer");
-            container.innerHTML = "";
+        <script>
+            // DATA TIKET AKTIF (Bisa diedit langsung di bawah ini)
+            const ticketsData = [
+                {
+                    poli: "Poli Penyakit Dalam",
+                    doctorName: "dr. Ruben, S. Kes, M. Kes",
+                    doctorImg: "https://randomuser.me/api/portraits/men/75.jpg",
+                    date: "Kamis, 25 Juni 2025",
+                    time: "8:00 WIB",
+                    branch: "Surabaya",
+                    status: "active", // "active" atau "waiting"
+                    qrData: "TICKET-001-AKTIF"
+                },
+                {
+                    poli: "Poli Penyakit Dalam",
+                    doctorName: "dr. Ruben, S. Kes, M. Kes",
+                    doctorImg: "https://randomuser.me/api/portraits/men/75.jpg",
+                    date: "Kamis, 25 Juni 2025",
+                    time: "8:00 WIB",
+                    branch: "Surabaya",
+                    status: "waiting", // "active" atau "waiting"
+                    qrData: ""
+                },
+                {
+                    poli: "Poli Mata",
+                    doctorName: "dr. Sari, Sp. M",
+                    doctorImg: "https://randomuser.me/api/portraits/women/44.jpg",
+                    date: "Jumat, 26 Juni 2025",
+                    time: "10:00 WIB",
+                    branch: "Surabaya",
+                    status: "active",
+                    qrData: "TICKET-003-AKTIF"
+                },
+                {
+                    poli: "Poli Jantung",
+                    doctorName: "dr. Budi, Sp. JP",
+                    doctorImg: "https://randomuser.me/api/portraits/men/60.jpg",
+                    date: "Senin, 29 Juni 2025",
+                    time: "09:00 WIB",
+                    branch: "Surabaya",
+                    status: "waiting",
+                    qrData: ""
+                }
+            ];
 
-            ticketsData.forEach(ticket => {
-                const card = document.createElement("div");
-                card.className = "ticket-card";
+            // DATA RIWAYAT KUNJUNGAN (Bisa diedit langsung di bawah ini)
+            const visitsData = [
+                {
+                    date: "Sabtu, 29 - 02 - 2023",
+                    time: "20:33",
+                    branch: "Surabaya",
+                    doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
+                    specialization: "Penyakit dalam",
+                    purpose: "Konsultasi penyakit",
+                    type: "BPJS",
+                    price: "Rp. 0",
+                    room: "G573",
+                    detail: {
+                        noRM: "RM-2026-0891",
+                        name: "askjdbl;asdkjb",
+                        age: "45 Tahun",
+                        description: "Pasien datang dengan keluhan nyeri ulu hati yang hebat sejak 2 hari yang lalu. Nyeri dirasakan seperti terbakar dan menjalar hingga ke dada, terutama setelah makan atau saat berbaring. Pasien juga mengeluhkan mual, kembung, dan mulut terasa pahit/asam. Riwayat sering mengonsumsi kopi hitam saat perut kosong dan telat makan karena kesibukan kerja.",
+                        diagnosis: [
+                            "Diagnosis Utama: GERD (Gastroesophageal Reflux Disease) / Penyakit Asam Lambung.",
+                            "Diagnosis Sekunder: Dispepsia Fungsional.",
+                            "Kode ICD-10: K21.9 (Gastro-esophageal reflux disease without esophagitis)."
+                        ],
+                        doctorNotes: [
+                            "Subjective (S): Nyeri ulu hati terasa membakar, mual (+), kembung (+), riwayat pola makan tidak teratur dan konsumsi kafein tinggi.",
+                            "Objective (O): Kesadaran compos mentis, Tekanan Darah: 120/80 mmHg, Nadi: 82x/menit, Suhu: 36.6°C. Pada palpasi abdomen: terdapat nyeri tekan di area epigastrium (ulu hati).",
+                            "Assessment (A): GERD dengan gejala dispepsia akut.",
+                            "Planning (P): Pemberian terapi obat penekan asam lambung dan prokinetik, edukasi modifikasi gaya hidup, serta evaluasi dalam 5 hari."
+                        ],
+                        actions: [
+                            "Melakukan pemeriksaan fisik abdomen (inspeksi, auskultasi, palpasi, perkusi).",
+                            "Memberikan edukasi kepada pasien mengenai posisi tidur (kepala lebih tinggi 15-20 cm), larangan berbaring langsung setelah makan (minimal jeda 2-3 jam), serta menghindari makanan pemicu (pedas, asam, kopi, dan cokelat)."
+                        ],
+                        prescriptions: [
+                            "Omeprazole (Kapsul), 20 mg2 × 1 sehari (30 menit sebelum makan) (Jumlah 10 kapsul)",
+                            "Domperidone (Tablet), 10 mg3 × 1 sehari (15 menit sebelum makan) (Jumlah 15 Tablet)",
+                            "Antasida Doen (Sirup), Suspensi3 × 1 sendok makan (jika nyeri/1 jam setelah makan) (Jumlah 1 Botol)"
+                        ],
+                        payment: {
+                            guarantee: "-",
+                            status: "Lunas (Cashless)",
+                            total: "Rp 0,- (Termasuk jasa konsultasi dokter spesialis, tindakan pemeriksaan, dan tebus obat farmasi)."
+                        }
+                    }
+                },
+                {
+                    date: "Sabtu, 29 - 02 - 2023",
+                    time: "20:33",
+                    branch: "Surabaya",
+                    doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
+                    specialization: "Penyakit dalam",
+                    purpose: "Konsultasi penyakit",
+                    type: "BPJS",
+                    price: "Rp. 0",
+                    room: "G573",
+                    detail: {
+                        noRM: "RM-2026-0892",
+                        name: "Jhon deo formalin",
+                        age: "45 Tahun",
+                        description: "Pasien datang dengan keluhan batuk berdahak selama 5 hari, disertai demam ringan dan lemas.",
+                        diagnosis: [
+                            "Diagnosis Utama: ISPA (Infeksi Saluran Pernapasan Atas).",
+                            "Kode ICD-10: J06.9 (Acute upper respiratory infection, unspecified)."
+                        ],
+                        doctorNotes: [
+                            "Subjective (S): Batuk berdahak, demam ringan, badan lemas.",
+                            "Objective (O): Suhu 37.8°C, tenggorokan hiperemis.",
+                            "Assessment (A): ISPA akut.",
+                            "Planning (P): Terapi simptomatik, istirahat cukup, dan evaluasi 3 hari."
+                        ],
+                        actions: [],
+                        prescriptions: [
+                            "Paracetamol (Tablet), 500 mg 3 × 1 sehari (Jumlah 9 Tablet)",
+                            "Ambroxol (Tablet), 30 mg 3 × 1 sehari (Jumlah 9 Tablet)"
+                        ],
+                        payment: {
+                            guarantee: "-",
+                            status: "Lunas (Cashless)",
+                            total: "Rp 0,-"
+                        }
+                    }
+                },
+                {
+                    date: "Sabtu, 29 - 02 - 2023",
+                    time: "20:33",
+                    branch: "Surabaya",
+                    doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
+                    specialization: "Penyakit dalam",
+                    purpose: "Konsultasi penyakit",
+                    type: "BPJS",
+                    price: "Rp. 0",
+                    room: "G573",
+                    detail: {
+                        noRM: "RM-2026-0893",
+                        name: "Jhon deo formalin",
+                        age: "45 Tahun",
+                        description: "Kontrol rutin tekanan darah dan kadar gula darah.",
+                        diagnosis: [
+                            "Diagnosis Utama: Hipertensi esensial terkontrol.",
+                            "Diagnosis Sekunder: Diabetes Mellitus tipe 2."
+                        ],
+                        doctorNotes: [
+                            "Subjective (S): Tidak ada keluhan spesifik, kontrol rutin.",
+                            "Objective (O): TD 130/85 mmHg, GDS 145 mg/dL.",
+                            "Assessment (A): Hipertensi dan DM tipe 2 terkontrol.",
+                            "Planning (P): Lanjutkan terapi, kontrol 1 bulan."
+                        ],
+                        actions: [],
+                        prescriptions: [
+                            "Amlodipine (Tablet), 5 mg 1 × 1 sehari (Jumlah 30 Tablet)",
+                            "Metformin (Tablet), 500 mg 2 × 1 sehari (Jumlah 60 Tablet)"
+                        ],
+                        payment: {
+                            guarantee: "-",
+                            status: "Lunas (Cashless)",
+                            total: "Rp 0,-"
+                        }
+                    }
+                },
+                {
+                    date: "Sabtu, 29 - 02 - 2023",
+                    time: "20:33",
+                    branch: "Surabaya",
+                    doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
+                    specialization: "Penyakit dalam",
+                    purpose: "Konsultasi penyakit",
+                    type: "BPJS",
+                    price: "Rp. 0",
+                    room: "G573",
+                    detail: {
+                        noRM: "RM-2026-0894",
+                        name: "Jhon deo formalin",
+                        age: "45 Tahun",
+                        description: "Pasien mengeluh nyeri sendi di lutut kanan sejak 1 minggu yang lalu.",
+                        diagnosis: [
+                            "Diagnosis Utama: Osteoarthritis genu dextra."
+                        ],
+                        doctorNotes: [],
+                        actions: [],
+                        prescriptions: [
+                            "Meloxicam (Tablet), 15 mg 1 × 1 sehari (Jumlah 10 Tablet)"
+                        ],
+                        payment: {
+                            guarantee: "-",
+                            status: "Lunas (Cashless)",
+                            total: "Rp 0,-"
+                        }
+                    }
+                },
+                {
+                    date: "Sabtu, 29 - 02 - 2023",
+                    time: "20:33",
+                    branch: "Surabaya",
+                    doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
+                    specialization: "Penyakit dalam",
+                    purpose: "Konsultasi penyakit",
+                    type: "BPJS",
+                    price: "Rp. 0",
+                    room: "G573",
+                    detail: {
+                        noRM: "RM-2026-0895",
+                        name: "Jhon deo formalin",
+                        age: "45 Tahun",
+                        description: "Pasien datang untuk follow-up pasca rawat inap karena infeksi saluran kemih.",
+                        diagnosis: [
+                            "Diagnosis Utama: ISK (Infeksi Saluran Kemih) - follow-up."
+                        ],
+                        doctorNotes: [],
+                        actions: [],
+                        prescriptions: [
+                            "Ciprofloxacin (Tablet), 500 mg 2 × 1 sehari (Jumlah 14 Tablet)"
+                        ],
+                        payment: {
+                            guarantee: "-",
+                            status: "Lunas (Cashless)",
+                            total: "Rp 0,-"
+                        }
+                    }
+                },
+                {
+                    date: "Sabtu, 29 - 02 - 2023",
+                    time: "20:33",
+                    branch: "Surabaya",
+                    doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
+                    specialization: "Penyakit dalam",
+                    purpose: "Konsultasi penyakit",
+                    type: "BPJS",
+                    price: "Rp. 0",
+                    room: "G573",
+                    detail: {
+                        noRM: "RM-2026-0896",
+                        name: "Jhon deo formalin",
+                        age: "45 Tahun",
+                        description: "Kontrol rutin tekanan darah.",
+                        diagnosis: [
+                            "Diagnosis Utama: Hipertensi esensial terkontrol."
+                        ],
+                        doctorNotes: [],
+                        actions: [],
+                        prescriptions: [
+                            "Amlodipine (Tablet), 5 mg 1 × 1 sehari (Jumlah 30 Tablet)"
+                        ],
+                        payment: {
+                            guarantee: "-",
+                            status: "Lunas (Cashless)",
+                            total: "Rp 0,-"
+                        }
+                    }
+                },
+                {
+                    date: "Sabtu, 29 - 02 - 2023",
+                    time: "20:33",
+                    branch: "Surabaya",
+                    doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
+                    specialization: "Penyakit dalam",
+                    purpose: "Konsultasi penyakit",
+                    type: "BPJS",
+                    price: "Rp. 0",
+                    room: "G573",
+                    detail: {
+                        noRM: "RM-2026-0897",
+                        name: "Jhon deo formalin",
+                        age: "45 Tahun",
+                        description: "Keluhan sakit kepala berulang dan pusing.",
+                        diagnosis: [
+                            "Diagnosis Utama: Cephalalgia tension-type."
+                        ],
+                        doctorNotes: [],
+                        actions: [],
+                        prescriptions: [
+                            "Paracetamol (Tablet), 500 mg 3 × 1 sehari (Jumlah 9 Tablet)"
+                        ],
+                        payment: {
+                            guarantee: "-",
+                            status: "Lunas (Cashless)",
+                            total: "Rp 0,-"
+                        }
+                    }
+                },
+                {
+                    date: "Sabtu, 29 - 02 - 2023",
+                    time: "20:33",
+                    branch: "Surabaya",
+                    doctor: "dr. Ruben Syema Ben Yonatan, S. PD.",
+                    specialization: "Penyakit dalam",
+                    purpose: "Konsultasi penyakit",
+                    type: "BPJS",
+                    price: "Rp. 0",
+                    room: "G573",
+                    detail: {
+                        noRM: "RM-2026-0898",
+                        name: "Jhon deo formalin",
+                        age: "45 Tahun",
+                        description: "Pasien datang dengan keluhan nyeri ulu hati kembali muncul setelah konsumsi makanan pedas.",
+                        diagnosis: [
+                            "Diagnosis Utama: GERD relaps."
+                        ],
+                        doctorNotes: [],
+                        actions: [],
+                        prescriptions: [
+                            "Omeprazole (Kapsul), 20 mg 2 × 1 sehari (Jumlah 14 kapsul)",
+                            "Sucralfate Sirup, 3 × 1 sendok makan (Jumlah 1 Botol)"
+                        ],
+                        payment: {
+                            guarantee: "-",
+                            status: "Lunas (Cashless)",
+                            total: "Rp 0,-"
+                        }
+                    }
+                }
+            ];
 
-                let rightElementHtml = "";
-                if (ticket.status === "active") {
-                    rightElementHtml = `
+            // RENDER TIKET AKTIF
+            function renderTickets() {
+                const container = document.getElementById("ticketContainer");
+                container.innerHTML = "";
+
+                ticketsData.forEach(ticket => {
+                    const card = document.createElement("div");
+                    card.className = "ticket-card";
+
+                    let rightElementHtml = "";
+                    if (ticket.status === "active") {
+                        rightElementHtml = `
                         <div class="flex flex-col items-center gap-2">
                             <span class="ticket-status ticket-status-active">Tiket aktif</span>
                         </div>
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=${encodeURIComponent(ticket.qrData)}"
                             alt="QR Tiket" class="ticket-qr">
                     `;
-                } else {
-                    rightElementHtml = `
+                    } else {
+                        rightElementHtml = `
                         <div class="flex flex-col items-center gap-2">
                             <span class="ticket-status ticket-status-waiting">Menunggu</span>
                         </div>
                         <i data-lucide="alert-circle" class="ticket-warning-icon"></i>
                     `;
-                }
+                    }
 
-                card.innerHTML = `
+                    card.innerHTML = `
                     <img src="${ticket.doctorImg}" alt="Foto Dokter" class="ticket-doctor-img">
                     <div class="flex-1 min-w-0">
                         <p class="font-bold text-gray-900 text-sm">${ticket.poli}</p>
@@ -486,21 +553,21 @@
                     </div>
                     ${rightElementHtml}
                 `;
-                container.appendChild(card);
-            });
-        }
+                    container.appendChild(card);
+                });
+            }
 
-        // RENDER RIWAYAT KUNJUNGAN
-        function renderVisits() {
-            const tbody = document.getElementById("visitTableBody");
-            tbody.innerHTML = "";
+            // RENDER RIWAYAT KUNJUNGAN
+            function renderVisits() {
+                const tbody = document.getElementById("visitTableBody");
+                tbody.innerHTML = "";
 
-            visitsData.forEach((visit, index) => {
-                // Row Kunjungan
-                const row = document.createElement("tr");
-                row.className = "visit-row";
-                row.onclick = function () { toggleDetail(this); };
-                row.innerHTML = `
+                visitsData.forEach((visit, index) => {
+                    // Row Kunjungan
+                    const row = document.createElement("tr");
+                    row.className = "visit-row";
+                    row.onclick = function () { toggleDetail(this); };
+                    row.innerHTML = `
                     <td>${visit.date}</td>
                     <td>${visit.time}</td>
                     <td>${visit.branch}</td>
@@ -515,23 +582,23 @@
                     </td>
                 `;
 
-                // Row Detail
-                const detailRow = document.createElement("tr");
-                detailRow.className = "detail-row";
+                    // Row Detail
+                    const detailRow = document.createElement("tr");
+                    detailRow.className = "detail-row";
 
-                const detail = visit.detail;
+                    const detail = visit.detail;
 
-                // Helper untuk merender list bullet
-                const renderList = (arr) => {
-                    if (!arr || arr.length === 0) return "";
-                    return `
+                    // Helper untuk merender list bullet
+                    const renderList = (arr) => {
+                        if (!arr || arr.length === 0) return "";
+                        return `
                         <ul>
                             ${arr.map(item => `<li>${item}</li>`).join("")}
                         </ul>
                     `;
-                };
+                    };
 
-                let dlContent = `
+                    let dlContent = `
                     <dt>No. Rekam medis:</dt>
                     <dd>${detail.noRM || "-"}</dd>
 
@@ -545,36 +612,36 @@
                     <dd>${detail.description || "-"}</dd>
                 `;
 
-                if (detail.diagnosis && detail.diagnosis.length > 0) {
-                    dlContent += `
+                    if (detail.diagnosis && detail.diagnosis.length > 0) {
+                        dlContent += `
                         <dt>Diagnosis:</dt>
                         <dd>${renderList(detail.diagnosis)}</dd>
                     `;
-                }
+                    }
 
-                if (detail.doctorNotes && detail.doctorNotes.length > 0) {
-                    dlContent += `
+                    if (detail.doctorNotes && detail.doctorNotes.length > 0) {
+                        dlContent += `
                         <dt>Catatan dokter:</dt>
                         <dd>${renderList(detail.doctorNotes)}</dd>
                     `;
-                }
+                    }
 
-                if (detail.actions && detail.actions.length > 0) {
-                    dlContent += `
+                    if (detail.actions && detail.actions.length > 0) {
+                        dlContent += `
                         <dt>Tindakan:</dt>
                         <dd>${renderList(detail.actions)}</dd>
                     `;
-                }
+                    }
 
-                if (detail.prescriptions && detail.prescriptions.length > 0) {
-                    dlContent += `
+                    if (detail.prescriptions && detail.prescriptions.length > 0) {
+                        dlContent += `
                         <dt>Resep obat:</dt>
                         <dd>${renderList(detail.prescriptions)}</dd>
                     `;
-                }
+                    }
 
-                if (detail.payment) {
-                    dlContent += `
+                    if (detail.payment) {
+                        dlContent += `
                         <dt>Pembayaran:</dt>
                         <dd>
                             Jenis Penjaminan: ${detail.payment.guarantee || "-"}<br>
@@ -582,9 +649,9 @@
                             Total Biaya: ${detail.payment.total || "-"}
                         </dd>
                     `;
-                }
+                    }
 
-                detailRow.innerHTML = `
+                    detailRow.innerHTML = `
                     <td colspan="10">
                         <div class="detail-content">
                             <h3>Diagnosis</h3>
@@ -595,45 +662,68 @@
                     </td>
                 `;
 
-                tbody.appendChild(row);
-                tbody.appendChild(detailRow);
-            });
-        }
+                    tbody.appendChild(row);
+                    tbody.appendChild(detailRow);
+                });
+            }
 
-        // Jalankan render awal
-        renderTickets();
-        renderVisits();
+            // Jalankan render awal
+            renderTickets();
+            renderVisits();
 
-        // Inisialisasi Lucide icons setelah render dinamis
-        lucide.createIcons();
+            // Inisialisasi Lucide icons setelah render dinamis
+            lucide.createIcons();
 
-        /**
-         * Toggle the detail/diagnosis row below a visit row.
-         * Also toggles the "expanded" class for chevron rotation.
-         */
-        function toggleDetail(rowElement) {
-            const detailRow = rowElement.nextElementSibling;
+            /**
+             * Toggle the detail/diagnosis row below a visit row.
+             * Also toggles the "expanded" class for chevron rotation.
+             */
+            function toggleDetail(rowElement) {
+                const detailRow = rowElement.nextElementSibling;
 
-            // Close all other open detail rows first
-            const allVisitRows = document.querySelectorAll('.visit-row');
-            allVisitRows.forEach(row => {
-                if (row !== rowElement) {
-                    row.classList.remove('expanded');
-                    const otherDetail = row.nextElementSibling;
-                    if (otherDetail && otherDetail.classList.contains('detail-row')) {
-                        otherDetail.classList.remove('show');
+                // Close all other open detail rows first
+                const allVisitRows = document.querySelectorAll('.visit-row');
+                allVisitRows.forEach(row => {
+                    if (row !== rowElement) {
+                        row.classList.remove('expanded');
+                        const otherDetail = row.nextElementSibling;
+                        if (otherDetail && otherDetail.classList.contains('detail-row')) {
+                            otherDetail.classList.remove('show');
+                        }
+                    }
+                });
+
+                // Toggle clicked row
+                if (detailRow && detailRow.classList.contains('detail-row')) {
+                    rowElement.classList.toggle('expanded');
+                    detailRow.classList.toggle('show');
+                }
+            }
+
+            // Profile Dropdown functions
+            function toggleProfileDropdown(event) {
+                event.stopPropagation();
+                const dropdown = document.getElementById('profile-dropdown');
+                if (dropdown) {
+                    dropdown.classList.toggle('hidden');
+                }
+            }
+
+            // Close profile dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                const dropdown = document.getElementById('profile-dropdown');
+                const profileBtn = document.getElementById('profile-menu-button');
+                if (dropdown && !dropdown.classList.contains('hidden')) {
+                    const clickedInsideDropdown = dropdown.contains(e.target);
+                    const clickedBtn = profileBtn && (profileBtn === e.target || profileBtn.contains(e.target));
+                    if (!clickedInsideDropdown && !clickedBtn) {
+                        dropdown.classList.add('hidden');
                     }
                 }
             });
+        </script>
 
-            // Toggle clicked row
-            if (detailRow && detailRow.classList.contains('detail-row')) {
-                rowElement.classList.toggle('expanded');
-                detailRow.classList.toggle('show');
-            }
-        }
-    </script>
-
+    </div>
 </body>
 
 </html>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="./PendaftaranPasienBaru.css">
     <link rel="stylesheet" href="../../public/global.css">
 
@@ -123,7 +124,73 @@
     </style>
 </head>
 
-<body class="bg-[#F0F3FA] w-full h-screen flex justify-center">
+<body class="bg-[#F0F3FA] min-h-screen flex flex-col items-center">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-[#F0F3FA] w-full mb-8">
+        <div class="w-full mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="../../index.html" class="flex items-center gap-2">
+                <img src="../../public/LOGO.svg" alt="HealthFlow Clinic Logo" class="h-16 w-auto">
+            </a>
+
+            <!-- Navigation Links & Icons -->
+            <div class="flex items-center gap-8">
+                <!-- Links -->
+                <nav class="flex items-center gap-6">
+                    <a href="../../index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Beranda</a>
+                    <a href="../poli/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Poli</a>
+                    <a href="../pendaftaran/index.html"
+                        class="subheaderText font-bold text-[#395886] hover:text-[#2C4E80] transition-colors duration-200">Pendaftaran</a>
+                    <a href="../rekam_medis/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Rekam
+                        Medis</a>
+                    <a href="../lokasi/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Lokasi</a>
+                    <a href="../kalkulator/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Kalkulator</a>
+                </nav>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-4 border-l border-slate-300/60 pl-6">
+                    <button class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer"
+                        onclick="window.location.assign('../notifikasi/index.html')" aria-label="Notifications">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                    </button>
+                    <div class="relative">
+                        <button id="profile-menu-button" onclick="toggleProfileDropdown(event)"
+                            class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer flex items-center justify-center"
+                            aria-label="Profile">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </button>
+                        <!-- Profile Dropdown -->
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-3 w-[220px] bg-white rounded-[24px] shadow-lg border border-[#E2ECF8] p-5 flex flex-col gap-4 z-50">
+                            <!-- Item 1: Profil anda -->
+                            <a href="../profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="user" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Profil anda</span>
+                            </a>
+                            <!-- Item 2: Pengaturan -->
+                            <a href="#"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="settings" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Pengaturan</span>
+                            </a>
+                            <!-- Item 3: Keluar -->
+                            <a href="#"
+                                class="flex items-center gap-3 hover:bg-red-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="log-out" class="w-5 h-5 text-red-600 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-red-600">keluar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <div id="payment-overlay"
         class="hidden fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
@@ -214,7 +281,7 @@
                                 document.getElementById('btnbtn').innerHTML = 'Memindahkan halaman'
                                 statusPembayaran = true;
                                 setTimeout(() => {
-                                    window.location.assign('/pages/pendaftaranPasienBaru/menghubungiServer.html')
+                                    window.location.assign('/pages/pendaftaran/menghubungiServer.html')
                                 }, 500);
                             }, 5000);
                         " id="btnbtn"
@@ -242,11 +309,9 @@
                     </div>
 
                     <div class="flex flex-col">
-                        <label for="nama">Nama</label>
-                        <select name="" id="" required class="w-full">
-                            <option value="" disabled selected hidden>Nama lengkap pasien</option>
-                            <option value="a">Cabang A</option>
-                            <option value="b">Cabang B</option>
+                        <label for="bpjsNama">Nama</label>
+                        <select id="bpjsNama" class="w-full" required>
+                            <option value="" disabled selected hidden>Pilih nama pasien</option>
                         </select>
                     </div>
 
@@ -323,17 +388,18 @@
 
                             <div class="flex-1">
                                 <label for="faskes">Faskes</label>
-                                <select name="" id="" required class="w-full">
+                                <select id="faskes" required class="w-full">
                                     <option value="" disabled selected hidden>Tingkat faskes</option>
-                                    <option value="a">Cabang A</option>
-                                    <option value="b">Cabang B</option>
+                                    <option value="1">Tingkat 1 (puskesmas, klink pratama, dsb)</option>
+                                    <option value="2">Tingkat 2 / Tingkat lanjut (Klinik utama, RS tipe C & D)</option>
+                                    <option value="3">Tingkat 3 (RS tipe A & B)</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" id="btnAjukan" class="btn-primary">
+                <button type="submit" id="btnAjukan" class="btn-primary cursor-pointer">
                     <span id="btnAjukanText">Ajukan surat rujukan</span>
                 </button>
             </form>
@@ -445,7 +511,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card boxshadow">
+                    <div class="card boxshadow h-full">
                         <div class="header">
                             <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -667,6 +733,7 @@
 
         // Dropdown elements
         const selectNama = document.getElementById("mandiriNama");
+        const selectBpjsNama = document.getElementById("bpjsNama");
         const selectCabang = document.getElementById("mandiriCabang");
         const selectKelas = document.getElementById("mandiriKelas");
 
@@ -676,6 +743,11 @@
             opt.value = nama;
             opt.textContent = nama;
             selectNama.appendChild(opt);
+
+            const optBpjs = document.createElement("option");
+            optBpjs.value = nama;
+            optBpjs.textContent = nama;
+            selectBpjsNama.appendChild(optBpjs);
         });
 
         // Populate Branches
@@ -907,19 +979,29 @@
             ajukanSurat();
         }
 
+        let isSimulationRunning = false;
+        let isSimulationCompleted = false;
+
         async function ajukanSurat() {
+            if (isSimulationRunning || isSimulationCompleted) return;
+
+            isSimulationRunning = true;
             const btnAjukan = document.getElementById("btnAjukan");
             const btnAjukanText = document.getElementById("btnAjukanText");
             const btnCetak = document.getElementById("btnCetak");
 
-            // reset steps
+            // Reset steps to pending initially
             steps.forEach(s => s.status = "pending");
             renderSteps();
 
-            btnAjukan.disabled = true;
-            btnAjukanText.innerHTML = `<span class="loader-sm"></span> Memproses...`;
-            btnCetak.disabled = true;
-            btnCetak.classList.remove("enabled");
+            if (btnAjukan) {
+                btnAjukan.disabled = true;
+                if (btnAjukanText) btnAjukanText.innerHTML = `<span class="loader-sm"></span> Memproses...`;
+            }
+            if (btnCetak) {
+                btnCetak.disabled = true;
+                btnCetak.classList.remove("enabled");
+            }
 
             for (let i = 0; i < steps.length; i++) {
                 steps[i].status = "active";
@@ -930,14 +1012,53 @@
                 await delay(300);
             }
 
-            btnAjukan.disabled = false;
-            btnAjukanText.textContent = "Ajukan surat rujukan";
+            isSimulationRunning = false;
+            isSimulationCompleted = true;
 
-            btnCetak.disabled = false;
-            btnCetak.classList.add("enabled");
+            if (btnAjukan) {
+                btnAjukan.disabled = true; // Keep disabled to prevent re-submission
+                if (btnAjukanText) btnAjukanText.textContent = "Surat rujukan diajukan";
+            }
+            if (btnCetak) {
+                btnCetak.disabled = false;
+                btnCetak.classList.add("enabled");
+            }
         }
 
         renderSteps();
+
+        // Profile Dropdown functions
+        function toggleProfileDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('profile-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('hidden');
+            }
+        }
+
+        // Close profile dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('profile-dropdown');
+            const profileBtn = document.getElementById('profile-menu-button');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                const clickedInsideDropdown = dropdown.contains(e.target);
+                const clickedBtn = profileBtn && (profileBtn === e.target || profileBtn.contains(e.target));
+                if (!clickedInsideDropdown && !clickedBtn) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        });
+
+        // Initialize Lucide icons on page load
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        } else {
+            window.addEventListener('load', () => {
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            });
+        }
     </script>
 
 </body>
