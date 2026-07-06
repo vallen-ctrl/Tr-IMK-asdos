@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let statusLong = "Skor Stres Rendah";
       let ringColor = "stroke-green-500";
       let textColor = "text-green-500";
+      let currentBarBgColor = "bg-green-500";
       let emojiSrc = "./images/baik.png";
 
       if (score > 70) {
@@ -63,18 +64,21 @@ document.addEventListener("DOMContentLoaded", () => {
         statusLong = "Skor Stres Tinggi";
         ringColor = "stroke-red-500";
         textColor = "text-red-500";
+        currentBarBgColor = "bg-red-500";
         emojiSrc = "./images/sangat-buruk.png";
       } else if (score > 50) {
         status = "Buruk";
         statusLong = "Skor Stres Sedang";
         ringColor = "stroke-orange-500";
         textColor = "text-orange-500";
+        currentBarBgColor = "bg-orange-500";
         emojiSrc = "./images/buruk.png";
       } else if (score > 35) {
-        status = "Biasa Saja";
+        status = "Netral";
         statusLong = "Skor Stres Normal";
         ringColor = "stroke-yellow-500";
         textColor = "text-yellow-500";
+        currentBarBgColor = "bg-yellow-500";
         emojiSrc = "./images/netral.png";
       }
 
@@ -102,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         progressRing.className.baseVal = `transition-all duration-700 ease-out ${ringColor}`;
       }
 
-      // AMBIL DATA DARI LOCALSTORAGE ATAU BUAT TEMPLATE BARU (6 - 12 JULI 2026)
+      // AMBIL DATA DARI LOCALSTORAGE ATAU INITIALIZE MINGGU BARU
       let dataMingguan;
       if (weeklyDataStorage) {
         dataMingguan = JSON.parse(weeklyDataStorage);
@@ -122,22 +126,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
       dataMingguan.forEach(item => {
         const column = document.createElement("div");
-        column.className = "flex flex-col items-center flex-1 group relative"; 
+        column.className = "flex flex-col items-center flex-1 chart-bar-container group"; 
 
-        // Sembunyikan tiang (tinggi 0%) atau buat transparan abu-abu jika belum terbuka lewat kuis
         const currentHeight = item.terisi ? item.tinggi : 0;
-        const currentBg = item.terisi ? item.warna : "bg-transparent";
+        const currentBg = item.terisi ? item.warna : "bg-gray-200";
+
+        // --- DI SINI PERBAIKANNYA: Logika penentu warna teks skor di dalam Tooltip Hover ---
+        let tooltipTextColor = "text-gray-400"; // Default jika kosong
+        if (item.terisi) {
+          if (currentHeight > 70) tooltipTextColor = "text-red-400 font-extrabold";
+          else if (currentHeight > 50) tooltipTextColor = "text-orange-400 font-extrabold";
+          else if (currentHeight > 35) tooltipTextColor = "text-yellow-400 font-extrabold";
+          else tooltipTextColor = "text-green-400 font-extrabold";
+        }
 
         column.innerHTML = `
           <div class="w-full h-36 flex items-end justify-center px-1 relative cursor-pointer">
-            <div class="w-6 md:w-8 ${currentBg} rounded-t-md transition-all duration-700 ease-out" style="height: ${currentHeight}%;"></div>
+            <div class="w-6 md:w-8 ${currentBg} chart-bar-item rounded-t-md" style="height: ${currentHeight}%;"></div>
           </div>
           
           <span class="text-xs text-gray-500 mt-2 font-medium">${item.hari}</span>
 
-          <div class="absolute bottom-16 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] py-1 px-2.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-30 text-center leading-normal">
+          <div class="absolute bottom-16 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] py-1 px-2.5 rounded shadow-xl chart-tooltip whitespace-nowrap z-30 text-center leading-normal">
             ${item.tanggal} <br> 
-            <span class="font-bold text-yellow-400">Skor Stres: ${currentHeight}%</span>
+            <span class="${tooltipTextColor}">Skor Stres: ${currentHeight}%</span>
           </div>
         `;
         
@@ -264,7 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const totalScore = userAnswers.reduce((sum, score) => sum + score, 0);
       const finalCalculatedScore = Math.round((totalScore / (questions.length * 5)) * 100);
 
-      // Ambil riwayat grafik lama atau inisialisasi dari template kosong
       let weeklyDataStorage = localStorage.getItem("userWeeklyStressData");
       let dataMingguan = weeklyDataStorage ? JSON.parse(weeklyDataStorage) : [
         { hari: "Sen", tanggal: "Senin, 6 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false },
@@ -276,25 +287,21 @@ document.addEventListener("DOMContentLoaded", () => {
         { hari: "Min", tanggal: "Minggu, 12 Juli 2026", tinggi: 0, warna: "bg-gray-200", terisi: false }
       ];
 
-      // LOGIKA URUTAN: Cari tiang pertama dari kiri (Senin ke Minggu) yang status 'terisi'-nya masih false
       let targetIndex = dataMingguan.findIndex(item => item.terisi === false);
 
-      // Jika seluruh minggu sudah terisi penuh (0-6 penuh), reset ulang dan mulai lagi dari Senin (0)
       if (targetIndex === -1) {
         targetIndex = 0;
-        dataMingguan.forEach(item => item.terisi = false); // Kosongkan status agar mengulang kembali
+        dataMingguan.forEach(item => item.terisi = false);
       }
 
-      // Tentukan warna tiang berdasarkan skor kuis terbaru
       let barBgColor = "bg-green-500";
       if (finalCalculatedScore > 70) barBgColor = "bg-red-500";
       else if (finalCalculatedScore > 50) barBgColor = "bg-orange-500";
       else if (finalCalculatedScore > 35) barBgColor = "bg-yellow-500";
 
-      // Isi tiang target
       dataMingguan[targetIndex].tinggi = finalCalculatedScore;
       dataMingguan[targetIndex].warna = barBgColor;
-      dataMingguan[targetIndex].terisi = true; // Tandai hari ini sukses terisi!
+      dataMingguan[targetIndex].terisi = true;
 
       localStorage.setItem("userStressScore", finalCalculatedScore);
       localStorage.setItem("userWeeklyStressData", JSON.stringify(dataMingguan));

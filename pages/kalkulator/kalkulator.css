@@ -14,3 +14,11 @@
   visibility: visible;
   opacity: 1;
 }
+
+/* Efek Hover Mengikuti Warna Hasil Asli Tiang */
+.chart-bar-item {
+  transition: filter 0.2s ease-in-out, height 0.7s ease-out;
+}
+.chart-bar-item:hover {
+  filter: brightness(1.1) !important;
+}
