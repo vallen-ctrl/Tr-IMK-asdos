@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../../public/global.css">
+    <link rel="stylesheet" href="./daftar.css">
+    <title>Pendaftaran Pasien - HealthFlow Clinic</title>
+</head>
+
+<body class="bg-[#F0F3FA] min-h-screen flex items-stretch font-sans overflow-x-hidden">
+
+    <!-- Container Utama Multi-Step -->
+    <div id="registration-container" class="w-full flex flex-col md:flex-row min-h-screen">
+        
+        <!-- ==========================================
+             PANE KIRI: Visual & Stepper (Desktop Only)
+             ========================================== -->
+        <div id="left-pane" class="hidden md:flex md:w-1/2 bg-cover bg-center flex-col justify-between p-12 relative overflow-hidden transition-all duration-500"
+            style="background-image: url('asset/background.png');">
+            <!-- Overlay untuk gelap sedikit agar text kontras -->
+            <div class="absolute inset-0 bg-black/10 z-0"></div>
+
+            <!-- Bagian Atas: Badge Langkah -->
+            <div class="z-10 self-start">
+                <div class="bg-white/85 backdrop-blur-md px-5 py-2 rounded-full text-blue-600 font-bold text-sm shadow-sm flex items-center justify-center">
+                    <span id="left-badge-text">Langkah 1 dari 4</span>
+                </div>
+            </div>
+
+            <!-- Bagian Tengah: Logo -->
+            <div class="z-10 flex justify-center w-full mt-4">
+                <img src="../../public/LOGO.svg" alt="HealthFlow Clinic Logo" class="w-64 h-auto drop-shadow-md">
+            </div>
+
+            <!-- Bagian Bawah: Glassmorphic Stepper Card -->
+            <div class="z-10 w-full glass-stepper px-8 py-6 flex flex-col relative">
+                <!-- Baris Stepper -->
+                <div class="flex items-center justify-between w-full relative">
+                    
+                    <!-- Garis Penghubung Belakang (Background Line) -->
+                    <div class="absolute top-[22px] left-8 right-8 h-1 bg-white/40 z-0 rounded-full"></div>
+                    <!-- Garis Progres Aktif (Dynamic Width) -->
+                    <div id="stepper-progress-line" class="absolute top-[22px] left-8 h-1 bg-[#2F5C8A] z-0 rounded-full transition-all duration-500" style="width: 0%;"></div>
+
+                    <!-- Step 1: Data Diri -->
+                    <div class="flex flex-col items-center z-10 flex-1">
+                        <div id="step-circle-1" class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 transition-all duration-300 bg-[#2F5C8A] border-[#2F5C8A] text-white">
+                            1
+                        </div>
+                        <span id="step-label-1" class="text-sm font-semibold mt-2 text-gray-800 transition-colors duration-300">Data Diri</span>
+                    </div>
+
+                    <!-- Step 2: Verifikasi -->
+                    <div class="flex flex-col items-center z-10 flex-1">
+                        <div id="step-circle-2" class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 transition-all duration-300 bg-white border-gray-300 text-gray-700">
+                            2
+                        </div>
+                        <span id="step-label-2" class="text-sm font-semibold mt-2 text-gray-500 transition-colors duration-300">Verifikasi</span>
+                    </div>
+
+                    <!-- Step 3: Scan KTP -->
+                    <div class="flex flex-col items-center z-10 flex-1">
+                        <div id="step-circle-3" class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 transition-all duration-300 bg-white border-gray-300 text-gray-700">
+                            3
+                        </div>
+                        <span id="step-label-3" class="text-sm font-semibold mt-2 text-gray-500 transition-colors duration-300">Scan KTP</span>
+                    </div>
+
+                    <!-- Step 4: Selesai -->
+                    <div class="flex flex-col items-center z-10 flex-1">
+                        <div id="step-circle-4" class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 transition-all duration-300 bg-white border-gray-300 text-gray-700">
+                            4
+                        </div>
+                        <span id="step-label-4" class="text-sm font-semibold mt-2 text-gray-500 transition-colors duration-300">Selesai</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PANE KANAN ATAU UTAMA: Form Content
+             ========================================== -->
+        <div id="right-pane" class="w-full md:w-1/2 flex flex-col justify-center items-center p-6 md:p-12 bg-[#F8FAFC] relative min-h-screen">
+            
+            <!-- Mobile Navigation & Header (Hidden on Desktop) -->
+            <div class="flex md:hidden flex-col items-center w-full mb-8">
+                <div class="flex justify-between items-center w-full mb-6">
+                    <img src="../../public/LOGO.svg" alt="HealthFlow Clinic Logo" class="w-40 h-auto">
+                    <div class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                        <span id="mobile-badge-text">Langkah 1 dari 4</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 LANGKAH 1: Form Data Diri
+                 ========================================== -->
+            <div id="pane-step-1" class="step-pane active w-full max-w-lg flex flex-col justify-center">
+                <!-- Link Masuk di atas kanan (Desktop) -->
+                <div class="hidden md:block absolute top-8 right-12 text-sm text-gray-600">
+                    Sudah punya akun? <a href="#" class="text-[#3D6FA8] font-semibold hover:underline">Masuk</a>
+                </div>
+
+                <!-- Judul Halaman -->
+                <div class="flex flex-col items-center text-center mb-8">
+                    <h1 class="text-[40px] font-bold text-gray-900 leading-tight mb-2">Daftar Sekarang</h1>
+                    <p class="subheaderText text-gray-500">Lengkapi data Anda untuk membuat akun dan mulai mengakses layanan</p>
+                </div>
+
+                <!-- Form Pendaftaran -->
+                <form id="form-data-diri" onsubmit="event.preventDefault(); validateAndSubmitStep1();" class="flex flex-col gap-6">
+                    <!-- No Telepon -->
+                    <div class="flex flex-col">
+                        <label for="no_telp" class="subheaderText font-semibold text-gray-800 mb-2">No. Telepon</label>
+                        <input type="tel" id="no_telp" required placeholder="Masukkan No. Telepon" 
+                            class="form-input w-full px-4" pattern="[0-9]*" inputmode="numeric">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="flex flex-col">
+                        <label for="email" class="subheaderText font-semibold text-gray-800 mb-2">Email</label>
+                        <input type="email" id="email" required placeholder="Masukkan Email" 
+                            class="form-input w-full px-4">
+                    </div>
+
+                    <!-- Buat Kata Sandi -->
+                    <div class="flex flex-col">
+                        <label for="password" class="subheaderText font-semibold text-gray-800 mb-2">Buat Kata Sandi</label>
+                        <div class="relative w-full">
+                            <input type="password" id="password" required placeholder="Masukkan Kata Sandi" 
+                                class="form-input w-full pr-12 pl-4">
+                            <button type="button" onclick="togglePasswordVisibility('password', this)" 
+                                class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none cursor-pointer">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Konfirmasi Kata Sandi -->
+                    <div class="flex flex-col">
+                        <label for="confirm_password" class="subheaderText font-semibold text-gray-800 mb-2">Konfirmasi Kata Sandi</label>
+                        <div class="relative w-full">
+                            <input type="password" id="confirm_password" required placeholder="Masukkan Konfirmasi Kata Sandi" 
+                                class="form-input w-full pr-12 pl-4">
+                            <button type="button" onclick="togglePasswordVisibility('confirm_password', this)" 
+                                class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none cursor-pointer">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                        <span id="password-error" class="hidden text-xs text-red-600 mt-2 font-medium">kata sandi tidak sama</span>
+                    </div>
+
+                    <!-- Persetujuan Syarat & Ketentuan -->
+                    <div class="flex items-start gap-3 mt-2">
+                        <input type="checkbox" id="agreement" required class="w-5 h-5 mt-0.5 cursor-pointer">
+                        <label for="agreement" class="text-sm text-gray-600 font-medium cursor-pointer leading-snug select-none">
+                            Dengan ini saya menyetujui <a href="#" class="text-[#3D6FA8] font-bold hover:underline">syarat</a> dan <a href="#" class="text-[#3D6FA8] font-bold hover:underline">ketentuan</a> yang terbuat
+                        </label>
+                    </div>
+
+                    <!-- Tombol Submit -->
+                    <div class="flex justify-center mt-6">
+                        <button type="submit" class="h-12 px-16 bg-[#2F5C8A] hover:bg-[#204060] text-white rounded-full font-bold text-lg shadow-md hover:shadow-lg transition-all duration-200">
+                            Selanjutnya
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Link Masuk di bawah untuk Mobile -->
+                <div class="block md:hidden text-center mt-8 text-sm text-gray-600">
+                    Sudah punya akun? <a href="#" class="text-[#3D6FA8] font-semibold hover:underline">Masuk</a>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 LANGKAH 2: Verifikasi OTP
+                 ========================================== -->
+            <div id="pane-step-2" class="step-pane w-full max-w-lg flex flex-col justify-center relative">
+                <!-- Tombol Kembali (Chevron Left) di top-left dari form pane -->
+                <button type="button" onclick="goToStep(1)" class="absolute -top-12 -left-4 md:-left-12 p-2 hover:bg-gray-100 rounded-full transition-colors text-blue-600 cursor-pointer">
+                    <i data-lucide="chevron-left" class="w-8 h-8"></i>
+                </button>
+
+                <!-- Judul Halaman -->
+                <div class="flex flex-col items-center text-center mb-10">
+                    <h1 class="text-[40px] font-bold text-gray-900 leading-tight mb-2">Verifikasi</h1>
+                    <p class="subheaderText text-gray-500">Masukan kode verifikasi yang dikirimkan memlalui SMS ke nomor telepon anda</p>
+                </div>
+
+                <!-- OTP Input Area -->
+                <div id="otp-entry-area" class="flex flex-col items-center">
+                    <form id="form-otp" onsubmit="event.preventDefault(); submitOTP();" class="w-full flex flex-col items-center gap-8">
+                        
+                        <!-- 6 Box OTP -->
+                        <div class="flex gap-2 md:gap-3 justify-center w-full">
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" placeholder="0" required>
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" placeholder="0" required>
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" placeholder="0" required>
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" placeholder="0" required>
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" placeholder="0" required>
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" placeholder="0" required>
+                        </div>
+
+                        <!-- Info Kirim Ulang -->
+                        <div class="flex items-center justify-center text-sm text-gray-600 font-medium gap-1.5 mt-2">
+                            <span>Kirim ulang kode dalam <span id="otp-timer" class="font-bold">00:30</span>:</span>
+                            <button type="button" id="btn-resend-otp" disabled class="text-gray-400 font-bold flex items-center gap-1 cursor-not-allowed transition-colors">
+                                <i data-lucide="send" class="w-4 h-4"></i> Kirim ulang kode
+                            </button>
+                        </div>
+
+                        <!-- Tombol Verifikasi -->
+                        <div class="flex justify-center mt-8">
+                            <button type="submit" id="btn-submit-otp" class="h-12 px-16 bg-[#2F5C8A] hover:bg-[#204060] text-white rounded-full font-bold text-lg shadow-md hover:shadow-lg transition-all duration-200">
+                                Verifikasi
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- OTP Loading Area (Inline spinner) -->
+                <div id="otp-loading-area" class="hidden flex flex-col items-center justify-center py-12 gap-8">
+                    <!-- Spinner -->
+                    <div class="spinner"></div>
+                    <!-- Disabled Button -->
+                    <button disabled class="h-12 px-16 bg-[#2F5C8A]/50 text-white/80 rounded-full font-bold text-lg cursor-not-allowed flex items-center justify-center">
+                        Verifikasi
+                    </button>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 LANGKAH 4 (Success / Selesai) - Placeholder container (moved to full screen overlay)
+                 ========================================== -->
+            <div id="pane-step-4" class="step-pane hidden"></div>
+
+        </div>
+    </div>
+
+    <!-- ==========================================
+         LANGKAH 3 & 4 (Scan KTP & Success) - Full Screen Blur
+         ========================================== -->
+    <div id="full-screen-step-3" class="hidden fixed inset-0 z-50 flex-col justify-between p-6 md:p-12 bg-cover bg-center transition-all duration-500"
+        style="background-image: url('asset/background.png');">
+        <!-- Backdrop Blur overlay -->
+        <div class="absolute inset-0 bg-slate-900/30 backdrop-blur-md z-0"></div>
+
+        <!-- Header: Langkah badge -->
+        <div class="z-10 self-start">
+            <div class="bg-white/85 backdrop-blur-md px-5 py-2 rounded-full text-blue-600 font-bold text-sm shadow-sm flex items-center justify-center">
+                <span id="full-screen-badge-text">Langkah 3 dari 4</span>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SUB-STEP 3.1: Glassmorphic Upload Dropzone Card
+             ========================================== -->
+        <div id="ktp-upload-modal-card" class="z-10 w-full max-w-2xl mx-auto flex flex-col items-center justify-center self-center my-auto">
+            <div class="w-full glass-upload-card p-6 md:p-8 rounded-[24px] flex flex-col items-center gap-6 relative">
+                
+                <!-- Dashed Dropzone -->
+                <div id="ktp-dropzone" class="w-full h-80 border-2 border-dashed border-[#2F5C8A]/60 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:bg-blue-50/50 hover:border-[#2F5C8A] transition-all duration-200 group relative overflow-hidden bg-cover bg-center">
+                    <input type="file" id="ktp-file-input" accept="image/*" class="hidden">
+                    
+                    <!-- State A: Upload Instructions (Default) -->
+                    <div id="dropzone-content-default" class="flex flex-col items-center gap-4">
+                        <!-- Icon -->
+                        <div class="w-16 h-16 bg-[#2F5C8A]/10 text-[#2F5C8A] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="upload" class="w-8 h-8"></i>
+                        </div>
+                        <!-- Texts -->
+                        <div class="flex flex-col gap-1.5 px-4">
+                            <h3 class="text-xl font-bold text-gray-900">Unggah atau Scan foto KTP anda</h3>
+                            <p class="text-sm text-gray-500 max-w-md">Pastikan foto terlihat jelas, tidak buram, dan semua informasi terlihat dengan baik.</p>
+                        </div>
+                    </div>
+
+                    <!-- State B: Red Delete Button (X) -->
+                    <button type="button" id="ktp-btn-delete" class="hidden absolute top-4 left-4 w-10 h-10 bg-red-600 hover:bg-red-700 text-white rounded-lg flex items-center justify-center z-30 transition-colors shadow-md border border-red-500 cursor-pointer">
+                        <i data-lucide="x" class="w-6 h-6 stroke-[3]"></i>
+                    </button>
+
+                    <!-- State C: Recognizing Card Processing Overlay -->
+                    <div id="dropzone-content-recognizing" class="hidden recognizing-overlay">
+                        <div class="spinner mb-2"></div>
+                        <div class="flex flex-col gap-1 text-center px-4">
+                            <h3 class="text-lg font-bold text-white">Harap tunggu sebentar.</h3>
+                            <p class="text-sm text-slate-200">Sedang mencoba mengenali kartu</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SUB-STEP 3.2: Verifikasi Data KTP Form Card (Overlapping KTP)
+             ========================================== -->
+        <div id="ktp-verify-form-card" class="hidden z-10 w-full max-w-3xl mx-auto flex flex-col items-center justify-center self-center my-auto relative mt-20">
+            <!-- White card container -->
+            <div class="w-full bg-white rounded-[24px] shadow-xl p-6 pt-20 pb-6 relative flex flex-col gap-4">
+                
+                <!-- Overlapping Miniature KTP Card -->
+                <div id="mini-ktp-preview-1" class="mini-ktp-card"></div>
+
+                <!-- Spinner overlay when saving -->
+                <div id="form-saving-overlay" class="hidden form-spinner-overlay">
+                    <div class="spinner"></div>
+                </div>
+
+                <!-- Heading block -->
+                <div class="flex items-center gap-4 border-b border-gray-100 pb-3">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <h2 class="text-[20px] font-bold text-slate-800 leading-tight">Verifikasi Data KTP</h2>
+                        <p class="text-xs text-gray-500">Pastikan daya yang tertera sudah sesuai dengan KTP anda.</p>
+                    </div>
+                </div>
+
+                <!-- Form fields -->
+                <form id="form-verifikasi-ktp" onsubmit="event.preventDefault(); saveKTPVerification();" class="flex flex-col gap-4">
+                    <div class="flex flex-col md:flex-row gap-4 w-full overflow-y-auto max-h-[38vh] pr-1.5">
+                        <!-- Left Column -->
+                        <div class="flex flex-col flex-1 gap-3.5">
+                            <!-- NIK -->
+                            <div class="flex flex-col">
+                                <label class="text-[#2F5C8A] font-semibold text-xs mb-1 flex items-center gap-1.5">
+                                    <i data-lucide="id-card" class="w-3.5 h-3.5"></i> NIK
+                                </label>
+                                <input type="text" id="verify-nik" value="998267292826182627817" required class="form-input w-full px-3 text-sm h-10">
+                            </div>
+                            <!-- Tempat / Tgl Lahir -->
+                            <div class="flex flex-col">
+                                <label class="text-[#2F5C8A] font-semibold text-xs mb-1 flex items-center gap-1.5">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Tempat / Tgl Lahir
+                                </label>
+                                <input type="text" id="verify-ttl" value="Way kanan / 29 - 2 - 1992" required class="form-input w-full px-3 text-sm h-10">
+                            </div>
+                            <!-- Jenis kelamin (Left) -->
+                            <div class="flex flex-col">
+                                <label class="text-[#2F5C8A] font-semibold text-xs mb-1 flex items-center gap-1.5">
+                                    <i data-lucide="user" class="w-3.5 h-3.5"></i> Jenis kelamin
+                                </label>
+                                <input type="text" id="verify-jk-l" value="Perempuan" required class="form-input w-full px-3 text-sm h-10">
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="flex flex-col flex-1 gap-3.5">
+                            <!-- Status pekerjaan -->
+                            <div class="flex flex-col">
+                                <label class="text-[#2F5C8A] font-semibold text-xs mb-1 flex items-center gap-1.5">
+                                    <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Status pekerjaan
+                                </label>
+                                <input type="text" id="verify-pekerjaan" value="Menggurus Rumah Tangga" required class="form-input w-full px-3 text-sm h-10">
+                            </div>
+                            <!-- Jenis kelamin (Right) -->
+                            <div class="flex flex-col">
+                                <label class="text-[#2F5C8A] font-semibold text-xs mb-1 flex items-center gap-1.5">
+                                    <i data-lucide="user" class="w-3.5 h-3.5"></i> Jenis kelamin
+                                </label>
+                                <input type="text" id="verify-jk-r" value="Perempuan" required class="form-input w-full px-3 text-sm h-10">
+                            </div>
+                            <!-- Status pernikahan -->
+                            <div class="flex flex-col">
+                                <label class="text-[#2F5C8A] font-semibold text-xs mb-1 flex items-center gap-1.5">
+                                    <i data-lucide="gem" class="w-3.5 h-3.5"></i> Status pernikahan
+                                </label>
+                                <input type="text" id="verify-nikah" value="Kawin" required class="form-input w-full px-3 text-sm h-10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom note check -->
+                    <div class="flex items-center gap-2 text-xs text-[#2F5C8A] font-medium mt-1">
+                        <i data-lucide="shield-check" class="w-4 h-4 flex-shrink-0 text-blue-600"></i>
+                        <span>Data diri anda akan digunakan untuk setiap administrasi yang terjadi</span>
+                    </div>
+
+                    <!-- Button Selanjutnya -->
+                    <div class="flex justify-center mt-2">
+                        <button type="submit" id="btn-submit-verify" class="h-10 px-16 bg-[#2F5C8A] hover:bg-[#204060] text-white rounded-full font-bold text-base shadow-sm hover:shadow-md transition-all duration-200">
+                            Selanjutnya
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SUB-STEP 4: Registration Success Card (Overlapping KTP)
+             ========================================== -->
+        <div id="ktp-success-modal-card" class="hidden z-10 w-full max-w-2xl mx-auto flex flex-col items-center justify-center self-center my-auto relative mt-20">
+            <!-- White container -->
+            <div class="w-full bg-white rounded-[24px] shadow-xl p-6 pt-20 pb-6 relative flex flex-col items-center gap-4">
+                <!-- Overlapping Miniature KTP Card -->
+                <div id="mini-ktp-preview-2" class="mini-ktp-card"></div>
+
+                <!-- Green Success Text -->
+                <h2 class="text-green-600 font-bold text-[28px] text-center leading-tight mb-1">
+                    Pendaftaran akun anda<br>berhasil!
+                </h2>
+
+                <!-- Large Green Circle Checkmark -->
+                <div class="w-24 h-24 bg-[#16A34A] text-white rounded-full flex items-center justify-center shadow-md animate-scale my-2">
+                    <i data-lucide="check" class="w-14 h-14 stroke-[3]"></i>
+                </div>
+
+                <!-- Button Ke Halaman Utama -->
+                <div class="flex justify-center mt-6">
+                    <a href="#" class="h-12 px-16 bg-[#2F5C8A] hover:bg-[#204060] text-white rounded-full font-bold text-lg shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center">
+                        Ke halaman utama
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom: Stepper (Horizontal Centered on Blurred Background) -->
+        <div class="z-10 w-full max-w-xl mx-auto glass-stepper px-8 py-6 flex flex-col">
+            <div class="flex items-center justify-between w-full relative">
+                <!-- Baris Garis -->
+                <div class="absolute top-[22px] left-8 right-8 h-1 bg-white/40 z-0 rounded-full"></div>
+                <div id="full-screen-progress-line" class="absolute top-[22px] left-8 h-1 bg-[#2F5C8A] z-0 rounded-full transition-all duration-500" style="width: 66.6%;"></div>
+
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center z-10 flex-1">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 bg-[#2F5C8A] border-[#2F5C8A] text-white">
+                        1
+                    </div>
+                    <span class="text-sm font-semibold mt-2 text-gray-800">Data Diri</span>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center z-10 flex-1">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 bg-[#2F5C8A] border-[#2F5C8A] text-white">
+                        2
+                    </div>
+                    <span class="text-sm font-semibold mt-2 text-gray-800">Verifikasi</span>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center z-10 flex-1">
+                    <div id="full-screen-circle-3" class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 bg-[#2F5C8A] border-[#2F5C8A] text-white animate-pulse">
+                        3
+                    </div>
+                    <span id="full-screen-label-3" class="text-sm font-semibold mt-2 text-gray-800">Scan KTP</span>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex flex-col items-center z-10 flex-1">
+                    <div id="full-screen-circle-4" class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 bg-white border-gray-300 text-gray-700">
+                        4
+                    </div>
+                    <span id="full-screen-label-4" class="text-sm font-semibold mt-2 text-gray-500">Selesai</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         FULL-SCREEN LOADING TRANSITION (c07df2b1)
+         ========================================== -->
+    <div id="full-screen-loader" class="hidden fixed inset-0 z-50 flex flex-col justify-between p-6 md:p-12 bg-[#F0F3FA] transition-all duration-300">
+        <!-- Top badge -->
+        <div class="self-start">
+            <div class="bg-blue-100 text-blue-600 px-5 py-2 rounded-full font-bold text-sm shadow-sm flex items-center justify-center">
+                <span>Langkah 2 dari 4</span>
+            </div>
+        </div>
+        <!-- Center Spinner -->
+        <div class="flex flex-col items-center justify-center self-center my-auto gap-4">
+            <div class="spinner"></div>
+        </div>
+        <!-- Spacer -->
+        <div class="h-10"></div>
+    </div>
+
+
+    <!-- ==========================================
+         JAVASCRIPT LOGIC
+         ========================================== -->
+    <script>
+        // Global variables for step states
+        let currentStep = 1;
+        let countdownTimer;
+
+        // On document load, initialize Lucide Icons
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            setupOtpNavigation();
+            setupKtpUpload();
+
+            // Real-time password matching listener
+            document.getElementById('confirm_password').addEventListener('input', () => {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm_password').value;
+                const confirmInput = document.getElementById('confirm_password');
+                const errorSpan = document.getElementById('password-error');
+
+                if (password === confirmPassword || confirmPassword === '') {
+                    confirmInput.classList.remove('!border-red-600');
+                    errorSpan.classList.add('hidden');
+                }
+            });
+        });
+
+        // Validate password match and proceed
+        function validateAndSubmitStep1() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            const confirmInput = document.getElementById('confirm_password');
+            const errorSpan = document.getElementById('password-error');
+
+            if (password !== confirmPassword) {
+                confirmInput.classList.add('!border-red-600');
+                errorSpan.classList.remove('hidden');
+                confirmInput.focus();
+                return false;
+            } else {
+                confirmInput.classList.remove('!border-red-600');
+                errorSpan.classList.add('hidden');
+                goToStep(2);
+            }
+        }
+
+        // Function to toggle password visibility
+        function togglePasswordVisibility(fieldId, button) {
+            const input = document.getElementById(fieldId);
+            const icon = button.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.setAttribute('data-lucide', 'eye-off');
+            } else {
+                input.type = 'password';
+                icon.setAttribute('data-lucide', 'eye');
+            }
+            lucide.createIcons();
+        }
+
+        // Navigation function between pages/steps
+        function goToStep(step) {
+            if (step < 1 || step > 4) return;
+            currentStep = step;
+
+            // Update badge texts
+            const leftBadge = document.getElementById('left-badge-text');
+            const mobileBadge = document.getElementById('mobile-badge-text');
+            const fullScreenBadge = document.getElementById('full-screen-badge-text');
+            
+            if (leftBadge) leftBadge.innerText = `Langkah ${step} dari 4`;
+            if (mobileBadge) mobileBadge.innerText = `Langkah ${step} dari 4`;
+            if (fullScreenBadge) fullScreenBadge.innerText = `Langkah ${step} dari 4`;
+
+            // Adjust Stepper Circles Styling on Left Pane (Steps 1 & 2)
+            const stepLine = document.getElementById('stepper-progress-line');
+            if (stepLine) {
+                const widthPercent = ((step - 1) / 3) * 100;
+                stepLine.style.width = `${widthPercent}%`;
+            }
+
+            for (let i = 1; i <= 4; i++) {
+                const circle = document.getElementById(`step-circle-${i}`);
+                const label = document.getElementById(`step-label-${i}`);
+                
+                if (!circle) continue;
+
+                if (i < step) {
+                    circle.className = "w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 transition-all duration-300 bg-[#2F5C8A] border-[#2F5C8A] text-white";
+                    label.className = "text-sm font-semibold mt-2 text-gray-800 transition-colors duration-300";
+                } else if (i === step) {
+                    circle.className = "w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 transition-all duration-300 bg-[#2F5C8A] border-[#2F5C8A] text-white ring-4 ring-blue-500/20";
+                    label.className = "text-sm font-semibold mt-2 text-[#2F5C8A] font-bold transition-colors duration-300";
+                } else {
+                    circle.className = "w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 transition-all duration-300 bg-white border-gray-300 text-gray-700";
+                    label.className = "text-sm font-semibold mt-2 text-gray-500 transition-colors duration-300";
+                }
+            }
+
+            // Hide all step panes in right pane of split container
+            document.querySelectorAll('.step-pane').forEach(el => el.classList.remove('active'));
+            
+            // Handle Steps 3 & 4 (which are full screen overlays)
+            const step3Fullscreen = document.getElementById('full-screen-step-3');
+            const mainContainer = document.getElementById('registration-container');
+            const fsProgressLine = document.getElementById('full-screen-progress-line');
+            const fsCircle3 = document.getElementById('full-screen-circle-3');
+            const fsLabel3 = document.getElementById('full-screen-label-3');
+            const fsCircle4 = document.getElementById('full-screen-circle-4');
+            const fsLabel4 = document.getElementById('full-screen-label-4');
+
+            if (step >= 3) {
+                // Hide split screen, show full screen overlay
+                mainContainer.classList.add('hidden');
+                step3Fullscreen.classList.remove('hidden');
+                step3Fullscreen.classList.add('flex');
+
+                if (step === 3) {
+                    // Update full screen stepper for Step 3
+                    if (fsProgressLine) fsProgressLine.style.width = '66.6%';
+                    
+                    if (fsCircle3) fsCircle3.className = "w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 bg-[#2F5C8A] border-[#2F5C8A] text-white animate-pulse";
+                    if (fsLabel3) fsLabel3.className = "text-sm font-semibold mt-2 text-gray-800";
+                    
+                    if (fsCircle4) fsCircle4.className = "w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 bg-white border-gray-300 text-gray-700";
+                    if (fsLabel4) fsLabel4.className = "text-sm font-semibold mt-2 text-gray-500";
+
+                    // Show correct card inside Step 3
+                    // We don't change sub-card visibilities here because it depends on the upload state
+                } else if (step === 4) {
+                    // Update full screen stepper for Step 4
+                    if (fsProgressLine) fsProgressLine.style.width = '100%';
+                    
+                    if (fsCircle3) fsCircle3.className = "w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 bg-[#2F5C8A] border-[#2F5C8A] text-white";
+                    if (fsLabel3) fsLabel3.className = "text-sm font-semibold mt-2 text-gray-800";
+                    
+                    if (fsCircle4) fsCircle4.className = "w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2 bg-[#2F5C8A] border-[#2F5C8A] text-white";
+                    if (fsLabel4) fsLabel4.className = "text-sm font-semibold mt-2 text-gray-800";
+
+                    // Hide others and show Success card
+                    document.getElementById('ktp-upload-modal-card').classList.add('hidden');
+                    document.getElementById('ktp-verify-form-card').classList.add('hidden');
+                    document.getElementById('ktp-success-modal-card').classList.remove('hidden');
+                }
+            } else {
+                // Show split container, hide full screen overlay
+                if (step3Fullscreen) step3Fullscreen.classList.add('hidden');
+                if (step3Fullscreen) step3Fullscreen.classList.remove('flex');
+                mainContainer.classList.remove('hidden');
+                
+                // Show corresponding pane in right panel
+                const targetPane = document.getElementById(`pane-step-${step}`);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                }
+            }
+
+            // Start countdown if entering step 2
+            if (step === 2) {
+                startOtpCountdown(30);
+            } else {
+                clearInterval(countdownTimer);
+            }
+        }
+
+        // OTP Navigation logic (automatic focus movement)
+        function setupOtpNavigation() {
+            const inputs = document.querySelectorAll('.otp-input');
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', (e) => {
+                    input.value = input.value.replace(/[^0-9]/g, '');
+                    if (input.value.length > 0 && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                });
+
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && input.value.length === 0 && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+
+                input.addEventListener('paste', (e) => {
+                    e.preventDefault();
+                    const pasteData = e.clipboardData.getData('text').trim();
+                    if (/^\d+$/.test(pasteData)) {
+                        const chars = pasteData.split('');
+                        inputs.forEach((inp, idx) => {
+                            if (chars[idx]) {
+                                inp.value = chars[idx];
+                                if (idx < inputs.length - 1) {
+                                    inputs[idx + 1].focus();
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        // Timer for Resend OTP
+        function startOtpCountdown(seconds) {
+            clearInterval(countdownTimer);
+            const timerEl = document.getElementById('otp-timer');
+            const resendBtn = document.getElementById('btn-resend-otp');
+            
+            resendBtn.disabled = true;
+            resendBtn.classList.remove('text-blue-600', 'hover:text-blue-800');
+            resendBtn.classList.add('text-gray-400', 'cursor-not-allowed');
+
+            let timeLeft = seconds;
+            timerEl.innerText = `00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
+
+            countdownTimer = setInterval(() => {
+                timeLeft--;
+                timerEl.innerText = `00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    timerEl.innerText = '00:00';
+                    resendBtn.disabled = false;
+                    resendBtn.classList.remove('text-gray-400', 'cursor-not-allowed');
+                    resendBtn.classList.add('text-blue-600', 'hover:text-blue-800', 'cursor-pointer');
+                }
+            }, 1000);
+        }
+
+        // Submit OTP handler with spinner loading simulation
+        function submitOTP() {
+            const entryArea = document.getElementById('otp-entry-area');
+            const loadingArea = document.getElementById('otp-loading-area');
+
+            entryArea.classList.add('hidden');
+            loadingArea.classList.remove('hidden');
+
+            setTimeout(() => {
+                loadingArea.classList.add('hidden');
+                entryArea.classList.remove('hidden');
+
+                const fullScreenLoader = document.getElementById('full-screen-loader');
+                fullScreenLoader.classList.remove('hidden');
+
+                setTimeout(() => {
+                    fullScreenLoader.classList.add('hidden');
+                    goToStep(3);
+                }, 1500);
+
+            }, 1500);
+        }
+
+        // KTP File Upload & Drag & Drop Handling with state transitions
+        function setupKtpUpload() {
+            const dropzone = document.getElementById('ktp-dropzone');
+            const fileInput = document.getElementById('ktp-file-input');
+            const btnDelete = document.getElementById('ktp-btn-delete');
+
+            const contentDefault = document.getElementById('dropzone-content-default');
+            const contentRecognizing = document.getElementById('dropzone-content-recognizing');
+
+            // Click to open file picker (avoid triggering when delete button is clicked)
+            dropzone.addEventListener('click', (e) => {
+                if (e.target.closest('#ktp-btn-delete')) return;
+                fileInput.click();
+            });
+
+            // Delete KTP handler
+            btnDelete.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent opening file picker
+                resetKtpDropzone();
+            });
+
+            // Drag over
+            dropzone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropzone.classList.add('bg-blue-50/80', 'border-[#2F5C8A]');
+            });
+
+            // Drag leave
+            dropzone.addEventListener('dragleave', () => {
+                dropzone.classList.remove('bg-blue-50/80', 'border-[#2F5C8A]');
+            });
+
+            // File dropped
+            dropzone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('bg-blue-50/80', 'border-[#2F5C8A]');
+                if (e.dataTransfer.files.length > 0) {
+                    processKtpFile(e.dataTransfer.files[0]);
+                }
+            });
+
+            // File selected via input
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files.length > 0) {
+                    processKtpFile(fileInput.files[0]);
+                }
+            });
+
+            function resetKtpDropzone() {
+                fileInput.value = '';
+                dropzone.style.backgroundImage = 'none';
+                btnDelete.classList.add('hidden');
+                contentDefault.classList.remove('hidden');
+                contentRecognizing.classList.add('hidden');
+                
+                // Clear previews
+                document.getElementById('mini-ktp-preview-1').style.backgroundImage = 'none';
+                document.getElementById('mini-ktp-preview-2').style.backgroundImage = 'none';
+            }
+
+            function processKtpFile(file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const dataUrl = e.target.result;
+                    
+                    // Step A: Set dropzone background as the KTP Preview (Image 1)
+                    dropzone.style.backgroundImage = `url('${dataUrl}')`;
+                    contentDefault.classList.add('hidden');
+                    btnDelete.classList.remove('hidden');
+
+                    // Set miniatures background in advance
+                    document.getElementById('mini-ktp-preview-1').style.backgroundImage = `url('${dataUrl}')`;
+                    document.getElementById('mini-ktp-preview-2').style.backgroundImage = `url('${dataUrl}')`;
+
+                    // Step B: Wait 1.5 seconds, then transition to State C (Recognizing Overlay - Image 2)
+                    setTimeout(() => {
+                        // Hide delete button, show recognizing overlay
+                        btnDelete.classList.add('hidden');
+                        contentRecognizing.classList.remove('hidden');
+
+                        // Step C: Wait 2.5 seconds on recognizing, then show Verifikasi Form Card (Image 3)
+                        setTimeout(() => {
+                            document.getElementById('ktp-upload-modal-card').classList.add('hidden');
+                            
+                            const verifyCard = document.getElementById('ktp-verify-form-card');
+                            verifyCard.classList.remove('hidden');
+                            
+                            // Re-init lucide icons inside form
+                            lucide.createIcons();
+                        }, 2500);
+
+                    }, 1500);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Save Verifikasi Data KTP simulated saving (Image 4 & 5)
+        function saveKTPVerification() {
+            const savingOverlay = document.getElementById('form-saving-overlay');
+            const submitBtn = document.getElementById('btn-submit-verify');
+
+            // Show saving spinner overlay & disable button
+            savingOverlay.classList.remove('hidden');
+            submitBtn.disabled = true;
+            submitBtn.className = "h-12 px-16 bg-[#2F5C8A]/50 text-white/80 rounded-full font-bold text-lg cursor-not-allowed flex items-center justify-center";
+            submitBtn.innerText = "Selanjutnya";
+
+            // Wait 2 seconds, then transition to success screen (Step 4)
+            setTimeout(() => {
+                savingOverlay.classList.add('hidden');
+                
+                // Hide verification form card
+                document.getElementById('ktp-verify-form-card').classList.add('hidden');
+                
+                // Go to step 4 (Success state card + all stepper steps active)
+                goToStep(4);
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>

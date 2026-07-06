@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../../public/global.css">
+    <link rel="stylesheet" href="../pendaftaranPasienBaru/PendaftaranPasienBaru.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Ubah Email - HealthFlow</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* OTP input styles */
+        .otp-input {
+            width: 50px;
+            height: 65px;
+            border: 2px solid #D2D2D2;
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1E3A5F;
+            text-align: center;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .otp-input:focus {
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        /* Spinner animation */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border-left-color: #1E3A5F;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#E8EFF7] min-h-screen flex items-center justify-center p-4">
+
+    <!-- MAIN CARD CONTAINER -->
+    <div
+        class="bg-white rounded-[24px] shadow-2xl shadow-blue-900/10 w-full max-w-[950px] min-h-[580px] overflow-hidden grid grid-cols-1 md:grid-cols-5">
+
+        <!-- LEFT COLUMN: SIDEBAR -->
+        <div class="md:col-span-2 bg-[#E1EDFA] p-8 flex flex-col justify-between items-center text-center">
+            <!-- Illustration -->
+            <div class="flex flex-col items-center">
+                <div class="w-44 h-44 rounded-full overflow-hidden flex items-center justify-center">
+                    <img src="../../../public/icon untuk verifikasi.svg" alt="Verifikasi Robot"
+                        class="w-full h-full object-cover">
+                </div>
+                <h2 class="text-xl md:text-2xl font-bold text-gray-900 mt-6 leading-tight">Ubah Email<br>Anda</h2>
+                <p class="text-[12px] text-gray-500 leading-relaxed mt-3 px-2">
+                    Pastikan email baru anda aktif. Kami akan mengirim kode verifikasi untuk memastikan keamanan akun
+                    anda
+                </p>
+            </div>
+
+            <!-- Badges List -->
+            <div class="w-full flex flex-col gap-3 mt-8">
+                <div
+                    class="flex items-center gap-3 bg-[#CBE0F7] px-4 py-3 rounded-xl text-[#2C4A70] text-xs font-semibold">
+                    <i data-lucide="file-check-2" class="w-4.5 h-4.5 flex-shrink-0"></i>
+                    <span>Aman & terverifikasi</span>
+                </div>
+                <div
+                    class="flex items-center gap-3 bg-[#CBE0F7] px-4 py-3 rounded-xl text-[#2C4A70] text-xs font-semibold">
+                    <i data-lucide="mail" class="w-4.5 h-4.5 flex-shrink-0"></i>
+                    <span>Kode dikirim melalui Email</span>
+                </div>
+                <div
+                    class="flex items-center gap-3 bg-[#CBE0F7] px-4 py-3 rounded-xl text-[#2C4A70] text-xs font-semibold">
+                    <i data-lucide="shield-check" class="w-4.5 h-4.5 flex-shrink-0"></i>
+                    <span>Data anda selalu kami lindungi</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: FORM / CONTENT -->
+        <div class="md:col-span-3 p-8 md:p-10 flex flex-col justify-between bg-white relative">
+
+            <!-- BACK BUTTON -->
+            <a href="../index.html" class="flex items-center gap-2 text-gray-600 hover:text-gray-950 transition-colors duration-200 text-sm font-semibold mb-8 w-fit group">
+                <i data-lucide="arrow-left" class="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"></i>
+                <span>Kembali</span>
+            </a>
+
+            <!-- HEADER (Static on top) -->
+            <div class="flex items-start gap-4">
+                <div class="mt-1 text-gray-900">
+                    <i data-lucide="mail" class="w-7 h-7" id="headerIcon"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900" id="headerTitle">Ganti Email</h1>
+                    <p class="text-xs text-gray-500 mt-0.5" id="headerSubtitle">Perbaharui email yang terhubung dengan
+                        akun anda</p>
+                </div>
+            </div>
+
+            <!-- MAIN STEPS CONTAINER -->
+            <div class="flex-grow flex flex-col justify-center my-8">
+
+                <!-- STEP 1: INPUT NEW EMAIL -->
+                <div id="step1" class="space-y-4">
+                    <!-- Current Email -->
+                    <div class="flex flex-col">
+                        <label class="text-xs font-semibold text-gray-600 mb-1.5">Email sebelumnya</label>
+                        <input type="text"
+                            class="w-full bg-[#EDEDED] border-2 border-[#D2D2D2] rounded-xl px-4 py-3 text-sm text-gray-600 font-semibold cursor-not-allowed outline-none"
+                            value="Jsondeoformalin@gmail.com" readonly>
+                        <div class="flex items-center gap-1.5 mt-2 text-[#2563EB] text-xs font-medium">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            <span>Email ini adalah email yang terdaftar di akun ini sekarang</span>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="relative flex py-2 items-center">
+                        <div class="flex-grow border-t border-gray-200"></div>
+                        <span class="flex-shrink mx-4 text-gray-400 text-xs font-medium">Email Baru</span>
+                        <div class="flex-grow border-t border-gray-200"></div>
+                    </div>
+
+                    <!-- New Email Input -->
+                    <div class="flex flex-col">
+                        <label class="text-xs font-semibold text-gray-600 mb-1.5">Email baru</label>
+                        <input type="email" id="inputNewEmail"
+                            class="w-full bg-white border-2 border-[#D2D2D2] rounded-xl px-4 py-3 text-sm text-gray-800 outline-none transition focus:border-blue-600"
+                            placeholder="Masukan email baru">
+                        <span class="text-xs text-red-500 hidden mt-1" id="errNewEmail">wajib diisi</span>
+                    </div>
+
+                    <!-- Notification Banner -->
+                    <div
+                        class="p-3 bg-[#E1EDFA] border border-[#BFD7F2] rounded-xl flex items-start gap-3 text-xs text-[#2C4A70] leading-relaxed">
+                        <i data-lucide="info" class="w-4 h-4 flex-shrink-0 mt-0.5"></i>
+                        <span>Pastikan Email yang anda masukan <strong>aktif</strong> dan dapat <strong>menerima
+                                email</strong> untuk menerima <strong>kode verifikasi</strong>.</span>
+                    </div>
+                </div>
+
+                <!-- STEP 2: OTP INPUT -->
+                <div id="step2" class="hidden space-y-6">
+                    <div class="flex flex-col items-center">
+                        <!-- OTP Inputs Container -->
+                        <div class="flex justify-center gap-3 my-4">
+                            <input type="text" class="otp-input" maxlength="1" oninput="moveFocus(this, 1)"
+                                onkeydown="handleBackspace(this, event)">
+                            <input type="text" class="otp-input" maxlength="1" oninput="moveFocus(this, 2)"
+                                onkeydown="handleBackspace(this, event)">
+                            <input type="text" class="otp-input" maxlength="1" oninput="moveFocus(this, 3)"
+                                onkeydown="handleBackspace(this, event)">
+                            <input type="text" class="otp-input" maxlength="1" oninput="moveFocus(this, 4)"
+                                onkeydown="handleBackspace(this, event)">
+                            <input type="text" class="otp-input" maxlength="1" oninput="moveFocus(this, 5)"
+                                onkeydown="handleBackspace(this, event)">
+                            <input type="text" class="otp-input" maxlength="1" oninput="moveFocus(this, 6)"
+                                onkeydown="handleBackspace(this, event)">
+                        </div>
+
+                        <!-- Resend timer link -->
+                        <div class="flex justify-between w-full text-xs text-gray-500 px-1 mt-2">
+                            <span>Kirim ulang kode dalam <strong id="timerVal">00:59</strong></span>
+                            <button id="btnResend"
+                                class="text-blue-600 font-semibold flex items-center gap-1 cursor-not-allowed opacity-50 transition"
+                                onclick="resendOTP()" disabled>
+                                <i data-lucide="send" class="w-3.5 h-3.5"></i> Kirim ulang kode
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3: LOADING -->
+                <div id="step3" class="hidden flex flex-col items-center justify-center py-10 space-y-4">
+                    <div class="spinner"></div>
+                </div>
+
+                <!-- STEP 4: SUCCESS -->
+                <div id="step4" class="hidden flex flex-col items-center justify-center py-10">
+                    <h3 class="text-2xl font-bold text-gray-900 text-center">Anda boleh keluar dari tab ini</h3>
+                    <p class="text-xs text-gray-500 mt-2 text-center" id="redirectMsg">Mengalihkan ke halaman profil
+                        dalam 5 detik...</p>
+                    <button
+                        class="mt-6 px-6 py-2.5 bg-[#E1EDFA] text-[#2C4A70] hover:bg-[#CBE0F7] rounded-xl font-semibold text-sm transition"
+                        onclick="goBackToProfile()">
+                        Kembali ke Profil
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- BUTTONS AND SUBTEXT (Static at bottom) -->
+            <div>
+                <!-- Primary Action Button -->
+                <button id="btnSubmit"
+                    class="w-full bg-[#1E3A5F] hover:bg-[#15304F] text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition cursor-pointer"
+                    onclick="handleNextStep()">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span id="btnText">Kirim Kode Verifikasi</span>
+                </button>
+
+                <!-- Secure subtext -->
+                <p class="text-center text-[11px] text-gray-400 mt-3" id="secureText">
+                    Proses ini aman dan terenkripsi oleh sistem
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT STATE AND ACTIONS -->
+    <script>
+        lucide.createIcons();
+
+        let currentStep = 1;
+        let countdownTimer = null;
+        let resendDelay = 59;
+
+        // Input validation for Step 1
+        const inputNewEmail = document.getElementById('inputNewEmail');
+        const errNewEmail = document.getElementById('errNewEmail');
+
+        inputNewEmail.addEventListener('input', function () {
+            if (this.value.trim() !== '') {
+                this.classList.remove('border-red-500');
+                errNewEmail.classList.add('hidden');
+            }
+        });
+
+        // OTP inputs helpers
+        const otpInputs = document.querySelectorAll('.otp-input');
+
+        function moveFocus(current, index) {
+            // Replace non-numeric values
+            current.value = current.value.replace(/[^0-9]/g, '');
+
+            if (current.value.length === 1 && index < 6) {
+                otpInputs[index].focus();
+            }
+
+            checkOTPCompletion();
+        }
+
+        function handleBackspace(current, event) {
+            if (event.key === 'Backspace' && current.value.length === 0) {
+                // Find index of current input
+                const index = Array.from(otpInputs).indexOf(current);
+                if (index > 0) {
+                    otpInputs[index - 1].focus();
+                    otpInputs[index - 1].value = '';
+                }
+            }
+            checkOTPCompletion();
+        }
+
+        function checkOTPCompletion() {
+            if (currentStep !== 2) return;
+
+            const btnSubmit = document.getElementById('btnSubmit');
+            let allFilled = true;
+            otpInputs.forEach(input => {
+                if (input.value.length === 0) allFilled = false;
+            });
+
+            if (allFilled) {
+                btnSubmit.disabled = false;
+                btnSubmit.classList.remove('opacity-60', 'cursor-not-allowed');
+                btnSubmit.classList.add('bg-[#1E3A5F]', 'hover:bg-[#15304F]');
+            } else {
+                btnSubmit.disabled = true;
+                btnSubmit.classList.add('opacity-60', 'cursor-not-allowed');
+                btnSubmit.classList.remove('bg-[#1E3A5F]', 'hover:bg-[#15304F]');
+            }
+        }
+
+        // Timer function for Step 2
+        function startTimer() {
+            clearInterval(countdownTimer);
+            let timeRemaining = resendDelay;
+            const timerVal = document.getElementById('timerVal');
+            const btnResend = document.getElementById('btnResend');
+
+            btnResend.disabled = true;
+            btnResend.classList.add('opacity-50', 'cursor-not-allowed');
+
+            countdownTimer = setInterval(() => {
+                timeRemaining--;
+                const seconds = timeRemaining < 10 ? '0' + timeRemaining : timeRemaining;
+                timerVal.textContent = '00:' + seconds;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(countdownTimer);
+                    timerVal.textContent = '00:00';
+                    btnResend.disabled = false;
+                    btnResend.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }, 1000);
+        }
+
+        function resendOTP() {
+            // Reset OTP fields
+            otpInputs.forEach(input => input.value = '');
+            checkOTPCompletion();
+            // Refocus first
+            otpInputs[0].focus();
+            // Restart timer
+            startTimer();
+            alert('Kode OTP baru telah dikirim melalui Email.');
+        }
+
+        // Navigation/Workflow
+        function handleNextStep() {
+            if (currentStep === 1) {
+                // Validate Step 1
+                const newEmail = inputNewEmail.value.trim();
+                if (!newEmail) {
+                    inputNewEmail.classList.add('border-red-500');
+                    errNewEmail.classList.remove('hidden');
+                    return;
+                }
+
+                // Show step 2
+                document.getElementById('step1').classList.add('hidden');
+                document.getElementById('step2').classList.remove('hidden');
+                currentStep = 2;
+
+                // Adjust Submit Button
+                const btnSubmit = document.getElementById('btnSubmit');
+                const btnText = document.getElementById('btnText');
+                btnText.textContent = 'Klik untuk memverifikasi';
+
+                // Disable submit button until OTP is filled
+                btnSubmit.disabled = true;
+                btnSubmit.classList.add('opacity-60', 'cursor-not-allowed');
+
+                // Start timer & focus first OTP
+                startTimer();
+                setTimeout(() => otpInputs[0].focus(), 100);
+
+            } else if (currentStep === 2) {
+                // Verify OTP (Show Step 3 Loading)
+                document.getElementById('step2').classList.add('hidden');
+                document.getElementById('step3').classList.remove('hidden');
+
+                // Change title to Memverifikasi Email
+                document.getElementById('headerTitle').textContent = 'Memverifikasi Email';
+
+                // Change submit button state to disabled
+                const btnSubmit = document.getElementById('btnSubmit');
+                btnSubmit.disabled = true;
+                btnSubmit.classList.add('opacity-60', 'cursor-not-allowed');
+
+                currentStep = 3;
+
+                // Wait 2 seconds to simulate loading
+                setTimeout(() => {
+                    // Go to Step 4 (Success)
+                    document.getElementById('step3').classList.add('hidden');
+                    document.getElementById('step4').classList.remove('hidden');
+
+                    // Adjust header for success
+                    document.getElementById('headerTitle').textContent = 'Verifikasi Sukses';
+                    document.getElementById('headerSubtitle').innerHTML = 'kode berhasil di samakan dengan pusat. Email anda aktif';
+
+                    // Add checkmark in header
+                    const headerIcon = document.getElementById('headerIcon');
+                    headerIcon.setAttribute('data-lucide', 'check-circle-2');
+                    headerIcon.classList.add('text-green-600');
+                    lucide.createIcons();
+
+                    // Hide submit button container
+                    btnSubmit.parentElement.classList.add('hidden');
+
+                    currentStep = 4;
+
+                    // Start redirect countdown
+                    startRedirectTimer();
+                }, 2000);
+            }
+        }
+
+        let redirectCountdown = 5;
+        function startRedirectTimer() {
+            const redirectMsg = document.getElementById('redirectMsg');
+            const interval = setInterval(() => {
+                redirectCountdown--;
+                redirectMsg.textContent = `Mengalihkan ke halaman profil dalam ${redirectCountdown} detik...`;
+                if (redirectCountdown <= 0) {
+                    clearInterval(interval);
+                    goBackToProfile();
+                }
+            }, 1000);
+        }
+
+        function goBackToProfile() {
+            window.location.href = '../index.html';
+        }
+    </script>
+</body>
+
+</html>

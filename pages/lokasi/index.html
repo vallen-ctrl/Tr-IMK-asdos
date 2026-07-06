@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lokasi Klinik</title>
+
+<!-- Tailwind CSS v4 (CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<!-- File milikmu: font, ukuran teks, shadow token -->
+<link rel="stylesheet" href="../../public/global.css">
+<!-- File milikmu: design system (.card, .header, .radioButton, .selected, select/input, .loader) -->
+<link rel="stylesheet" href="../pendaftaranPasienBaru/PendaftaranPasienBaru.css">
+</head>
+<body>
+
+<div class="min-h-screen bg-[#eef1f6] flex items-start justify-center p-6 sm:p-12 px-4">
+    <div class="card boxshadow w-full max-w-[1080px] !p-6 !gap-5 sm:!p-8 sm:!gap-8">
+
+        <!-- Header -->
+        <div class="header headerText text-gray-900 font-bold">
+            <svg class="w-[22px] h-[22px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Lokasi Klinik</span>
+        </div>
+
+        <!-- Filters -->
+        <div class="flex flex-wrap gap-6">
+            <div class="flex flex-col flex-1 min-w-[220px]">
+                <label for="provinsi">Provinsi</label>
+                <select id="provinsi" class="w-full bg-white">
+                    <option value="" disabled selected hidden>Pilih provinsi</option>
+                    <option value="jabar">Jawa Barat</option>
+                    <option value="jateng">Jawa Tengah</option>
+                    <option value="dki">DKI Jakarta</option>
+                </select>
+            </div>
+            <div class="flex flex-col flex-1 min-w-[220px]">
+                <label for="kecamatan">Kabupaten/Kota</label>
+                <select id="kecamatan" class="w-full bg-white disabled:cursor-not-allowed disabled:opacity-60" disabled>
+                    <option value="" disabled selected hidden>Pilih kabupaten/kota</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Locate banner -->
+        <div id="locateBanner" class="flex items-center gap-4 bg-[#cfdaf0] border border-[#7d9bd6] rounded-[14px] px-5 py-4 cursor-pointer transition-colors duration-150 hover:bg-[#c3d1ec]">
+            <div id="bannerIconWrap" class="w-[42px] h-[42px] rounded-full bg-[#3a5da8] flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-7.5 8-13a8 8 0 1 0-16 0c0 5.5 8 13 8 13z"></path>
+                    <circle cx="12" cy="9" r="2.5"></circle>
+                </svg>
+            </div>
+            <div class="flex flex-col">
+                <div class="subheaderText font-bold text-[#2f4f9e] leading-tight">Temukan klinik terdekat anda</div>
+                <div class="text-[13px] text-[#5b6b85]">Masukan lokasi anda untuk menghitung jarak ke klinik terdekat yang sudah tersedia</div>
+            </div>
+        </div>
+
+        <!-- List section -->
+        <div class="flex flex-col gap-3">
+            <div class="flex items-baseline justify-between">
+                <div class="font-bold text-gray-900 text-[15px]">Klinik Terdekat</div>
+                <div id="listCount" class="text-[13px] text-gray-500">Menampilkan 5 klinik terdekat</div>
+            </div>
+
+            <div id="klinikList" class="flex flex-col gap-2.5"></div>
+
+            <div class="flex items-center justify-end gap-3">
+                <span id="pageLabel" class="text-[13px] text-gray-600 mr-1">Halaman 1 per 3</span>
+                <button id="firstPage" title="Halaman pertama">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>
+                </button>
+                <button id="prevPage" title="Sebelumnya">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button id="nextPage" title="Berikutnya">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+                <button id="lastPage" title="Halaman terakhir">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+// ===== Lokasi Klinik: data, filter provinsi/kabupaten, loader, pagination =====
+
+const hospitalIcon = `
+<svg class="w-[22px] h-[22px] text-[#3a5da8] transition-colors duration-150 group-[.selected]:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 21V7a2 2 0 0 1 2-2h4V3h4v2h4a2 2 0 0 1 2 2v14"></path>
+    <path d="M4 21h16"></path>
+    <path d="M12 9v6"></path>
+    <path d="M9 12h6"></path>
+</svg>`;
+
+const clockIcon = `
+<svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"></circle>
+    <polyline points="12 7 12 12 15 14"></polyline>
+</svg>`;
+
+const chevronIcon = `
+<svg class="w-[18px] h-[18px] text-gray-400 shrink-0 transition-colors duration-150 group-[.selected]:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="9 18 15 12 9 6"></polyline>
+</svg>`;
+
+const pinIcon = `
+<svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-7.5 8-13a8 8 0 1 0-16 0c0 5.5 8 13 8 13z"></path>
+    <circle cx="12" cy="9" r="2.5"></circle>
+</svg>`;
+
+// Kabupaten/Kota per provinsi (dummy)
+const kabupatenByProvinsi = {
+    jabar: ["Kota Bandung", "Kabupaten Bandung", "Kabupaten Bandung Barat", "Kota Cimahi", "Kabupaten Sumedang", "Kabupaten Garut", "Kota Bekasi", "Kabupaten Bekasi", "Kota Bogor", "Kabupaten Bogor", "Kota Cirebon", "Kabupaten Cirebon"],
+    jateng: ["Kota Semarang", "Kabupaten Semarang", "Kabupaten Kendal", "Kabupaten Demak", "Kota Surakarta", "Kabupaten Sukoharjo"],
+    dki: ["Jakarta Pusat", "Jakarta Barat", "Jakarta Selatan", "Jakarta Timur", "Jakarta Utara", "Kepulauan Seribu"],
+};
+
+// Semua klinik (dummy), masing-masing ditandai provinsi & kabupaten/kota-nya
+// supaya bisa difilter otomatis saat dropdown dipilih.
+
+const url = "https://maps.app.goo.gl/tfRRr7opJ2cHYkR46"
+const allClinics = [
+    { name: "Klinik Bandung", address: "Jl. Wastukencana No. 2, Babakan Ciamis", distance: "1,3 Km", time: "10 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
+    { name: "Klinik Bandung", address: "Jl. Wastukencana No. 22, Babakan Ciamis", distance: "1,3 Km", time: "10 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
+    { name: "Klinik Bandung", address: "Jl. asdasd No. 2, Babakan Ciamis", distance: "1,3 Km", time: "10 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
+    { name: "Klinik Bandung", address: "Jl. Diponegoro No. 22, Citarum", distance: "1,3 Km", time: "10 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
+    { name: "Klinik Bandung", address: "Jl. Asia Afrika No. 65, Braga", distance: "1,3 Km", time: "10 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
+    { name: "Klinik Bandung", address: "Jl. Riau No. 8, Citarum", distance: "2,4 Km", time: "14 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
+    { name: "Klinik Bandung", address: "Jl. Cihampelas No. 45, Cipaganti", distance: "2,6 Km", time: "15 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
+    { name: "Klinik Bandung", address: "Jl. Dago No. 90, Coblong", distance: "3,2 Km", time: "18 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
+
+    { name: "Klinik Kabupaten Bandung", address: "Jl. Raya Soreang No. 12, Soreang", distance: "8,1 Km", time: "22 menit", provinsi: "jabar", kabupaten: "Kabupaten Bandung" },
+    { name: "Klinik Kabupaten Bandung", address: "Jl. Ciwidey No. 5, Ciwidey", distance: "9,4 Km", time: "26 menit", provinsi: "jabar", kabupaten: "Kabupaten Bandung" },
+
+    { name: "Klinik Cimahi", address: "Jl. Gatot Subroto No. 30, Cimahi Tengah", distance: "6,0 Km", time: "19 menit", provinsi: "jabar", kabupaten: "Kota Cimahi" },
+    { name: "Klinik Cimahi", address: "Jl. Sriwijaya No. 14, Cimahi Selatan", distance: "6,5 Km", time: "20 menit", provinsi: "jabar", kabupaten: "Kota Cimahi" },
+
+    { name: "Klinik Bekasi", address: "Jl. Ahmad Yani No. 88, Bekasi Selatan", distance: "45 Km", time: "1 jam 10 menit", provinsi: "jabar", kabupaten: "Kota Bekasi" },
+    { name: "Klinik Bekasi", address: "Jl. Cut Meutia No. 21, Bekasi Timur", distance: "46 Km", time: "1 jam 15 menit", provinsi: "jabar", kabupaten: "Kota Bekasi" },
+
+    { name: "Klinik Semarang", address: "Jl. Pandanaran No. 40, Semarang Tengah", distance: "370 Km", time: "6 jam 30 menit", provinsi: "jateng", kabupaten: "Kota Semarang" },
+    { name: "Klinik Semarang", address: "Jl. MT Haryono No. 15, Semarang Selatan", distance: "372 Km", time: "6 jam 35 menit", provinsi: "jateng", kabupaten: "Kota Semarang" },
+
+    { name: "Klinik Jakarta Pusat", address: "Jl. Sudirman No. 25, Jakarta Pusat", distance: "150 Km", time: "3 jam", provinsi: "dki", kabupaten: "Jakarta Pusat" },
+    { name: "Klinik Jakarta Pusat", address: "Jl. Menteng Raya No. 9, Jakarta Pusat", distance: "151 Km", time: "3 jam 5 menit", provinsi: "dki", kabupaten: "Jakarta Pusat" },
+];
+
+const PAGE_SIZE = 5;
+let currentPage = 1;
+let selectedIndex = null;
+
+const provinsiSelect = document.getElementById("provinsi");
+const kecamatanSelect = document.getElementById("kecamatan");
+const listEl = document.getElementById("klinikList");
+const listCountEl = document.getElementById("listCount");
+const pageLabelEl = document.getElementById("pageLabel");
+const firstBtn = document.getElementById("firstPage");
+const prevBtn = document.getElementById("prevPage");
+const nextBtn = document.getElementById("nextPage");
+const lastBtn = document.getElementById("lastPage");
+const locateBanner = document.getElementById("locateBanner");
+const bannerIconWrap = document.getElementById("bannerIconWrap");
+
+// ---- Ambil klinik sesuai filter Provinsi & Kabupaten/Kota yang aktif ----
+function getFilteredClinics() {
+    const provinsi = provinsiSelect.value;
+    const kabupaten = kecamatanSelect.value;
+
+    return allClinics.filter(c => {
+        if (provinsi && c.provinsi !== provinsi) return false;
+        if (kabupaten && c.kabupaten !== kabupaten) return false;
+        return true;
+    });
+}
+
+// ---- Provinsi -> isi opsi Kabupaten/Kota, lalu filter ulang ----
+provinsiSelect.addEventListener("change", () => {
+    const list = kabupatenByProvinsi[provinsiSelect.value] || [];
+    kecamatanSelect.innerHTML = `<option value="" disabled selected hidden>Pilih kabupaten/kota</option>` +
+        list.map(k => `<option value="${k}">${k}</option>`).join("");
+    kecamatanSelect.disabled = list.length === 0;
+
+    renderPage(1);
+});
+
+// ---- Kabupaten/Kota berubah -> filter ulang ----
+kecamatanSelect.addEventListener("change", () => {
+    renderPage(1);
+});
+
+// ---- Render daftar klinik (terfilter + terpaginasi) ----
+function renderPage(pageNumber) {
+    const filtered = getFilteredClinics();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+    currentPage = Math.min(Math.max(1, pageNumber), totalPages);
+    selectedIndex = null;
+
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const items = filtered.slice(start, start + PAGE_SIZE);
+
+    if (items.length === 0) {
+        listEl.innerHTML = `
+            <div class="text-center text-[13px] text-gray-500 py-10 border border-dashed border-gray-300 rounded-[10px]">
+                Tidak ada klinik yang cocok dengan filter yang dipilih.
+            </div>`;
+    } else {
+        listEl.innerHTML = items.map((item, i) => `
+            <div class="klinik-item group radioButton flex items-center gap-4 bg-white cursor-pointer transition-colors duration-150 hover:bg-slate-50" data-index="${i}" onclick="window.open('${url}')">
+                <div class="w-8 h-8 rounded-lg bg-[#dce6f7] text-[#3a5da8] flex items-center justify-center font-bold text-sm shrink-0 transition-colors duration-150 group-[.selected]:bg-white/25 group-[.selected]:text-white">${start + i + 1}</div>
+                <div class="w-11 h-11 rounded-full bg-[#dce6f7] flex items-center justify-center shrink-0 transition-colors duration-150 group-[.selected]:bg-white/25">${hospitalIcon}</div>
+                <div class="flex-1 min-w-0 flex flex-col">
+                    <div class="font-bold text-[15px] text-gray-900 mb-0.5 group-[.selected]:text-white">${item.name}</div>
+                    <div class="text-[13px] text-gray-500 mb-1 group-[.selected]:text-[#eaf0fb]">${item.address}</div>
+                    <div class="flex items-center gap-1.5 text-[11px] text-gray-500 group-[.selected]:text-[#eaf0fb]">${clockIcon} &plusmn; ${item.time}</div>
+                </div>
+                <div class="text-right font-bold text-sm text-gray-900 shrink-0 mr-1.5 group-[.selected]:text-white">${item.distance}</div>
+                ${chevronIcon}
+            </div>
+        `).join("");
+    }
+
+    listCountEl.textContent = `Menampilkan ${items.length} dari ${filtered.length} klinik terdekat`;
+    pageLabelEl.textContent = `Halaman ${currentPage} per ${totalPages}`;
+
+    setPageBtn(firstBtn, currentPage !== 1);
+    setPageBtn(prevBtn, currentPage !== 1);
+    setPageBtn(nextBtn, currentPage !== totalPages);
+    setPageBtn(lastBtn, currentPage !== totalPages);
+
+    // simpan totalPages saat ini supaya tombol pagination tahu batasnya
+    renderPage.totalPages = totalPages;
+}
+
+// Tailwind-only pagination button state (aktif vs nonaktif)
+function setPageBtn(btn, isActive) {
+    btn.disabled = !isActive;
+    btn.className = "w-[34px] h-[34px] rounded-lg border-none flex items-center justify-center transition-colors duration-150 " +
+        (isActive
+            ? "cursor-pointer bg-[#3a5da8] text-white hover:bg-[#324f8f]"
+            : "cursor-not-allowed opacity-60 bg-[#dbe1ea] text-[#8b93a3]");
+}
+
+firstBtn.addEventListener("click", () => { if (currentPage !== 1) renderPage(1); });
+prevBtn.addEventListener("click", () => { if (currentPage > 1) renderPage(currentPage - 1); });
+nextBtn.addEventListener("click", () => { if (currentPage < renderPage.totalPages) renderPage(currentPage + 1); });
+lastBtn.addEventListener("click", () => { if (currentPage !== renderPage.totalPages) renderPage(renderPage.totalPages); });
+
+// ---- Pilih klinik (perilaku radio: cuma satu yang aktif) ----
+listEl.addEventListener("click", (e) => {
+    const item = e.target.closest(".klinik-item");
+    if (!item) return;
+
+    listEl.querySelectorAll(".klinik-item.selected").forEach(el => el.classList.remove("selected"));
+    item.classList.add("selected");
+    selectedIndex = Number(item.dataset.index);
+
+    const filtered = getFilteredClinics();
+    const start = (currentPage - 1) * PAGE_SIZE;
+    console.log("Klinik dipilih:", filtered[start + selectedIndex]);
+});
+
+// ---- Loader saat "Temukan klinik terdekat anda" diklik (pakai animate-spin Tailwind) ----
+locateBanner.addEventListener("click", () => {
+    if (bannerIconWrap.dataset.loading === "true") return;
+
+    bannerIconWrap.dataset.loading = "true";
+    bannerIconWrap.innerHTML = `<span class="w-6 h-6 border-[3px] border-white border-b-[#ff3d00] rounded-full animate-spin inline-block"></span>`;
+
+    setTimeout(() => {
+        bannerIconWrap.dataset.loading = "false";
+        bannerIconWrap.innerHTML = pinIcon;
+        renderPage(1); // simulasi: refresh urutan klinik terdekat setelah lokasi didapat
+    }, 1200);
+});
+
+renderPage(1);
+
+</script>
+</body>
+</html>

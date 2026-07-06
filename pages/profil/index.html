@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../../public/global.css">
+    <link rel="stylesheet" href="../pendaftaranPasienBaru/PendaftaranPasienBaru.css">
+    <link rel="stylesheet" href="./profil.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Profil Pasien</title>
+</head>
+
+<body class="bg-[#E8EFF7] min-h-screen">
+
+    <!-- ==================== BANNER ==================== -->
+    <div class="profil-banner">
+        <img src="./assets/clinic_banner.png" alt="HealthFlow Clinic Banner">
+    </div>
+
+    <!-- ==================== PROFILE HEADER ==================== -->
+    <div class="flex max-w-[1200px] mx-auto items-end gap-5 px-4 md:px-10 lg:px-15">
+        <div class="profil-avatar-wrapper">
+            <img src="./assets/profile_avatar.png" alt="Foto Profil" class="profil-avatar">
+        </div>
+        <div class="pb-2">
+            <h1 class="text-xl md:text-2xl font-bold text-gray-900">Jhon deo formalin</h1>
+            <p class="text-sm text-gray-500">Kepala Keluarga dari Ibu Nurul Nuruni dan 4 anaknya</p>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <div class="flex flex-col gap-6 px-4 md:px-10 lg:px-16 py-8 w-[99vw] mx-auto">
+
+        <!-- ========== DATA UTAMA ========== -->
+        <section class="profil-card boxshadow">
+            <div class="profil-card-title">
+                <i data-lucide="user-round"></i>
+                <span>Data utama</span>
+            </div>
+            <div class="data-utama-grid">
+                <!-- Tanggal Lahir -->
+                <div class="data-utama-item">
+                    <div class="data-utama-label">
+                        <i data-lucide="calendar-days"></i>
+                        <span>Tanggal Lahir</span>
+                    </div>
+                    <div class="data-utama-value">22 - Desember - 1967</div>
+                </div>
+                <!-- Usia -->
+                <div class="data-utama-item">
+                    <div class="data-utama-label">
+                        <i data-lucide="person-standing"></i>
+                        <span>Usia</span>
+                    </div>
+                    <div class="data-utama-value">40 Tahun</div>
+                </div>
+                <!-- Gender -->
+                <div class="data-utama-item">
+                    <div class="data-utama-label">
+                        <i data-lucide="user-round"></i>
+                        <span>Gender</span>
+                    </div>
+                    <div class="data-utama-value">Laki-laki</div>
+                </div>
+                <!-- Nomor & Email -->
+                <div class="data-utama-item">
+                    <div class="data-utama-label">
+                        <span class="font-semibold text-gray-900 text-[15px]">Nomor & Email</span>
+                    </div>
+                    <div class="data-utama-value flex items-center gap-1">
+                        <i data-lucide="phone" class="w-4 h-4 text-gray-500"></i>
+                        <span>0876-8787-6774</span>
+                        <a href="./verifikasiNomor/index.html" class="edit-icon"><i data-lucide="square-pen"></i></a>
+                    </div>
+                    <div class="data-utama-value flex items-center gap-1">
+                        <i data-lucide="mail" class="w-4 h-4 text-gray-500"></i>
+                        <a href="mailto:Jsondeoformalin@gmail.com">Jsondeoformalin@gmail.com</a>
+                        <a href="./verifikasiEmail/index.html" class="edit-icon"><i data-lucide="square-pen"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== ROW: INFORMASI MEDIS + KONTAK DARURAT ========== -->
+        <div class="flex flex-col lg:flex-row gap-6">
+
+            <!-- INFORMASI MEDIS -->
+            <section class="profil-card boxshadow flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <div class="profil-card-title">
+                        <i data-lucide="stethoscope"></i>
+                        <span>Informasi Medis</span>
+                    </div>
+                    <span class="section-subtitle">(Terakhir di Diperbarui: 29/3/2026)</span>
+                </div>
+                <hr>
+                <!-- Golongan Darah -->
+                <div class="medis-item">
+                    <div class="medis-item-label">
+                        <i data-lucide="droplet" class="text-red-500"></i>
+                        <span>Golongan Darah</span>
+                    </div>
+                    <div class="medis-item-value">A+</div>
+                </div>
+                <hr>
+                <!-- Tinggi Badan -->
+                <div class="medis-item">
+                    <div class="medis-item-label">
+                        <i data-lucide="ruler" class="text-blue-500"></i>
+                        <span>Tinggi Badan</span>
+                    </div>
+                    <div class="medis-item-value">166 cm</div>
+                </div>
+                <hr>
+                <!-- Berat Badan -->
+                <div class="medis-item">
+                    <div class="medis-item-label">
+                        <i data-lucide="weight" class="text-green-500"></i>
+                        <span>Berat Badan</span>
+                    </div>
+                    <div class="medis-item-value">56 Kg</div>
+                </div>
+                <hr>
+                <!-- Alergi -->
+                <div class="alergi-alert">
+                    <div class="alergi-alert-title">
+                        <i data-lucide="triangle-alert"></i>
+                        <span>Alergi</span>
+                    </div>
+                    <div class="alergi-alert-content">Ikan laut, Udang</div>
+                </div>
+
+                <!-- Riwayat Penyakit Kronis -->
+                <div class="riwayat-item">
+                    <i data-lucide="clipboard-list"></i>
+                    <div>
+                        <div class="riwayat-item-title">Riwayat penyakit kronis</div>
+                        <div class="riwayat-item-content">Tumor otak, Jantung, Diabetes (bawaan), Hipertensi (bawaan)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="info-disclaimer mt-6">
+                    <i data-lucide="info"></i>
+                    <p>Informasi ini hanya bisa diganti oleh dokter yang memiliki wewenang untuk memberikan <a
+                            href="#">diagnosis</a> dan penanganan yang tepat. Jika anda ingin mengganti informasi
+                        tersebut, harap datang ke lokasi kami</p>
+                </div>
+            </section>
+
+            <!-- KOLOM KANAN: KONTAK DARURAT + ADMINISTRASI -->
+            <div class="flex flex-col gap-6">
+
+                <!-- KONTAK DARURAT -->
+                <section class="profil-card boxshadow" id="kontakDaruratSection">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <div class="profil-card-title">
+                            <i data-lucide="contact-round"></i>
+                            <span>Kontak darurat</span>
+                        </div>
+                        <span class="section-available">Tersedia: <span id="contactCount">2</span> / 3 yang bisa
+                            ditambahkan</span>
+                    </div>
+
+                    <hr class="border-gray-200">
+
+                    <!-- Contact List -->
+                    <div class="flex flex-col gap-3" id="contactList">
+                        <!-- Rendered via JS -->
+                    </div>
+
+                    <!-- Tambahkan Kontak Darurat -->
+                    <button class="add-contact-btn" onclick="openModal('addContactModal')">
+                        <i data-lucide="plus"></i>
+                        <span>Tambahkan Kontak Darurat</span>
+                    </button>
+                </section>
+
+                <!-- ADMINISTRASI -->
+                <section class="profil-card boxshadow">
+                    <div class="profil-card-title">
+                        <i data-lucide="clipboard-list"></i>
+                        <span>Administrasi</span>
+                    </div>
+
+                    <hr class="border-gray-200">
+
+                    <div class="admin-row">
+                        <div class="admin-label">Asuransi / BPJS</div>
+                        <button class="admin-link" onclick="openModal('addInsuranceModal')">
+                            <i data-lucide="plus"></i>
+                            <span>Tambahkan asuransi</span>
+                        </button>
+                    </div>
+                    <div class="admin-row">
+                        <div class="admin-label">Nomor KTP</div>
+                        <div class="admin-value">136586362396004</div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- ========== PENGATURAN ========== -->
+        <section class="profil-card boxshadow">
+            <div class="profil-card-title">
+                <i data-lucide="settings"></i>
+                <span>Pengaturan</span>
+            </div>
+
+            <div class="pengaturan-grid">
+                <!-- Pengaturan Notifikasi -->
+                <div class="pengaturan-sub-card">
+                    <div class="pengaturan-sub-title">
+                        <i data-lucide="bell"></i>
+                        <span>Pengaturan Notifikasi</span>
+                    </div>
+
+                    <!-- Jadwal Kontrol -->
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <div class="setting-label-title">Jadwal Kontrol</div>
+                            <div class="setting-label-desc">H-3 Sebelum jadwal kontrol</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Artikel Kesehatan -->
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <div class="setting-label-title">Artikel Kesehatan</div>
+                            <div class="setting-label-desc">Memberikan 1 artikel rekomendasi untuk dibaca setiap minggu
+                            </div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Promosi dan Informasi -->
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <div class="setting-label-title">Promosi dan informasi</div>
+                            <div class="setting-label-desc">Memberikan informasi terbaru dari HealthFlow</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Privasi & Keamanan -->
+                <div class="pengaturan-sub-card">
+                    <div class="pengaturan-sub-title">
+                        <i data-lucide="shield-check"></i>
+                        <span>Privasi & Keamanan</span>
+                    </div>
+
+                    <!-- Ubah sandi -->
+                    <div class="privacy-item">
+                        <div class="privacy-item-left">
+                            <i data-lucide="lock"></i>
+                            <span>Ubah sandi</span>
+                        </div>
+                        <div class="privacy-arrow">
+                            <i data-lucide="chevron-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Persetujuan berbagi data -->
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <div class="setting-label-title flex items-center gap-1">
+                                <i data-lucide="file-check" class="w-5 h-5"></i>
+                                <span>Persetujuan berbagi data & Ketentuan Layanan</span>
+                            </div>
+                            <div class="setting-label-desc">Anda menyetujui untuk membagikan data kesehatan dan
+                                menyetujui semua syarat layanan</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Privacy notice -->
+                    <div class="privacy-notice">
+                        <i data-lucide="info"></i>
+                        <p>Data anda akan dilindungi oleh kami dan hanya digunakan untuk keperluan terkait.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ==================== MODAL: TAMBAH KONTAK DARURAT ==================== -->
+    <div class="modal-overlay" id="addContactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i data-lucide="contact-round"></i>
+                <span>Tambah kontak darurat</span>
+            </div>
+            <p class="modal-desc">Kontak darurat adalah nomor yang akan dihubungi pertama kali bila pasien diharuskan
+                melakukan suatu tindakan secara langsung</p>
+
+            <div class="flex items-center">
+                <div class="min-w-[20vw]">
+                    <img src="./assets/Contact Us.svg" alt="Ilustrasi Kontak">
+                </div>
+                <div>
+                    <div class="modal-form-group">
+                        <label class="modal-form-label">Nama kontak</label>
+                        <input type="text" class="modal-form-input" id="inputNamaKontak"
+                            placeholder="Masukan nama lengkap dari kontak tersebut">
+                        <span class="error-message hidden" id="errNamaKontak">wajib diisi</span>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label class="modal-form-label">Nomor telepon</label>
+                        <input type="text" class="modal-form-input" id="inputNomorTelepon"
+                            placeholder="Masukan nomor telepon aktif">
+                        <span class="error-message hidden" id="errNomorTelepon">wajib diisi</span>
+                    </div>
+
+                    <div class="modal-radio-group">
+                        <input type="radio" name="kontakAktif" id="kontakAktifYa" checked>
+                        <label for="kontakAktifYa">Pastikan kontak yang anda pilih adalah kontak aktif</label>
+                    </div>
+
+                    <div class="modal-checkbox-group">
+                        <input type="checkbox" class="chekckedbox" id="syaratKontak">
+                        <label for="syaratKontak">Dengan ini saya menyetujui <a href="#">syarat & Ketentuan</a> yang
+                            berlaku
+                            untuk mendaftarkan kontak ini ke daftar kontak darurat saya</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end">
+                <div class="modal-actions">
+                    <button class="modal-btn-cancel" onclick="closeModal('addContactModal')">
+                        <i data-lucide="x"></i>
+                        <span>Batalkan</span>
+                    </button>
+                    <button class="modal-btn-primary" id="btnTambahKontak" onclick="tambahKontak()" disabled>
+                        <i data-lucide="plus"></i>
+                        <span>Tambahkan</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL: UBAH KONTAK DARURAT ==================== -->
+    <div class="modal-overlay" id="editContactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i data-lucide="notebook"></i>
+                <span>Ganti Nomor / Nama</span>
+            </div>
+            <p class="modal-desc">Ubah nomor telepon / nama dari kontak darurat anda.</p>
+
+            <div class="flex items-center">
+                <div class="min-w-[20vw]">
+                    <img src="./assets/Contact Us.svg" alt="Ilustrasi Kontak">
+                </div>
+                <div class="flex-grow">
+                    <div class="modal-form-group">
+                        <label class="modal-form-label">Nama yang baru</label>
+                        <input type="text" class="modal-form-input" id="editNamaKontak"
+                            placeholder="Masukan nama lengkap dari kontak tersebut">
+                        <span class="error-message hidden" id="errEditNamaKontak">wajib diisi</span>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label class="modal-form-label">Nomor telepon yang baru</label>
+                        <input type="text" class="modal-form-input" id="editNomorTelepon"
+                            placeholder="Masukan nomor telepon aktif">
+                        <span class="error-message hidden" id="errEditNomorTelepon">wajib diisi</span>
+                    </div>
+
+                    <div class="flex items-center gap-1.5 mt-2 text-gray-500 text-xs">
+                        <i data-lucide="info" class="w-4 h-4"></i>
+                        <span>Biarkan saja jika anda tidak mau mengganti nomor / nama</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end mt-4">
+                <div class="modal-actions">
+                    <button class="modal-btn-cancel" onclick="closeModal('editContactModal')">
+                        <i data-lucide="x"></i>
+                        <span>Batalkan</span>
+                    </button>
+                    <button class="modal-btn-primary" onclick="simpanUbahKontak()">
+                        <i data-lucide="plus"></i>
+                        <span>Ubah</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==================== MODAL: TAMBAH ASURANSI ==================== -->
+    <div class="modal-overlay" id="addInsuranceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i data-lucide="credit-card"></i>
+                <span>Tambahkan asuransi anda</span>
+            </div>
+            <p class="modal-desc">Unggah foto atau scan kartu asuransi atau KIS anda untuk verifikasi visual.</p>
+
+            <!-- STATE 1: UPLOAD AREA -->
+            <div id="insuranceUploadState">
+                <div class="flex gap-12">
+                    <div class="modal-illustration min-w-[20vw]">
+                        <img src="./assets/files_and_doc.svg" alt="Ilustrasi Asuransi">
+                    </div>
+                    <div class="w-full">
+                        <!-- Upload Area -->
+                        <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                            <i data-lucide="cloud-upload"></i>
+                            <div class="upload-area-text">Klik atau seret file ke dalam sini</div>
+                            <div class="upload-area-subtext">untuk mengunggah</div>
+                        </div>
+                        <span class="error-message hidden" id="errUploadArea" style="margin-top: 4px;">wajib melampirkan
+                            bukti file foto atau dokumen</span>
+                        <input type="file" id="fileInput" accept=".jpg,.png,.pdf" style="display:none"
+                            onchange="handleFileSelect(event)">
+
+                        <div class="upload-hint">
+                            <i data-lucide="info"></i>
+                            <span>Format: JPG, PNG, PDF maksimal 1 MB</span>
+                        </div>
+
+                        <!-- File preview -->
+                        <div id="filePreview" class="hidden flex items-center gap-3 p-3 bg-blue-50 rounded-lg mb-4">
+                            <!-- Image Thumbnail (Only visible when file is an image) -->
+                            <img id="previewImageThumbnail" src=""
+                                class="hidden w-12 h-12 rounded object-cover cursor-pointer hover:opacity-85 transition border border-gray-200"
+                                onclick="openZoomModal()">
+                            <!-- Icon for pdf/non-image -->
+                            <i id="previewFileIcon" data-lucide="file-text" class="w-5 h-5 text-blue-600"></i>
+                            <span id="fileName" class="text-sm text-gray-700 flex-1 truncate"></span>
+                            <button onclick="removeFile()" class="text-red-400 hover:text-red-600 transition">
+                                <i data-lucide="x" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end mt-4">
+                    <div class="modal-actions">
+                        <button class="modal-btn-cancel" onclick="closeModal('addInsuranceModal')">
+                            <i data-lucide="x"></i>
+                            <span>Batalkan</span>
+                        </button>
+                        <button class="modal-btn-primary" onclick="kirimAsuransi()">
+                            <i data-lucide="send"></i>
+                            <span>Kirim</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATE 2: CONFIRMATION STEP -->
+            <div id="insuranceConfirmState" class="hidden space-y-6">
+                <div class="p-5 bg-red-50 border border-red-200 rounded-2xl flex items-start gap-4">
+                    <i data-lucide="alert-triangle" class="w-8 h-8 text-red-600 flex-shrink-0 mt-0.5 animate-pulse"></i>
+                    <p class="text-xs text-red-800 leading-relaxed font-medium">
+                        kami percaya bahwa gambar yang ada berikan adalah gambar yang memang benar adanya untuk diungah,
+                        bila terjadi salah upload oleh pengguna maka gambar ini kami nyatakan gagal dan pengguna akan
+                        diberikan sangsi berupa tidak diperbolehkan mengunggah dokumen untuk asuransi anda
+                    </p>
+                </div>
+
+                <div class="flex justify-end">
+                    <div class="modal-actions">
+                        <button class="modal-btn-cancel" onclick="kembaliKeUpload()">
+                            <i data-lucide="arrow-left"></i>
+                            <span>Kembali</span>
+                        </button>
+                        <button class="modal-btn-primary bg-[#1E3A5F] hover:bg-[#15304F]"
+                            onclick="konfirmasiUploadFinal()">
+                            <i data-lucide="check"></i>
+                            <span>Konfirmasi Upload</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL: ZOOM IMAGE PREVIEW ==================== -->
+    <div class="modal-overlay" id="zoomImageModal" style="z-index: 10000;">
+        <div class="modal-content max-w-[90vw] p-2 bg-transparent border-none flex flex-col items-center relative">
+            <button
+                class="absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition"
+                onclick="closeModal('zoomImageModal')">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <img id="zoomImage" src="" class="max-w-full max-h-[85vh] rounded-xl shadow-2xl object-contain">
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // ========== CONTACT DATA & STATE ==========
+        let contacts = [
+            {
+                id: 1,
+                nama: "Siti Nurhaliza (Istri)",
+                nomor: "0866-2760-8767",
+                avatar: "./assets/contact_siti.png",
+                isUtama: true
+            },
+            {
+                id: 2,
+                nama: "M. Ahmad (Ayah)",
+                nomor: "0836-2722-8860",
+                avatar: "./assets/contact_ahmad.png",
+                isUtama: false
+            }
+        ];
+        let nextContactId = 3;
+        let editingContactId = null;
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // ========== DROPDOWN MANAGEMENT ==========
+        let activeDropdown = null;
+
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(`dropdown-${id}`);
+
+            // Close any open dropdown
+            if (activeDropdown && activeDropdown !== dropdown) {
+                activeDropdown.classList.remove('show');
+            }
+
+            dropdown.classList.toggle('show');
+            activeDropdown = dropdown.classList.contains('show') ? dropdown : null;
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.dropdown-wrapper')) {
+                document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('show'));
+                activeDropdown = null;
+            }
+        });
+
+        // ========== DYNAMIC CONTACT RENDERING ==========
+        function renderContacts() {
+            const contactList = document.getElementById('contactList');
+            if (!contactList) return;
+            contactList.innerHTML = '';
+
+            contacts.forEach(contact => {
+                let avatarMarkup = '';
+                if (contact.avatar) {
+                    avatarMarkup = `<img src="${contact.avatar}" alt="${contact.nama}" class="contact-avatar">`;
+                } else {
+                    avatarMarkup = `
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-blue-600 font-bold text-lg flex-shrink-0">
+                            ${contact.nama.charAt(0).toUpperCase()}
+                        </div>
+                    `;
+                }
+
+                const contactHTML = `
+                    <div class="contact-card" data-contact-id="${contact.id}">
+                        ${avatarMarkup}
+                        <div class="contact-info">
+                            <div class="contact-name">
+                                <span>${contact.nama}</span>
+                                <span class="contact-badge ${contact.isUtama ? '' : 'hidden'}" id="badge-${contact.id}">Kontak utama</span>
+                            </div>
+                            <div class="contact-phone">
+                                <i data-lucide="phone"></i>
+                                <span>${contact.nomor}</span>
+                            </div>
+                        </div>
+                        <div class="dropdown-wrapper">
+                            <button class="contact-menu-btn" onclick="toggleDropdown(${contact.id})">
+                                <i data-lucide="ellipsis-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu" id="dropdown-${contact.id}">
+                                <button class="dropdown-item primary" onclick="setKontakUtama(${contact.id})">
+                                    <i data-lucide="user-round-check"></i>
+                                    <span>Kontak utama</span>
+                                </button>
+                                <button class="dropdown-item edit" onclick="ubahKontak(${contact.id})">
+                                    <i data-lucide="user-round-pen"></i>
+                                    <span>Ubah kontak</span>
+                                </button>
+                                <button class="dropdown-item danger" onclick="hapusKontak(${contact.id})">
+                                    <i data-lucide="user-round-x"></i>
+                                    <span>Hapus kontak</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                contactList.insertAdjacentHTML('beforeend', contactHTML);
+            });
+
+            lucide.createIcons();
+            updateContactCount();
+        }
+
+        // ========== KONTAK UTAMA ==========
+        function setKontakUtama(id) {
+            contacts.forEach(c => {
+                c.isUtama = (c.id === id);
+            });
+
+            // Move main contact to first in the list
+            const mainIndex = contacts.findIndex(c => c.id === id);
+            if (mainIndex > -1) {
+                const [mainContact] = contacts.splice(mainIndex, 1);
+                contacts.unshift(mainContact);
+            }
+
+            renderContacts();
+            closeAllDropdowns();
+        }
+
+        // ========== UBAH KONTAK ==========
+        function ubahKontak(id) {
+            closeAllDropdowns();
+            const contact = contacts.find(c => c.id === id);
+            if (contact) {
+                editingContactId = id;
+                document.getElementById('editNamaKontak').value = contact.nama;
+                document.getElementById('editNomorTelepon').value = contact.nomor;
+
+                // Clear errors
+                document.getElementById('editNamaKontak').classList.remove('error');
+                document.getElementById('errEditNamaKontak').classList.add('hidden');
+                document.getElementById('editNomorTelepon').classList.remove('error');
+                document.getElementById('errEditNomorTelepon').classList.add('hidden');
+
+                openModal('editContactModal');
+            }
+        }
+
+        function simpanUbahKontak() {
+            const inputNama = document.getElementById('editNamaKontak');
+            const inputNomor = document.getElementById('editNomorTelepon');
+            const errNama = document.getElementById('errEditNamaKontak');
+            const errNomor = document.getElementById('errEditNomorTelepon');
+
+            const nama = inputNama.value.trim();
+            const nomor = inputNomor.value.trim();
+
+            let isValid = true;
+
+            if (!nama) {
+                inputNama.classList.add('error');
+                errNama.classList.remove('hidden');
+                isValid = false;
+            } else {
+                inputNama.classList.remove('error');
+                errNama.classList.add('hidden');
+            }
+
+            if (!nomor) {
+                inputNomor.classList.add('error');
+                errNomor.classList.remove('hidden');
+                isValid = false;
+            } else {
+                inputNomor.classList.remove('error');
+                errNomor.classList.add('hidden');
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            const contact = contacts.find(c => c.id === editingContactId);
+            if (contact) {
+                contact.nama = nama;
+                contact.nomor = nomor;
+                renderContacts();
+                closeModal('editContactModal');
+            }
+        }
+
+        // ========== HAPUS KONTAK ==========
+        function hapusKontak(id) {
+            const contactCard = document.querySelector(`[data-contact-id="${id}"]`);
+            if (contactCard) {
+                contactCard.style.transition = 'opacity 0.3s, transform 0.3s';
+                contactCard.style.opacity = '0';
+                contactCard.style.transform = 'translateX(20px)';
+                setTimeout(() => {
+                    contacts = contacts.filter(c => c.id !== id);
+
+                    // If no contact is utama, set the first one as utama
+                    const anyUtama = contacts.some(c => c.isUtama);
+                    if (!anyUtama && contacts.length > 0) {
+                        contacts[0].isUtama = true;
+                    }
+
+                    renderContacts();
+                }, 300);
+            }
+            closeAllDropdowns();
+        }
+
+        function closeAllDropdowns() {
+            document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('show'));
+            activeDropdown = null;
+        }
+
+        function updateContactCount() {
+            const count = contacts.length;
+            document.getElementById('contactCount').textContent = count;
+        }
+
+        // ========== MODAL MANAGEMENT ==========
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+
+            // Reset form if contact modal
+            if (modalId === 'addContactModal') {
+                const inputNama = document.getElementById('inputNamaKontak');
+                const inputNomor = document.getElementById('inputNomorTelepon');
+                const errNama = document.getElementById('errNamaKontak');
+                const errNomor = document.getElementById('errNomorTelepon');
+                const btnTambah = document.getElementById('btnTambahKontak');
+
+                inputNama.value = '';
+                inputNama.classList.remove('error');
+                errNama.classList.add('hidden');
+
+                inputNomor.value = '';
+                inputNomor.classList.remove('error');
+                errNomor.classList.add('hidden');
+
+                document.getElementById('syaratKontak').checked = false;
+                btnTambah.disabled = true;
+            }
+
+            // Reset form if edit contact modal
+            if (modalId === 'editContactModal') {
+                const inputNama = document.getElementById('editNamaKontak');
+                const inputNomor = document.getElementById('editNomorTelepon');
+                const errNama = document.getElementById('errEditNamaKontak');
+                const errNomor = document.getElementById('errEditNomorTelepon');
+
+                inputNama.value = '';
+                inputNama.classList.remove('error');
+                errNama.classList.add('hidden');
+
+                inputNomor.value = '';
+                inputNomor.classList.remove('error');
+                errNomor.classList.add('hidden');
+                editingContactId = null;
+            }
+
+            // Reset file upload
+            if (modalId === 'addInsuranceModal') {
+                removeFile();
+                document.getElementById('insuranceUploadState').classList.remove('hidden');
+                document.getElementById('insuranceConfirmState').classList.add('hidden');
+                document.getElementById('uploadArea').classList.remove('error');
+                document.getElementById('errUploadArea').classList.add('hidden');
+            }
+        }
+
+        // Close modal when clicking overlay
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) {
+                    closeModal(overlay.id);
+                }
+            });
+        });
+
+        // ========== TAMBAH KONTAK ==========
+        // Setup input validation listeners
+        document.getElementById('inputNamaKontak').addEventListener('input', function () {
+            if (this.value.trim() !== '') {
+                this.classList.remove('error');
+                document.getElementById('errNamaKontak').classList.add('hidden');
+            }
+        });
+
+        document.getElementById('inputNomorTelepon').addEventListener('input', function () {
+            if (this.value.trim() !== '') {
+                this.classList.remove('error');
+                document.getElementById('errNomorTelepon').classList.add('hidden');
+            }
+        });
+
+        document.getElementById('editNamaKontak').addEventListener('input', function () {
+            if (this.value.trim() !== '') {
+                this.classList.remove('error');
+                document.getElementById('errEditNamaKontak').classList.add('hidden');
+            }
+        });
+
+        document.getElementById('editNomorTelepon').addEventListener('input', function () {
+            if (this.value.trim() !== '') {
+                this.classList.remove('error');
+                document.getElementById('errEditNomorTelepon').classList.add('hidden');
+            }
+        });
+
+        document.getElementById('syaratKontak').addEventListener('change', function () {
+            document.getElementById('btnTambahKontak').disabled = !this.checked;
+        });
+
+        function tambahKontak() {
+            const inputNama = document.getElementById('inputNamaKontak');
+            const inputNomor = document.getElementById('inputNomorTelepon');
+            const errNama = document.getElementById('errNamaKontak');
+            const errNomor = document.getElementById('errNomorTelepon');
+            const syarat = document.getElementById('syaratKontak').checked;
+
+            const nama = inputNama.value.trim();
+            const nomor = inputNomor.value.trim();
+
+            let isValid = true;
+
+            if (!nama) {
+                inputNama.classList.add('error');
+                errNama.classList.remove('hidden');
+                isValid = false;
+            } else {
+                inputNama.classList.remove('error');
+                errNama.classList.add('hidden');
+            }
+
+            if (!nomor) {
+                inputNomor.classList.add('error');
+                errNomor.classList.remove('hidden');
+                isValid = false;
+            } else {
+                inputNomor.classList.remove('error');
+                errNomor.classList.add('hidden');
+            }
+
+            if (!syarat) {
+                return;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            if (contacts.length >= 3) {
+                alert('Maksimal 3 kontak darurat');
+                return;
+            }
+
+            const contactId = nextContactId++;
+            contacts.push({
+                id: contactId,
+                nama: nama,
+                nomor: nomor,
+                avatar: null,
+                isUtama: contacts.length === 0
+            });
+
+            renderContacts();
+            closeModal('addContactModal');
+        }
+
+        // Initial Contacts Render
+        renderContacts();
+
+        // ========== FILE UPLOAD ==========
+        const uploadArea = document.getElementById('uploadArea');
+        let uploadedFileUrl = null;
+
+        uploadArea.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            this.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', function (e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', function (e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                handleFile(file);
+            }
+        }
+
+        function handleFile(file) {
+            // Validate file type
+            const validTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+            if (!validTypes.includes(file.type)) {
+                alert('Format file tidak valid. Gunakan JPG, PNG, atau PDF.');
+                return;
+            }
+
+            // Validate file size (1 MB)
+            if (file.size > 1024 * 1024) {
+                alert('Ukuran file maksimal 1 MB.');
+                return;
+            }
+
+            // Clear errors on uploadArea
+            uploadArea.classList.remove('error');
+            document.getElementById('errUploadArea').classList.add('hidden');
+
+            // Show file preview
+            document.getElementById('filePreview').classList.remove('hidden');
+            document.getElementById('fileName').textContent = file.name;
+
+            const thumbnailImg = document.getElementById('previewImageThumbnail');
+            const fileIcon = document.getElementById('previewFileIcon');
+
+            if (file.type.startsWith('image/')) {
+                if (uploadedFileUrl) {
+                    URL.revokeObjectURL(uploadedFileUrl);
+                }
+                uploadedFileUrl = URL.createObjectURL(file);
+                thumbnailImg.src = uploadedFileUrl;
+                thumbnailImg.classList.remove('hidden');
+                fileIcon.classList.add('hidden');
+            } else {
+                thumbnailImg.src = '';
+                thumbnailImg.classList.add('hidden');
+                fileIcon.classList.remove('hidden');
+            }
+
+            uploadArea.style.display = 'none';
+            lucide.createIcons();
+        }
+
+        function removeFile() {
+            document.getElementById('filePreview').classList.add('hidden');
+            document.getElementById('fileName').textContent = '';
+            document.getElementById('fileInput').value = '';
+
+            const thumbnailImg = document.getElementById('previewImageThumbnail');
+            thumbnailImg.src = '';
+            thumbnailImg.classList.add('hidden');
+            document.getElementById('previewFileIcon').classList.remove('hidden');
+
+            if (uploadedFileUrl) {
+                URL.revokeObjectURL(uploadedFileUrl);
+                uploadedFileUrl = null;
+            }
+
+            uploadArea.style.display = '';
+        }
+
+        function openZoomModal() {
+            if (uploadedFileUrl) {
+                document.getElementById('zoomImage').src = uploadedFileUrl;
+                openModal('zoomImageModal');
+            }
+        }
+
+        function kirimAsuransi() {
+            const fileName = document.getElementById('fileName').textContent;
+            if (!fileName) {
+                // Show validation error
+                uploadArea.classList.add('error');
+                document.getElementById('errUploadArea').classList.remove('hidden');
+                return;
+            }
+
+            // Go to confirmation step
+            document.getElementById('insuranceUploadState').classList.add('hidden');
+            document.getElementById('insuranceConfirmState').classList.remove('hidden');
+        }
+
+        function kembaliKeUpload() {
+            document.getElementById('insuranceConfirmState').classList.add('hidden');
+            document.getElementById('insuranceUploadState').classList.remove('hidden');
+        }
+
+        function konfirmasiUploadFinal() {
+            alert('File asuransi berhasil dikirim!');
+            closeModal('addInsuranceModal');
+        }
+    </script>
+</body>
+
+</html>
