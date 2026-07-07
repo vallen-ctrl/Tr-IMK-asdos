@@ -104,7 +104,8 @@ const RootData = (() => {
             time: "8:00 WIB",
             branch: "Surabaya",
             status: "active",
-            qrData: "TICKET-001-AKTIF"
+            qrData: "TICKET-001-AKTIF",
+            url: "pages/pendaftaran/ticket/index.html?nama_pasien=Jhon%20deo%20formalin&tipe=BPJS&kelas=VIP&penanggung_jawab=Ibu%20Nurul%20Nuruni&klinik_cabang=Surabaya&harga=Rp.%201.000.000%20%2F%20Hari&lama_menginap=3%20Hari&total=Rp.%203.000.000&diskon=Rp.%200&metode_pembayaran=BPJS&status_pembayaran=Berhasil&kamar_nomor=G573&kamar_ruangan=Melati&kamar_lantai=5&kamar_tanggal_mulai=25%20-%2006%20-%202025&kamar_tanggal_selesai=28%20-%2006%20-%202025&kamar_kasur=12%2Fb&pegawai_nama=Budiyo&pegawai_kode=2273662&pegawai_jabatan=Staf%20administrasi&pesanan_masuk=20%20-%2006%20-%202025&pesanan_terverifikasi=21%20-%2006%20-%202025%2F10%3A15",
         },
         {
             poli: "Poli Penyakit Dalam",
@@ -114,7 +115,8 @@ const RootData = (() => {
             time: "8:00 WIB",
             branch: "Surabaya",
             status: "waiting",
-            qrData: ""
+            qrData: "",
+            url: "pages/pendaftaran/ticket/index.html?nama_pasien=Jhon%20deo%20formalin&tipe=Mandiri&kelas=VVIP&penanggung_jawab=Ibu%20Nurul%20Nuruni&klinik_cabang=Surabaya&harga=Rp.%201.500.000%20%2F%20Hari&lama_menginap=2%20Hari&total=Rp.%203.000.000&diskon=Rp.%202.400.000&metode_pembayaran=Transfer%20Bank&status_pembayaran=Pending&kamar_nomor=V202&kamar_ruangan=Mawar&kamar_lantai=2&kamar_tanggal_mulai=25%20-%2006%20-%202025&kamar_tanggal_selesai=27%20-%2006%20-%202025&kamar_kasur=02%2Fa&pegawai_nama=Sari%20P.&pegawai_kode=2281920&pegawai_jabatan=Staf%20Pendaftaran&pesanan_masuk=22%20-%2006%20-%202025&pesanan_terverifikasi=Menunggu",
         },
         {
             poli: "Poli Mata",
@@ -124,7 +126,8 @@ const RootData = (() => {
             time: "10:00 WIB",
             branch: "Surabaya",
             status: "active",
-            qrData: "TICKET-003-AKTIF"
+            qrData: "TICKET-003-AKTIF",
+            url: "pages/pendaftaran/ticket/index.html?nama_pasien=Jhon%20deo%20formalin&tipe=Mandiri&kelas=VVIP&penanggung_jawab=Ibu%20Nurul%20Nuruni&klinik_cabang=Surabaya&harga=Rp.%201.500.000%20%2F%20Hari&lama_menginap=1%20Hari&total=Rp.%201.500.000&diskon=Rp.%201.200.000&metode_pembayaran=Qris-scan&status_pembayaran=Berhasil&kamar_nomor=V203&kamar_ruangan=Anggrek&kamar_lantai=2&kamar_tanggal_mulai=26%20-%2006%20-%202025&kamar_tanggal_selesai=27%20-%2006%20-%202025&kamar_kasur=03%2Fb&pegawai_nama=Budiyo&pegawai_kode=2273662&pegawai_jabatan=Staf%20administrasi&pesanan_masuk=24%20-%2006%20-%202025&pesanan_terverifikasi=24%20-%2006%20-%202025%2F15%3A40",
         },
         {
             poli: "Poli Jantung",
@@ -134,7 +137,8 @@ const RootData = (() => {
             time: "09:00 WIB",
             branch: "Surabaya",
             status: "waiting",
-            qrData: ""
+            qrData: "",
+            url: "pages/pendaftaran/ticket/index.html?nama_pasien=Jhon%20deo%20formalin&tipe=BPJS&kelas=Kelas%201&penanggung_jawab=Ibu%20Nurul%20Nuruni&klinik_cabang=Surabaya&harga=Rp.%20500.000%20%2F%20Hari&lama_menginap=4%20Hari&total=Rp.%202.000.000&diskon=Rp.%200&metode_pembayaran=BPJS&status_pembayaran=Pending&kamar_nomor=K104&kamar_ruangan=Flamboyan&kamar_lantai=1&kamar_tanggal_mulai=29%20-%2006%20-%202025&kamar_tanggal_selesai=03%20-%2007%20-%202025&kamar_kasur=04%2Fc&pegawai_nama=Budiyo&pegawai_kode=2273662&pegawai_jabatan=Staf%20administrasi&pesanan_masuk=27%20-%2006%20-%202025&pesanan_terverifikasi=Menunggu",
         }
     ];
 

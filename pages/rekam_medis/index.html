@@ -93,7 +93,7 @@
                     class="card boxshadow w-full lg:w-[320px] flex-shrink-0 items-center text-center lg:text-left lg:items-start">
                     <!-- Profile Image -->
                     <div class="flex w-full justify-start md:justify-center">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto Pasien" class="profile-img">
+                        <img src="../profil/assets/profile_avatar.png" alt="Foto Pasien" class="profile-img">
                     </div>
 
                     <!-- Patient Data -->
@@ -238,6 +238,20 @@
                 ticketsData.forEach(ticket => {
                     const card = document.createElement("div");
                     card.className = "ticket-card";
+                    if (ticket.url || ticket.URL) {
+                        card.style.cursor = "pointer";
+                        card.onclick = function () {
+                            const pathname = window.location.pathname;
+                            const pagesIndex = pathname.indexOf('pages/');
+                            let rootPath = './';
+                            if (pagesIndex !== -1) {
+                                const subPath = pathname.substring(pagesIndex);
+                                const slashCount = (subPath.match(/\//g) || []).length;
+                                rootPath = '../'.repeat(slashCount);
+                            }
+                            window.location.assign(rootPath + (ticket.url || ticket.URL));
+                        };
+                    }
 
                     let rightElementHtml = "";
                     if (ticket.status === "active") {
