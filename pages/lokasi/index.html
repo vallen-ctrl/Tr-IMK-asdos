@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokasi Klinik</title>
+
+    <!-- Tailwind CSS v4 (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- File milikmu: font, ukuran teks, shadow token -->
+    <link rel="stylesheet" href="../../public/global.css">
+    <!-- File milikmu: design system (.card, .header, .radioButton, .selected, select/input, .loader) -->
+    <link rel="stylesheet" href="../pendaftaran/PendaftaranPasienBaru.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../rootData.js"></script>
+</head>
+
+<body class="bg-[#eef1f6] min-h-screen flex flex-col">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-[#F0F3FA] w-full">
+        <div class="w-full mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="../../index.html" class="flex items-center gap-2">
+                <img src="../../public/LOGO.svg" alt="HealthFlow Clinic Logo" class="h-16 w-auto">
+            </a>
+
+            <!-- Navigation Links & Icons -->
+            <div class="flex items-center gap-8">
+                <!-- Links -->
+                <nav class="flex items-center gap-6">
+                    <a href="../../index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Beranda</a>
+                    <a href="../poli/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Poli</a>
+                    <a href="../pendaftaran/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Pendaftaran</a>
+                    <a href="../rekam_medis/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Rekam
+                        Medis</a>
+                    <a href="../lokasi/index.html"
+                        class="subheaderText font-bold text-[#395886] hover:text-[#2C4E80] transition-colors duration-200">Lokasi</a>
+                    <a href="../kalkulator/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Kalkulator</a>
+                </nav>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-4 border-l border-slate-300/60 pl-6">
+                    <button class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer"
+                        onclick="window.location.assign('../notifikasi/index.html')" aria-label="Notifications">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                    </button>
+                    <div class="relative">
+                        <button id="profile-menu-button" onclick="toggleProfileDropdown(event)"
+                            class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer flex items-center justify-center"
+                            aria-label="Profile">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </button>
+                        <!-- Profile Dropdown -->
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-3 w-[220px] bg-white rounded-[24px] shadow-lg border border-[#E2ECF8] p-5 flex flex-col gap-4 z-50">
+                            <!-- Item 1: Profil anda -->
+                            <a href="../profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="user" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Profil anda</span>
+                            </a>
+                            <!-- Item 2: Pengaturan -->
+                            <a href="../profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="settings" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Pengaturan</span>
+                            </a>
+                            <!-- Item 3: Keluar -->
+                            <a href="#"
+                                class="flex items-center gap-3 hover:bg-red-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="log-out" class="w-5 h-5 text-red-600 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-red-600">keluar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="min-h-[calc(100vh-80px)] bg-[#eef1f6] flex items-start justify-center mt-8  px-4 flex-1">
+        <div class="card boxshadow w-full max-w-[1080px] !p-6 !gap-5 sm:!p-8 sm:!gap-8">
+
+            <!-- Header -->
+            <div class="header headerText text-gray-900 font-bold">
+                <svg class="w-[22px] h-[22px] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>Lokasi Klinik</span>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-6">
+                <div class="flex flex-col flex-1 min-w-[220px]">
+                    <label for="provinsi">Provinsi</label>
+                    <select id="provinsi" class="w-full bg-white">
+                        <option value="" disabled selected hidden>Pilih provinsi</option>
+                        <option value="jabar">Jawa Barat</option>
+                        <option value="jateng">Jawa Tengah</option>
+                        <option value="dki">DKI Jakarta</option>
+                    </select>
+                </div>
+                <div class="flex flex-col flex-1 min-w-[220px]">
+                    <label for="kecamatan">Kabupaten/Kota</label>
+                    <select id="kecamatan" class="w-full bg-white disabled:cursor-not-allowed disabled:opacity-60"
+                        disabled>
+                        <option value="" disabled selected hidden>Pilih kabupaten/kota</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Locate banner -->
+            <div id="locateBanner"
+                class="flex items-center gap-4 bg-[#cfdaf0] border border-[#7d9bd6] rounded-[14px] px-5 py-4 cursor-pointer transition-colors duration-150 hover:bg-[#c3d1ec]">
+                <div id="bannerIconWrap"
+                    class="w-[42px] h-[42px] rounded-full bg-[#3a5da8] flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-7.5 8-13a8 8 0 1 0-16 0c0 5.5 8 13 8 13z"></path>
+                        <circle cx="12" cy="9" r="2.5"></circle>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <div class="subheaderText font-bold text-[#2f4f9e] leading-tight">Temukan klinik terdekat anda</div>
+                    <div class="text-[13px] text-[#5b6b85]">Masukan lokasi anda untuk menghitung jarak ke klinik
+                        terdekat yang sudah tersedia</div>
+                </div>
+            </div>
+
+            <!-- List section -->
+            <div class="flex flex-col gap-3">
+                <div class="flex items-baseline justify-between">
+                    <div class="font-bold text-gray-900 text-[15px]">Klinik Terdekat</div>
+                    <div id="listCount" class="text-[13px] text-gray-500">Menampilkan 5 klinik terdekat</div>
+                </div>
+
+                <div id="klinikList" class="flex flex-col gap-2.5"></div>
+
+                <div class="flex items-center justify-end gap-3">
+                    <span id="pageLabel" class="text-[13px] text-gray-600 mr-1">Halaman 1 per 3</span>
+                    <button id="firstPage" title="Halaman pertama">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="11 17 6 12 11 7"></polyline>
+                            <polyline points="18 17 13 12 18 7"></polyline>
+                        </svg>
+                    </button>
+                    <button id="prevPage" title="Sebelumnya">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button id="nextPage" title="Berikutnya">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <button id="lastPage" title="Halaman terakhir">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="13 17 18 12 13 7"></polyline>
+                            <polyline points="6 17 11 12 6 7"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        // ===== Lokasi Klinik: data, filter provinsi/kabupaten, loader, pagination =====
+
+        const hospitalIcon = `
+<svg class="w-[22px] h-[22px] text-[#3a5da8] transition-colors duration-150 group-[.selected]:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 21V7a2 2 0 0 1 2-2h4V3h4v2h4a2 2 0 0 1 2 2v14"></path>
+    <path d="M4 21h16"></path>
+    <path d="M12 9v6"></path>
+    <path d="M9 12h6"></path>
+</svg>`;
+
+        const clockIcon = `
+<svg class="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"></circle>
+    <polyline points="12 7 12 12 15 14"></polyline>
+</svg>`;
+
+        const chevronIcon = `
+<svg class="w-[18px] h-[18px] text-gray-400 shrink-0 transition-colors duration-150 group-[.selected]:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="9 18 15 12 9 6"></polyline>
+</svg>`;
+
+        const pinIcon = `
+<svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-7.5 8-13a8 8 0 1 0-16 0c0 5.5 8 13 8 13z"></path>
+    <circle cx="12" cy="9" r="2.5"></circle>
+</svg>`;
+
+        // Kabupaten/Kota per provinsi — dari rootData.js
+        const kabupatenByProvinsi = RootData.kabupatenByProvinsi;
+
+        // Semua klinik — dari rootData.js (berkesinambungan dgn pendaftaran)
+
+        const url = RootData.mapsUrl;
+        const allClinics = RootData.clinics;
+
+        const PAGE_SIZE = 5;
+        let currentPage = 1;
+        let selectedIndex = null;
+
+        const provinsiSelect = document.getElementById("provinsi");
+        const kecamatanSelect = document.getElementById("kecamatan");
+        const listEl = document.getElementById("klinikList");
+        const listCountEl = document.getElementById("listCount");
+        const pageLabelEl = document.getElementById("pageLabel");
+        const firstBtn = document.getElementById("firstPage");
+        const prevBtn = document.getElementById("prevPage");
+        const nextBtn = document.getElementById("nextPage");
+        const lastBtn = document.getElementById("lastPage");
+        const locateBanner = document.getElementById("locateBanner");
+        const bannerIconWrap = document.getElementById("bannerIconWrap");
+
+        // ---- Ambil klinik sesuai filter Provinsi & Kabupaten/Kota yang aktif ----
+        function getFilteredClinics() {
+            const provinsi = provinsiSelect.value;
+            const kabupaten = kecamatanSelect.value;
+
+            return allClinics.filter(c => {
+                if (provinsi && c.provinsi !== provinsi) return false;
+                if (kabupaten && c.kabupaten !== kabupaten) return false;
+                return true;
+            });
+        }
+
+        // ---- Provinsi -> isi opsi Kabupaten/Kota, lalu filter ulang ----
+        provinsiSelect.addEventListener("change", () => {
+            const list = kabupatenByProvinsi[provinsiSelect.value] || [];
+            kecamatanSelect.innerHTML = `<option value="" disabled selected hidden>Pilih kabupaten/kota</option>` +
+                list.map(k => `<option value="${k}">${k}</option>`).join("");
+            kecamatanSelect.disabled = list.length === 0;
+
+            renderPage(1);
+        });
+
+        // ---- Kabupaten/Kota berubah -> filter ulang ----
+        kecamatanSelect.addEventListener("change", () => {
+            renderPage(1);
+        });
+
+        // ---- Render daftar klinik (terfilter + terpaginasi) ----
+        function renderPage(pageNumber) {
+            const filtered = getFilteredClinics();
+            const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+            currentPage = Math.min(Math.max(1, pageNumber), totalPages);
+            selectedIndex = null;
+
+            const start = (currentPage - 1) * PAGE_SIZE;
+            const items = filtered.slice(start, start + PAGE_SIZE);
+
+            if (items.length === 0) {
+                listEl.innerHTML = `
+            <div class="text-center text-[13px] text-gray-500 py-10 border border-dashed border-gray-300 rounded-[10px]">
+                Tidak ada klinik yang cocok dengan filter yang dipilih.
+            </div>`;
+            } else {
+                listEl.innerHTML = items.map((item, i) => `
+            <div class="klinik-item group radioButton flex items-center gap-4 bg-white cursor-pointer transition-colors duration-150 hover:bg-slate-50" data-index="${i}" onclick="window.open('${url}')">
+                <div class="w-8 h-8 rounded-lg bg-[#dce6f7] text-[#3a5da8] flex items-center justify-center font-bold text-sm shrink-0 transition-colors duration-150 group-[.selected]:bg-white/25 group-[.selected]:text-white">${start + i + 1}</div>
+                <div class="w-11 h-11 rounded-full bg-[#dce6f7] flex items-center justify-center shrink-0 transition-colors duration-150 group-[.selected]:bg-white/25">${hospitalIcon}</div>
+                <div class="flex-1 min-w-0 flex flex-col">
+                    <div class="font-bold text-[15px] text-gray-900 mb-0.5 group-[.selected]:text-white">${item.name}</div>
+                    <div class="text-[13px] text-gray-500 mb-1 group-[.selected]:text-[#eaf0fb]">${item.address}</div>
+                    <div class="flex items-center gap-1.5 text-[11px] text-gray-500 group-[.selected]:text-[#eaf0fb]">${clockIcon} &plusmn; ${item.time}</div>
+                </div>
+                <div class="text-right font-bold text-sm text-gray-900 shrink-0 mr-1.5 group-[.selected]:text-white">${item.distance}</div>
+                ${chevronIcon}
+            </div>
+        `).join("");
+            }
+
+            listCountEl.textContent = `Menampilkan ${items.length} dari ${filtered.length} klinik terdekat`;
+            pageLabelEl.textContent = `Halaman ${currentPage} per ${totalPages}`;
+
+            setPageBtn(firstBtn, currentPage !== 1);
+            setPageBtn(prevBtn, currentPage !== 1);
+            setPageBtn(nextBtn, currentPage !== totalPages);
+            setPageBtn(lastBtn, currentPage !== totalPages);
+
+            // simpan totalPages saat ini supaya tombol pagination tahu batasnya
+            renderPage.totalPages = totalPages;
+        }
+
+        // Tailwind-only pagination button state (aktif vs nonaktif)
+        function setPageBtn(btn, isActive) {
+            btn.disabled = !isActive;
+            btn.className = "w-[34px] h-[34px] rounded-lg border-none flex items-center justify-center transition-colors duration-150 " +
+                (isActive
+                    ? "cursor-pointer bg-[#3a5da8] text-white hover:bg-[#324f8f]"
+                    : "cursor-not-allowed opacity-60 bg-[#dbe1ea] text-[#8b93a3]");
+        }
+
+        firstBtn.addEventListener("click", () => { if (currentPage !== 1) renderPage(1); });
+        prevBtn.addEventListener("click", () => { if (currentPage > 1) renderPage(currentPage - 1); });
+        nextBtn.addEventListener("click", () => { if (currentPage < renderPage.totalPages) renderPage(currentPage + 1); });
+        lastBtn.addEventListener("click", () => { if (currentPage !== renderPage.totalPages) renderPage(renderPage.totalPages); });
+
+        // ---- Pilih klinik (perilaku radio: cuma satu yang aktif) ----
+        listEl.addEventListener("click", (e) => {
+            const item = e.target.closest(".klinik-item");
+            if (!item) return;
+
+            listEl.querySelectorAll(".klinik-item.selected").forEach(el => el.classList.remove("selected"));
+            item.classList.add("selected");
+            selectedIndex = Number(item.dataset.index);
+
+            const filtered = getFilteredClinics();
+            const start = (currentPage - 1) * PAGE_SIZE;
+            console.log("Klinik dipilih:", filtered[start + selectedIndex]);
+        });
+
+        // ---- Loader saat "Temukan klinik terdekat anda" diklik (pakai animate-spin Tailwind) ----
+        locateBanner.addEventListener("click", () => {
+            if (bannerIconWrap.dataset.loading === "true") return;
+
+            bannerIconWrap.dataset.loading = "true";
+            bannerIconWrap.innerHTML = `<span class="w-6 h-6 border-[3px] border-white border-b-[#ff3d00] rounded-full animate-spin inline-block"></span>`;
+
+            setTimeout(() => {
+                bannerIconWrap.dataset.loading = "false";
+                bannerIconWrap.innerHTML = pinIcon;
+                renderPage(1); // simulasi: refresh urutan klinik terdekat setelah lokasi didapat
+            }, 1200);
+        });
+
+        renderPage(1);
+
+        // Profile Dropdown functions
+        function toggleProfileDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('profile-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('hidden');
+            }
+        }
+
+        // Close profile dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('profile-dropdown');
+            const profileBtn = document.getElementById('profile-menu-button');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                const clickedInsideDropdown = dropdown.contains(e.target);
+                const clickedBtn = profileBtn && (profileBtn === e.target || profileBtn.contains(e.target));
+                if (!clickedInsideDropdown && !clickedBtn) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        });
+
+        // Initialize Lucide icons on page load
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        } else {
+            window.addEventListener('load', () => {
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            });
+        }
+    </script>
+
+    <script src="../../public/navbar.js"></script>
+    </div>
+</body>
+
+</html>

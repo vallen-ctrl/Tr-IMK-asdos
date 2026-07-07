@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Halaman Rekam Medis Pasien - HealthyFlow Klinik">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../../public/global.css">
+    <link rel="stylesheet" href="../pendaftaran/PendaftaranPasienBaru.css">
+    <link rel="stylesheet" href="./rekam_medis.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../rootData.js"></script>
+    <title>Rekam Medis Pasien</title>
+</head>
+
+<body class="bg-[#F0F3FA] min-h-screen flex flex-col">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-[#F0F3FA] w-full">
+        <div class="w-full mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="../../index.html" class="flex items-center gap-2">
+                <img src="../../public/LOGO.svg" alt="HealthFlow Clinic Logo" class="h-16 w-auto">
+            </a>
+
+            <!-- Navigation Links & Icons -->
+            <div class="flex items-center gap-8">
+                <!-- Links -->
+                <nav class="flex items-center gap-6">
+                    <a href="../../index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Beranda</a>
+                    <a href="../poli/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Poli</a>
+                    <a href="../pendaftaran/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Pendaftaran</a>
+                    <a href="../rekam_medis/index.html"
+                        class="subheaderText font-bold text-[#395886] hover:text-[#2C4E80] transition-colors duration-200">Rekam
+                        Medis</a>
+                    <a href="../lokasi/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Lokasi</a>
+                    <a href="../kalkulator/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Kalkulator</a>
+                </nav>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-4 border-l border-slate-300/60 pl-6">
+                    <button class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer"
+                        onclick="window.location.assign('../notifikasi/index.html')" aria-label="Notifications">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                    </button>
+                    <div class="relative">
+                        <button id="profile-menu-button" onclick="toggleProfileDropdown(event)"
+                            class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer flex items-center justify-center"
+                            aria-label="Profile">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </button>
+                        <!-- Profile Dropdown -->
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-3 w-[220px] bg-white rounded-[24px] shadow-lg border border-[#E2ECF8] p-5 flex flex-col gap-4 z-50">
+                            <!-- Item 1: Profil anda -->
+                            <a href="../profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="user" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Profil anda</span>
+                            </a>
+                            <!-- Item 2: Pengaturan -->
+                            <a href="../profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="settings" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Pengaturan</span>
+                            </a>
+                            <!-- Item 3: Keluar -->
+                            <a href="#"
+                                class="flex items-center gap-3 hover:bg-red-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="log-out" class="w-5 h-5 text-red-600 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-red-600">keluar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="w-full flex justify-center py-8 px-4 md:px-8 flex-1">
+        <main class="max-w-7xl w-full flex flex-col gap-6">
+
+            <!-- ===================== SECTION 1: Patient Info + Health Info + Tickets ===================== -->
+            <div class="flex flex-col lg:flex-row gap-6">
+
+                <!-- ======= LEFT: Patient Profile Card ======= -->
+                <div
+                    class="card boxshadow w-full lg:w-[320px] flex-shrink-0 items-center text-center lg:text-left lg:items-start">
+                    <!-- Profile Image -->
+                    <div class="flex w-full justify-start md:justify-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto Pasien" class="profile-img">
+                    </div>
+
+                    <!-- Patient Data -->
+                    <div class="w-full mt-2">
+                        <dl class="space-y-1 text-sm">
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">Nama</dt>
+                                <dd class="font-semibold text-gray-900" id="rm-nama">Jhon deo formalin</dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">Tanggal lahir</dt>
+                                <dd class="text-gray-900" id="rm-tgl-lahir">22 - 12 - 1967</dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">Umur</dt>
+                                <dd class="text-gray-900" id="rm-umur">40 Tahun</dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">NIK</dt>
+                                <dd class="text-gray-900" id="rm-nik">136586362396004</dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">Jenis kelamin</dt>
+                                <dd class="text-gray-900 gender-icon" id="rm-jk">Laki-Laki
+                                    <i data-lucide="mars" class="w-4 h-4 text-blue-500 inline"></i>
+                                </dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="text-gray-500 w-[110px] flex-shrink-0">Golongan darah</dt>
+                                <dd class="blood-badge" id="rm-gol-darah">A+</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+
+                <!-- ======= RIGHT: Health Info + Active Tickets ======= -->
+                <div class="card boxshadow flex-1 !gap-5">
+
+                    <!-- Health Information -->
+                    <div>
+                        <h1 class="headerText font-bold text-gray-900 mb-3 flex items-center gap-2">
+                            <i data-lucide="heart-pulse" class="w-6 h-6 text-red-500"></i>
+                            Informasi Kesehatan
+                        </h1>
+                        <div class="flex flex-wrap gap-2 items-center">
+                            <span class="badge badge-danger">
+                                Alergi : Ikan laut, udang
+                            </span>
+                            <span class="badge badge-outline">
+                                Riwayat penyakit kronis : Tumor otak, Jantung
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 items-center mt-2">
+                            <span class="badge badge-success">
+                                Penyakit bawaan : Diabetes, Hipertensi
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Active Tickets -->
+                    <div>
+                        <h2 class="font-bold text-gray-900 text-lg mb-3 flex items-center gap-2">
+                            Tiket Aktif anda
+                            <i data-lucide="ticket" class="w-5 h-5 text-gray-600"></i>
+                        </h2>
+
+                        <!-- Scrollable ticket container -->
+                        <div id="ticketContainer" class="ticket-scroll-container flex flex-col gap-3">
+                            <!-- Dynamic tickets will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== SECTION 2: Visit History Table ===================== -->
+            <div class="card boxshadow !p-6">
+                <h2 class="headerText font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+                    Riwayat Kunjungan
+                </h2>
+
+                <div class="visit-table-wrapper">
+                    <table class="visit-table" id="visitTable">
+                        <thead>
+                            <tr>
+                                <th>Hari, Tanggal</th>
+                                <th>Waktu</th>
+                                <th>Cabang</th>
+                                <th>Dokter</th>
+                                <th>Spesialisasi</th>
+                                <th>Tujuan Kunjungan</th>
+                                <th>Tipe kunjungan</th>
+                                <th>Harga</th>
+                                <th>Ruangan</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="visitTableBody">
+                            <!-- Dynamic rows will be rendered here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+
+        <script>
+            // DATA TIKET AKTIF (dari rootData.js)
+            const ticketsData = RootData.tickets;
+
+            // DATA RIWAYAT KUNJUNGAN (dari rootData.js)
+            const visitsData = RootData.visits;
+
+            // Populate user data ke HTML
+            const currentUser = RootData.getCurrentUser();
+            document.getElementById('rm-nama').textContent = currentUser.nama;
+            document.getElementById('rm-nik').textContent = currentUser.nik;
+            document.getElementById('rm-umur').textContent = currentUser.usia;
+            document.getElementById('rm-gol-darah').textContent = currentUser.golonganDarah;
+            // Tanggal lahir: format dari ISO ke readable
+            if (currentUser.tanggalLahir) {
+                const d = new Date(currentUser.tanggalLahir);
+                if (!isNaN(d)) {
+                    const dd = String(d.getDate()).padStart(2, '0');
+                    const mm = String(d.getMonth() + 1).padStart(2, '0');
+                    const yyyy = d.getFullYear();
+                    document.getElementById('rm-tgl-lahir').textContent = `${dd} - ${mm} - ${yyyy}`;
+                }
+            }
+            // Jenis kelamin
+            const jkEl = document.getElementById('rm-jk');
+            const jkText = currentUser.jenisKelamin || 'Laki-laki';
+            const iconName = jkText.toLowerCase().includes('laki') ? 'mars' : 'venus';
+            const iconColor = jkText.toLowerCase().includes('laki') ? 'text-blue-500' : 'text-pink-500';
+            jkEl.innerHTML = `${jkText} <i data-lucide="${iconName}" class="w-4 h-4 ${iconColor} inline"></i>`;
+
+            // RENDER TIKET AKTIF
+            function renderTickets() {
+                const container = document.getElementById("ticketContainer");
+                container.innerHTML = "";
+
+                ticketsData.forEach(ticket => {
+                    const card = document.createElement("div");
+                    card.className = "ticket-card";
+
+                    let rightElementHtml = "";
+                    if (ticket.status === "active") {
+                        rightElementHtml = `
+                        <div class="flex flex-col items-center gap-2">
+                            <span class="ticket-status ticket-status-active">Tiket aktif</span>
+                        </div>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=${encodeURIComponent(ticket.qrData)}"
+                            alt="QR Tiket" class="ticket-qr">
+                    `;
+                    } else {
+                        rightElementHtml = `
+                        <div class="flex flex-col items-center gap-2">
+                            <span class="ticket-status ticket-status-waiting">Menunggu</span>
+                        </div>
+                        <i data-lucide="alert-circle" class="ticket-warning-icon"></i>
+                    `;
+                    }
+
+                    card.innerHTML = `
+                    <img src="${ticket.doctorImg}" alt="Foto Dokter" class="ticket-doctor-img">
+                    <div class="flex-1 min-w-0">
+                        <p class="font-bold text-gray-900 text-sm">${ticket.poli}</p>
+                        <p class="text-gray-600 text-xs">${ticket.doctorName}</p>
+                        <p class="text-gray-600 text-xs">${ticket.date}</p>
+                        <p class="text-gray-600 text-xs">Jam janji: ${ticket.time}</p>
+                        <p class="text-gray-600 text-xs">Cabang: ${ticket.branch}</p>
+                    </div>
+                    ${rightElementHtml}
+                `;
+                    container.appendChild(card);
+                });
+            }
+
+            // RENDER RIWAYAT KUNJUNGAN
+            function renderVisits() {
+                const tbody = document.getElementById("visitTableBody");
+                tbody.innerHTML = "";
+
+                visitsData.forEach((visit, index) => {
+                    // Row Kunjungan
+                    const row = document.createElement("tr");
+                    row.className = "visit-row";
+                    row.onclick = function () { toggleDetail(this); };
+                    row.innerHTML = `
+                    <td>${visit.date}</td>
+                    <td>${visit.time}</td>
+                    <td>${visit.branch}</td>
+                    <td>${visit.doctor}</td>
+                    <td>${visit.specialization}</td>
+                    <td>${visit.purpose}</td>
+                    <td>${visit.type}</td>
+                    <td>${visit.price}</td>
+                    <td>${visit.room}</td>
+                    <td class="chevron-cell">
+                        <i data-lucide="chevron-down" class="chevron-icon w-5 h-5"></i>
+                    </td>
+                `;
+
+                    // Row Detail
+                    const detailRow = document.createElement("tr");
+                    detailRow.className = "detail-row";
+
+                    const detail = visit.detail;
+
+                    // Helper untuk merender list bullet
+                    const renderList = (arr) => {
+                        if (!arr || arr.length === 0) return "";
+                        return `
+                        <ul>
+                            ${arr.map(item => `<li>${item}</li>`).join("")}
+                        </ul>
+                    `;
+                    };
+
+                    let dlContent = `
+                    <dt>No. Rekam medis:</dt>
+                    <dd>${detail.noRM || "-"}</dd>
+
+                    <dt>Nama:</dt>
+                    <dd>${detail.name || "-"}</dd>
+
+                    <dt>Usia:</dt>
+                    <dd>${detail.age || "-"}</dd>
+
+                    <dt>Keterangan pasien:</dt>
+                    <dd>${detail.description || "-"}</dd>
+                `;
+
+                    if (detail.diagnosis && detail.diagnosis.length > 0) {
+                        dlContent += `
+                        <dt>Diagnosis:</dt>
+                        <dd>${renderList(detail.diagnosis)}</dd>
+                    `;
+                    }
+
+                    if (detail.doctorNotes && detail.doctorNotes.length > 0) {
+                        dlContent += `
+                        <dt>Catatan dokter:</dt>
+                        <dd>${renderList(detail.doctorNotes)}</dd>
+                    `;
+                    }
+
+                    if (detail.actions && detail.actions.length > 0) {
+                        dlContent += `
+                        <dt>Tindakan:</dt>
+                        <dd>${renderList(detail.actions)}</dd>
+                    `;
+                    }
+
+                    if (detail.prescriptions && detail.prescriptions.length > 0) {
+                        dlContent += `
+                        <dt>Resep obat:</dt>
+                        <dd>${renderList(detail.prescriptions)}</dd>
+                    `;
+                    }
+
+                    if (detail.payment) {
+                        dlContent += `
+                        <dt>Pembayaran:</dt>
+                        <dd>
+                            Jenis Penjaminan: ${detail.payment.guarantee || "-"}<br>
+                            Status Pembayaran: ${detail.payment.status || "-"}<br>
+                            Total Biaya: ${detail.payment.total || "-"}
+                        </dd>
+                    `;
+                    }
+
+                    detailRow.innerHTML = `
+                    <td colspan="10">
+                        <div class="detail-content">
+                            <h3>Diagnosis</h3>
+                            <dl class="detail-grid">
+                                ${dlContent}
+                            </dl>
+                        </div>
+                    </td>
+                `;
+
+                    tbody.appendChild(row);
+                    tbody.appendChild(detailRow);
+                });
+            }
+
+            // Jalankan render awal
+            renderTickets();
+            renderVisits();
+
+            // Inisialisasi Lucide icons setelah render dinamis
+            lucide.createIcons();
+
+            /**
+             * Toggle the detail/diagnosis row below a visit row.
+             * Also toggles the "expanded" class for chevron rotation.
+             */
+            function toggleDetail(rowElement) {
+                const detailRow = rowElement.nextElementSibling;
+
+                // Close all other open detail rows first
+                const allVisitRows = document.querySelectorAll('.visit-row');
+                allVisitRows.forEach(row => {
+                    if (row !== rowElement) {
+                        row.classList.remove('expanded');
+                        const otherDetail = row.nextElementSibling;
+                        if (otherDetail && otherDetail.classList.contains('detail-row')) {
+                            otherDetail.classList.remove('show');
+                        }
+                    }
+                });
+
+                // Toggle clicked row
+                if (detailRow && detailRow.classList.contains('detail-row')) {
+                    rowElement.classList.toggle('expanded');
+                    detailRow.classList.toggle('show');
+                }
+            }
+
+            // Profile Dropdown functions
+            function toggleProfileDropdown(event) {
+                event.stopPropagation();
+                const dropdown = document.getElementById('profile-dropdown');
+                if (dropdown) {
+                    dropdown.classList.toggle('hidden');
+                }
+            }
+
+            // Close profile dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                const dropdown = document.getElementById('profile-dropdown');
+                const profileBtn = document.getElementById('profile-menu-button');
+                if (dropdown && !dropdown.classList.contains('hidden')) {
+                    const clickedInsideDropdown = dropdown.contains(e.target);
+                    const clickedBtn = profileBtn && (profileBtn === e.target || profileBtn.contains(e.target));
+                    if (!clickedInsideDropdown && !clickedBtn) {
+                        dropdown.classList.add('hidden');
+                    }
+                }
+            });
+        </script>
+
+        <script src="../../public/navbar.js"></script>
+    </div>
+</body>
+
+</html>

@@ -1,12 +1,556 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Document</title>
+
+    <!-- Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="./rootData.js"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./public/global.css">
+
+    <title>HealthFlow Clinic</title>
+
 </head>
-<body class="">
-    
+
+<body class="bg-[#F0F3FA]">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-[#F0F3FA]/95 backdrop-blur-md border-b border-[#E2ECF8] shadow-sm">
+        <div class="w-full mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="public/LOGO.svg" alt="HealthFlow Clinic Logo" class="h-16 w-auto">
+            </a>
+
+            <!-- Navigation Links & Icons -->
+            <div class="flex items-center gap-8">
+                <!-- Links -->
+                <nav class="flex items-center gap-6">
+                    <a href="index.html"
+                        class="subheaderText font-bold text-[#395886] hover:text-[#2C4E80] transition-colors duration-200">Beranda</a>
+                    <a href="/pages/poli/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Poli</a>
+                    <a href="/pages/pendaftaran/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Pendaftaran</a>
+                    <a href="/pages/rekam_medis/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Rekam
+                        Medis</a>
+                    <a href="/pages/lokasi/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Lokasi</a>
+                    <a href="/pages/kalkulator/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Kalkulator</a>
+                </nav>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-4 border-l border-slate-300/60 pl-6">
+                    <button class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer"
+                        onclick="window.location.assign('pages/notifikasi/index.html')" aria-label="Notifications">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                    </button>
+                    <div class="relative">
+                        <button id="profile-menu-button" onclick="toggleProfileDropdown(event)"
+                            class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer flex items-center justify-center"
+                            aria-label="Profile">
+                            <p class="mr-2">Jhon deo formalin</p>
+                            <img class="w-10 rounded-full" src="./pages/profil/assets/profile_avatar.png" alt=""
+                                srcset="">
+                        </button>
+                        <!-- Profile Dropdown -->
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-3 w-[220px] bg-white rounded-[24px] shadow-lg border border-[#E2ECF8] p-5 flex flex-col gap-4 z-50">
+                            <!-- Item 1: Profil anda -->
+                            <a href="./pages/profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="user" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Profil anda</span>
+                            </a>
+                            <!-- Item 2: Pengaturan -->
+                            <a href="./pages/profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="settings" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Pengaturan</span>
+                            </a>
+                            <!-- Item 3: Keluar -->
+                            <a href="./index_notLogin.html"
+                                class="flex items-center gap-3 hover:bg-red-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="log-out" class="w-5 h-5 text-red-600 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-red-600">keluar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="relative w-full h-auto overflow-hidden">
+        <!-- Gambar Full -->
+        <img src="root images/header images.png" alt="HealthFlow Clinic Banner" class="w-full h-auto object-cover">
+    </section>
+
+    <!-- KENAPA HARUS HEALTHFLOW CLINIC -->
+    <section class="w-[80vw] mx-auto px-6 py-16">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-[#4269A2] subheaderText font-semibold">HealthFlow Clinic</span>
+            <span class="w-[84px] h-[1px] bg-[#4269A2]"></span>
+        </div>
+        <h2 class="text-[40px] font-bold mb-8 text-[#1E3A5F]">Kenapa Harus HealthFlow Clinic?</h2>
+
+        <div class="flex flex-wrap gap-[24px] justify-center">
+            <!-- Card 1 -->
+            <div class="w-full md:w-[350px] lg:w-[368px] h-[234px] rounded-[16px] p-6 shadow-md border border-[#E2ECF8] flex flex-col justify-between"
+                style="background: linear-gradient(135deg, #D4E4F7 0%, #FFFFFF 40%, #FFFFFF 60%, #D4E4F7 100%);">
+                <div>
+                    <div class="flex justify-between items-start mb-4 gap-4">
+                        <h3 class="font-bold headerText text-[#1E3A5F] leading-[32px] max-w-[220px]">
+                            Dokter Profesional & Berpengalaman
+                        </h3>
+                        <i data-lucide="stethoscope" class="text-[#1E3A5F] stroke-[1.5]" width="48" height="48"></i>
+                    </div>
+                    <p class="subheaderText text-slate-700 leading-relaxed">
+                        Tim medis kami siap memberikan pelayanan kesehatan yang tepat, aman, dan terpercaya.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="w-full md:w-[350px] lg:w-[368px] h-[234px] rounded-[16px] p-6 shadow-md border border-[#E2ECF8] flex flex-col justify-between"
+                style="background: linear-gradient(135deg, #D4E4F7 0%, #FFFFFF 40%, #FFFFFF 60%, #D4E4F7 100%);">
+                <div>
+                    <div class="flex justify-between items-start mb-4 gap-4">
+                        <h3 class="font-bold headerText text-[#1E3A5F] leading-[32px] max-w-[220px]">
+                            Fasilitas Lengkap & Nyaman
+                        </h3>
+                        <i data-lucide="hospital" class="text-[#1E3A5F] stroke-[1.5]" width="48" height="48"></i>
+                    </div>
+                    <p class="subheaderText text-slate-700 leading-relaxed">
+                        Didukung dengan fasilitas yang memadai untuk menunjang pemeriksaan dan pengobatan yang optimal.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="w-full md:w-[350px] lg:w-[368px] h-[234px] rounded-[16px] p-6 shadow-md border border-[#E2ECF8] flex flex-col justify-between"
+                style="background: linear-gradient(135deg, #D4E4F7 0%, #FFFFFF 40%, #FFFFFF 60%, #D4E4F7 100%);">
+                <div>
+                    <div class="flex justify-between items-start mb-4 gap-4">
+                        <h3 class="font-bold headerText text-[#1E3A5F] leading-[32px] max-w-[220px]">
+                            Pemantauan Kesehatan Berlanjut
+                        </h3>
+                        <i data-lucide="heart-pulse" class="text-[#1E3A5F] stroke-[1.5]" width="48" height="48"></i>
+                    </div>
+                    <p class="subheaderText text-slate-700 leading-relaxed">
+                        Riwayat kunjungan dan hasil pemeriksaan tersimpan sehingga memudahkan tindak lanjut perawatan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FASILITAS KLINIK -->
+    <section class="max-w-6xl mx-auto px-6 py-16">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-[#4269A2] subheaderText font-semibold">HealthFlow Clinic</span>
+                    <span class="w-[84px] h-[1px] bg-[#4269A2]"></span>
+                </div>
+                <h2 class="text-[40px] font-bold text-[#1E3A5F]">Fasilitas Klinik</h2>
+            </div>
+            <!-- Navigation Buttons -->
+            <div class="flex gap-4">
+                <button onclick="scrollCarousel(-1)"
+                    class="w-12 h-12 rounded-full border border-[#4269A2]/30 text-[#4269A2] bg-white hover:bg-[#4269A2] hover:text-white transition-all duration-200 flex items-center justify-center shadow-sm cursor-pointer"
+                    aria-label="Previous">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button onclick="scrollCarousel(1)"
+                    class="w-12 h-12 rounded-full border border-[#4269A2]/30 text-[#4269A2] bg-white hover:bg-[#4269A2] hover:text-white transition-all duration-200 flex items-center justify-center shadow-sm cursor-pointer"
+                    aria-label="Next">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Carousel Container -->
+        <div id="facility-carousel"
+            class="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory scroll-smooth no-scrollbar"
+            style="scrollbar-width: none; -ms-overflow-style: none;">
+            <!-- Slide 1 -->
+            <div onclick="openModal('root images/carousel 1.png', 'Fasilitas Koridor Klinik')"
+                class="snap-start shrink-0 w-[290px] h-[190px] md:w-[350px] md:h-[230px] rounded-[16px] overflow-hidden border border-[#E2ECF8] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                <img src="root images/carousel 1.png" alt="Fasilitas Koridor Klinik" class="w-full h-full object-cover">
+            </div>
+            <!-- Slide 2 -->
+            <div onclick="openModal('root images/carousel 2.png', 'Ruang Rawat Inap')"
+                class="snap-start shrink-0 w-[290px] h-[190px] md:w-[350px] md:h-[230px] rounded-[16px] overflow-hidden border border-[#E2ECF8] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                <img src="root images/carousel 2.png" alt="Ruang Rawat Inap" class="w-full h-full object-cover">
+            </div>
+            <!-- Slide 3 -->
+            <div onclick="openModal('root images/carousel 3.png', 'Ruang Konsultasi Dokter')"
+                class="snap-start shrink-0 w-[290px] h-[190px] md:w-[350px] md:h-[230px] rounded-[16px] overflow-hidden border border-[#E2ECF8] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                <img src="root images/carousel 3.png" alt="Ruang Konsultasi Dokter" class="w-full h-full object-cover">
+            </div>
+            <!-- Slide 4 -->
+            <div onclick="openModal('root images/carousel 4.png', 'Fasilitas Penunjang Medis')"
+                class="snap-start shrink-0 w-[290px] h-[190px] md:w-[350px] md:h-[230px] rounded-[16px] overflow-hidden border border-[#E2ECF8] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                <img src="root images/carousel 4.png" alt="Fasilitas Penunjang Medis"
+                    class="w-full h-full object-cover">
+            </div>
+            <!-- Slide 5 -->
+            <div onclick="openModal('root images/carousel 5.png', 'Apotek Klinik')"
+                class="snap-start shrink-0 w-[290px] h-[190px] md:w-[350px] md:h-[230px] rounded-[16px] overflow-hidden border border-[#E2ECF8] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                <img src="root images/carousel 5.png" alt="Apotek Klinik" class="w-full h-full object-cover">
+            </div>
+            <!-- Slide 6 -->
+            <div onclick="openModal('root images/carousel 6.png', 'Ruang Tunggu Pasien')"
+                class="snap-start shrink-0 w-[290px] h-[190px] md:w-[350px] md:h-[230px] rounded-[16px] overflow-hidden border border-[#E2ECF8] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                <img src="root images/carousel 6.png" alt="Ruang Tunggu Pasien" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- PANTAU MOOD HARIAN ANDA -->
+    <section class="max-w-6xl mx-auto px-6 py-16">
+        <div
+            class="bg-white rounded-[24px] p-8 md:p-10 shadow-lg border border-[#E2ECF8]/65 flex flex-col lg:flex-row items-center gap-10">
+            <!-- Left Side Content -->
+            <div class="flex-1 flex flex-col gap-6">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-[#4269A2] subheaderText font-semibold">HealthFlow Clinic</span>
+                        <span class="w-[84px] h-[1px] bg-[#4269A2]"></span>
+                    </div>
+                    <h2 class="text-[40px] font-bold text-[#1E3A5F] leading-tight mb-4">Pantau Mood Harian Anda</h2>
+                    <p class="subheaderText text-slate-600 leading-relaxed">
+                        Kenali kondisi emosional Anda setiap hari dengan pemantauan mood yang mudah dan cepat.
+                    </p>
+                </div>
+
+                <!-- Features Flex Row -->
+                <div class="flex flex-col md:flex-row gap-6 mt-2">
+                    <!-- Feature 1 -->
+                    <div class="flex items-start gap-3 flex-1">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#E2ECF8] text-[#2F5C8A] flex items-center justify-center shrink-0 shadow-sm">
+                            <i data-lucide="smile" class="w-5 h-5"></i>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <h4 class="font-bold text-[#1E3A5F] text-[15px]">Mudah Digunakan</h4>
+                            <p class="text-[12px] text-slate-500 leading-normal">Catat mood Anda dalam hitungan menit
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="flex items-start gap-3 flex-1">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#E2ECF8] text-[#2F5C8A] flex items-center justify-center shrink-0 shadow-sm">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <h4 class="font-bold text-[#1E3A5F] text-[15px]">Pantau Perkembangan</h4>
+                            <p class="text-[12px] text-slate-500 leading-normal">Lihat tren mood Anda dari waktu ke
+                                waktu</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="flex items-start gap-3 flex-1">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#E2ECF8] text-[#2F5C8A] flex items-center justify-center shrink-0 shadow-sm">
+                            <i data-lucide="shield" class="w-5 h-5"></i>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <h4 class="font-bold text-[#1E3A5F] text-[15px]">Privasi Terjaga</h4>
+                            <p class="text-[12px] text-slate-500 leading-normal">Data Anda aman dan hanya untuk Anda</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Link -->
+                <div class="mt-4">
+                    <a href="#"
+                        class="inline-flex items-center gap-2 text-[#4269A2] font-bold text-[15px] hover:text-[#2F5C8A] transition-colors duration-200">
+                        Pelajari Lebih Lanjut
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Side Image -->
+            <div class="w-full lg:w-[45%] shrink-0">
+                <img src="root images/pantauMoodAnda.png" alt="Pantau Mood Harian"
+                    class="w-full h-auto rounded-[16px] shadow-sm border border-[#E2ECF8]">
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FOOTER -->
+    <footer class="bg-[#2C4E80] text-white pt-16 pb-8 px-6 mt-16">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row flex-wrap justify-between gap-12 mb-12">
+            <!-- Navigation Links -->
+            <div class="flex flex-col gap-4 min-w-[120px]">
+                <a href="./index.html"
+                    class="text-white hover:text-white/80 transition-colors subheaderText font-semibold">Beranda</a>
+                <a href="/pages/poli/index.html"
+                    class="text-white hover:text-white/80 transition-colors subheaderText font-semibold">Poli</a>
+                <a href="/pages/pendaftaran/index.html"
+                    class="text-white hover:text-white/80 transition-colors subheaderText font-semibold">Pendaftaran</a>
+                <a href="/pages/rekam_medis/index.html"
+                    class="text-white hover:text-white/80 transition-colors subheaderText font-semibold">Rekam
+                    Medis</a>
+                <a href="/pages/lokasi/index.html"
+                    class="text-white hover:text-white/80 transition-colors subheaderText font-semibold">Lokasi</a>
+                <a href="/pages/kalkulator/index.html"
+                    class="text-white hover:text-white/80 transition-colors subheaderText font-semibold">Kalkulator</a>
+            </div>
+
+            <!-- Bandung Branch -->
+            <div class="flex flex-col gap-4 max-w-[280px]">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-white shrink-0"></i>
+                    <h3 class="font-bold text-[16px] text-white">HealthFlow Clinic Bandung</h3>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <p class="text-white/70 text-[14px] leading-relaxed">
+                        Jl. Pangeran Rebahan Abadi No. 99, Gang Tidur Nyenyak, Kecamatan Mager Jaya
+                    </p>
+                    <div class="text-[14px] text-white/70 flex flex-col gap-1">
+                        <p>Telp (031) 8349722, 8844522</p>
+                        <p>Whatsapp 0821 9966 3442</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Surabaya Branch -->
+            <div class="flex flex-col gap-4 max-w-[280px]">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-white shrink-0"></i>
+                    <h3 class="font-bold text-[16px] text-white">HealthFlow Clinic Surabaya</h3>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <p class="text-white/70 text-[14px] leading-relaxed">
+                        Jl. Niat Diet Besok No. 13, Gang Seblak Pedas, Kecamatan Lapar Terus
+                    </p>
+                    <div class="text-[14px] text-white/70 flex flex-col gap-1">
+                        <p>Telp (031) 8732329, 8227645</p>
+                        <p>Whatsapp 0821 8787 4234</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Socials -->
+            <div class="flex gap-4 items-start">
+                <a href="#"
+                    class="w-10 h-10 rounded-full border border-white/20 hover:border-white hover:bg-white/10 flex items-center justify-center text-white transition-all duration-200"
+                    aria-label="WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-message-circle">
+                        <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                    </svg>
+                </a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full border border-white/20 hover:border-white hover:bg-white/10 flex items-center justify-center text-white transition-all duration-200"
+                    aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-facebook">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full border border-white/20 hover:border-white hover:bg-white/10 flex items-center justify-center text-white transition-all duration-200"
+                    aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-instagram">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="max-w-6xl mx-auto border-t border-white/10 pt-6">
+            <p class="footerText text-white/40 text-center">
+                Copyright &copy; 2026 - Built by Resep Lambung
+            </p>
+        </div>
+    </footer>
+
+    <!-- IMAGE MODAL POPUP -->
+    <div id="image-modal"
+        class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <!-- Close Button -->
+        <button onclick="closeModal()"
+            class="absolute top-6 right-6 w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center cursor-pointer transition-colors shadow-lg border border-white/10"
+            aria-label="Close modal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+
+        <!-- Modal Image Container -->
+        <div
+            class="relative max-w-[90vw] max-h-[85vh] md:max-w-[75vw] lg:max-w-[65vw] transform scale-95 transition-transform duration-300 ease-out flex flex-col items-center">
+            <img id="modal-img" src="" alt="Fasilitas Zoom"
+                class="w-full h-auto max-h-[75vh] object-contain rounded-2xl shadow-2xl border border-white/10">
+            <p id="modal-caption" class="text-white/80 mt-4 text-center subheaderText font-semibold"></p>
+        </div>
+    </div>
+
+    <script>
+        // Lucide Icon Creation
+        lucide.createIcons();
+
+        // Carousel variables
+        let autoScrollInterval;
+        const carousel = document.getElementById('facility-carousel');
+
+        // Function to scroll carousel via buttons
+        function scrollCarousel(direction) {
+            stopAutoScroll();
+            const card = carousel.querySelector('div');
+            if (card) {
+                const cardWidth = card.offsetWidth + 24; // width + gap
+                carousel.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+            }
+            startAutoScroll();
+        }
+
+        // Auto-Scroll functions
+        function startAutoScroll() {
+            stopAutoScroll();
+            autoScrollInterval = setInterval(() => {
+                const card = carousel.querySelector('div');
+                if (!card) return;
+                const cardWidth = card.offsetWidth + 24; // card width + gap
+                const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+
+                if (carousel.scrollLeft >= maxScrollLeft - 5) {
+                    carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                }
+            }, 3000); // scrolls every 3 seconds
+        }
+
+        function stopAutoScroll() {
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+            }
+        }
+
+        // Auto-Scroll Hover Listeners
+        if (carousel) {
+            carousel.addEventListener('mouseenter', stopAutoScroll);
+            carousel.addEventListener('mouseleave', startAutoScroll);
+            // Start Auto-Scroll on load
+            startAutoScroll();
+        }
+
+        // Image Modal functions
+        function openModal(imgSrc, altText) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalCaption = document.getElementById('modal-caption');
+
+            // Pause auto scroll while modal is open
+            stopAutoScroll();
+            if (carousel) {
+                carousel.removeEventListener('mouseleave', startAutoScroll);
+            }
+
+            modalImg.src = imgSrc;
+            modalCaption.textContent = altText;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            // Trigger animation fade in
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('div').classList.remove('scale-95');
+                modal.querySelector('div').classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.remove('scale-100');
+            modal.querySelector('div').classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+
+                // Resume auto scroll
+                if (carousel) {
+                    carousel.addEventListener('mouseleave', startAutoScroll);
+                    startAutoScroll();
+                }
+            }, 300);
+        }
+
+        // Close modal when clicking the backdrop overlay
+        document.getElementById('image-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('image-modal')) {
+                closeModal();
+            }
+        });
+
+        // Close modal when pressing the Esc key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Profile Dropdown functions
+        function toggleProfileDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('profile-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('hidden');
+            }
+        }
+
+        // Close profile dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('profile-dropdown');
+            const profileBtn = document.getElementById('profile-menu-button');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                const clickedInsideDropdown = dropdown.contains(e.target);
+                const clickedBtn = profileBtn && (profileBtn === e.target || profileBtn.contains(e.target));
+                if (!clickedInsideDropdown && !clickedBtn) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        });
+    </script>
+
+    <script src="./public/navbar.js"></script>
 </body>
+
 </html>

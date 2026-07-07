@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../../../public/global.css">
+    <title>Pulihkan Akun Anda - HealthFlow Clinic</title>
+</head>
+
+<body class="bg-[#F0F3FA] min-h-screen flex flex-col items-center justify-start py-12 px-6 font-sans">
+
+    <!-- Container Utama -->
+    <div class="w-full max-w-3xl flex flex-col gap-12 mt-4">
+        
+        <!-- Baris Navigasi Back (Kembali) -->
+        <div class="flex items-center">
+            <button onclick="goBack()" class="text-[#3D6FA8] hover:text-[#204060] transition-colors focus:outline-none cursor-pointer flex items-center justify-center p-2 rounded-full hover:bg-white/50" aria-label="Kembali">
+                <i data-lucide="chevron-left" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Section Form Pulihkan Akun -->
+        <div class="flex flex-col gap-8 w-full">
+            
+            <!-- Judul Halaman -->
+            <div class="flex flex-col gap-4">
+                <h1 class="headerText text-[36px] font-bold text-gray-900 leading-tight">Pulihkan akun Anda</h1>
+                
+                <!-- Underlined Active Subheader -->
+                <div class="flex items-start border-b-2 border-[#2F5C8A] pb-2 self-start">
+                    <span class="subheaderText font-semibold text-gray-800">
+                        Masukkan nomor telepon atau email Anda
+                    </span>
+                </div>
+            </div>
+
+            <!-- Form input dan info -->
+            <form onsubmit="handleNext(event)" class="flex flex-col gap-8 w-full">
+                
+                <!-- Input field -->
+                <div class="flex flex-col gap-3">
+                    <input type="text" id="identifier" required placeholder="Masukkan No. Telepon atau Email"
+                        class="w-full bg-white border-2 border-[#D2D2D2] rounded-[10px] h-[48px] px-4 subheaderText focus:border-[#2F5C8A] focus:outline-none transition-colors shadow-sm">
+                    
+                    <!-- Helper Text dengan Icon Shield -->
+                    <div class="flex items-start gap-2 text-gray-500 mt-1">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-[#2F5C8A] flex-shrink-0 mt-0.5"></i>
+                        <span class="footerText text-gray-500 leading-normal">
+                            Kami akan menjaga data Anda tetap aman dan tidak akan membagikannya kepada pihak lain.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Tombol Selanjutnya -->
+                <button type="submit"
+                    class="w-full h-12 bg-[#2F5C8A] hover:bg-[#204060] text-white rounded-full font-bold text-lg shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer flex items-center justify-center">
+                    Selanjutnya
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Inisialisasi Lucide Icons
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+        });
+
+        // Ambil query parameter 'from' untuk tombol back
+        function getBackUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('from') || '../index.html';
+        }
+
+        // Fungsi kembali ke halaman sebelumnya
+        function goBack() {
+            window.location.href = getBackUrl();
+        }
+
+        // Fungsi lanjut ke halaman buat kata sandi baru
+        function handleNext(event) {
+            event.preventDefault();
+            const identifierVal = document.getElementById('identifier').value.trim();
+            if (!identifierVal) {
+                alert("Mohon masukkan nomor telepon atau email Anda.");
+                return;
+            }
+            
+            // Simpan identifier di sessionStorage sementara untuk password reset
+            sessionStorage.setItem('reset_identifier', identifierVal);
+
+            // Arahkan ke halaman Buat Kata Sandi Baru dengan back-route parameter 'from' menunjuk ke halaman ini
+            // Kita encode URL halaman ini agar bisa dibaca dengan baik di halaman berikutnya
+            const currentFrom = encodeURIComponent(getBackUrl());
+            const nextBackUrl = `../PulihkanAkunAnda/index.html?from=${currentFrom}`;
+            
+            window.location.href = `../BuatKatasandiBaru/index.html?from=${encodeURIComponent(nextBackUrl)}`;
+        }
+    </script>
+
+</body>
+
+</html>

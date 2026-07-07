@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../rootData.js"></script>
+
+    <!-- Custom & Global Stylesheets -->
+    <link rel="stylesheet" href="../../public/global.css">
+    <link rel="stylesheet" href="./notifikasi.css">
+
+    <title>Notifikasi - HealthFlow Clinic</title>
+</head>
+
+<body class="bg-[#F0F3FA] min-h-screen flex flex-col font-sans">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-[#F0F3FA]/95 backdrop-blur-md border-b border-[#E2ECF8] shadow-sm w-full">
+        <div class="w-full mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="../../index.html" class="flex items-center gap-2">
+                <img src="../../public/LOGO.svg" alt="HealthFlow Clinic Logo" class="h-16 w-auto">
+            </a>
+
+            <!-- Navigation Links & Icons -->
+            <div class="flex items-center gap-8">
+                <!-- Links -->
+                <nav class="flex items-center gap-6">
+                    <a href="../../index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Beranda</a>
+                    <a href="../poli/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Poli</a>
+                    <a href="../pendaftaran/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Pendaftaran</a>
+                    <a href="../rekam_medis/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Rekam
+                        Medis</a>
+                    <a href="../lokasi/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Lokasi</a>
+                    <a href="../kalkulator/index.html"
+                        class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Kalkulator</a>
+                </nav>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-4 border-l border-slate-300/60 pl-6">
+                    <button class="text-[#395886] hover:text-[#395886] transition-colors duration-200 cursor-pointer"
+                        onclick="window.location.assign('../notifikasi/index.html')" aria-label="Notifications">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                    </button>
+                    <div class="relative">
+                        <button id="profile-menu-button" onclick="toggleProfileDropdown(event)"
+                            class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer flex items-center justify-center"
+                            aria-label="Profile">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </button>
+                        <!-- Profile Dropdown -->
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-3 w-[220px] bg-white rounded-[24px] shadow-lg border border-[#E2ECF8] p-5 flex flex-col gap-4 z-50">
+                            <!-- Item 1: Profil anda -->
+                            <a href="../profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="user" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Profil anda</span>
+                            </a>
+                            <!-- Item 2: Pengaturan -->
+                            <a href="../profil/index.html"
+                                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="settings" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-slate-900">Pengaturan</span>
+                            </a>
+                            <!-- Item 3: Keluar -->
+                            <a href="#"
+                                class="flex items-center gap-3 hover:bg-red-50 transition-colors duration-150 rounded-lg py-1">
+                                <i data-lucide="log-out" class="w-5 h-5 text-red-600 stroke-[2]"></i>
+                                <span class="subheaderText font-bold text-red-600">keluar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN NOTIFICATION CARD SECTION -->
+    <main
+        class="flex-1 w-full max-w-[1280px] mx-auto px-4 md:px-8 py-8 flex flex-col items-center justify-start min-h-0">
+
+        <div class="notifikasi-container w-full border border-[#E2ECF8]">
+
+            <!-- Card Header -->
+            <div class="flex items-center gap-4 px-8 py-6">
+                <!-- Notification Bell Icon (Styled to match the screenshot) -->
+                <i data-lucide="bell" class="w-8 h-8 text-[#1C1616]"></i>
+                <h1 class="headerText font-bold text-[#1C1616] leading-none">Notifikasi</h1>
+            </div>
+
+            <!-- Horizontal Divider -->
+            <div class="w-full h-[1px] bg-[#E2ECF8]"></div>
+
+            <!-- Content Area (Split Pane) -->
+            <div class="flex flex-1 w-full min-h-0">
+
+                <!-- PANE KIRI: Daftar Notifikasi -->
+                <div id="list-pane" class="w-full md:w-[45%] flex flex-col p-6 gap-6 min-h-0">
+
+                    <!-- Filter Tabs (Semua, Belum dibaca, Sudah dibaca) -->
+                    <div class="flex items-center gap-4">
+                        <button id="filter-all"
+                            class="px-6 py-2 bg-[#395886] text-white rounded-[10px] font-semibold text-sm shadow-sm transition cursor-pointer">
+                            Semua
+                        </button>
+                        <button id="filter-unread"
+                            class="px-6 py-2 border border-[#395886] text-[#395886] rounded-[10px] font-semibold text-sm hover:bg-[#395886]/5 transition cursor-pointer">
+                            Belum dibaca
+                        </button>
+                        <button id="filter-read"
+                            class="px-6 py-2 border border-[#395886] text-[#395886] rounded-[10px] font-semibold text-sm hover:bg-[#395886]/5 transition cursor-pointer">
+                            Sudah dibaca
+                        </button>
+                    </div>
+
+                    <!-- Scrollable Notification List -->
+                    <div id="notification-list"
+                        class="flex-1 overflow-y-auto scroll-container max-h-[520px] flex flex-col gap-1 pr-1">
+                        <!-- Dynamic content injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Vertical Divider (Desktop Only) -->
+                <div class="hidden md:block w-[1px] bg-[#E2ECF8]"></div>
+
+                <!-- PANE KANAN: Detail Notifikasi -->
+                <div id="detail-pane"
+                    class="hidden md:flex w-full md:w-[55%] flex-col p-6 gap-6 min-h-0 bg-white md:bg-transparent rounded-r-[24px]">
+
+                    <!-- Action Header Row -->
+                    <div class="flex justify-between items-center w-full">
+                        <!-- Kembali Link (Functional on mobile, styles match mockup) -->
+                        <button id="btn-back"
+                            class="flex items-center gap-1.5 text-[#395886] font-semibold text-sm hover:text-[#2C4E80] transition cursor-pointer">
+                            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            <span class="underline underline-offset-2">Kembali</span>
+                        </button>
+
+                        <!-- Actions (Mark read & Delete) -->
+                        <div class="flex items-center gap-4">
+                            <button id="btn-mark-read"
+                                class="px-4 py-2 border border-[#395886] text-[#395886] rounded-[10px] text-xs font-bold hover:bg-[#395886]/5 transition cursor-pointer">
+                                Tandai sudah dibaca
+                            </button>
+                            <button id="btn-delete"
+                                class="w-10 h-10 border border-red-500 rounded-[10px] flex items-center justify-center text-red-500 hover:bg-red-50 transition cursor-pointer"
+                                aria-label="Hapus notifikasi">
+                                <i data-lucide="trash-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Content View (Dynamic) -->
+                    <div id="details-content" class="flex flex-col gap-6 pr-2">
+
+                        <!-- Notification Detail Title -->
+                        <div class="flex items-center gap-4">
+                            <!-- Icon Container -->
+                            <div id="detail-icon"
+                                class="w-12 h-12 rounded-[12px] bg-[#E2ECF8] text-[#395886] flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="calendar" class="w-6 h-6"></i>
+                            </div>
+
+                            <!-- Title & Time text -->
+                            <div class="flex flex-col">
+                                <h2 id="detail-title" class="subheaderText font-bold text-[#1C1616]">Pengingat janji
+                                    temu</h2>
+                                <span id="detail-time" class="text-xs text-slate-400 mt-1">2 menit yang lalu</span>
+                            </div>
+                        </div>
+
+                        <!-- Separator line -->
+                        <div class="w-full h-[1px] bg-[#E2ECF8]"></div>
+
+                        <!-- Notification Body Text (multiples of 4 and 8 for spacing) -->
+                        <div class="flex flex-col gap-4 text-[13px] text-[#1C1616] leading-relaxed">
+                            <p id="detail-greeting" class="font-medium text-slate-800"></p>
+                            <p id="detail-intro" class="text-slate-700"></p>
+
+                            <!-- Appointment Info Card (Flex row) -->
+                            <div id="detail-appt-card"
+                                class="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-[#E2ECF8]/70 p-4 rounded-[14px] w-full gap-4 border border-[#E2ECF8]/50">
+                                <!-- Tanggal Column -->
+                                <div class="flex flex-col gap-1.5 flex-1">
+                                    <div class="flex items-center gap-2 text-slate-800">
+                                        <i data-lucide="calendar" class="w-4 h-4 text-slate-700"></i>
+                                        <span class="font-bold text-[13px]">Tanggal</span>
+                                    </div>
+                                    <span id="appt-date" class="text-slate-700 text-xs pl-6"></span>
+                                </div>
+                                <!-- Waktu Column -->
+                                <div class="flex flex-col gap-1.5 flex-1">
+                                    <div class="flex items-center gap-2 text-slate-800">
+                                        <i data-lucide="clock" class="w-4 h-4 text-slate-700"></i>
+                                        <span class="font-bold text-[13px]">Waktu</span>
+                                    </div>
+                                    <span id="appt-time" class="text-slate-700 text-xs pl-6"></span>
+                                </div>
+                                <!-- Dokter Column -->
+                                <div class="flex flex-col gap-1.5 flex-1">
+                                    <div class="flex items-center gap-2 text-slate-800">
+                                        <i data-lucide="user-round" class="w-4 h-4 text-slate-700"></i>
+                                        <span class="font-bold text-[13px]">Dokter</span>
+                                    </div>
+                                    <span id="appt-doctor" class="text-slate-700 text-xs pl-6"></span>
+                                </div>
+                            </div>
+
+                            <!-- Alternate Info/Security text block -->
+                            <p id="detail-body" class="text-slate-700 hidden"></p>
+
+                            <p id="detail-footer" class="text-slate-700 mt-2"></p>
+                            <p id="detail-thankyou" class="text-slate-700"></p>
+
+                            <!-- Signature (Staf HealthFlow) -->
+                            <div class="mt-4 flex flex-col gap-1">
+                                <p id="detail-signature" class="text-slate-800 font-semibold"></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Placeholder View (displayed when list is empty) -->
+                    <div id="details-placeholder"
+                        class="hidden flex-col items-center justify-center gap-4 flex-1 h-full text-slate-400 py-12">
+                        <i data-lucide="mail-open" class="w-16 h-16 text-slate-300"></i>
+                        <p class="subheaderText font-semibold">Pilih notifikasi untuk melihat detail</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Profile Dropdown Handler Script -->
+    <script>
+        // Profile Dropdown functions
+        function toggleProfileDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('profile-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('hidden');
+            }
+        }
+
+        // Close profile dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('profile-dropdown');
+            const profileBtn = document.getElementById('profile-menu-button');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                const clickedInsideDropdown = dropdown.contains(e.target);
+                const clickedBtn = profileBtn && (profileBtn === e.target || profileBtn.contains(e.target));
+                if (!clickedInsideDropdown && !clickedBtn) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        });
+
+        // Initialize Lucide icons on page load
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        } else {
+            window.addEventListener('load', () => {
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            });
+        }
+    </script>
+
+    <!-- Page Logic Script -->
+    <script src="./notifikasi.js"></script>
+
+    <script src="../../public/navbar.js"></script>
+</body>
+
+</html>

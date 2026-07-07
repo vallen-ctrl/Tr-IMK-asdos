@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../../rootData.js"></script>
+    <link rel="stylesheet" href="../../../public/global.css">
+    <title>Buat Kata Sandi Baru - HealthFlow Clinic</title>
+</head>
+
+<body class="bg-[#F0F3FA] min-h-screen flex flex-col items-center justify-start py-12 px-6 font-sans relative overflow-x-hidden">
+
+    <!-- Container Utama -->
+    <div id="main-container" class="w-full max-w-3xl flex flex-col gap-12 mt-4 transition-all duration-300">
+        
+        <!-- Baris Navigasi Back (Kembali) -->
+        <div class="flex items-center">
+            <button onclick="goBack()" class="text-[#3D6FA8] hover:text-[#204060] transition-colors focus:outline-none cursor-pointer flex items-center justify-center p-2 rounded-full hover:bg-white/50" aria-label="Kembali">
+                <i data-lucide="chevron-left" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Section Form Buat Kata Sandi Baru -->
+        <div class="flex flex-col gap-8 w-full">
+            
+            <!-- Judul Halaman -->
+            <div class="flex flex-col gap-4">
+                <h1 class="headerText text-[36px] font-bold text-gray-900 leading-tight">Buat Kata Sandi Baru</h1>
+            </div>
+
+            <!-- Form -->
+            <form onsubmit="handleSubmit(event)" class="flex flex-col gap-8 w-full">
+                
+                <!-- Group Kata Sandi Baru -->
+                <div class="flex flex-col gap-2">
+                    <label for="new_password" class="subheaderText font-semibold text-gray-800">
+                        Buat kata sandi baru Anda
+                    </label>
+                    <div class="relative w-full">
+                        <input type="password" id="new_password" required placeholder="Masukkan Kata Sandi Baru"
+                            class="w-full bg-white border-2 border-[#D2D2D2] rounded-[10px] h-[48px] pl-4 pr-12 subheaderText focus:border-[#2F5C8A] focus:outline-none transition-colors shadow-sm">
+                        <button type="button" onclick="togglePasswordVisibility('new_password', this)"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none cursor-pointer flex items-center justify-center">
+                            <i data-lucide="eye" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Group Konfirmasi Kata Sandi -->
+                <div class="flex flex-col gap-2">
+                    <label for="confirm_password" class="subheaderText font-semibold text-gray-800">
+                        Konfirmasi kata sandi baru Anda
+                    </label>
+                    <div class="relative w-full">
+                        <input type="password" id="confirm_password" required placeholder="Masukkan Konfirmasi Kata Sandi"
+                            class="w-full bg-white border-2 border-[#D2D2D2] rounded-[10px] h-[48px] pl-4 pr-12 subheaderText focus:border-[#2F5C8A] focus:outline-none transition-colors shadow-sm">
+                        <button type="button" onclick="togglePasswordVisibility('confirm_password', this)"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none cursor-pointer flex items-center justify-center">
+                            <i data-lucide="eye" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    <!-- Error Message -->
+                    <span id="password-error" class="text-red-500 font-medium footerText hidden mt-1">
+                        Kata sandi konfirmasi tidak cocok dengan kata sandi baru Anda.
+                    </span>
+                </div>
+
+                <!-- Tombol Kirim -->
+                <button type="submit"
+                    class="w-full h-12 bg-[#2F5C8A] hover:bg-[#204060] text-white rounded-full font-bold text-lg shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer flex items-center justify-center">
+                    Kirim
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================================
+         MODAL SUCCESS DIALOG (Glassmorphic)
+         ========================================== -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300">
+        <!-- Backdrop blur background -->
+        <div class="absolute inset-0 backdrop-blur-sm"></div>
+        
+        <!-- Card Container -->
+        <div class="relative w-full max-w-md bg-white/90 backdrop-blur-md border border-white/40 p-8 rounded-2xl shadow-2xl flex flex-col items-center text-center gap-6 transform scale-95 transition-transform duration-300">
+            
+            <!-- Success Icon -->
+            <div class="w-16 h-16 bg-[#2F5C8A]/10 text-[#2F5C8A] rounded-full flex items-center justify-center shadow-inner">
+                <i data-lucide="check-circle" class="w-10 h-10"></i>
+            </div>
+            
+            <!-- Modal Title & Desc -->
+            <div class="flex flex-col gap-2">
+                <h3 class="headerText font-bold text-gray-900">Kata Sandi Diperbarui</h3>
+                <p class="subheaderText text-gray-600">
+                    Kata sandi Anda telah berhasil diubah. Silakan masuk menggunakan kata sandi baru Anda.
+                </p>
+            </div>
+            
+            <!-- Button -->
+            <button onclick="redirectToLogin()" class="w-full h-11 bg-[#2F5C8A] hover:bg-[#204060] text-white rounded-full font-bold subheaderText transition-all duration-150 cursor-pointer">
+                Masuk Sekarang
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Inisialisasi Lucide
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+
+            // Real-time matching check
+            const confirmInput = document.getElementById('confirm_password');
+            confirmInput.addEventListener('input', () => {
+                const pass = document.getElementById('new_password').value;
+                const confirmPass = confirmInput.value;
+                const errorSpan = document.getElementById('password-error');
+
+                if (pass === confirmPass || confirmPass === '') {
+                    confirmInput.classList.remove('border-red-500');
+                    confirmInput.classList.add('focus:border-[#2F5C8A]');
+                    errorSpan.classList.add('hidden');
+                }
+            });
+        });
+
+        // Ambil query parameter 'from' untuk tombol back
+        function getBackUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('from') || '../index.html';
+        }
+
+        // Fungsi kembali ke halaman sebelumnya
+        function goBack() {
+            window.location.href = getBackUrl();
+        }
+
+        // Toggle visibilitas kata sandi
+        function togglePasswordVisibility(inputId, button) {
+            const input = document.getElementById(inputId);
+            const icon = button.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.setAttribute('data-lucide', 'eye-off');
+            } else {
+                input.type = 'password';
+                icon.setAttribute('data-lucide', 'eye');
+            }
+            
+            lucide.createIcons();
+        }
+
+        // Submit form
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const pass = document.getElementById('new_password').value;
+            const confirmPass = document.getElementById('confirm_password').value;
+            const confirmInput = document.getElementById('confirm_password');
+            const errorSpan = document.getElementById('password-error');
+
+            // Validasi kecocokan password
+            if (pass !== confirmPass) {
+                confirmInput.classList.add('border-red-500');
+                confirmInput.classList.remove('focus:border-[#2F5C8A]');
+                errorSpan.classList.remove('hidden');
+                confirmInput.focus();
+                return;
+            }
+
+            // Simpan password baru ke RootData
+            if (window.RootData) {
+                RootData.saveUser({ password: pass });
+                console.log("Password baru disimpan di RootData:", pass);
+            } else {
+                console.warn("RootData tidak terdefinisi, menyimpan ke localStorage langsung.");
+                // Fallback jika RootData bermasalah
+                const user = JSON.parse(localStorage.getItem('hf_currentUser') || '{}');
+                user.password = pass;
+                localStorage.setItem('hf_currentUser', JSON.stringify(user));
+            }
+
+            // Tampilkan Modal Success
+            showSuccessModal();
+        }
+
+        // Menampilkan modal sukses dengan animasi
+        function showSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            const card = modal.querySelector('.relative');
+            
+            // Blur main container
+            document.getElementById('main-container').classList.add('blur-sm');
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            card.classList.add('scale-100');
+        }
+
+        // Redirect ke login page
+        function redirectToLogin() {
+            // Ambil dari param 'from' atau default ke '../index.html'
+            // Kita extract base path (biasanya '../index.html' atau sejenisnya)
+            // Agar bisa kembali ke login
+            window.location.href = '../index.html';
+        }
+    </script>
+
+</body>
+
+</html>

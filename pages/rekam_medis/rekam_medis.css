@@ -1,0 +1,267 @@
+/* ===== Rekam Medis Page Styles ===== */
+
+/* --- Profile Image --- */
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #e5e7eb;
+}
+
+/* --- Health Badges --- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge-danger {
+    background-color: #ef4444;
+    color: #fff;
+}
+
+.badge-success {
+    background-color: #22c55e;
+    color: #fff;
+}
+
+.badge-outline {
+    background-color: transparent;
+    border: 1.5px solid #9ca3af;
+    color: #374151;
+}
+
+/* --- Ticket Cards --- */
+.ticket-scroll-container {
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.ticket-scroll-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.ticket-scroll-container::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+.ticket-scroll-container::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 10px;
+}
+
+.ticket-card {
+    border: 1.5px solid #d1d5db;
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: box-shadow 0.2s ease;
+}
+
+.ticket-card:hover {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.ticket-doctor-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e5e7eb;
+    flex-shrink: 0;
+}
+
+.ticket-status {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.ticket-status-active {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.ticket-status-waiting {
+    background-color: #fef9c3;
+    color: #ca8a04;
+}
+
+.ticket-qr {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.ticket-warning-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    color: #f59e0b;
+}
+
+/* --- Visit History Table --- */
+.visit-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.visit-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 900px;
+}
+
+.visit-table thead th {
+    text-align: left;
+    padding: 12px 14px;
+    font-weight: 700;
+    color: #111827;
+    border-bottom: 2px solid #111827;
+    white-space: nowrap;
+}
+
+.visit-table tbody tr.visit-row {
+    cursor: pointer;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.15s ease;
+}
+
+.visit-table tbody tr.visit-row:hover {
+    background-color: #f8fafc;
+}
+
+.visit-table tbody tr.visit-row.expanded {
+    background-color: #f1f5f9;
+    border-bottom: none;
+}
+
+.visit-table tbody td {
+    padding: 12px 14px;
+    color: #374151;
+    vertical-align: top;
+}
+
+.visit-table .chevron-cell {
+    text-align: center;
+    width: 40px;
+}
+
+.visit-table .chevron-icon {
+    transition: transform 0.25s ease;
+    display: inline-block;
+    color: #3b82f6;
+}
+
+.visit-table tr.expanded .chevron-icon {
+    transform: rotate(180deg);
+}
+
+/* --- Expanded Detail Row --- */
+.detail-row {
+    display: none;
+}
+
+.detail-row.show {
+    display: table-row;
+}
+
+.detail-content {
+    padding: 20px 24px 24px 24px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+}
+
+.detail-content h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 6px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 8px 16px;
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+
+.detail-grid dt {
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+}
+
+.detail-grid dd {
+    color: #1f2937;
+    margin: 0;
+}
+
+.detail-grid dd ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.detail-grid dd ul li {
+    margin-bottom: 2px;
+}
+
+/* --- Blood Type Badge --- */
+.blood-badge {
+    font-weight: 700;
+    color: #ef4444;
+    font-size: 18px;
+}
+
+/* --- Gender Icon --- */
+.gender-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* --- Section Divider --- */
+.section-divider {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 8px 0;
+}
+
+@media (max-width: 768px) {
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .detail-grid {
+        grid-template-columns: 120px 1fr;
+        font-size: 12.5px;
+    }
+
+    .ticket-card {
+        flex-wrap: wrap;
+    }
+
+    .visit-table {
+        font-size: 12.5px;
+    }
+}
