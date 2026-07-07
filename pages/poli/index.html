@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -105,7 +106,74 @@
     }
   </style>
 </head>
+
 <body class="bg-bg text-gray-800 font-sans antialiased">
+  <header class="sticky top-0 z-50 bg-[#F0F3FA]">
+    <div class="w-full mx-auto px-6 h-20 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="../../public/LOGO.svg" alt="HealthFlow Clinic Logo" class="h-16 w-auto">
+      </a>
+
+      <!-- Navigation Links & Icons -->
+      <div class="flex items-center gap-8">
+        <!-- Links -->
+        <nav class="flex items-center gap-6">
+          <a href="index.html"
+            class="subheaderText font-bold text-[#395886] hover:text-[#2C4E80] transition-colors duration-200">Beranda</a>
+          <a href="/pages/poli/index.html"
+            class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Poli</a>
+          <a href="/pages/pendaftaran/index.html"
+            class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Pendaftaran</a>
+          <a href="/pages/rekam_medis/index.html"
+            class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Rekam
+            Medis</a>
+          <a href="/pages/lokasi/index.html"
+            class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Lokasi</a>
+          <a href="/pages/kalkulator/index.html"
+            class="subheaderText font-normal text-[#1C1616] hover:text-[#395886] transition-colors duration-200">Kalkulator</a>
+        </nav>
+
+        <!-- Icons -->
+        <div class="flex items-center gap-4 border-l border-slate-300/60 pl-6">
+          <button class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer"
+            onclick="window.location.assign('pages/notifikasi/index.html')" aria-label="Notifications">
+            <i data-lucide="bell" class="w-5 h-5"></i>
+          </button>
+          <div class="relative">
+            <button id="profile-menu-button" onclick="toggleProfileDropdown(event)"
+              class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer flex items-center justify-center"
+              aria-label="Profile">
+              <p class="mr-2">Jhon deo formalin</p>
+              <img class="w-10 rounded-full" src="../profil/assets/profile_avatar.png" alt="" srcset="">
+            </button>
+            <!-- Profile Dropdown -->
+            <div id="profile-dropdown"
+              class="hidden absolute right-0 mt-3 w-[220px] bg-white rounded-[24px] shadow-lg border border-[#E2ECF8] p-5 flex flex-col gap-4 z-50">
+              <!-- Item 1: Profil anda -->
+              <a href="./pages/profil/index.html"
+                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                <i data-lucide="user" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                <span class="subheaderText font-bold text-slate-900">Profil anda</span>
+              </a>
+              <!-- Item 2: Pengaturan -->
+              <a href="./pages/profil/index.html"
+                class="flex items-center gap-3 hover:bg-slate-50 transition-colors duration-150 rounded-lg py-1">
+                <i data-lucide="settings" class="w-5 h-5 text-slate-900 stroke-[2]"></i>
+                <span class="subheaderText font-bold text-slate-900">Pengaturan</span>
+              </a>
+              <!-- Item 3: Keluar -->
+              <a href="./index_notLogin.html"
+                class="flex items-center gap-3 hover:bg-red-50 transition-colors duration-150 rounded-lg py-1">
+                <i data-lucide="log-out" class="w-5 h-5 text-red-600 stroke-[2]"></i>
+                <span class="subheaderText font-bold text-red-600">keluar</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <main class="max-w-[1400px] mx-auto px-10 py-7 flex flex-col gap-6">
 
@@ -136,19 +204,21 @@
           <div class="flex flex-col gap-2">
             <label for="tanggalLahir" class="text-normal font-medium">Tanggal Lahir</label>
             <input type="text" id="tanggalLahir" name="tanggalLahir" class="form-input"
-                   placeholder="Masukkan Tanggal Lahir"
-                   onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" />
+              placeholder="Masukkan Tanggal Lahir" onfocus="(this.type='date')"
+              onblur="if(!this.value)this.type='text'" />
           </div>
           <div class="flex flex-col gap-2">
             <label for="cabang" class="text-normal font-medium">Pilih Cabang</label>
             <div class="relative">
-              <select id="cabang" name="cabang" class="form-input appearance-none pr-9 cursor-pointer border-light-blue focus:border-deep-blue text-gray-900">
+              <select id="cabang" name="cabang"
+                class="form-input appearance-none pr-9 cursor-pointer border-light-blue focus:border-deep-blue text-gray-900">
                 <option value="" disabled selected hidden>Pilih Cabang</option>
                 <option value="salatiga">Salatiga</option>
                 <option value="solo">Solo</option>
                 <option value="semarang">Semarang</option>
               </select>
-              <i data-lucide="arrow-down" class="w-4 h-4 text-primary absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+              <i data-lucide="arrow-down"
+                class="w-4 h-4 text-primary absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
             </div>
           </div>
           <div class="flex flex-col gap-2">
@@ -180,11 +250,14 @@
   <!-- ========== MODAL DETAIL DOKTER ========== -->
   <div class="fixed inset-0 bg-black/45 items-center justify-center p-5 z-[100] hidden" id="detailModalOverlay">
     <div class="bg-white rounded-2xl p-8 w-full max-w-[520px] max-h-[90vh] overflow-y-auto shadow-2xl">
-      <button type="button" class="flex items-center gap-1.5 text-primary font-semibold text-sm mb-4 cursor-pointer" id="detailBackBtn">
+      <button type="button" class="flex items-center gap-1.5 text-primary font-semibold text-sm mb-4 cursor-pointer"
+        id="detailBackBtn">
         <i data-lucide="chevron-left" class="w-4 h-4"></i> Kembali
       </button>
       <div class="flex gap-5 mb-5">
-        <img id="detailPhoto" class="w-[110px] h-[110px] rounded-xl object-cover bg-gradient-to-br from-light-blue to-deep-blue flex-shrink-0" src="" alt="Foto dokter" />
+        <img id="detailPhoto"
+          class="w-[110px] h-[110px] rounded-xl object-cover bg-gradient-to-br from-light-blue to-deep-blue flex-shrink-0"
+          src="" alt="Foto dokter" />
         <div class="min-w-0">
           <h3 class="text-xl font-bold text-gray-900" id="detailName"></h3>
           <p class="text-primary font-semibold mb-3" id="detailSpecialization"></p>
@@ -214,11 +287,14 @@
   <!-- ========== MODAL JADWAL ========== -->
   <div class="fixed inset-0 bg-black/45 items-center justify-center p-5 z-[100] hidden" id="scheduleModalOverlay">
     <div class="bg-white rounded-2xl p-8 w-full max-w-[560px] max-h-[90vh] overflow-y-auto shadow-2xl">
-      <button type="button" class="flex items-center gap-1.5 text-primary font-semibold text-sm mb-4 cursor-pointer" id="scheduleBackBtn">
+      <button type="button" class="flex items-center gap-1.5 text-primary font-semibold text-sm mb-4 cursor-pointer"
+        id="scheduleBackBtn">
         <i data-lucide="chevron-left" class="w-4 h-4"></i> Kembali
       </button>
       <div class="flex items-center gap-3 mb-5">
-        <img id="scheduleDoctorPhoto" class="w-[46px] h-[46px] rounded-lg object-cover bg-gradient-to-br from-light-blue to-deep-blue flex-shrink-0" src="" alt="Foto dokter" />
+        <img id="scheduleDoctorPhoto"
+          class="w-[46px] h-[46px] rounded-lg object-cover bg-gradient-to-br from-light-blue to-deep-blue flex-shrink-0"
+          src="" alt="Foto dokter" />
         <div>
           <p class="font-bold text-gray-900" id="scheduleDoctorName"></p>
           <p class="text-gray-500 text-sm" id="scheduleDoctorSpec"></p>
@@ -252,7 +328,8 @@
       <h3 class="text-xl font-bold text-gray-900 mb-1">Janji Temu Berhasil Dibuat</h3>
       <p class="text-gray-500 text-sm mb-5" id="qrSummary"></p>
       <div class="flex justify-center mb-2">
-        <img id="qrImage" class="rounded-xl border border-gray-200 p-2 w-[240px] h-[240px] object-contain" alt="QR Kode Janji Temu" src="" />
+        <img id="qrImage" class="rounded-xl border border-gray-200 p-2 w-[240px] h-[240px] object-contain"
+          alt="QR Kode Janji Temu" src="" />
       </div>
       <p class="text-gray-400 text-xs mb-6">Tunjukkan QR ini saat scan kedatangan di klinik</p>
       <div class="grid grid-cols-2 gap-3">
@@ -270,9 +347,10 @@
   <script src="qrcode.js"></script>
   <script src="poli.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       if (window.lucide) lucide.createIcons();
     });
   </script>
 </body>
+
 </html>
