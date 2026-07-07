@@ -1,7 +1,5 @@
 // poli.js
-const DEFAULT_AVATAR = "images/default-avatar.svg";
-const QR_IMAGE_PATH = "images/qr-code.png";
-const QR_IMAGE_FALLBACK = "images/qr-placeholder.svg";
+const DEFAULT_AVATAR = "images/default-avatar.jpg";
 
 const doctors = [
   {
@@ -29,11 +27,11 @@ const doctors = [
   {
     id: "kezia",
     name: "dr. Kezia",
-    fullName: "dr. Kezia Stefanny Elfina Praseyo, S.Ked.",
+    fullName: "dr. Kezia Stefanny Elfina Prasetyo, S.Ked.",
     title: "Umum",
     poli: "umum",
     specialization: "Dokter Umum",
-    about: "dr. Kezia Stefanny Elfina Praseyo menangani pemeriksaan kesehatan umum dan lansia dengan komunikasi yang jelas dan mudah dipahami oleh pasien dari segala usia.",
+    about: "dr. Kezia Stefanny Elfina Prasetyo menangani pemeriksaan kesehatan umum dan lansia dengan komunikasi yang jelas dan mudah dipahami oleh pasien dari segala usia.",
     schedule: { weekday: "08.00 - 15.00", saturday: "08.00 - 12.00", sunday: "Tutup" },
     photo: "images/dr-kezia.jpg"
   },
@@ -156,11 +154,11 @@ function renderDoctors() {
 
   filtered.forEach(doc => {
     const card = document.createElement("article");
-    card.className = "doctor-card"; // menggunakan class dari Tailwind config
+    card.className = "doctor-card";
     card.innerHTML = `
       <div class="photo-wrapper">
         <img src="${doc.photo}" alt="Foto ${doc.name}"
-             onerror="this.onerror=null;this.src='${DEFAULT_AVATAR}';this.className='w-3/5 h-3/5 object-contain';this.parentElement.className='aspect-square w-full bg-bg-alt flex items-center justify-center overflow-hidden';">
+             onerror="this.onerror=null;this.src='${DEFAULT_AVATAR}';this.className='w-full h-full object-cover';">
       </div>
       <div class="info">
         <p class="name">${doc.name}</p>
@@ -323,7 +321,7 @@ function updateContinueButtonState() {
   continueScheduleBtn.disabled = !(selectedDate && selectedTime);
 }
 
-// ========== QR & KONFIRMASI ==========
+// ========== GENERATE QR ==========
 function generateBookingCode() {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let code = "";
@@ -333,6 +331,7 @@ function generateBookingCode() {
   return code;
 }
 
+// ========== QR & KONFIRMASI ==========
 continueScheduleBtn.addEventListener("click", () => {
   if (!selectedDate || !selectedTime || !activeDoctor) return;
 
@@ -343,12 +342,15 @@ continueScheduleBtn.addEventListener("click", () => {
   lastBookingCode = generateBookingCode();
   qrSummary.textContent = `${activeDoctor.fullName} · ${formattedDate}, pukul ${selectedTime}`;
 
-  qrImage.src = QR_IMAGE_PATH;
-  qrImage.onerror = function () {
-    this.onerror = null;
-    this.src = QR_IMAGE_FALLBACK;
-  };
-  lastQrDataUrl = QR_IMAGE_PATH;
+  // Generate QR code secara dinamis menggunakan library qrcode.js
+  const qrData = `Kode Booking: ${lastBookingCode}\nDokter: ${activeDoctor.fullName}\nTanggal: ${formattedDate}\nJam: ${selectedTime}`;
+  const qr = qrcode(0, 'M');
+  qr.addData(qrData);
+  qr.make();
+  const qrDataURL = qr.createDataURL(4, 8);
+
+  qrImage.src = qrDataURL;
+  lastQrDataUrl = qrDataURL; // simpan untuk diunduh
 
   closeScheduleModal();
   qrModalOverlay.classList.remove("hidden");
@@ -361,11 +363,12 @@ closeQrBtn.addEventListener("click", () => {
 
 downloadQrBtn.addEventListener("click", () => {
   const link = document.createElement("a");
-  link.href = qrImage.src;
+  link.href = lastQrDataUrl; // gunakan data URL hasil generate
   link.download = `qr-janji-temu-${lastBookingCode || "healthflow"}.png`;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+  showToast("QR berhasil diunduh!");
 });
 
 qrModalOverlay.addEventListener("click", (e) => {

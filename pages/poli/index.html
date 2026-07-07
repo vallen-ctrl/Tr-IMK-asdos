@@ -48,7 +48,13 @@
       }
 
       .btn-detail {
-        @apply mt-auto bg-mid-blue hover:bg-deep-blue text-white rounded-lg py-2.5 text-sm font-semibold transition-colors cursor-pointer;
+        @apply bg-light-blue hover:bg-mid-blue text-primary rounded-lg text-sm font-semibold transition-colors cursor-pointer;
+        width: 145px;
+        height: 29px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: auto;
       }
 
       .btn-primary {
@@ -84,32 +90,56 @@
         @apply bg-primary border-primary text-white;
       }
 
+      /* ========== CARD DOKTER SESUAI SPESIFIKASI ========== */
       .doctor-card {
-        @apply bg-white border border-gray-200 rounded-xl overflow-hidden flex flex-col text-center transition-all hover:shadow-lg hover:-translate-y-0.5 flex-shrink-0 w-[150px];
+        @apply bg-white border border-gray-200 rounded-xl overflow-hidden flex flex-col items-center text-center transition-all hover:shadow-lg hover:-translate-y-0.5 flex-shrink-0;
+        width: 207px;
+        height: 315px;
+        padding: 32px 8px; /* atas-bawah 32px, kiri-kanan 8px */
       }
       .doctor-card .photo-wrapper {
-        @apply aspect-square w-full bg-gradient-to-br from-light-blue to-deep-blue flex items-center justify-center overflow-hidden;
+        @apply flex items-center justify-center overflow-hidden bg-gradient-to-br from-light-blue to-deep-blue;
+        width: 142px;
+        height: 160px;
+        margin: 0 auto; /* pusat horizontal */
+        border-radius: 12px;
+        flex-shrink: 0;
       }
       .doctor-card .photo-wrapper img {
         @apply w-full h-full object-cover;
       }
       .doctor-card .info {
-        @apply p-3 flex flex-col gap-1 flex-1;
+        @apply flex flex-col items-center;
+        margin-top: 8px; /* jarak foto ke nama = 8px */
+        flex: 1;
+        padding: 0 2px;
+        justify-content: flex-start; /* agar elemen tidak terdistribusi */
+        width: 100%;
       }
       .doctor-card .info .name {
-        @apply font-bold text-sm text-gray-900;
+        @apply font-bold text-gray-900;
+        font-size: 14px;
+        line-height: 1.2;
+        margin-bottom: 0;
       }
       .doctor-card .info .title {
-        @apply text-gray-400 text-xs mb-2;
+        @apply text-gray-400;
+        font-size: 12px;
+        margin-top: 8px; /* jarak nama ke spesialis = 8px */
+        margin-bottom: 0;
+      }
+      .doctor-card .info .btn-detail {
+        margin-top: 8px; /* jarak spesialis ke tombol = 8px */
+        margin-bottom: 0;
       }
     }
   </style>
 </head>
 <body class="bg-bg text-gray-800 font-sans antialiased">
 
-  <main class="max-w-[1400px] mx-auto px-10 py-7 flex flex-col gap-6">
+  <main class="max-w-[1400px] mx-auto px-8 py-7 flex flex-col gap-6">
 
-    <!-- ========== FORM PENDAFTARAN (tetap) ========== -->
+    <!-- ========== FORM PENDAFTARAN ========== -->
     <section class="bg-white rounded-2xl p-8 shadow-[0_0_18px_0_rgba(0,0,0,0.07)]">
       <h1 class="flex items-center gap-2.5 text-heading font-bold mb-6 text-gray-900">
         <i data-lucide="user-round" class="w-7 h-7 text-gray-900"></i>
@@ -117,7 +147,7 @@
       </h1>
 
       <form id="registrationForm" class="flex flex-col gap-5" autocomplete="off">
-        <div class="grid grid-cols-2 gap-x-8 gap-y-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
           <div class="flex flex-col gap-2">
             <label for="nama" class="text-normal font-medium">Nama</label>
             <input type="text" id="nama" name="nama" class="form-input" placeholder="Nama Lengkap Pasien" />
@@ -128,7 +158,7 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-4 gap-x-8 gap-y-5 items-start">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-5 items-start">
           <div class="flex flex-col gap-2">
             <label for="telepon" class="text-normal font-medium">No. Telepon</label>
             <input type="tel" id="telepon" name="telepon" class="form-input" placeholder="Nomor Telepon Aktif" />
@@ -177,7 +207,7 @@
 
   </main>
 
-  <!-- ========== MODAL DETAIL DOKTER ========== -->
+  <!-- ========== MODAL DETAIL ========== -->
   <div class="fixed inset-0 bg-black/45 items-center justify-center p-5 z-[100] hidden" id="detailModalOverlay">
     <div class="bg-white rounded-2xl p-8 w-full max-w-[520px] max-h-[90vh] overflow-y-auto shadow-2xl">
       <button type="button" class="flex items-center gap-1.5 text-primary font-semibold text-sm mb-4 cursor-pointer" id="detailBackBtn">
@@ -224,7 +254,7 @@
           <p class="text-gray-500 text-sm" id="scheduleDoctorSpec"></p>
         </div>
       </div>
-      <div class="grid grid-cols-[1.3fr_1fr] gap-6 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-6 mb-6">
         <div>
           <p class="font-bold text-gray-900 mb-2.5">Pilih Tanggal</p>
           <p class="text-center text-sm font-semibold text-gray-700 mb-2" id="calendarMonth"></p>
