@@ -3,7 +3,88 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
-  
+
+  // ==========================================
+  // DATA DOKTER SPESIALIS KJ
+  // ==========================================
+  const doctorsKJ = [
+    {
+      id: "vallen",
+      name: "dr. Vallen",
+      fullName: "dr. Vallen Nathalio Malia, Sp.KJ.",
+      title: "Sp. KJ",
+      poli: "psikologi",
+      specialization: "Spesialis Kedokteran Jiwa",
+      photo: "images/dr-vallen.jpg"
+    },
+    {
+      id: "supri",
+      name: "dr. Supri",
+      fullName: "dr. Supriyanto, Sp.KJ.",
+      title: "Sp. KJ",
+      poli: "psikologi",
+      specialization: "Spesialis Kedokteran Jiwa",
+      photo: "images/dr-supri.jpg"
+    },
+    {
+      id: "memet",
+      name: "dr. Memet",
+      fullName: "dr. Memet Slamet, Sp.KJ.",
+      title: "Sp. KJ",
+      poli: "psikologi",
+      specialization: "Spesialis Kedokteran Jiwa",
+      photo: "images/dr-memet.jpg"
+    }
+  ];
+
+  // ==========================================
+  // FUNGSI RENDER TIPS ATAU REKOMENDASI DOKTER
+  // ==========================================
+  function renderTipsOrDokter(score) {
+    const tipsTitle = document.getElementById("tips-title");
+    const tipsContent = document.getElementById("tips-content");
+
+    if (!tipsContent) return;
+
+    if (score > 50) {
+      tipsTitle.innerText = "Rekomendasi Dokter Spesialis Jiwa";
+
+      tipsContent.innerHTML = `
+        <p class="text-sm text-gray-600 mb-2">Skor stres Anda cukup tinggi. Konsultasikan dengan dokter spesialis jiwa berikut:</p>
+        <div class="flex flex-col gap-3">
+          ${doctorsKJ.map(doc => `
+            <div class="flex items-center gap-3 bg-[#F8FAFC] p-3 rounded-xl border border-gray-100">
+              <img src="${doc.photo}" alt="${doc.name}" class="w-12 h-12 rounded-full object-cover bg-gray-200" 
+                   onerror="this.onerror=null;this.src='images/default-avatar.jpg'">
+              <div class="flex-1 min-w-0">
+                <p class="font-bold text-sm text-gray-900">${doc.name}</p>
+                <p class="text-xs text-gray-500">${doc.specialization}</p>
+              </div>
+              <a href="../poli/index.html?filter=psikologi" 
+                 class="bg-[#5B84C4] hover:bg-[#4A73B3] text-white px-4 py-2 rounded-lg text-xs font-semibold transition whitespace-nowrap">
+                Konsultasi
+              </a>
+            </div>
+          `).join('')}
+        </div>
+        <p class="text-xs text-gray-400 mt-2">Atau kunjungi halaman <a href="../poli/index.html" class="text-primary underline">Poli</a> untuk pilihan lainnya.</p>
+      `;
+    } else {
+      tipsTitle.innerText = "Tips Kesehatan Mental";
+      tipsContent.innerHTML = `
+        <div class="bg-[#5B84C4] text-white py-3.5 px-5 rounded-xl text-xs md:text-sm font-medium tracking-wide shadow-sm transition-all duration-200">
+          Melakukan hobi ringan atau mendengarkan musik favorit malam ini
+        </div>
+        <div class="bg-[#5B84C4] text-white py-3.5 px-5 rounded-xl text-xs md:text-sm font-medium tracking-wide shadow-sm transition-all duration-200">
+          Tidur yang cukup (7-8 jam) agar energimu pulih besok pagi
+        </div>
+        <div class="bg-[#5B84C4] text-white py-3.5 px-5 rounded-xl text-xs md:text-sm font-medium tracking-wide shadow-sm transition-all duration-200">
+          Tetaplah terhidrasi jangan lupa minum air putih!
+        </div>
+      `;
+    }
+  }
+
   // ==========================================
   // LOGIKA 1: UNTUK HALAMAN UTAMA (DASHBOARD)
   // ==========================================
@@ -22,9 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressRing = document.getElementById("score-progress-ring");
 
     if (savedScore === null) {
-      // -------------------------------------------------------
-      // KONDISI A: BELUM PERNAH INPUT
-      // -------------------------------------------------------
+      // BELUM PERNAH INPUT
       if (scoreText) scoreText.innerText = "-";
       if (scoreLabel) scoreLabel.innerText = "-";
       if (stressStatusText) stressStatusText.innerText = "Belum melakukan pengukuran stres";
@@ -55,13 +134,10 @@ document.addEventListener("DOMContentLoaded", () => {
         chartDescription.innerText = "Belum melakukan pengukuran stres";
       }
 
-      // Tampilkan tips biasa (score = 0)
       renderTipsOrDokter(0);
 
     } else {
-      // -------------------------------------------------------
-      // KONDISI B: SUDAH PERNAH INPUT
-      // -------------------------------------------------------
+      // SUDAH PERNAH INPUT
       let score = parseInt(savedScore);
 
       let status = "Baik";
@@ -200,7 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
         chartContainer.appendChild(column);
       });
 
-      // ========== TAMPILKAN TIPS ATAU REKOMENDASI DOKTER ==========
       renderTipsOrDokter(score);
     }
   }
