@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root{
-    --lg-font-size-header: 26px;
-    --lg-font-size-subheaderText: 16px;
-    --lg-font-size-footerText: 10px;
+    /* header: 20px (mobile) -> 26px (desktop) */
+    --lg-font-size-header: clamp(20px, calc(18.29px + 0.54vw), 26px);
+
+    /* subheader: 13px (mobile) -> 16px (desktop) */
+    --lg-font-size-subheaderText: clamp(13px, calc(12.14px + 0.27vw), 16px);
+
+    /* footer: 9px (mobile) -> 10px (desktop) */
+    --lg-font-size-footerText: clamp(9px, calc(8.71px + 0.09vw), 10px);
 }
 
 .headerText{
