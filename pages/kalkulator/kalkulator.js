@@ -3,16 +3,99 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
-  
+
+  // ==========================================
+  // DATA DOKTER SPESIALIS KJ (dari poli.js)
+  // ==========================================
+  const doctorsKJ = [
+    {
+      id: "vallen",
+      name: "dr. Vallen",
+      fullName: "dr. Vallen Nathalio Malia, Sp.KJ.",
+      title: "Sp. KJ",
+      poli: "psikologi",
+      specialization: "Spesialis Kedokteran Jiwa",
+      photo: "images/dr-vallen.jpg"
+    },
+    {
+      id: "supri",
+      name: "dr. Supri",
+      fullName: "dr. Supriyanto, Sp.KJ.",
+      title: "Sp. KJ",
+      poli: "psikologi",
+      specialization: "Spesialis Kedokteran Jiwa",
+      photo: "images/dr-supri.jpg"
+    },
+    {
+      id: "memet",
+      name: "dr. Memet",
+      fullName: "dr. Memet Slamet, Sp.KJ.",
+      title: "Sp. KJ",
+      poli: "psikologi",
+      specialization: "Spesialis Kedokteran Jiwa",
+      photo: "images/dr-memet.jpg"
+    }
+  ];
+
+  // ==========================================
+  // FUNGSI RENDER TIPS ATAU REKOMENDASI DOKTER
+  // ==========================================
+  function renderTipsOrDokter(score) {
+    const tipsContainer = document.getElementById("tips-container");
+    const tipsTitle = document.getElementById("tips-title");
+    const tipsContent = document.getElementById("tips-content");
+
+    if (!tipsContent) return;
+
+    if (score > 50) {
+      // Tampilkan rekomendasi dokter KJ
+      tipsTitle.innerText = "Rekomendasi Dokter Spesialis Jiwa";
+
+      tipsContent.innerHTML = `
+        <p class="text-sm text-gray-600 mb-2">Skor stres Anda cukup tinggi. Konsultasikan dengan dokter spesialis jiwa berikut:</p>
+        <div class="flex flex-col gap-3">
+          ${doctorsKJ.map(doc => `
+            <div class="flex items-center gap-3 bg-[#F8FAFC] p-3 rounded-xl border border-gray-100">
+              <img src="${doc.photo}" alt="${doc.name}" class="w-12 h-12 rounded-full object-cover bg-gray-200" 
+                   onerror="this.onerror=null;this.src='images/default-avatar.jpg'">
+              <div class="flex-1 min-w-0">
+                <p class="font-bold text-sm text-gray-900">${doc.name}</p>
+                <p class="text-xs text-gray-500">${doc.specialization}</p>
+              </div>
+              <a href="/pages/poli/index.html?filter=psikologi" class="bg-[#5B84C4] hover:bg-[#4A73B3] text-white px-4 py-2 rounded-lg text-xs font-semibold transition whitespace-nowrap">
+              Konsultasi </a>
+            </div>
+          `).join('')}
+        </div>
+        <p class="text-xs text-gray-400 mt-2">Atau kunjungi halaman <a href="/pages/poli/index.html" class="text-primary underline">Poli</a> untuk pilihan lainnya.</p>
+      `;
+    } else {
+      // Tampilkan tips kesehatan mental biasa
+      tipsTitle.innerText = "Tips Kesehatan Mental";
+      tipsContent.innerHTML = `
+        <div class="bg-[#5B84C4] text-white py-3.5 px-5 rounded-xl text-xs md:text-sm font-medium tracking-wide shadow-sm transition-all duration-200">
+          Melakukan hobi ringan atau mendengarkan musik favorit malam ini
+        </div>
+        <div class="bg-[#5B84C4] text-white py-3.5 px-5 rounded-xl text-xs md:text-sm font-medium tracking-wide shadow-sm transition-all duration-200">
+          Tidur yang cukup (7-8 jam) agar energimu pulih besok pagi
+        </div>
+        <div class="bg-[#5B84C4] text-white py-3.5 px-5 rounded-xl text-xs md:text-sm font-medium tracking-wide shadow-sm transition-all duration-200">
+          Tetaplah terhidrasi jangan lupa minum air putih!
+        </div>
+      `;
+    }
+  }
+
   // ==========================================
   // LOGIKA 1: UNTUK HALAMAN UTAMA (DASHBOARD)
   // ==========================================
   const chartContainer = document.getElementById("chart-container");
-  
+  const chartDescription = document.getElementById("chart-description");
+
   if (chartContainer) {
     let savedScore = localStorage.getItem("userStressScore");
     let weeklyDataStorage = localStorage.getItem("userWeeklyStressData");
-    
+
     const scoreText = document.getElementById("score-text");
     const scoreLabel = document.getElementById("score-label");
     const stressStatusText = document.getElementById("stress-status-text");
@@ -22,25 +105,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (savedScore === null) {
       // -------------------------------------------------------
-      // KONDISI A: BELUM PERNAH INPUT SAMA SEKALI (KOSONGAN)
+      // KONDISI A: BELUM PERNAH INPUT
       // -------------------------------------------------------
       if (scoreText) scoreText.innerText = "-";
       if (scoreLabel) scoreLabel.innerText = "-";
       if (stressStatusText) stressStatusText.innerText = "Belum melakukan pengukuran stres";
-      
+
       if (dominantEmotionText) {
         dominantEmotionText.innerText = "-";
         dominantEmotionText.className = "text-sm font-bold text-gray-400 mb-2";
       }
-      
+
       if (scoreEmoji) {
-        scoreEmoji.src = "./images/netral.png"; 
+        scoreEmoji.src = "./images/netral.png";
         scoreEmoji.alt = "Belum Mengukur";
       }
 
       if (progressRing) {
         progressRing.style.strokeDasharray = "251.2";
-        progressRing.style.strokeDashoffset = "251.2"; 
+        progressRing.style.strokeDashoffset = "251.2";
         progressRing.className.baseVal = "stroke-gray-300 transition-all duration-700 ease-out";
       }
 
@@ -50,12 +133,19 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
+      if (chartDescription) {
+        chartDescription.innerText = "Belum melakukan pengukuran stres";
+      }
+
+      // Tampilkan tips biasa (score = 0)
+      renderTipsOrDokter(0);
+
     } else {
       // -------------------------------------------------------
-      // KONDISI B: SUDAH PERNAH INPUT (GRAFIK BERURUTAN SENIN - MINGGU)
+      // KONDISI B: SUDAH PERNAH INPUT
       // -------------------------------------------------------
       let score = parseInt(savedScore);
-      
+
       let status = "Baik";
       let statusLong = "Skor Stres Rendah";
       let ringColor = "stroke-green-500";
@@ -89,12 +179,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (scoreText) scoreText.innerText = score;
       if (scoreLabel) scoreLabel.innerText = status;
       if (stressStatusText) stressStatusText.innerText = statusLong;
-      
+
       if (dominantEmotionText) {
         dominantEmotionText.innerText = status;
         dominantEmotionText.className = `text-sm font-bold ${textColor} mb-2`;
       }
-      
+
       if (scoreEmoji) {
         scoreEmoji.src = emojiSrc;
         scoreEmoji.alt = `Emoji ${status}`;
@@ -104,13 +194,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const radius = 40;
         const circumference = 2 * Math.PI * radius;
         const offset = circumference - (score / 100) * circumference;
-        
+
         progressRing.style.strokeDasharray = `${circumference}`;
         progressRing.style.strokeDashoffset = offset;
         progressRing.className.baseVal = `transition-all duration-700 ease-out ${ringColor}`;
       }
 
-      // AMBIL DATA DARI LOCALSTORAGE ATAU INITIALIZE MINGGU BARU
+      // AMBIL DATA MINGGUAN
       let dataMingguan;
       if (weeklyDataStorage) {
         dataMingguan = JSON.parse(weeklyDataStorage);
@@ -128,15 +218,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
       chartContainer.innerHTML = "";
 
+      // HITUNG DESKRIPSI GRAFIK
+      let totalSkor = 0;
+      let jumlahTerisi = 0;
+      dataMingguan.forEach(item => {
+        if (item.terisi) {
+          totalSkor += item.tinggi;
+          jumlahTerisi++;
+        }
+      });
+
+      let deskripsi = "";
+      if (jumlahTerisi === 0) {
+        deskripsi = "Belum melakukan pengukuran stres";
+      } else {
+        const rataRata = totalSkor / jumlahTerisi;
+        if (rataRata < 35) {
+          deskripsi = "Stresmu rendah minggu ini, pertahankan!";
+        } else if (rataRata >= 35 && rataRata <= 50) {
+          deskripsi = "Stresmu normal minggu ini, tetap jaga keseimbangan.";
+        } else if (rataRata > 50 && rataRata <= 70) {
+          deskripsi = "Stresmu cenderung tinggi, coba lakukan relaksasi.";
+        } else {
+          deskripsi = "Stresmu sangat tinggi, segera konsultasi dengan profesional.";
+        }
+        if (jumlahTerisi === 1) {
+          const lastScore = dataMingguan.find(item => item.terisi).tinggi;
+          deskripsi = `Skor hari ini: ${lastScore}% - ${deskripsi}`;
+        }
+      }
+
+      if (chartDescription) {
+        chartDescription.innerText = deskripsi;
+      }
+
+      // RENDER GRAFIK
       dataMingguan.forEach(item => {
         const column = document.createElement("div");
-        column.className = "flex flex-col items-center flex-1 chart-bar-container group"; 
+        column.className = "flex flex-col items-center flex-1 chart-bar-container group";
 
         const currentHeight = item.terisi ? item.tinggi : 0;
         const currentBg = item.terisi ? item.warna : "bg-gray-200";
 
-        // --- DI SINI PERBAIKANNYA: Logika penentu warna teks skor di dalam Tooltip Hover ---
-        let tooltipTextColor = "text-gray-400"; // Default jika kosong
+        let tooltipTextColor = "text-gray-400";
         if (item.terisi) {
           if (currentHeight > 70) tooltipTextColor = "text-red-400 font-extrabold";
           else if (currentHeight > 50) tooltipTextColor = "text-orange-400 font-extrabold";
@@ -148,17 +272,18 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="w-full h-36 flex items-end justify-center px-1 relative cursor-pointer">
             <div class="w-6 md:w-8 ${currentBg} chart-bar-item rounded-t-md" style="height: ${currentHeight}%;"></div>
           </div>
-          
           <span class="text-xs text-gray-500 mt-2 font-medium">${item.hari}</span>
-
           <div class="absolute bottom-16 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] py-1 px-2.5 rounded shadow-xl chart-tooltip whitespace-nowrap z-30 text-center leading-normal">
             ${item.tanggal} <br> 
             <span class="${tooltipTextColor}">Skor Stres: ${currentHeight}%</span>
           </div>
         `;
-        
+
         chartContainer.appendChild(column);
       });
+
+      // ========== TAMPILKAN TIPS ATAU REKOMENDASI DOKTER ==========
+      renderTipsOrDokter(score);
     }
   }
 
@@ -180,11 +305,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const options = [
-      { text: "😔 Sangat Buruk", score: 5 },  
+      { text: "😔 Sangat Buruk", score: 5 },
       { text: "🙁 Kurang Baik", score: 4 },
       { text: "😐 Biasa Saja", score: 3 },
       { text: "🙂 Cukup Baik", score: 2 },
-      { text: "😄 Sangat Baik", score: 1 }   
+      { text: "😄 Sangat Baik", score: 1 }
     ];
 
     let currentQuestionIndex = 0;
@@ -194,7 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const optionsContainer = document.getElementById("options-container");
     const questionIndicator = document.getElementById("question-indicator");
     const progressBarFill = document.getElementById("progress-bar-fill");
-    
+
     const btnCancelQuiz = document.getElementById("btn-cancel-quiz");
     const btnNavBack = document.getElementById("btn-nav-back");
     const btnNavNext = document.getElementById("btn-nav-next");
@@ -204,7 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       questionText.innerText = questions[currentQuestionIndex];
       if (questionIndicator) questionIndicator.innerText = `PERTANYAAN ${currentQuestionIndex + 1}/${questions.length}`;
-      
+
       if (progressBarFill) {
         const progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100;
         progressBarFill.style.width = `${progressPercent}%`;
@@ -247,7 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btnCancelQuiz) {
       btnCancelQuiz.addEventListener("click", () => {
-        window.location.href = "index.html"; 
+        window.location.href = "index.html";
       });
     }
 

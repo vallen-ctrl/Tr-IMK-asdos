@@ -390,6 +390,22 @@ function showToast(message) {
 
 // ========== INIT ==========
 renderDoctors();
+
+// ========== BACA PARAMETER URL UNTUK FILTER ==========
+const urlParams = new URLSearchParams(window.location.search);
+const filterParam = urlParams.get('filter');
+if (filterParam) {
+  // Cari tombol dengan data-poli sesuai filter
+  const targetBtn = document.querySelector(`.poli-btn[data-poli="${filterParam}"]`);
+  if (targetBtn) {
+    // Hapus active dari semua tombol, aktifkan target
+    document.querySelectorAll('.poli-btn').forEach(b => b.classList.remove('active'));
+    targetBtn.classList.add('active');
+    currentPoliFilter = filterParam;
+    renderDoctors();
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   if (window.lucide) lucide.createIcons();
 });
