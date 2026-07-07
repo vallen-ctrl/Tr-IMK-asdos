@@ -14,7 +14,8 @@
         const isProtectedPage = (pathname.includes('/pages/pendaftaran/') && !pathname.includes('menghubungiServer.html')) || 
                                 pathname.includes('/pages/rekam_medis/') ||
                                 pathname.includes('/pages/poli/') ||
-                                pathname.includes('/pages/kalkulator/');
+                                pathname.includes('/pages/kalkulator/') ||
+                                pathname.includes('/pages/notifikasi/');
 
         if (isProtectedPage && !isLoggedIn) {
             // Hide main contents
@@ -32,29 +33,29 @@
             if (header && !document.getElementById('unauthorized-warning')) {
                 const warningDiv = document.createElement('div');
                 warningDiv.id = 'unauthorized-warning';
-                warningDiv.className = 'w-full flex justify-center py-16 px-4 md:px-8 flex-1';
+                warningDiv.className = 'w-full flex items-center justify-center py-16 px-4 md:px-8 flex-1';
                 warningDiv.innerHTML = `
-                    <div class="max-w-md w-full bg-white rounded-[24px] border border-[#E2ECF8] shadow-lg p-8 flex flex-col items-center text-center gap-6">
+                    <div class="max-w-[400px] w-full bg-white rounded-[24px] border border-[#E2ECF8] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-10 flex flex-col items-center text-center gap-6">
                         <!-- Icon Lock -->
-                        <div class="w-16 h-16 bg-[#F0F3FA] rounded-full flex items-center justify-center text-[#395886]">
-                            <i data-lucide="lock" class="w-8 h-8 stroke-[2]"></i>
+                        <div class="w-16 h-16 bg-[#F0F5FD] border border-[#D2E1F6] rounded-full flex items-center justify-center text-[#395886] mb-2">
+                            <i data-lucide="lock" class="w-7 h-7 stroke-[1.8]"></i>
                         </div>
                         
                         <!-- Text -->
-                        <div class="flex flex-col gap-2">
-                            <h2 class="headerText font-bold text-slate-900 text-2xl">Akses Terbatas</h2>
-                            <p class="subheaderText text-gray-600">Anda harus masuk atau mendaftar terlebih dahulu untuk mengakses halaman ini.</p>
+                        <div class="flex flex-col gap-3">
+                            <h2 class="headerText font-bold text-[#1C1616]">Akses Terbatas</h2>
+                            <p class="subheaderText text-slate-500 font-normal px-2">Anda harus masuk atau mendaftar terlebih dahulu untuk mengakses halaman ini.</p>
                         </div>
                         
                         <!-- Buttons -->
-                        <div class="flex flex-col gap-3 w-full mt-4">
+                        <div class="flex flex-col gap-4 w-full mt-4">
                             <a href="${rootPath}pages/daftar_login/index.html" 
-                               class="h-12 bg-[#395886] hover:bg-[#2C4E80] text-white rounded-full font-bold text-lg shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
+                               class="h-12 bg-[#395886] hover:bg-[#2C4E80] text-white rounded-full font-semibold subheaderText shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
                                 <i data-lucide="log-in" class="w-5 h-5"></i>
                                 Masuk
                             </a>
                             <a href="${rootPath}pages/daftar_login/index.html?action=register" 
-                               class="h-12 border-2 border-[#395886] text-[#395886] hover:bg-slate-50 rounded-full font-bold text-lg transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
+                               class="h-12 border border-[#395886] text-[#395886] hover:bg-[#395886]/5 rounded-full font-semibold subheaderText transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
                                 <i data-lucide="user-plus" class="w-5 h-5"></i>
                                 Daftar Akun
                             </a>
@@ -74,18 +75,38 @@
         }
 
         // 2. Update Profile Menu
+        // Resolve current user with fallback to hf_currentUser in localStorage, and Jhon deo formalin
+        let currentUser = { nama: 'Jhon deo formalin' };
+        if (isLoggedIn) {
+            if (typeof RootData !== 'undefined') {
+                currentUser = RootData.getCurrentUser();
+            } else {
+                const storedUser = localStorage.getItem('hf_currentUser');
+                if (storedUser) {
+                    try {
+                        const parsed = JSON.parse(storedUser);
+                        if (parsed && parsed.nama) {
+                            currentUser = parsed;
+                        }
+                    } catch (e) {
+                        // ignore
+                    }
+                }
+            }
+        }
+
+        // 2. Update Profile Menu
         const profileBtn = document.getElementById('profile-menu-button');
         if (profileBtn) {
             const parentDiv = profileBtn.parentElement;
             if (parentDiv) {
-                const isLoggedIn = (typeof RootData !== 'undefined') ? RootData.isLoggedIn() : localStorage.getItem('isLoggedIn') === 'true';
                 if (isLoggedIn) {
                     // Render logged in state
                     parentDiv.innerHTML = `
                         <button id="profile-menu-button" onclick="toggleProfileDropdown(event)"
                             class="text-[#1C1616] hover:text-[#395886] transition-colors duration-200 cursor-pointer flex items-center justify-center"
                             aria-label="Profile">
-                            <p class="mr-2">${(typeof RootData !== 'undefined') ? RootData.getCurrentUser().nama : 'User'}</p>
+                            <p class="mr-2">${currentUser.nama}</p>
                             <img class="w-10 rounded-full" src="${rootPath}pages/profil/assets/profile_avatar.png" alt="">
                         </button>
                         <!-- Profile Dropdown -->
@@ -131,12 +152,95 @@
                         </div>
                     `;
                 }
-                
-                // Initialize Lucide icons
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
             }
+        }
+
+        // 3. Update Mobile Profile Menu if placeholder exists
+        const mobileProfileSec = document.getElementById('mobile-profile-section');
+        if (mobileProfileSec) {
+            if (isLoggedIn) {
+                mobileProfileSec.innerHTML = `
+                    <div class="bg-[#F0F5FD] border border-[#D2E1F6] rounded-[20px] p-4 flex flex-col gap-3">
+                        <div class="flex items-center gap-3">
+                            <img class="w-12 h-12 rounded-full border-2 border-white shadow-sm" src="${rootPath}pages/profil/assets/profile_avatar.png" alt="Avatar">
+                            <div class="flex flex-col">
+                                <span class="subheaderText font-bold text-slate-900">${currentUser.nama}</span>
+                                <span class="text-xs text-slate-500">Pasien</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2 border-t border-[#D2E1F6]/60 pt-3">
+                            <a href="${rootPath}pages/profil/index.html" class="flex items-center gap-3 hover:bg-white/50 transition-colors duration-150 rounded-lg py-1.5 px-2">
+                                <i data-lucide="user" class="w-5 h-5 text-[#395886]"></i>
+                                <span class="subheaderText font-semibold text-slate-800">Profil anda</span>
+                            </a>
+                            <a href="${rootPath}pages/profil/index.html" class="flex items-center gap-3 hover:bg-white/50 transition-colors duration-150 rounded-lg py-1.5 px-2">
+                                <i data-lucide="settings" class="w-5 h-5 text-[#395886]"></i>
+                                <span class="subheaderText font-semibold text-slate-800">Pengaturan</span>
+                            </a>
+                            <a href="#" onclick="handleLogout(event)" class="flex items-center gap-3 hover:bg-red-50/50 transition-colors duration-150 rounded-lg py-1.5 px-2">
+                                <i data-lucide="log-out" class="w-5 h-5 text-red-600"></i>
+                                <span class="subheaderText font-semibold text-red-600">Keluar</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                mobileProfileSec.innerHTML = `
+                    <div class="flex flex-col gap-3">
+                        <a href="${rootPath}pages/daftar_login/index.html" 
+                           class="h-11 bg-[#395886] hover:bg-[#2C4E80] text-white rounded-[12px] font-semibold subheaderText shadow-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
+                            <i data-lucide="log-in" class="w-5 h-5"></i>
+                            Masuk
+                        </a>
+                        <a href="${rootPath}pages/daftar_login/index.html?action=register" 
+                           class="h-11 border border-[#395886] text-[#395886] hover:bg-[#395886]/5 rounded-[12px] font-semibold subheaderText transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
+                            <i data-lucide="user-plus" class="w-5 h-5"></i>
+                            Daftar Akun
+                        </a>
+                    </div>
+                `;
+            }
+        }
+
+        // 4. Setup Mobile Drawer toggle functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-button');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const mobileDrawerOverlay = document.getElementById('mobile-drawer-overlay');
+        const mobileDrawerClose = document.getElementById('mobile-drawer-close');
+
+        if (mobileMenuBtn && mobileDrawer && mobileDrawerOverlay) {
+            const openDrawer = () => {
+                mobileDrawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                mobileDrawer.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeDrawer = () => {
+                mobileDrawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+                mobileDrawer.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            };
+
+            mobileMenuBtn.addEventListener('click', openDrawer);
+            if (mobileDrawerClose) mobileDrawerClose.addEventListener('click', closeDrawer);
+            mobileDrawerOverlay.addEventListener('click', closeDrawer);
+        }
+
+        // 5. Setup Mobile Drawer expandable extra info
+        const infoToggle = document.getElementById('mobile-drawer-info-toggle');
+        const infoContent = document.getElementById('mobile-drawer-info-content');
+        const infoChevron = document.getElementById('mobile-drawer-info-chevron');
+
+        if (infoToggle && infoContent && infoChevron) {
+            infoToggle.addEventListener('click', () => {
+                infoContent.classList.toggle('hidden');
+                infoChevron.classList.toggle('rotate-180');
+            });
+        }
+
+        // 6. Initialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
         }
     }
 

@@ -3,6 +3,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
+
+  // Update user greeting dynamically if logged in
+  const greetingEl = document.getElementById("user-greeting");
+  if (greetingEl && typeof RootData !== 'undefined') {
+    const user = RootData.getCurrentUser();
+    if (user && user.nama) {
+      greetingEl.innerText = `Hai, ${user.nama} 👋`;
+    }
+  }
   
   // ==========================================
   // LOGIKA 1: UNTUK HALAMAN UTAMA (DASHBOARD)

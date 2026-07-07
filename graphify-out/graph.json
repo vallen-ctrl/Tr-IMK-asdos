@@ -46,7 +46,7 @@
       "label": "renderQuestion()",
       "file_type": "code",
       "source_file": "pages/kalkulator/kalkulator.js",
-      "source_location": "L202",
+      "source_location": "L211",
       "_origin": "ast",
       "id": "kalkulator_kalkulator_renderquestion",
       "community": 4,
@@ -56,7 +56,7 @@
       "label": "finishCalculator()",
       "file_type": "code",
       "source_file": "pages/kalkulator/kalkulator.js",
-      "source_location": "L279",
+      "source_location": "L288",
       "_origin": "ast",
       "id": "kalkulator_kalkulator_finishcalculator",
       "community": 4,
@@ -3564,5 +3564,5 @@
       "source_file": "pages/profil/index.html"
     }
   ],
-  "built_at_commit": "249bb429c66ec2f72cbb54c8db4b1c2e20e9ccde"
+  "built_at_commit": "5036d60d1e0d1eebbd5866027ee7dc45ddd14575"
 }
