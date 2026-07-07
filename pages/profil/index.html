@@ -332,7 +332,8 @@
                     </div>
 
                     <!-- Ubah sandi -->
-                    <div class="privacy-item">
+                    <div class="privacy-item"
+                        onclick="window.location.assign('/pages/daftar_login/BuatKatasandiBaru/index.html')">
                         <div class="privacy-item-left">
                             <i data-lucide="lock"></i>
                             <span>Ubah sandi</span>
@@ -601,7 +602,7 @@
         if (currentUser.tanggalLahir) {
             const d = new Date(currentUser.tanggalLahir);
             if (!isNaN(d)) {
-                const months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+                const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
                 document.getElementById('profil-tgl-lahir').textContent = `${d.getDate()} - ${months[d.getMonth()]} - ${d.getFullYear()}`;
             }
         }
