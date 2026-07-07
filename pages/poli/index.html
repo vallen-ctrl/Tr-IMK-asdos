@@ -1,66 +1,159 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Klinik - Pendaftaran Poli</title>
 
-  <!-- Global stylesheet (shared across the whole website, handles responsiveness) -->
-  <link rel="stylesheet" href="../global.css">
-  <!-- Page-specific stylesheet -->
-  <link rel="stylesheet" href="poli.css">
+  <!-- Tailwind CSS v4 (Play CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest">
+  </script>
+
+  <!-- Global stylesheet -->
+  <link rel="stylesheet" href="../global.css" />
+  <link rel="stylesheet" href="poli.css" />
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #395886;
+      --color-bg: #F0F3FA;
+      --color-bg-alt: #D5DEEF;
+      --color-light-blue: #B1C9EF;
+      --color-mid-blue: #8AAEE0;
+      --color-deep-blue: #628ECE;
+      --font-sans: "Inter", sans-serif;
+      --text-heading: 24px;
+      --text-normal: 16px;
+    }
+
+    @layer components {
+      .poli-btn {
+        @apply border border-gray-200 bg-white text-gray-700 px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors cursor-pointer;
+      }
+      .poli-btn:hover {
+        @apply border-deep-blue bg-bg-alt;
+      }
+      .poli-btn.active {
+        @apply bg-primary border-primary text-white;
+      }
+
+      .form-input {
+        @apply border border-gray-200 bg-bg rounded-lg px-3.5 py-3 text-normal outline-none w-full transition-colors;
+      }
+      .form-input:focus {
+        @apply border-deep-blue ring-2 ring-deep-blue/20;
+      }
+
+      .btn-detail {
+        @apply mt-auto bg-mid-blue hover:bg-deep-blue text-white rounded-lg py-2.5 text-sm font-semibold transition-colors cursor-pointer;
+      }
+
+      .btn-primary {
+        @apply bg-primary hover:bg-[#2d4568] text-white rounded-xl py-3.5 px-5 font-semibold text-sm transition-colors cursor-pointer disabled:bg-bg-alt disabled:text-gray-400 disabled:cursor-not-allowed;
+      }
+      .btn-secondary {
+        @apply bg-white hover:bg-bg-alt text-primary border border-primary rounded-xl py-3.5 px-5 font-semibold text-sm transition-colors cursor-pointer;
+      }
+
+      .calendar-day {
+        @apply aspect-square flex items-center justify-center rounded-lg text-sm text-gray-700 cursor-pointer transition-colors;
+      }
+      .calendar-day:hover:not(:disabled) {
+        @apply bg-bg-alt;
+      }
+      .calendar-day:disabled {
+        @apply text-gray-300 cursor-not-allowed;
+      }
+      .calendar-day.today {
+        @apply ring-1 ring-deep-blue;
+      }
+      .calendar-day.selected {
+        @apply bg-primary text-white;
+      }
+
+      .time-slot {
+        @apply border border-gray-200 bg-white rounded-lg py-2.5 text-sm font-medium text-gray-700 cursor-pointer transition-colors;
+      }
+      .time-slot:hover {
+        @apply border-deep-blue bg-bg-alt;
+      }
+      .time-slot.selected {
+        @apply bg-primary border-primary text-white;
+      }
+
+      .doctor-card {
+        @apply bg-white border border-gray-200 rounded-xl overflow-hidden flex flex-col text-center transition-all hover:shadow-lg hover:-translate-y-0.5 flex-shrink-0 w-[150px];
+      }
+      .doctor-card .photo-wrapper {
+        @apply aspect-square w-full bg-gradient-to-br from-light-blue to-deep-blue flex items-center justify-center overflow-hidden;
+      }
+      .doctor-card .photo-wrapper img {
+        @apply w-full h-full object-cover;
+      }
+      .doctor-card .info {
+        @apply p-3 flex flex-col gap-1 flex-1;
+      }
+      .doctor-card .info .name {
+        @apply font-bold text-sm text-gray-900;
+      }
+      .doctor-card .info .title {
+        @apply text-gray-400 text-xs mb-2;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="bg-bg text-gray-800 font-sans antialiased">
 
-  <!-- Navbar sengaja belum dibuat sesuai instruksi -->
+  <main class="max-w-[1400px] mx-auto px-10 py-7 flex flex-col gap-6">
 
-  <main class="page-wrapper">
-
-    <!-- ===================== FORM PENDAFTARAN POLI ===================== -->
-    <section class="card form-card">
-      <h1 class="section-title headerText">
-        <span class="icon-user">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12Z" stroke="#1F2937" stroke-width="1.6"/>
-            <path d="M4 21.8c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#1F2937" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </span>
+    <!-- ========== FORM PENDAFTARAN (tetap) ========== -->
+    <section class="bg-white rounded-2xl p-8 shadow-[0_0_18px_0_rgba(0,0,0,0.07)]">
+      <h1 class="flex items-center gap-2.5 text-heading font-bold mb-6 text-gray-900">
+        <i data-lucide="user-round" class="w-7 h-7 text-gray-900"></i>
         Pendaftaran Poli
       </h1>
 
-      <form id="registrationForm" class="registration-form" autocomplete="off">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nama" class="subheaderText">Nama</label>
-            <input type="text" id="nama" name="nama" placeholder="Nama Lengkap Pasien">
+      <form id="registrationForm" class="flex flex-col gap-5" autocomplete="off">
+        <div class="grid grid-cols-2 gap-x-8 gap-y-5">
+          <div class="flex flex-col gap-2">
+            <label for="nama" class="text-normal font-medium">Nama</label>
+            <input type="text" id="nama" name="nama" class="form-input" placeholder="Nama Lengkap Pasien" />
           </div>
-          <div class="form-group">
-            <label for="nik" class="subheaderText">NIK</label>
-            <input type="text" id="nik" name="nik" placeholder="NIK Pasien" inputmode="numeric">
+          <div class="flex flex-col gap-2">
+            <label for="nik" class="text-normal font-medium">NIK</label>
+            <input type="text" id="nik" name="nik" class="form-input" placeholder="NIK Pasien" inputmode="numeric" />
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="telepon" class="subheaderText">No. Telepon</label>
-            <input type="tel" id="telepon" name="telepon" placeholder="Nomor Telepon Aktif">
+        <div class="grid grid-cols-4 gap-x-8 gap-y-5 items-start">
+          <div class="flex flex-col gap-2">
+            <label for="telepon" class="text-normal font-medium">No. Telepon</label>
+            <input type="tel" id="telepon" name="telepon" class="form-input" placeholder="Nomor Telepon Aktif" />
           </div>
-          <div class="form-group">
-            <label for="tanggalLahir" class="subheaderText">Tanggal Lahir</label>
-            <input type="text" id="tanggalLahir" name="tanggalLahir" placeholder="Masukkan Tanggal Lahir" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+          <div class="flex flex-col gap-2">
+            <label for="tanggalLahir" class="text-normal font-medium">Tanggal Lahir</label>
+            <input type="text" id="tanggalLahir" name="tanggalLahir" class="form-input"
+                   placeholder="Masukkan Tanggal Lahir"
+                   onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" />
           </div>
-          <div class="form-group">
-            <label for="cabang" class="subheaderText">Pilih Cabang</label>
-            <select id="cabang" name="cabang">
-              <option value="" disabled selected hidden>Pilih Cabang</option>
-              <option value="pusat">Klinik Pusat</option>
-              <option value="cabang1">Cabang Salatiga</option>
-              <option value="cabang2">Cabang Semarang</option>
-            </select>
+          <div class="flex flex-col gap-2">
+            <label for="cabang" class="text-normal font-medium">Pilih Cabang</label>
+            <div class="relative">
+              <select id="cabang" name="cabang" class="form-input appearance-none pr-9 cursor-pointer border-light-blue focus:border-deep-blue text-gray-900">
+                <option value="" disabled selected hidden>Pilih Cabang</option>
+                <option value="salatiga">Salatiga</option>
+                <option value="solo">Solo</option>
+                <option value="semarang">Semarang</option>
+              </select>
+              <i data-lucide="arrow-down" class="w-4 h-4 text-primary absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+            </div>
           </div>
-          <div class="form-group poli-filter-group">
-            <span class="subheaderText">Pilih Poli</span>
-            <div class="poli-filter" id="poliFilter">
+          <div class="flex flex-col gap-2">
+            <span class="text-normal font-medium">Pilih Poli</span>
+            <div class="flex flex-nowrap gap-2 overflow-x-auto pb-1" id="poliFilter">
               <button type="button" class="poli-btn active" data-poli="semua">Semua</button>
               <button type="button" class="poli-btn" data-poli="umum">Umum &amp; Lansia</button>
               <button type="button" class="poli-btn" data-poli="psikologi">Psikologi</button>
@@ -71,101 +164,115 @@
       </form>
     </section>
 
-    <!-- ===================== PILIH DOKTER ===================== -->
-    <section class="card doctor-card-section">
-      <h2 class="section-title subsection-title headerText">Pilih Dokter</h2>
-      <div class="doctor-grid" id="doctorGrid">
-        <!-- Doctor cards di-render oleh poli.js -->
+    <!-- ========== PILIH DOKTER ========== -->
+    <section class="bg-white rounded-2xl p-8 shadow-[0_0_18px_0_rgba(0,0,0,0.07)]">
+      <h2 class="text-heading font-bold mb-5 text-gray-900">Pilih Dokter</h2>
+      <div class="overflow-x-auto pb-2">
+        <div class="flex gap-5" id="doctorGrid">
+          <!-- Kartu dokter akan di-render oleh poli.js -->
+        </div>
       </div>
-      <p class="empty-state footerText" id="emptyState" hidden>Tidak ada dokter untuk poli ini.</p>
+      <p class="text-center text-gray-400 py-8 text-sm" id="emptyState" hidden>Tidak ada dokter untuk poli ini.</p>
     </section>
 
   </main>
 
-  <!-- ===================== MODAL: DETAIL DOKTER ===================== -->
-  <div class="modal-overlay" id="detailModalOverlay">
-    <div class="modal detail-modal">
-      <button type="button" class="btn-back" id="detailBackBtn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 5 8 12l7 7" stroke="#395886" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Kembali
+  <!-- ========== MODAL DETAIL DOKTER ========== -->
+  <div class="fixed inset-0 bg-black/45 items-center justify-center p-5 z-[100] hidden" id="detailModalOverlay">
+    <div class="bg-white rounded-2xl p-8 w-full max-w-[520px] max-h-[90vh] overflow-y-auto shadow-2xl">
+      <button type="button" class="flex items-center gap-1.5 text-primary font-semibold text-sm mb-4 cursor-pointer" id="detailBackBtn">
+        <i data-lucide="chevron-left" class="w-4 h-4"></i> Kembali
       </button>
-
-      <div class="detail-content">
-        <img id="detailPhoto" class="detail-photo" src="" alt="Foto dokter">
-
-        <div class="detail-main">
-          <h3 class="detail-name headerText" id="detailName"></h3>
-          <p class="detail-specialization subheaderText" id="detailSpecialization"></p>
-
-          <h4 class="detail-subtitle subheaderText">Tentang Dokter</h4>
-          <p class="detail-about footerText" id="detailAbout"></p>
+      <div class="flex gap-5 mb-5">
+        <img id="detailPhoto" class="w-[110px] h-[110px] rounded-xl object-cover bg-gradient-to-br from-light-blue to-deep-blue flex-shrink-0" src="" alt="Foto dokter" />
+        <div class="min-w-0">
+          <h3 class="text-xl font-bold text-gray-900" id="detailName"></h3>
+          <p class="text-primary font-semibold mb-3" id="detailSpecialization"></p>
+          <h4 class="font-bold text-gray-900 mb-1">Tentang Dokter</h4>
+          <p class="text-gray-500 leading-relaxed text-sm" id="detailAbout"></p>
         </div>
       </div>
-
-      <div class="schedule-info">
-        <h4 class="detail-subtitle subheaderText">Jadwal Praktik</h4>
-        <div class="schedule-row">
-          <span class="schedule-day footerText">Senin - Jumat</span>
-          <span class="schedule-time footerText" id="scheduleWeekday"></span>
+      <div class="border-t border-gray-200 pt-4 mb-5 flex flex-col gap-2">
+        <h4 class="font-bold text-gray-900 mb-1">Jadwal Praktik</h4>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Senin - Jumat</span>
+          <span class="font-semibold" id="scheduleWeekday"></span>
         </div>
-        <div class="schedule-row">
-          <span class="schedule-day footerText">Sabtu</span>
-          <span class="schedule-time footerText" id="scheduleSaturday"></span>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Sabtu</span>
+          <span class="font-semibold" id="scheduleSaturday"></span>
         </div>
-        <div class="schedule-row">
-          <span class="schedule-day footerText">Minggu</span>
-          <span class="schedule-time footerText" id="scheduleSunday"></span>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Minggu</span>
+          <span class="font-semibold" id="scheduleSunday"></span>
         </div>
       </div>
-
-      <button type="button" class="btn-primary btn-full" id="makeAppointmentBtn">Buat Janji Temu</button>
+      <button type="button" class="btn-primary w-full" id="makeAppointmentBtn">Buat Janji Temu</button>
     </div>
   </div>
 
-  <!-- ===================== MODAL: JADWAL JANJI TEMU ===================== -->
-  <div class="modal-overlay" id="scheduleModalOverlay">
-    <div class="modal schedule-modal">
-      <button type="button" class="btn-back" id="scheduleBackBtn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 5 8 12l7 7" stroke="#395886" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Kembali
+  <!-- ========== MODAL JADWAL ========== -->
+  <div class="fixed inset-0 bg-black/45 items-center justify-center p-5 z-[100] hidden" id="scheduleModalOverlay">
+    <div class="bg-white rounded-2xl p-8 w-full max-w-[560px] max-h-[90vh] overflow-y-auto shadow-2xl">
+      <button type="button" class="flex items-center gap-1.5 text-primary font-semibold text-sm mb-4 cursor-pointer" id="scheduleBackBtn">
+        <i data-lucide="chevron-left" class="w-4 h-4"></i> Kembali
       </button>
-
-      <div class="schedule-doctor-header">
-        <img id="scheduleDoctorPhoto" class="schedule-doctor-photo" src="" alt="Foto dokter">
+      <div class="flex items-center gap-3 mb-5">
+        <img id="scheduleDoctorPhoto" class="w-[46px] h-[46px] rounded-lg object-cover bg-gradient-to-br from-light-blue to-deep-blue flex-shrink-0" src="" alt="Foto dokter" />
         <div>
-          <p class="schedule-doctor-name subheaderText" id="scheduleDoctorName"></p>
-          <p class="schedule-doctor-spec footerText" id="scheduleDoctorSpec"></p>
+          <p class="font-bold text-gray-900" id="scheduleDoctorName"></p>
+          <p class="text-gray-500 text-sm" id="scheduleDoctorSpec"></p>
         </div>
       </div>
-
-      <div class="schedule-picker">
-        <div class="date-picker">
-          <p class="picker-title subheaderText">Pilih Tanggal</p>
-          <p class="calendar-month footerText" id="calendarMonth"></p>
-          <div class="calendar-weekdays footerText" id="calendarWeekdays"></div>
-          <div class="calendar-grid" id="calendarGrid"></div>
+      <div class="grid grid-cols-[1.3fr_1fr] gap-6 mb-6">
+        <div>
+          <p class="font-bold text-gray-900 mb-2.5">Pilih Tanggal</p>
+          <p class="text-center text-sm font-semibold text-gray-700 mb-2" id="calendarMonth"></p>
+          <div class="grid grid-cols-7 text-center text-xs text-gray-400 mb-1.5" id="calendarWeekdays"></div>
+          <div class="grid grid-cols-7 gap-1" id="calendarGrid"></div>
         </div>
-
-        <div class="time-picker">
-          <p class="picker-title subheaderText">Pilih Jam</p>
-          <div class="time-grid" id="timeGrid"></div>
+        <div>
+          <p class="font-bold text-gray-900 mb-2.5">Pilih Jam</p>
+          <div class="grid grid-cols-2 gap-2.5" id="timeGrid"></div>
         </div>
       </div>
-
-      <div class="schedule-actions">
+      <div class="grid grid-cols-2 gap-3">
         <button type="button" class="btn-secondary" id="cancelScheduleBtn">Batal</button>
         <button type="button" class="btn-primary" id="continueScheduleBtn">Lanjutkan</button>
       </div>
     </div>
   </div>
 
-  <!-- ===================== TOAST KONFIRMASI ===================== -->
+  <!-- ========== MODAL QR ========== -->
+  <div class="fixed inset-0 bg-black/45 items-center justify-center p-5 z-[100] hidden" id="qrModalOverlay">
+    <div class="bg-white rounded-2xl p-8 w-full max-w-[420px] max-h-[90vh] overflow-y-auto shadow-2xl text-center">
+      <div class="w-14 h-14 rounded-full bg-bg-alt flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="check" class="w-7 h-7 text-primary"></i>
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 mb-1">Janji Temu Berhasil Dibuat</h3>
+      <p class="text-gray-500 text-sm mb-5" id="qrSummary"></p>
+      <div class="flex justify-center mb-2">
+        <img id="qrImage" class="rounded-xl border border-gray-200 p-2 w-[240px] h-[240px] object-contain" alt="QR Kode Janji Temu" src="" />
+      </div>
+      <p class="text-gray-400 text-xs mb-6">Tunjukkan QR ini saat scan kedatangan di klinik</p>
+      <div class="grid grid-cols-2 gap-3">
+        <button type="button" class="btn-secondary" id="closeQrBtn">Selesai</button>
+        <button type="button" class="btn-primary flex items-center justify-center gap-2" id="downloadQrBtn">
+          <i data-lucide="download" class="w-4 h-4"></i> Unduh QR
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== TOAST ========== -->
   <div class="toast" id="toast"></div>
 
+  <script src="qrcode.js"></script>
   <script src="poli.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
 </body>
 </html>
