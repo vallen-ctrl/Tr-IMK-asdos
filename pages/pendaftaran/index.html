@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../rootData.js"></script>
     <link rel="stylesheet" href="./PendaftaranPasienBaru.css">
     <link rel="stylesheet" href="../../public/global.css">
 
@@ -678,43 +679,12 @@
 
 
     <script>
-        // --- Data structures ---
-        const listNamaPasien = [
-            "Ahmad Fauzi",
-            "Budi Santoso",
-            "Candra Wijaya",
-            "Dewi Lestari",
-            "Eka Rahmawati",
-            "Fajar Nugroho",
-            "Gita Permata",
-            "Hendra Saputra",
-            "Indah Cahyani",
-            "Joko Susilo"
-        ];
+        // --- Data structures (dari rootData.js) ---
+        const listNamaPasien = RootData.getPatients();
 
-        const listCabang = [
-            "Kabupaten Semarang",
-            "Kabupaten Demak",
-            "Kabupaten Kendal",
-            "Kabupaten Boyolali",
-            "Kabupaten Grobogan",
-            "Kabupaten Kudus",
-            "Kabupaten Pati",
-            "Kabupaten Jepara",
-            "Kabupaten Temanggung",
-            "Kabupaten Wonosobo",
-            "Kabupaten Purworejo",
-            "Kabupaten Kebumen",
-            "Kabupaten Cilacap",
-            "Kabupaten Banyumas"
-        ];
+        const listCabang = RootData.branches;
 
-        const listKelas = [
-            { id: "VIP", nama: "VIP", harga: 1000000 },
-            { id: "VVIP", nama: "VVIP", harga: 1500000 },
-            { id: "Suite Room", nama: "Suite Room", harga: 3000000 },
-            { id: "President Suite", nama: "President Suite", harga: 5000000 }
-        ];
+        const listKelas = RootData.roomClasses;
 
         let statusPembayaran = false;
         let menyetujuisyaratDanKetentuan = false;
@@ -1061,6 +1031,7 @@
         }
     </script>
 
+    <script src="../../public/navbar.js"></script>
 </body>
 
 </html>

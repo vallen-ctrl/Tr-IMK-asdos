@@ -1,175 +1,5 @@
-// Database data notifikasi yang bisa diedit langsung
-let notificationsData = [
-  {
-    id: 1,
-    title: "Pengingat janji temu",
-    type: "appointment",
-    icon: "calendar",
-    snippet: "Jangan lupa anda memiliki janji temu besok di jam 10:00, datang 10 menit lebih awal ya!",
-    time: "2 menit yang lalu",
-    read: true,
-    details: {
-      greeting: "halo johan deo jhon deo formalin,",
-      intro: "Kami ingin mengingatkan anda, bahwa anda memiliki janji temu pada:",
-      appointment: {
-        date: "26- Desember 2025",
-        time: "10:00",
-        doctor: "dr. Andipratama"
-      },
-      footer: "Kami mohon anda dapat hadir 15 menit sebelum waktu yang tertera.",
-      thankYou: "Terimakasih telah mempercayakan kesehatan anda pada kami.",
-      signature: "Salam sehat,\nStaf HealthFlow"
-    }
-  },
-  {
-    id: 2,
-    title: "Informasi layanan baru",
-    type: "info",
-    icon: "megaphone",
-    snippet: "Sekarang kami membuat outlet baru di jakarta.",
-    time: "2 menit yang lalu",
-    read: false,
-    details: {
-      greeting: "halo johan deo jhon deo formalin,",
-      intro: "Kami senang mengumumkan bahwa kami sekarang membuat outlet baru di Jakarta untuk memberikan layanan yang lebih dekat kepada Anda.",
-      body: "Outlet baru kami yang terletak di Jakarta Pusat dilengkapi dengan fasilitas medis modern terlengkap dan tim dokter spesialis yang handal. Kami berkomitmen untuk selalu memberikan pelayanan kesehatan terbaik bagi Anda dan keluarga.",
-      thankYou: "Terimakasih telah mempercayakan kesehatan anda pada kami.",
-      signature: "Salam sehat,\nStaf HealthFlow"
-    }
-  },
-  {
-    id: 3,
-    title: "Perbaharui pin anda",
-    type: "security",
-    icon: "shield",
-    snippet: "Pin yang anda gunakan telah terlalu lama terpakai.",
-    time: "2 menit yang lalu",
-    read: false,
-    details: {
-      greeting: "halo johan deo jhon deo formalin,",
-      intro: "Keamanan akun Anda adalah prioritas kami. Kami mendeteksi bahwa PIN Anda sudah cukup lama tidak diperbarui:",
-      body: "Untuk mencegah hal-hal yang tidak diinginkan dan menjaga kerahasiaan rekam medis Anda, harap perbarui PIN transaksi/akses Anda secara berkala melalui menu Pengaturan Profil.",
-      thankYou: "Terimakasih telah menjaga keamanan akun Anda bersama kami.",
-      signature: "Salam sehat,\nStaf HealthFlow"
-    }
-  },
-  {
-    id: 4,
-    title: "Informasi layanan baru",
-    type: "info",
-    icon: "megaphone",
-    snippet: "Sekarang kami membuat outlet baru di jakarta.",
-    time: "2 menit yang lalu",
-    read: false,
-    details: {
-      greeting: "halo johan deo jhon deo formalin,",
-      intro: "Kami senang mengumumkan bahwa kami sekarang membuat outlet baru di Jakarta untuk memberikan layanan yang lebih dekat kepada Anda.",
-      body: "Outlet baru kami yang terletak di Jakarta Pusat dilengkapi dengan fasilitas medis modern terlengkap dan tim dokter spesialis yang handal.",
-      thankYou: "Terimakasih telah mempercayakan kesehatan anda pada kami.",
-      signature: "Salam sehat,\nStaf HealthFlow"
-    }
-  },
-  {
-    id: 5,
-    title: "Pengingat janji temu",
-    type: "appointment",
-    icon: "calendar",
-    snippet: "Jangan lupa anda memiliki janji temu besok di jam 10:00, datang 10 menit lebih awal ya!",
-    time: "2 menit yang lalu",
-    read: true,
-    details: {
-      greeting: "halo johan deo jhon deo formalin,",
-      intro: "Kami ingin mengingatkan anda, bahwa anda memiliki janji temu pada:",
-      appointment: {
-        date: "27- Desember 2025",
-        time: "14:00",
-        doctor: "dr. Andipratama"
-      },
-      footer: "Kami mohon anda dapat hadir 15 menit sebelum waktu yang tertera.",
-      thankYou: "Terimakasih telah mempercayakan kesehatan anda pada kami.",
-      signature: "Salam sehat,\nStaf HealthFlow"
-    }
-  },
-  {
-    id: 6,
-    title: "Informasi layanan baru",
-    type: "info",
-    icon: "megaphone",
-    snippet: "Sekarang kami membuat outlet baru di jakarta.",
-    time: "2 menit yang lalu",
-    read: true,
-    details: {
-      greeting: "halo johan deo jhon deo formalin,",
-      intro: "Kami memiliki kabar baik tentang dibukanya layanan laboratorium terpadu di cabang utama kami.",
-      body: "Layanan lab baru ini mencakup tes darah lengkap, tes urin, PCR express, serta screening kesehatan menyeluruh dengan hasil instan yang terintegrasi langsung ke aplikasi HealthFlow Anda.",
-      thankYou: "Terimakasih telah mempercayakan kesehatan anda pada kami.",
-      signature: "Salam sehat,\nStaf HealthFlow"
-    }
-  },
-  {
-    id: 7,
-    title: "Pengingat janji temu",
-    type: "appointment",
-    icon: "calendar",
-    snippet: "Jangan lupa anda memiliki janji temu besok di jam 10:00, datang 10 menit lebih awal ya!",
-    time: "2 menit yang lalu",
-    read: true,
-    details: {
-      greeting: "halo johan deo jhon deo formalin,",
-      intro: "Kami ingin mengingatkan anda, bahwa anda memiliki janji temu pada:",
-      appointment: {
-        date: "28- Desember 2025",
-        time: "09:00",
-        doctor: "dr. Siska Amelia"
-      },
-      footer: "Kami mohon anda dapat hadir 15 menit sebelum waktu yang tertera.",
-      thankYou: "Terimakasih telah mempercayakan kesehatan anda pada kami.",
-      signature: "Salam sehat,\nStaf HealthFlow"
-    }
-  },
-  {
-    id: 8,
-    title: "Pengingat janji temu",
-    type: "appointment",
-    icon: "calendar",
-    snippet: "Jangan lupa anda memiliki janji temu besok di jam 10:00, datang 10 menit lebih awal ya!",
-    time: "2 menit yang lalu",
-    read: true,
-    details: {
-      greeting: "halo johan deo jhon deo formalin,",
-      intro: "Kami ingin mengingatkan anda, bahwa anda memiliki janji temu pada:",
-      appointment: {
-        date: "29- Desember 2025",
-        time: "11:00",
-        doctor: "dr. Andipratama"
-      },
-      footer: "Kami mohon anda dapat hadir 15 menit sebelum waktu yang tertera.",
-      thankYou: "Terimakasih telah mempercayakan kesehatan anda pada kami.",
-      signature: "Salam sehat,\nStaf HealthFlow"
-    }
-  },
-  {
-    id: 9,
-    title: "Pengingat janji temu",
-    type: "appointment",
-    icon: "calendar",
-    snippet: "Jangan lupa anda memiliki janji temu besok di jam 10:00, datang 10 menit lebih awal ya!",
-    time: "2 menit yang lalu",
-    read: true,
-    details: {
-      greeting: "halo johan deo jhon deo formalin,",
-      intro: "Kami ingin mengingatkan anda, bahwa anda memiliki janji temu pada:",
-      appointment: {
-        date: "30- Desember 2025",
-        time: "10:30",
-        doctor: "dr. Budi Rahardjo"
-      },
-      footer: "Kami mohon anda dapat hadir 15 menit sebelum waktu yang tertera.",
-      thankYou: "Terimakasih telah mempercayakan kesehatan anda pada kami.",
-      signature: "Salam sehat,\nStaf HealthFlow"
-    }
-  }
-];
+// Database data notifikasi — dari rootData.js
+let notificationsData = (typeof RootData !== 'undefined') ? RootData.getNotifications() : [];
 
 // State management
 let activeFilter = 'semua'; // 'semua', 'unread', 'read'
@@ -330,6 +160,7 @@ function selectNotification(id) {
   const notif = notificationsData.find(n => n.id === id);
   if (notif && !notif.read) {
     notif.read = true;
+    if (typeof RootData !== 'undefined') RootData.saveNotifications(notificationsData);
     renderNotificationList();
     renderFilters();
   }
@@ -417,6 +248,7 @@ function markCurrentAsRead() {
   const notif = notificationsData.find(n => n.id === selectedNotificationId);
   if (notif) {
     notif.read = true;
+    if (typeof RootData !== 'undefined') RootData.saveNotifications(notificationsData);
     renderNotificationList();
     renderFilters();
     loadNotificationDetails(selectedNotificationId);
@@ -428,6 +260,7 @@ function deleteCurrentNotification() {
   if (!selectedNotificationId) return;
   
   notificationsData = notificationsData.filter(n => n.id !== selectedNotificationId);
+  if (typeof RootData !== 'undefined') RootData.saveNotifications(notificationsData);
   
   // Select another notification
   const filtered = getFilteredNotifications();

@@ -14,6 +14,7 @@
     <!-- File milikmu: design system (.card, .header, .radioButton, .selected, select/input, .loader) -->
     <link rel="stylesheet" href="../pendaftaran/PendaftaranPasienBaru.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../rootData.js"></script>
 </head>
 
 <body class="bg-[#eef1f6] min-h-screen flex flex-col">
@@ -207,42 +208,13 @@
     <circle cx="12" cy="9" r="2.5"></circle>
 </svg>`;
 
-        // Kabupaten/Kota per provinsi (dummy)
-        const kabupatenByProvinsi = {
-            jabar: ["Kota Bandung", "Kabupaten Bandung", "Kabupaten Bandung Barat", "Kota Cimahi", "Kabupaten Sumedang", "Kabupaten Garut", "Kota Bekasi", "Kabupaten Bekasi", "Kota Bogor", "Kabupaten Bogor", "Kota Cirebon", "Kabupaten Cirebon"],
-            jateng: ["Kota Semarang", "Kabupaten Semarang", "Kabupaten Kendal", "Kabupaten Demak", "Kota Surakarta", "Kabupaten Sukoharjo"],
-            dki: ["Jakarta Pusat", "Jakarta Barat", "Jakarta Selatan", "Jakarta Timur", "Jakarta Utara", "Kepulauan Seribu"],
-        };
+        // Kabupaten/Kota per provinsi — dari rootData.js
+        const kabupatenByProvinsi = RootData.kabupatenByProvinsi;
 
-        // Semua klinik (dummy), masing-masing ditandai provinsi & kabupaten/kota-nya
-        // supaya bisa difilter otomatis saat dropdown dipilih.
+        // Semua klinik — dari rootData.js (berkesinambungan dgn pendaftaran)
 
-        const url = "https://maps.app.goo.gl/tfRRr7opJ2cHYkR46"
-        const allClinics = [
-            { name: "Klinik Bandung", address: "Jl. Wastukencana No. 2, Babakan Ciamis", distance: "1,3 Km", time: "10 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
-            { name: "Klinik Bandung", address: "Jl. Wastukencana No. 22, Babakan Ciamis", distance: "1,3 Km", time: "10 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
-            { name: "Klinik Bandung", address: "Jl. asdasd No. 2, Babakan Ciamis", distance: "1,3 Km", time: "10 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
-            { name: "Klinik Bandung", address: "Jl. Diponegoro No. 22, Citarum", distance: "1,3 Km", time: "10 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
-            { name: "Klinik Bandung", address: "Jl. Asia Afrika No. 65, Braga", distance: "1,3 Km", time: "10 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
-            { name: "Klinik Bandung", address: "Jl. Riau No. 8, Citarum", distance: "2,4 Km", time: "14 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
-            { name: "Klinik Bandung", address: "Jl. Cihampelas No. 45, Cipaganti", distance: "2,6 Km", time: "15 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
-            { name: "Klinik Bandung", address: "Jl. Dago No. 90, Coblong", distance: "3,2 Km", time: "18 menit", provinsi: "jabar", kabupaten: "Kota Bandung" },
-
-            { name: "Klinik Kabupaten Bandung", address: "Jl. Raya Soreang No. 12, Soreang", distance: "8,1 Km", time: "22 menit", provinsi: "jabar", kabupaten: "Kabupaten Bandung" },
-            { name: "Klinik Kabupaten Bandung", address: "Jl. Ciwidey No. 5, Ciwidey", distance: "9,4 Km", time: "26 menit", provinsi: "jabar", kabupaten: "Kabupaten Bandung" },
-
-            { name: "Klinik Cimahi", address: "Jl. Gatot Subroto No. 30, Cimahi Tengah", distance: "6,0 Km", time: "19 menit", provinsi: "jabar", kabupaten: "Kota Cimahi" },
-            { name: "Klinik Cimahi", address: "Jl. Sriwijaya No. 14, Cimahi Selatan", distance: "6,5 Km", time: "20 menit", provinsi: "jabar", kabupaten: "Kota Cimahi" },
-
-            { name: "Klinik Bekasi", address: "Jl. Ahmad Yani No. 88, Bekasi Selatan", distance: "45 Km", time: "1 jam 10 menit", provinsi: "jabar", kabupaten: "Kota Bekasi" },
-            { name: "Klinik Bekasi", address: "Jl. Cut Meutia No. 21, Bekasi Timur", distance: "46 Km", time: "1 jam 15 menit", provinsi: "jabar", kabupaten: "Kota Bekasi" },
-
-            { name: "Klinik Semarang", address: "Jl. Pandanaran No. 40, Semarang Tengah", distance: "370 Km", time: "6 jam 30 menit", provinsi: "jateng", kabupaten: "Kota Semarang" },
-            { name: "Klinik Semarang", address: "Jl. MT Haryono No. 15, Semarang Selatan", distance: "372 Km", time: "6 jam 35 menit", provinsi: "jateng", kabupaten: "Kota Semarang" },
-
-            { name: "Klinik Jakarta Pusat", address: "Jl. Sudirman No. 25, Jakarta Pusat", distance: "150 Km", time: "3 jam", provinsi: "dki", kabupaten: "Jakarta Pusat" },
-            { name: "Klinik Jakarta Pusat", address: "Jl. Menteng Raya No. 9, Jakarta Pusat", distance: "151 Km", time: "3 jam 5 menit", provinsi: "dki", kabupaten: "Jakarta Pusat" },
-        ];
+        const url = RootData.mapsUrl;
+        const allClinics = RootData.clinics;
 
         const PAGE_SIZE = 5;
         let currentPage = 1;
@@ -408,6 +380,7 @@
         }
     </script>
 
+    <script src="../../public/navbar.js"></script>
     </div>
 </body>
 

@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="../../public/global.css">
     <link rel="stylesheet" href="./daftar.css">
+    <script src="../../rootData.js"></script>
     <title>Pendaftaran Pasien - HealthFlow Clinic</title>
 </head>
 
@@ -689,6 +690,7 @@
         }
 
         function handleLoginSubmit() {
+            RootData.setLoggedIn(true);
             // Simulated login: redirect to index.html (logged in main page)
             window.location.href = '../../index.html';
         }
@@ -698,6 +700,12 @@
             lucide.createIcons();
             setupOtpNavigation();
             setupKtpUpload();
+
+            // Check if register query param is present to show registration form
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('action') === 'register') {
+                showRegister();
+            }
 
             // Real-time password matching listener
             document.getElementById('confirm_password').addEventListener('input', () => {
@@ -728,6 +736,16 @@
             } else {
                 confirmInput.classList.remove('!border-red-600');
                 errorSpan.classList.add('hidden');
+
+                // Simpan data step 1 ke rootData
+                const noTelp = document.getElementById('no_telp').value;
+                const email = document.getElementById('email').value;
+                RootData.saveUser({
+                    noTelp: noTelp,
+                    email: email,
+                    password: password
+                });
+
                 goToStep(2);
             }
         }
@@ -1045,12 +1063,38 @@
             submitBtn.className = "h-12 px-16 bg-[#2F5C8A]/50 text-white/80 rounded-full font-bold text-lg cursor-not-allowed flex items-center justify-center";
             submitBtn.innerText = "Selanjutnya";
 
+            // Ambil data KTP dari form verifikasi
+            const nik = document.getElementById('verify-nik').value;
+            const ttl = document.getElementById('verify-ttl').value;
+            const jenisKelamin = document.getElementById('verify-jk-l').value;
+            const pekerjaan = document.getElementById('verify-pekerjaan').value;
+            const statusPernikahan = document.getElementById('verify-nikah').value;
+
+            // Simpan semua data ke rootData
+            RootData.saveUser({
+                nik: nik,
+                tempatTglLahir: ttl,
+                jenisKelamin: jenisKelamin,
+                pekerjaan: pekerjaan,
+                statusPernikahan: statusPernikahan
+            });
+
+            // Buat nama dari data yang sudah ada, gunakan default jika kosong
+            // Nama tetap dari default user karena KTP form tidak punya field nama
+            const currentUser = RootData.getCurrentUser();
+            if (currentUser.nama) {
+                RootData.addPatient(currentUser.nama);
+            }
+
             // Wait 2 seconds, then transition to success screen (Step 4)
             setTimeout(() => {
                 savingOverlay.classList.add('hidden');
 
                 // Hide verification form card
                 document.getElementById('ktp-verify-form-card').classList.add('hidden');
+
+                // Set login state on registration success
+                RootData.setLoggedIn(true);
 
                 // Go to step 4 (Success state card + all stepper steps active)
                 goToStep(4);

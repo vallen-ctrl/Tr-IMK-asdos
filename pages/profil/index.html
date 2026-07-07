@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../pendaftaran/PendaftaranPasienBaru.css">
     <link rel="stylesheet" href="./profil.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../rootData.js"></script>
     <title>Profil Pasien</title>
 </head>
 
@@ -91,8 +92,8 @@
             <img src="./assets/profile_avatar.png" alt="Foto Profil" class="profil-avatar">
         </div>
         <div class="pb-2">
-            <h1 class="text-xl md:text-2xl font-bold text-gray-900">Jhon deo formalin</h1>
-            <p class="text-sm text-gray-500">Kepala Keluarga dari Ibu Nurul Nuruni dan 4 anaknya</p>
+            <h1 class="text-xl md:text-2xl font-bold text-gray-900" id="profil-nama">Jhon deo formalin</h1>
+            <p class="text-sm text-gray-500" id="profil-sub">Kepala Keluarga dari Ibu Nurul Nuruni dan 4 anaknya</p>
         </div>
     </div>
 
@@ -112,7 +113,7 @@
                         <i data-lucide="calendar-days"></i>
                         <span>Tanggal Lahir</span>
                     </div>
-                    <div class="data-utama-value">22 - Desember - 1967</div>
+                    <div class="data-utama-value" id="profil-tgl-lahir">22 - Desember - 1967</div>
                 </div>
                 <!-- Usia -->
                 <div class="data-utama-item">
@@ -120,7 +121,7 @@
                         <i data-lucide="person-standing"></i>
                         <span>Usia</span>
                     </div>
-                    <div class="data-utama-value">40 Tahun</div>
+                    <div class="data-utama-value" id="profil-usia">40 Tahun</div>
                 </div>
                 <!-- Gender -->
                 <div class="data-utama-item">
@@ -128,7 +129,7 @@
                         <i data-lucide="user-round"></i>
                         <span>Gender</span>
                     </div>
-                    <div class="data-utama-value">Laki-laki</div>
+                    <div class="data-utama-value" id="profil-gender">Laki-laki</div>
                 </div>
                 <!-- Nomor & Email -->
                 <div class="data-utama-item">
@@ -137,12 +138,12 @@
                     </div>
                     <div class="data-utama-value flex items-center gap-1">
                         <i data-lucide="phone" class="w-4 h-4 text-gray-500"></i>
-                        <span>0876-8787-6774</span>
+                        <span id="profil-telp">0876-8787-6774</span>
                         <a href="./verifikasiNomor/index.html" class="edit-icon"><i data-lucide="square-pen"></i></a>
                     </div>
                     <div class="data-utama-value flex items-center gap-1">
                         <i data-lucide="mail" class="w-4 h-4 text-gray-500"></i>
-                        <a href="mailto:Jsondeoformalin@gmail.com">Jsondeoformalin@gmail.com</a>
+                        <a href="#" id="profil-email">Jsondeoformalin@gmail.com</a>
                         <a href="./verifikasiEmail/index.html" class="edit-icon"><i data-lucide="square-pen"></i></a>
                     </div>
                 </div>
@@ -263,7 +264,7 @@
                     </div>
                     <div class="admin-row">
                         <div class="admin-label">Nomor KTP</div>
-                        <div class="admin-value">136586362396004</div>
+                        <div class="admin-value" id="profil-nik">136586362396004</div>
                     </div>
                 </section>
 
@@ -581,25 +582,29 @@
 
     <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // ========== CONTACT DATA & STATE ==========
-        let contacts = [
-            {
-                id: 1,
-                nama: "Siti Nurhaliza (Istri)",
-                nomor: "0866-2760-8767",
-                avatar: "./assets/contact_siti.png",
-                isUtama: true
-            },
-            {
-                id: 2,
-                nama: "M. Ahmad (Ayah)",
-                nomor: "0836-2722-8860",
-                avatar: "./assets/contact_ahmad.png",
-                isUtama: false
-            }
-        ];
-        let nextContactId = 3;
+        // ========== CONTACT DATA & STATE (dari rootData.js) ==========
+        let contacts = RootData.getEmergencyContacts();
+        let nextContactId = contacts.length > 0 ? Math.max(...contacts.map(c => c.id)) + 1 : 1;
         let editingContactId = null;
+
+        // ========== POPULATE PROFILE DATA ==========
+        const currentUser = RootData.getCurrentUser();
+        document.getElementById('profil-nama').textContent = currentUser.nama;
+        document.getElementById('profil-sub').textContent = currentUser.subHeader || '';
+        document.getElementById('profil-usia').textContent = currentUser.usia;
+        document.getElementById('profil-gender').textContent = currentUser.jenisKelamin;
+        document.getElementById('profil-telp').textContent = currentUser.noTelp;
+        document.getElementById('profil-email').textContent = currentUser.email;
+        document.getElementById('profil-email').href = `mailto:${currentUser.email}`;
+        document.getElementById('profil-nik').textContent = currentUser.nik;
+        // Format tanggal lahir
+        if (currentUser.tanggalLahir) {
+            const d = new Date(currentUser.tanggalLahir);
+            if (!isNaN(d)) {
+                const months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+                document.getElementById('profil-tgl-lahir').textContent = `${d.getDate()} - ${months[d.getMonth()]} - ${d.getFullYear()}`;
+            }
+        }
 
         // Initialize Lucide Icons
         lucide.createIcons();
@@ -722,6 +727,7 @@
             }
 
             renderContacts();
+            RootData.saveEmergencyContacts(contacts);
             closeAllDropdowns();
         }
 
@@ -782,6 +788,7 @@
                 contact.nama = nama;
                 contact.nomor = nomor;
                 renderContacts();
+                RootData.saveEmergencyContacts(contacts);
                 closeModal('editContactModal');
             }
         }
@@ -803,6 +810,7 @@
                     }
 
                     renderContacts();
+                    RootData.saveEmergencyContacts(contacts);
                 }, 300);
             }
             closeAllDropdowns();
@@ -973,6 +981,7 @@
             });
 
             renderContacts();
+            RootData.saveEmergencyContacts(contacts);
             closeModal('addContactModal');
         }
 
@@ -1101,6 +1110,8 @@
             closeModal('addInsuranceModal');
         }
     </script>
+
+    <script src="../../public/navbar.js"></script>
 </body>
 
 </html>
