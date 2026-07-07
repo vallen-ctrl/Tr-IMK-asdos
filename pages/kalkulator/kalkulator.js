@@ -4,6 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
     lucide.createIcons();
   }
 
+  // Set dynamic greeting with user's name
+  const greetingEl = document.getElementById("user-greeting");
+  if (greetingEl && typeof RootData !== 'undefined') {
+    const user = RootData.getCurrentUser();
+    if (user && user.nama) {
+      greetingEl.textContent = `Hai, ${user.nama} 👋`;
+    }
+  }
+
   // ==========================================
   // DATA DOKTER SPESIALIS KJ
   // ==========================================

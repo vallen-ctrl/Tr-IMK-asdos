@@ -1,16 +1,16 @@
 # Graph Report - TR  (2026-07-07)
 
 ## Corpus Check
-- 12 files · ~386,970 words
+- 12 files · ~392,792 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 132 nodes · 205 edges · 19 communities (12 shown, 7 thin omitted)
+- 135 nodes · 208 edges · 19 communities (12 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5036d60d`
+- Built from commit: `9f525983`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -76,7 +76,7 @@ Nodes (14): Clinic Banner Image, Image Asset: Contact Us.svg, Image Asset: files
 
 ### Community 3 - "Community 3"
 Cohesion: 0.04
-Nodes (35): calendarGrid, calendarMonth, calendarViewDate, calendarWeekdays, cancelScheduleBtn, closeQrBtn, continueScheduleBtn, detailAbout (+27 more)
+Nodes (37): calendarGrid, calendarMonth, calendarViewDate, calendarWeekdays, cancelScheduleBtn, closeQrBtn, continueScheduleBtn, detailAbout (+29 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.29
@@ -87,7 +87,7 @@ Cohesion: 0.12
 Nodes (15): 1. Kenapa Perlu Struktur Folder?, 2. Struktur Folder Lengkap, 3.1 Istilah Dasar, 3.2 Membuat Branch Baru, 3.3 Menyimpan & Mengirim Perubahan, 3.4 Mengambil Perubahan Terbaru dari `main` ke Branch Kamu, 3.5 Menggabungkan Branch Kamu ke `main` (Setelah Fitur Selesai), 3.6 Cheat Sheet Ringkas (+7 more)
 
 ## Knowledge Gaps
-- **60 isolated node(s):** `doctors`, `calendarViewDate`, `doctorGrid`, `emptyState`, `poliFilter` (+55 more)
+- **62 isolated node(s):** `doctors`, `calendarViewDate`, `doctorGrid`, `emptyState`, `poliFilter` (+57 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -95,14 +95,14 @@ Nodes (15): 1. Kenapa Perlu Struktur Folder?, 2. Struktur Folder Lengkap, 3.1 Is
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Notifikasi - HealthFlow Clinic` connect `Community 2` to `Community 0`, `Community 1`?**
-  _High betweenness centrality (0.041) - this node is a cross-community bridge._
+  _High betweenness centrality (0.040) - this node is a cross-community bridge._
 - **Why does `HealthFlow Clinic` connect `Community 0` to `Community 2`?**
-  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+  _High betweenness centrality (0.036) - this node is a cross-community bridge._
 - **Why does `Profil Pasien` connect `Community 2` to `Community 0`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `doctors`, `calendarViewDate`, `doctorGrid` to the rest of the system?**
-  _60 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _62 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 3` be split into smaller, more focused modules?**
-  _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._
 - **Should `Community 13` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._

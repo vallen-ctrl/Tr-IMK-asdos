@@ -1,17 +1,17 @@
 {
   ".vscode/settings.json": {
-    "mtime": 1783421497.68107,
+    "mtime": 1783434923.252,
     "ast_hash": "73ca878b6207f7647692e8b0bfb5c5c6",
     "semantic_hash": ""
   },
   "pages/notifikasi/notifikasi.js": {
-    "mtime": 1783421470.3048973,
+    "mtime": 1783434923.3474765,
     "ast_hash": "24108ca6b2d5f6fa46997bf0f557487b",
     "semantic_hash": ""
   },
   "public/navbar.js": {
-    "mtime": 1783431768.9822552,
-    "ast_hash": "6fe7744b4b56eab91255e45cb45fc15d",
+    "mtime": 1783434923.4789443,
+    "ast_hash": "8ea0dd6c681d268dd735c95c537471f7",
     "semantic_hash": ""
   },
   "tailwind.config.js": {
@@ -20,17 +20,17 @@
     "semantic_hash": "a5e5a4d1387db843150e082cd01c4ee9"
   },
   ".agents/rules/graphify.md": {
-    "mtime": 1783421470.2673302,
+    "mtime": 1783434923.2503748,
     "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
     "semantic_hash": "a0e4d192b9e2e17256124dbfc8e24e6a"
   },
   ".agents/workflows/graphify.md": {
-    "mtime": 1783421470.2673302,
+    "mtime": 1783434923.2509258,
     "ast_hash": "637776aa6f7496d069afe7520c845c8a",
     "semantic_hash": "637776aa6f7496d069afe7520c845c8a"
   },
   "AGENTS.md": {
-    "mtime": 1783421470.2673302,
+    "mtime": 1783434923.2529964,
     "ast_hash": "4f9150380769a67867318e094d11a3f4",
     "semantic_hash": ""
   },
@@ -40,17 +40,17 @@
     "semantic_hash": "43d6cd2c1a6314be435b25e460cff86f"
   },
   "contohparams.txt": {
-    "mtime": 1783421470.2673302,
+    "mtime": 1783434923.2540548,
     "ast_hash": "a7b7eb2d8c2f871deb931252d1095866",
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1783431120.6847436,
+    "mtime": 1783434923.3199868,
     "ast_hash": "7630d95e1d15a5eb2f94c3b3fe0fc712",
     "semantic_hash": ""
   },
   "pages/daftar_login/index.html": {
-    "mtime": 1783429585.4060345,
+    "mtime": 1783434923.3412116,
     "ast_hash": "f14665106fb1af4cd354937deb5ae8a0",
     "semantic_hash": ""
   },
@@ -60,148 +60,148 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "pages/lokasi/index.html": {
-    "mtime": 1783431480.7447512,
+    "mtime": 1783434923.344887,
     "ast_hash": "cee622015a1c75b1013b72c6bbf71bde",
     "semantic_hash": ""
   },
   "pages/notifikasi/index.html": {
-    "mtime": 1783431473.9335868,
+    "mtime": 1783434923.3459775,
     "ast_hash": "9acc7df552eee6fcea6116cdc03c7e08",
     "semantic_hash": ""
   },
   "pages/pendaftaran/index.html": {
-    "mtime": 1783431467.0987148,
+    "mtime": 1783434923.3495789,
     "ast_hash": "5eb87426b920f48d7964c9fbd8c9769d",
     "semantic_hash": ""
   },
   "pages/pendaftaran/menghubungiServer.html": {
-    "mtime": 1783421470.3069167,
+    "mtime": 1783434923.3506093,
     "ast_hash": "916bc0f412def392a988d2036e9430f5",
     "semantic_hash": "916bc0f412def392a988d2036e9430f5"
   },
   "pages/pendaftaran/ticket/index.html": {
-    "mtime": 1783431516.9382224,
+    "mtime": 1783434923.3506093,
     "ast_hash": "cabf56b7b42b2e70776fff6f3375efd6",
     "semantic_hash": ""
   },
   "pages/profil/index.html": {
-    "mtime": 1783431449.9524748,
-    "ast_hash": "2a84070b2f51ea027f637b5eab446723",
+    "mtime": 1783434923.4529848,
+    "ast_hash": "cb9a2c3a001d488e84c2e44117e84a92",
     "semantic_hash": ""
   },
   "pages/profil/verifikasiEmail/index.html": {
-    "mtime": 1783431510.2130754,
-    "ast_hash": "f3cca424dc99a18396dab5105d895b2e",
+    "mtime": 1783434923.454101,
+    "ast_hash": "11465baf5e6dbecfe0fe4e4918c6e620",
     "semantic_hash": ""
   },
   "pages/profil/verifikasiNomor/index.html": {
-    "mtime": 1783431503.196762,
-    "ast_hash": "0bbae342953961345e3d994284c953b3",
+    "mtime": 1783434923.455155,
+    "ast_hash": "9aac20d70ccf31c15145aff52bb2ec6f",
     "semantic_hash": ""
   },
   "pages/rekam_medis/index.html": {
-    "mtime": 1783431435.754782,
+    "mtime": 1783434923.455155,
     "ast_hash": "6920ffa16fd4dc0458b077fd687027a5",
     "semantic_hash": ""
   },
   "pages/daftar_login/asset/background.png": {
-    "mtime": 1783421470.2970195,
+    "mtime": 1783434923.3399205,
     "ast_hash": "ad06df9787aca46835388a69f89cc6a4",
     "semantic_hash": "ad06df9787aca46835388a69f89cc6a4"
   },
   "pages/profil/assets/Contact Us.svg": {
-    "mtime": 1783421470.365542,
+    "mtime": 1783434923.4187613,
     "ast_hash": "0b80e62f7faa16ecaae85259a888b5bc",
     "semantic_hash": "0b80e62f7faa16ecaae85259a888b5bc"
   },
   "pages/profil/assets/clinic_banner.png": {
-    "mtime": 1783421470.3715,
+    "mtime": 1783434923.4270425,
     "ast_hash": "14b1b8b6509a4c484c7496a2d2e31ab0",
     "semantic_hash": "14b1b8b6509a4c484c7496a2d2e31ab0"
   },
   "pages/profil/assets/contact_ahmad.png": {
-    "mtime": 1783421470.3775766,
+    "mtime": 1783434923.4341667,
     "ast_hash": "d9ab6e6835031a54e1677f8bf5e3f187",
     "semantic_hash": "d9ab6e6835031a54e1677f8bf5e3f187"
   },
   "pages/profil/assets/contact_illustration.png": {
-    "mtime": 1783421470.3781495,
+    "mtime": 1783434923.435163,
     "ast_hash": "6c9948bf047fd0786b1b5f0f5bdd970f",
     "semantic_hash": "6c9948bf047fd0786b1b5f0f5bdd970f"
   },
   "pages/profil/assets/contact_siti.png": {
-    "mtime": 1783421470.384566,
+    "mtime": 1783434923.4433656,
     "ast_hash": "2ee0c5e9c9f34ad9496e09a5874ae0fd",
     "semantic_hash": "2ee0c5e9c9f34ad9496e09a5874ae0fd"
   },
   "pages/profil/assets/files_and_doc.svg": {
-    "mtime": 1783421470.3856196,
+    "mtime": 1783434923.444466,
     "ast_hash": "ce40b998732a02e645b0460383269f75",
     "semantic_hash": "ce40b998732a02e645b0460383269f75"
   },
   "pages/profil/assets/profile_avatar.png": {
-    "mtime": 1783421470.3866534,
+    "mtime": 1783434923.451986,
     "ast_hash": "c7e19c32864265d6fbebddc8b3d191b0",
     "semantic_hash": "c7e19c32864265d6fbebddc8b3d191b0"
   },
   "public/LOGO.svg": {
-    "mtime": 1783421470.4101138,
+    "mtime": 1783434923.4767895,
     "ast_hash": "1b74be05b81135a35c319364b7eb13f6",
     "semantic_hash": "1b74be05b81135a35c319364b7eb13f6"
   },
   "public/icon untuk verifikasi.svg": {
-    "mtime": 1783421470.4111488,
+    "mtime": 1783434923.4789443,
     "ast_hash": "9cf14cac5f638097feaa342a1a7fed9f",
     "semantic_hash": "9cf14cac5f638097feaa342a1a7fed9f"
   },
   "root images/carousel 1.png": {
-    "mtime": 1783421470.4132576,
+    "mtime": 1783434923.4810176,
     "ast_hash": "49f3064d8ce407c0ae8fc572a3a5ce33",
     "semantic_hash": "49f3064d8ce407c0ae8fc572a3a5ce33"
   },
   "root images/carousel 2.png": {
-    "mtime": 1783421470.414302,
+    "mtime": 1783434923.483196,
     "ast_hash": "57ecca01eb8d30c556c3ff71e18ec100",
     "semantic_hash": "57ecca01eb8d30c556c3ff71e18ec100"
   },
   "root images/carousel 3.png": {
-    "mtime": 1783421470.4158874,
+    "mtime": 1783434923.4843895,
     "ast_hash": "cbc932eb51cb629e22c7f6a54226fc6a",
     "semantic_hash": "cbc932eb51cb629e22c7f6a54226fc6a"
   },
   "root images/carousel 4.png": {
-    "mtime": 1783421470.4169629,
+    "mtime": 1783434923.4857688,
     "ast_hash": "1aa0bcfa2a781cfadd64e9dda9a0c80f",
     "semantic_hash": "1aa0bcfa2a781cfadd64e9dda9a0c80f"
   },
   "root images/carousel 5.png": {
-    "mtime": 1783421470.4185398,
+    "mtime": 1783434923.4879339,
     "ast_hash": "288c269b95e26e80f8855aa071446f88",
     "semantic_hash": "288c269b95e26e80f8855aa071446f88"
   },
   "root images/carousel 6.png": {
-    "mtime": 1783421470.4195971,
+    "mtime": 1783434923.49044,
     "ast_hash": "2bde1c690846c3a9bc18f02bbe48a9b9",
     "semantic_hash": "2bde1c690846c3a9bc18f02bbe48a9b9"
   },
   "root images/header images.png": {
-    "mtime": 1783421470.4282594,
+    "mtime": 1783434923.5022435,
     "ast_hash": "0db686704f446108ba1b53e38d74e834",
     "semantic_hash": "0db686704f446108ba1b53e38d74e834"
   },
   "root images/pantauMoodAnda.png": {
-    "mtime": 1783421470.4303777,
+    "mtime": 1783434923.505762,
     "ast_hash": "48d4719d211582d7a6ff246014bdad59",
     "semantic_hash": "48d4719d211582d7a6ff246014bdad59"
   },
   "pages/kalkulator/kalkulator.js": {
-    "mtime": 1783430548.60525,
-    "ast_hash": "2d08380ff047c8720b5fb00567291f0a",
+    "mtime": 1783435103.959648,
+    "ast_hash": "8a92058f24879c44bdd60803ae5f7f6a",
     "semantic_hash": ""
   },
   "pages/poli/poli.js": {
-    "mtime": 1783421474.9460647,
-    "ast_hash": "2171a5b37927b448942fb2c7b1fb17b8",
+    "mtime": 1783434923.3531322,
+    "ast_hash": "bacaaf3e7edf0874ebd64c20defb68f7",
     "semantic_hash": ""
   },
   "pages/poli/qrcode.js": {
@@ -210,23 +210,23 @@
     "semantic_hash": ""
   },
   "rootData.js": {
-    "mtime": 1783422457.7657893,
+    "mtime": 1783434923.5072374,
     "ast_hash": "4d0cecd3b416a54baced767da3f4e430",
     "semantic_hash": ""
   },
   "pages/daftar_login/BuatKatasandiBaru/index.html": {
-    "mtime": 1783422010.1033704,
+    "mtime": 1783434923.3219981,
     "ast_hash": "5141ad366d97b91f84536002676af337",
     "semantic_hash": ""
   },
   "pages/daftar_login/PulihkanAkunAnda/index.html": {
-    "mtime": 1783421470.2775042,
+    "mtime": 1783434923.3231611,
     "ast_hash": "4ab067c6f03b996815f4cef2b5f5377b",
     "semantic_hash": ""
   },
   "pages/kalkulator/index.html": {
-    "mtime": 1783431442.8140807,
-    "ast_hash": "fd9a45194fbbd0a5ec18f5cfc6cc3226",
+    "mtime": 1783434923.3438795,
+    "ast_hash": "734e88b0bb5a831c78e7e1cd27e75305",
     "semantic_hash": ""
   },
   "pages/kalkulator/kalkulator-kuis.html": {
@@ -235,7 +235,7 @@
     "semantic_hash": ""
   },
   "pages/poli/index.html": {
-    "mtime": 1783431460.496812,
+    "mtime": 1783434923.3521101,
     "ast_hash": "2795c304ac3e9e82f111b45bfcd9baef",
     "semantic_hash": ""
   },
@@ -287,6 +287,16 @@
   "pages/poli/images/qr-placeholder.svg": {
     "mtime": 1783421474.945062,
     "ast_hash": "afc8b1fbb30b18b07624e5776bafa005",
+    "semantic_hash": ""
+  },
+  "pages/kalkulator/images/default-avatar.jpg": {
+    "mtime": 1783434923.342231,
+    "ast_hash": "f0e03c1ffa882b4db1040fa09cfeadad",
+    "semantic_hash": ""
+  },
+  "pages/kalkulator/images/dr-vallen.jpg": {
+    "mtime": 1783434923.3432853,
+    "ast_hash": "267f6955a55d4d10f044324b6328562d",
     "semantic_hash": ""
   }
 }

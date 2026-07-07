@@ -43,10 +43,20 @@
       "norm_label": "kalkulator.js"
     },
     {
+      "label": "renderTipsOrDokter()",
+      "file_type": "code",
+      "source_file": "pages/kalkulator/kalkulator.js",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "kalkulator_kalkulator_rendertipsordokter",
+      "community": 4,
+      "norm_label": "rendertipsordokter()"
+    },
+    {
       "label": "renderQuestion()",
       "file_type": "code",
       "source_file": "pages/kalkulator/kalkulator.js",
-      "source_location": "L211",
+      "source_location": "L329",
       "_origin": "ast",
       "id": "kalkulator_kalkulator_renderquestion",
       "community": 4,
@@ -56,7 +66,7 @@
       "label": "finishCalculator()",
       "file_type": "code",
       "source_file": "pages/kalkulator/kalkulator.js",
-      "source_location": "L288",
+      "source_location": "L406",
       "_origin": "ast",
       "id": "kalkulator_kalkulator_finishcalculator",
       "community": 4,
@@ -621,6 +631,26 @@
       "id": "poli_poli_showtoast",
       "community": 3,
       "norm_label": "showtoast()"
+    },
+    {
+      "label": "urlParams",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L395",
+      "_origin": "ast",
+      "id": "poli_poli_urlparams",
+      "community": 3,
+      "norm_label": "urlparams"
+    },
+    {
+      "label": "filterParam",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L396",
+      "_origin": "ast",
+      "id": "poli_poli_filterparam",
+      "community": 3,
+      "norm_label": "filterparam"
     },
     {
       "label": "qrcode.js",
@@ -1489,6 +1519,16 @@
       "target": "kalkulator_kalkulator_renderquestion"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/kalkulator/kalkulator.js",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "kalkulator_kalkulator",
+      "target": "kalkulator_kalkulator_rendertipsordokter",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -1979,6 +2019,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "pages/poli/poli.js",
+      "source_location": "L396",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_filterparam",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
       "source_location": "L327",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -2214,6 +2264,16 @@
       "confidence_score": 1.0,
       "source": "poli_poli",
       "target": "poli_poli_updatecontinuebuttonstate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L395",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_urlparams",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3564,5 +3624,5 @@
       "source_file": "pages/profil/index.html"
     }
   ],
-  "built_at_commit": "5036d60d1e0d1eebbd5866027ee7dc45ddd14575"
+  "built_at_commit": "9f525983f01bba445b0c373c18119c00f89e9508"
 }
