@@ -33,6 +33,36 @@
   },
   "nodes": [
     {
+      "label": "kalkulator.js",
+      "file_type": "code",
+      "source_file": "pages/kalkulator/kalkulator.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "kalkulator_kalkulator",
+      "community": 4,
+      "norm_label": "kalkulator.js"
+    },
+    {
+      "label": "renderQuestion()",
+      "file_type": "code",
+      "source_file": "pages/kalkulator/kalkulator.js",
+      "source_location": "L202",
+      "_origin": "ast",
+      "id": "kalkulator_kalkulator_renderquestion",
+      "community": 4,
+      "norm_label": "renderquestion()"
+    },
+    {
+      "label": "finishCalculator()",
+      "file_type": "code",
+      "source_file": "pages/kalkulator/kalkulator.js",
+      "source_location": "L279",
+      "_origin": "ast",
+      "id": "kalkulator_kalkulator_finishcalculator",
+      "community": 4,
+      "norm_label": "finishcalculator()"
+    },
+    {
       "label": "notifikasi.js",
       "file_type": "code",
       "source_file": "pages/notifikasi/notifikasi.js",
@@ -43,20 +73,10 @@
       "norm_label": "notifikasi.js"
     },
     {
-      "label": "notificationsData",
-      "file_type": "code",
-      "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "notifikasi_notifikasi_notificationsdata",
-      "community": 1,
-      "norm_label": "notificationsdata"
-    },
-    {
       "label": "setFilter()",
       "file_type": "code",
       "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L196",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "notifikasi_notifikasi_setfilter",
       "community": 1,
@@ -66,7 +86,7 @@
       "label": "renderFilters()",
       "file_type": "code",
       "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L217",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "notifikasi_notifikasi_renderfilters",
       "community": 1,
@@ -76,7 +96,7 @@
       "label": "getFilteredNotifications()",
       "file_type": "code",
       "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L238",
+      "source_location": "L68",
       "_origin": "ast",
       "id": "notifikasi_notifikasi_getfilterednotifications",
       "community": 1,
@@ -86,7 +106,7 @@
       "label": "renderNotificationList()",
       "file_type": "code",
       "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L248",
+      "source_location": "L78",
       "_origin": "ast",
       "id": "notifikasi_notifikasi_rendernotificationlist",
       "community": 1,
@@ -96,7 +116,7 @@
       "label": "selectNotification()",
       "file_type": "code",
       "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L310",
+      "source_location": "L140",
       "_origin": "ast",
       "id": "notifikasi_notifikasi_selectnotification",
       "community": 1,
@@ -106,7 +126,7 @@
       "label": "loadNotificationDetails()",
       "file_type": "code",
       "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L347",
+      "source_location": "L178",
       "_origin": "ast",
       "id": "notifikasi_notifikasi_loadnotificationdetails",
       "community": 1,
@@ -116,7 +136,7 @@
       "label": "showEmptyDetails()",
       "file_type": "code",
       "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L410",
+      "source_location": "L241",
       "_origin": "ast",
       "id": "notifikasi_notifikasi_showemptydetails",
       "community": 1,
@@ -126,7 +146,7 @@
       "label": "markCurrentAsRead()",
       "file_type": "code",
       "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L416",
+      "source_location": "L247",
       "_origin": "ast",
       "id": "notifikasi_notifikasi_markcurrentasread",
       "community": 1,
@@ -136,7 +156,7 @@
       "label": "deleteCurrentNotification()",
       "file_type": "code",
       "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L427",
+      "source_location": "L259",
       "_origin": "ast",
       "id": "notifikasi_notifikasi_deletecurrentnotification",
       "community": 1,
@@ -146,11 +166,491 @@
       "label": "goBackToList()",
       "file_type": "code",
       "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L446",
+      "source_location": "L279",
       "_origin": "ast",
       "id": "notifikasi_notifikasi_gobacktolist",
       "community": 1,
       "norm_label": "gobacktolist()"
+    },
+    {
+      "label": "poli.js",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "poli_poli",
+      "community": 3,
+      "norm_label": "poli.js"
+    },
+    {
+      "label": "doctors",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "poli_poli_doctors",
+      "community": 3,
+      "norm_label": "doctors"
+    },
+    {
+      "label": "calendarViewDate",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L99",
+      "_origin": "ast",
+      "id": "poli_poli_calendarviewdate",
+      "community": 3,
+      "norm_label": "calendarviewdate"
+    },
+    {
+      "label": "doctorGrid",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L105",
+      "_origin": "ast",
+      "id": "poli_poli_doctorgrid",
+      "community": 3,
+      "norm_label": "doctorgrid"
+    },
+    {
+      "label": "emptyState",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L106",
+      "_origin": "ast",
+      "id": "poli_poli_emptystate",
+      "community": 3,
+      "norm_label": "emptystate"
+    },
+    {
+      "label": "poliFilter",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L107",
+      "_origin": "ast",
+      "id": "poli_poli_polifilter",
+      "community": 3,
+      "norm_label": "polifilter"
+    },
+    {
+      "label": "detailModalOverlay",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "poli_poli_detailmodaloverlay",
+      "community": 3,
+      "norm_label": "detailmodaloverlay"
+    },
+    {
+      "label": "detailBackBtn",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L110",
+      "_origin": "ast",
+      "id": "poli_poli_detailbackbtn",
+      "community": 3,
+      "norm_label": "detailbackbtn"
+    },
+    {
+      "label": "detailPhoto",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L111",
+      "_origin": "ast",
+      "id": "poli_poli_detailphoto",
+      "community": 3,
+      "norm_label": "detailphoto"
+    },
+    {
+      "label": "detailName",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L112",
+      "_origin": "ast",
+      "id": "poli_poli_detailname",
+      "community": 3,
+      "norm_label": "detailname"
+    },
+    {
+      "label": "detailSpecialization",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L113",
+      "_origin": "ast",
+      "id": "poli_poli_detailspecialization",
+      "community": 3,
+      "norm_label": "detailspecialization"
+    },
+    {
+      "label": "detailAbout",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L114",
+      "_origin": "ast",
+      "id": "poli_poli_detailabout",
+      "community": 3,
+      "norm_label": "detailabout"
+    },
+    {
+      "label": "scheduleWeekday",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L115",
+      "_origin": "ast",
+      "id": "poli_poli_scheduleweekday",
+      "community": 3,
+      "norm_label": "scheduleweekday"
+    },
+    {
+      "label": "scheduleSaturday",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "poli_poli_schedulesaturday",
+      "community": 3,
+      "norm_label": "schedulesaturday"
+    },
+    {
+      "label": "scheduleSunday",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L117",
+      "_origin": "ast",
+      "id": "poli_poli_schedulesunday",
+      "community": 3,
+      "norm_label": "schedulesunday"
+    },
+    {
+      "label": "makeAppointmentBtn",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L118",
+      "_origin": "ast",
+      "id": "poli_poli_makeappointmentbtn",
+      "community": 3,
+      "norm_label": "makeappointmentbtn"
+    },
+    {
+      "label": "scheduleModalOverlay",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L120",
+      "_origin": "ast",
+      "id": "poli_poli_schedulemodaloverlay",
+      "community": 3,
+      "norm_label": "schedulemodaloverlay"
+    },
+    {
+      "label": "scheduleBackBtn",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L121",
+      "_origin": "ast",
+      "id": "poli_poli_schedulebackbtn",
+      "community": 3,
+      "norm_label": "schedulebackbtn"
+    },
+    {
+      "label": "scheduleDoctorPhoto",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L122",
+      "_origin": "ast",
+      "id": "poli_poli_scheduledoctorphoto",
+      "community": 3,
+      "norm_label": "scheduledoctorphoto"
+    },
+    {
+      "label": "scheduleDoctorName",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L123",
+      "_origin": "ast",
+      "id": "poli_poli_scheduledoctorname",
+      "community": 3,
+      "norm_label": "scheduledoctorname"
+    },
+    {
+      "label": "scheduleDoctorSpec",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L124",
+      "_origin": "ast",
+      "id": "poli_poli_scheduledoctorspec",
+      "community": 3,
+      "norm_label": "scheduledoctorspec"
+    },
+    {
+      "label": "calendarMonth",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L125",
+      "_origin": "ast",
+      "id": "poli_poli_calendarmonth",
+      "community": 3,
+      "norm_label": "calendarmonth"
+    },
+    {
+      "label": "calendarWeekdays",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L126",
+      "_origin": "ast",
+      "id": "poli_poli_calendarweekdays",
+      "community": 3,
+      "norm_label": "calendarweekdays"
+    },
+    {
+      "label": "calendarGrid",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L127",
+      "_origin": "ast",
+      "id": "poli_poli_calendargrid",
+      "community": 3,
+      "norm_label": "calendargrid"
+    },
+    {
+      "label": "timeGrid",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L128",
+      "_origin": "ast",
+      "id": "poli_poli_timegrid",
+      "community": 3,
+      "norm_label": "timegrid"
+    },
+    {
+      "label": "cancelScheduleBtn",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L129",
+      "_origin": "ast",
+      "id": "poli_poli_cancelschedulebtn",
+      "community": 3,
+      "norm_label": "cancelschedulebtn"
+    },
+    {
+      "label": "continueScheduleBtn",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L130",
+      "_origin": "ast",
+      "id": "poli_poli_continueschedulebtn",
+      "community": 3,
+      "norm_label": "continueschedulebtn"
+    },
+    {
+      "label": "qrModalOverlay",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L132",
+      "_origin": "ast",
+      "id": "poli_poli_qrmodaloverlay",
+      "community": 3,
+      "norm_label": "qrmodaloverlay"
+    },
+    {
+      "label": "qrSummary",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L133",
+      "_origin": "ast",
+      "id": "poli_poli_qrsummary",
+      "community": 3,
+      "norm_label": "qrsummary"
+    },
+    {
+      "label": "qrImage",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L134",
+      "_origin": "ast",
+      "id": "poli_poli_qrimage",
+      "community": 3,
+      "norm_label": "qrimage"
+    },
+    {
+      "label": "closeQrBtn",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L135",
+      "_origin": "ast",
+      "id": "poli_poli_closeqrbtn",
+      "community": 3,
+      "norm_label": "closeqrbtn"
+    },
+    {
+      "label": "downloadQrBtn",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L136",
+      "_origin": "ast",
+      "id": "poli_poli_downloadqrbtn",
+      "community": 3,
+      "norm_label": "downloadqrbtn"
+    },
+    {
+      "label": "toast",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L138",
+      "_origin": "ast",
+      "id": "poli_poli_toast",
+      "community": 3,
+      "norm_label": "toast"
+    },
+    {
+      "label": "MONTH_NAMES",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L140",
+      "_origin": "ast",
+      "id": "poli_poli_month_names",
+      "community": 3,
+      "norm_label": "month_names"
+    },
+    {
+      "label": "WEEKDAY_NAMES",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L141",
+      "_origin": "ast",
+      "id": "poli_poli_weekday_names",
+      "community": 3,
+      "norm_label": "weekday_names"
+    },
+    {
+      "label": "TIME_SLOTS",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L142",
+      "_origin": "ast",
+      "id": "poli_poli_time_slots",
+      "community": 3,
+      "norm_label": "time_slots"
+    },
+    {
+      "label": "renderDoctors()",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L145",
+      "_origin": "ast",
+      "id": "poli_poli_renderdoctors",
+      "community": 3,
+      "norm_label": "renderdoctors()"
+    },
+    {
+      "label": "openDetailModal()",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L190",
+      "_origin": "ast",
+      "id": "poli_poli_opendetailmodal",
+      "community": 3,
+      "norm_label": "opendetailmodal()"
+    },
+    {
+      "label": "closeDetailModal()",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L211",
+      "_origin": "ast",
+      "id": "poli_poli_closedetailmodal",
+      "community": 3,
+      "norm_label": "closedetailmodal()"
+    },
+    {
+      "label": "closeScheduleModal()",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L242",
+      "_origin": "ast",
+      "id": "poli_poli_closeschedulemodal",
+      "community": 3,
+      "norm_label": "closeschedulemodal()"
+    },
+    {
+      "label": "renderCalendar()",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L256",
+      "_origin": "ast",
+      "id": "poli_poli_rendercalendar",
+      "community": 3,
+      "norm_label": "rendercalendar()"
+    },
+    {
+      "label": "renderTimeSlots()",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L305",
+      "_origin": "ast",
+      "id": "poli_poli_rendertimeslots",
+      "community": 3,
+      "norm_label": "rendertimeslots()"
+    },
+    {
+      "label": "updateContinueButtonState()",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L322",
+      "_origin": "ast",
+      "id": "poli_poli_updatecontinuebuttonstate",
+      "community": 3,
+      "norm_label": "updatecontinuebuttonstate()"
+    },
+    {
+      "label": "generateBookingCode()",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L327",
+      "_origin": "ast",
+      "id": "poli_poli_generatebookingcode",
+      "community": 3,
+      "norm_label": "generatebookingcode()"
+    },
+    {
+      "label": "showToast()",
+      "file_type": "code",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L379",
+      "_origin": "ast",
+      "id": "poli_poli_showtoast",
+      "community": 3,
+      "norm_label": "showtoast()"
+    },
+    {
+      "label": "qrcode.js",
+      "file_type": "code",
+      "source_file": "pages/poli/qrcode.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "poli_qrcode",
+      "community": 5,
+      "norm_label": "qrcode.js"
+    },
+    {
+      "label": "qrPolynomial()",
+      "file_type": "code",
+      "source_file": "pages/poli/qrcode.js",
+      "source_location": "L1182",
+      "_origin": "ast",
+      "id": "poli_qrcode_qrpolynomial",
+      "community": 5,
+      "norm_label": "qrpolynomial()"
+    },
+    {
+      "label": "toUTF8Array()",
+      "file_type": "code",
+      "source_file": "pages/poli/qrcode.js",
+      "source_location": "L2254",
+      "_origin": "ast",
+      "id": "poli_qrcode_toutf8array",
+      "community": 5,
+      "norm_label": "toutf8array()"
     },
     {
       "label": "navbar.js",
@@ -173,6 +673,26 @@
       "norm_label": "initnavbar()"
     },
     {
+      "label": "rootData.js",
+      "file_type": "code",
+      "source_file": "rootData.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "rootdata",
+      "community": 18,
+      "norm_label": "rootdata.js"
+    },
+    {
+      "label": "RootData",
+      "file_type": "code",
+      "source_file": "rootData.js",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "rootdata_rootdata",
+      "community": 18,
+      "norm_label": "rootdata"
+    },
+    {
       "label": "tailwind.config.js",
       "file_type": "code",
       "source_file": "tailwind.config.js",
@@ -183,6 +703,276 @@
       "norm_label": "tailwind.config.js"
     },
     {
+      "label": "graphify.md",
+      "file_type": "document",
+      "source_file": ".agents/rules/graphify.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "rules_graphify",
+      "community": 14,
+      "norm_label": "graphify.md"
+    },
+    {
+      "label": "graphify",
+      "file_type": "document",
+      "source_file": ".agents/rules/graphify.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "rules_graphify_graphify",
+      "community": 14,
+      "norm_label": "graphify"
+    },
+    {
+      "label": "graphify.md",
+      "file_type": "document",
+      "source_file": ".agents/workflows/graphify.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "workflows_graphify",
+      "community": 17,
+      "norm_label": "graphify.md"
+    },
+    {
+      "label": "Workflow: graphify",
+      "file_type": "document",
+      "source_file": ".agents/workflows/graphify.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "workflows_graphify_workflow_graphify",
+      "community": 17,
+      "norm_label": "workflow: graphify"
+    },
+    {
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents",
+      "community": 6,
+      "norm_label": "agents.md"
+    },
+    {
+      "label": "YOU'R TASK",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_you_r_task",
+      "community": 6,
+      "norm_label": "you'r task"
+    },
+    {
+      "label": "CAUTION",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "agents_caution",
+      "community": 6,
+      "norm_label": "caution"
+    },
+    {
+      "label": "Knowledge Graph (Graphify) \u2014 Wajib Selalu Update",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "agents_knowledge_graph_graphify_wajib_selalu_update",
+      "community": 6,
+      "norm_label": "knowledge graph (graphify) \u2014 wajib selalu update"
+    },
+    {
+      "label": "Sebelum kerja",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "agents_sebelum_kerja",
+      "community": 6,
+      "norm_label": "sebelum kerja"
+    },
+    {
+      "label": "PLEASE DO",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "agents_please_do",
+      "community": 6,
+      "norm_label": "please do"
+    },
+    {
+      "label": "RULES OF DESIGN",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "agents_rules_of_design",
+      "community": 6,
+      "norm_label": "rules of design"
+    },
+    {
+      "label": "Readme.md",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme",
+      "community": 13,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "\ud83d\udcc1 Panduan Struktur Proyek & Git",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme_panduan_struktur_proyek_git",
+      "community": 13,
+      "norm_label": "\ud83d\udcc1 panduan struktur proyek & git"
+    },
+    {
+      "label": "1. Kenapa Perlu Struktur Folder?",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "readme_1_kenapa_perlu_struktur_folder",
+      "community": 13,
+      "norm_label": "1. kenapa perlu struktur folder?"
+    },
+    {
+      "label": "2. Struktur Folder Lengkap",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "readme_2_struktur_folder_lengkap",
+      "community": 13,
+      "norm_label": "2. struktur folder lengkap"
+    },
+    {
+      "label": "Penjelasan tiap bagian",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "readme_penjelasan_tiap_bagian",
+      "community": 13,
+      "norm_label": "penjelasan tiap bagian"
+    },
+    {
+      "label": "\ud83d\udca1 Aturan sederhana biar nggak bingung",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "readme_aturan_sederhana_biar_nggak_bingung",
+      "community": 13,
+      "norm_label": "\ud83d\udca1 aturan sederhana biar nggak bingung"
+    },
+    {
+      "label": "Contoh penggunaan di HTML",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L61",
+      "_origin": "ast",
+      "id": "readme_contoh_penggunaan_di_html",
+      "community": 13,
+      "norm_label": "contoh penggunaan di html"
+    },
+    {
+      "label": "3. Panduan Git untuk Kerja Tim",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "readme_3_panduan_git_untuk_kerja_tim",
+      "community": 13,
+      "norm_label": "3. panduan git untuk kerja tim"
+    },
+    {
+      "label": "3.1 Istilah Dasar",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L90",
+      "_origin": "ast",
+      "id": "readme_3_1_istilah_dasar",
+      "community": 13,
+      "norm_label": "3.1 istilah dasar"
+    },
+    {
+      "label": "3.2 Membuat Branch Baru",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "readme_3_2_membuat_branch_baru",
+      "community": 13,
+      "norm_label": "3.2 membuat branch baru"
+    },
+    {
+      "label": "3.3 Menyimpan & Mengirim Perubahan",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L122",
+      "_origin": "ast",
+      "id": "readme_3_3_menyimpan_mengirim_perubahan",
+      "community": 13,
+      "norm_label": "3.3 menyimpan & mengirim perubahan"
+    },
+    {
+      "label": "3.4 Mengambil Perubahan Terbaru dari `main` ke Branch Kamu",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L140",
+      "_origin": "ast",
+      "id": "readme_3_4_mengambil_perubahan_terbaru_dari_main_ke_branch_kamu",
+      "community": 13,
+      "norm_label": "3.4 mengambil perubahan terbaru dari `main` ke branch kamu"
+    },
+    {
+      "label": "Kalau muncul konflik (\"merge conflict\")",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L162",
+      "_origin": "ast",
+      "id": "readme_kalau_muncul_konflik_merge_conflict",
+      "community": 13,
+      "norm_label": "kalau muncul konflik (\"merge conflict\")"
+    },
+    {
+      "label": "3.5 Menggabungkan Branch Kamu ke `main` (Setelah Fitur Selesai)",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L187",
+      "_origin": "ast",
+      "id": "readme_3_5_menggabungkan_branch_kamu_ke_main_setelah_fitur_selesai",
+      "community": 13,
+      "norm_label": "3.5 menggabungkan branch kamu ke `main` (setelah fitur selesai)"
+    },
+    {
+      "label": "3.6 Cheat Sheet Ringkas",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L199",
+      "_origin": "ast",
+      "id": "readme_3_6_cheat_sheet_ringkas",
+      "community": 13,
+      "norm_label": "3.6 cheat sheet ringkas"
+    },
+    {
+      "label": "3.7 Tips Biar Kerja Tim Lancar",
+      "file_type": "document",
+      "source_file": "Readme.md",
+      "source_location": "L215",
+      "_origin": "ast",
+      "id": "readme_3_7_tips_biar_kerja_tim_lancar",
+      "community": 13,
+      "norm_label": "3.7 tips biar kerja tim lancar"
+    },
+    {
       "label": "settings.json",
       "file_type": "code",
       "source_file": ".vscode/settings.json",
@@ -191,9 +981,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "settings",
       "community": 15,
-      "norm_label": "settings.json"
+      "norm_label": "settings.json",
+      "id": "settings"
     },
     {
       "label": "Login Background Graphic",
@@ -204,9 +994,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "asset_background",
       "community": 7,
-      "norm_label": "login background graphic"
+      "norm_label": "login background graphic",
+      "id": "asset_background"
     },
     {
       "label": "Image Asset: Contact Us.svg",
@@ -217,9 +1007,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "assets_contact_us",
-      "community": 3,
-      "norm_label": "image asset: contact us.svg"
+      "community": 2,
+      "norm_label": "image asset: contact us.svg",
+      "id": "assets_contact_us"
     },
     {
       "label": "Clinic Banner Image",
@@ -230,9 +1020,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "assets_clinic_banner",
-      "community": 3,
-      "norm_label": "clinic banner image"
+      "community": 2,
+      "norm_label": "clinic banner image",
+      "id": "assets_clinic_banner"
     },
     {
       "label": "Image Asset: contact_ahmad.png",
@@ -243,9 +1033,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "assets_contact_ahmad",
       "community": 8,
-      "norm_label": "image asset: contact_ahmad.png"
+      "norm_label": "image asset: contact_ahmad.png",
+      "id": "assets_contact_ahmad"
     },
     {
       "label": "Contact Form Illustration",
@@ -256,9 +1046,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "assets_contact_illustration",
       "community": 9,
-      "norm_label": "contact form illustration"
+      "norm_label": "contact form illustration",
+      "id": "assets_contact_illustration"
     },
     {
       "label": "Image Asset: contact_siti.png",
@@ -269,9 +1059,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "assets_contact_siti",
       "community": 10,
-      "norm_label": "image asset: contact_siti.png"
+      "norm_label": "image asset: contact_siti.png",
+      "id": "assets_contact_siti"
     },
     {
       "label": "Image Asset: files_and_doc.svg",
@@ -282,9 +1072,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "assets_files_and_doc",
-      "community": 3,
-      "norm_label": "image asset: files_and_doc.svg"
+      "community": 2,
+      "norm_label": "image asset: files_and_doc.svg",
+      "id": "assets_files_and_doc"
     },
     {
       "label": "User Profile Default Avatar",
@@ -295,9 +1085,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "assets_profile_avatar",
-      "community": 3,
-      "norm_label": "user profile default avatar"
+      "community": 0,
+      "norm_label": "user profile default avatar",
+      "id": "assets_profile_avatar"
     },
     {
       "label": "Hospital Logo Asset",
@@ -308,9 +1098,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "logo",
       "community": 2,
-      "norm_label": "hospital logo asset"
+      "norm_label": "hospital logo asset",
+      "id": "logo"
     },
     {
       "label": "Image Asset: icon untuk verifikasi.svg",
@@ -321,9 +1111,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "icon_untuk_verifikasi",
-      "community": 4,
-      "norm_label": "image asset: icon untuk verifikasi.svg"
+      "community": 2,
+      "norm_label": "image asset: icon untuk verifikasi.svg",
+      "id": "icon_untuk_verifikasi"
     },
     {
       "label": "Hero Carousel Image 1",
@@ -334,9 +1124,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "carousel_1",
       "community": 0,
-      "norm_label": "hero carousel image 1"
+      "norm_label": "hero carousel image 1",
+      "id": "carousel_1"
     },
     {
       "label": "Hero Carousel Image 2",
@@ -347,9 +1137,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "carousel_2",
       "community": 0,
-      "norm_label": "hero carousel image 2"
+      "norm_label": "hero carousel image 2",
+      "id": "carousel_2"
     },
     {
       "label": "Hero Carousel Image 3",
@@ -360,9 +1150,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "carousel_3",
       "community": 0,
-      "norm_label": "hero carousel image 3"
+      "norm_label": "hero carousel image 3",
+      "id": "carousel_3"
     },
     {
       "label": "Hero Carousel Image 4",
@@ -373,9 +1163,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "carousel_4",
       "community": 0,
-      "norm_label": "hero carousel image 4"
+      "norm_label": "hero carousel image 4",
+      "id": "carousel_4"
     },
     {
       "label": "Hero Carousel Image 5",
@@ -386,9 +1176,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "carousel_5",
       "community": 0,
-      "norm_label": "hero carousel image 5"
+      "norm_label": "hero carousel image 5",
+      "id": "carousel_5"
     },
     {
       "label": "Hero Carousel Image 6",
@@ -399,9 +1189,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "carousel_6",
       "community": 0,
-      "norm_label": "hero carousel image 6"
+      "norm_label": "hero carousel image 6",
+      "id": "carousel_6"
     },
     {
       "label": "Image Asset: header images.png",
@@ -412,9 +1202,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "header_images",
       "community": 0,
-      "norm_label": "image asset: header images.png"
+      "norm_label": "image asset: header images.png",
+      "id": "header_images"
     },
     {
       "label": "Image Asset: pantauMoodAnda.png",
@@ -425,61 +1215,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pantaumoodanda",
       "community": 0,
-      "norm_label": "image asset: pantaumoodanda.png"
-    },
-    {
-      "label": "graphify.md",
-      "file_type": "document",
-      "source_file": ".agents/rules/graphify.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "rules_graphify",
-      "community": 14,
-      "norm_label": "graphify.md"
-    },
-    {
-      "label": "graphify.md",
-      "file_type": "document",
-      "source_file": ".agents/workflows/graphify.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "workflows_graphify",
-      "community": 17,
-      "norm_label": "graphify.md"
-    },
-    {
-      "label": "YOU'R TASK",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "agents",
-      "community": 6,
-      "norm_label": "you'r task"
-    },
-    {
-      "label": "\ud83d\udcc1 Panduan Struktur Proyek & Git",
-      "file_type": "document",
-      "source_file": "Readme.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme",
-      "community": 13,
-      "norm_label": "\ud83d\udcc1 panduan struktur proyek & git"
+      "norm_label": "image asset: pantaumoodanda.png",
+      "id": "pantaumoodanda"
     },
     {
       "label": "contohparams.txt",
@@ -490,9 +1228,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "contohparams",
       "community": 11,
-      "norm_label": "contohparams.txt"
+      "norm_label": "contohparams.txt",
+      "id": "contohparams"
     },
     {
       "label": "HealthFlow Clinic",
@@ -503,9 +1241,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index",
       "community": 0,
-      "norm_label": "healthflow clinic"
+      "norm_label": "healthflow clinic",
+      "id": "index"
     },
     {
       "label": "global.css",
@@ -516,9 +1254,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "global",
-      "community": 4,
-      "norm_label": "global.css"
+      "community": 2,
+      "norm_label": "global.css",
+      "id": "global"
     },
     {
       "label": "HealthFlow Clinic",
@@ -529,9 +1267,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_notlogin",
       "community": 0,
-      "norm_label": "healthflow clinic"
+      "norm_label": "healthflow clinic",
+      "id": "index_notlogin"
     },
     {
       "label": "Pendaftaran Pasien - HealthFlow Clinic",
@@ -542,9 +1280,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "daftar_login_index",
       "community": 0,
-      "norm_label": "pendaftaran pasien - healthflow clinic"
+      "norm_label": "pendaftaran pasien - healthflow clinic",
+      "id": "daftar_login_index"
     },
     {
       "label": "daftar.css",
@@ -555,9 +1293,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "daftar_login_daftar",
       "community": 0,
-      "norm_label": "daftar.css"
+      "norm_label": "daftar.css",
+      "id": "daftar_login_daftar"
     },
     {
       "label": "hi.txt",
@@ -568,9 +1306,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "hi",
       "community": 12,
-      "norm_label": "hi.txt"
+      "norm_label": "hi.txt",
+      "id": "hi"
     },
     {
       "label": "Lokasi Klinik",
@@ -581,9 +1319,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "lokasi_index",
       "community": 2,
-      "norm_label": "lokasi klinik"
+      "norm_label": "lokasi klinik",
+      "id": "lokasi_index"
     },
     {
       "label": "PendaftaranPasienBaru.css",
@@ -594,9 +1332,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pendaftaran_pendaftaranpasienbaru",
-      "community": 4,
-      "norm_label": "pendaftaranpasienbaru.css"
+      "community": 2,
+      "norm_label": "pendaftaranpasienbaru.css",
+      "id": "pendaftaran_pendaftaranpasienbaru"
     },
     {
       "label": "Notifikasi - HealthFlow Clinic",
@@ -607,9 +1345,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "notifikasi_index",
       "community": 2,
-      "norm_label": "notifikasi - healthflow clinic"
+      "norm_label": "notifikasi - healthflow clinic",
+      "id": "notifikasi_index"
     },
     {
       "label": "Pendaftaran",
@@ -620,9 +1358,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pendaftaran_index",
       "community": 2,
-      "norm_label": "pendaftaran"
+      "norm_label": "pendaftaran",
+      "id": "pendaftaran_index"
     },
     {
       "label": "Document",
@@ -633,9 +1371,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pendaftaran_menghubungiserver",
-      "community": 4,
-      "norm_label": "document"
+      "community": 2,
+      "norm_label": "document",
+      "id": "pendaftaran_menghubungiserver"
     },
     {
       "label": "Tiket Reservasi - HealthFlow",
@@ -646,9 +1384,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ticket_index",
       "community": 2,
-      "norm_label": "tiket reservasi - healthflow"
+      "norm_label": "tiket reservasi - healthflow",
+      "id": "ticket_index"
     },
     {
       "label": "Profil Pasien",
@@ -659,9 +1397,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "profil_index",
-      "community": 3,
-      "norm_label": "profil pasien"
+      "community": 2,
+      "norm_label": "profil pasien",
+      "id": "profil_index"
     },
     {
       "label": "profil.css",
@@ -672,9 +1410,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "profil_profil",
-      "community": 3,
-      "norm_label": "profil.css"
+      "community": 2,
+      "norm_label": "profil.css",
+      "id": "profil_profil"
     },
     {
       "label": "Ubah Email - HealthFlow",
@@ -685,9 +1423,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "verifikasiemail_index",
-      "community": 4,
-      "norm_label": "ubah email - healthflow"
+      "community": 2,
+      "norm_label": "ubah email - healthflow",
+      "id": "verifikasiemail_index"
     },
     {
       "label": "Ubah Nomor Telepon - HealthFlow",
@@ -698,9 +1436,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "verifikasinomor_index",
-      "community": 4,
-      "norm_label": "ubah nomor telepon - healthflow"
+      "community": 2,
+      "norm_label": "ubah nomor telepon - healthflow",
+      "id": "verifikasinomor_index"
     },
     {
       "label": "Rekam Medis Pasien",
@@ -711,9 +1449,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rekam_medis_index",
-      "community": 5,
-      "norm_label": "rekam medis pasien"
+      "community": 2,
+      "norm_label": "rekam medis pasien",
+      "id": "rekam_medis_index"
     },
     {
       "label": "rekam_medis.css",
@@ -724,12 +1462,32 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rekam_medis_rekam_medis",
-      "community": 5,
-      "norm_label": "rekam_medis.css"
+      "community": 2,
+      "norm_label": "rekam_medis.css",
+      "id": "rekam_medis_rekam_medis"
     }
   ],
   "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/kalkulator/kalkulator.js",
+      "source_location": "L279",
+      "weight": 1.0,
+      "source": "kalkulator_kalkulator",
+      "target": "kalkulator_kalkulator_finishcalculator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/kalkulator/kalkulator.js",
+      "source_location": "L202",
+      "weight": 1.0,
+      "source": "kalkulator_kalkulator",
+      "target": "kalkulator_kalkulator_renderquestion",
+      "confidence_score": 1.0
+    },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
@@ -746,9 +1504,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L427",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi",
-      "target": "notifikasi_notifikasi_deletecurrentnotification",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_deletecurrentnotification"
     },
     {
       "relation": "contains",
@@ -756,9 +1514,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L238",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi",
-      "target": "notifikasi_notifikasi_getfilterednotifications",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_getfilterednotifications"
     },
     {
       "relation": "contains",
@@ -766,9 +1524,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L446",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi",
-      "target": "notifikasi_notifikasi_gobacktolist",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_gobacktolist"
     },
     {
       "relation": "contains",
@@ -776,9 +1534,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L347",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi",
-      "target": "notifikasi_notifikasi_loadnotificationdetails",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_loadnotificationdetails"
     },
     {
       "relation": "contains",
@@ -786,19 +1544,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L416",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi",
-      "target": "notifikasi_notifikasi_markcurrentasread",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "pages/notifikasi/notifikasi.js",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "notifikasi_notifikasi",
-      "target": "notifikasi_notifikasi_notificationsdata",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_markcurrentasread"
     },
     {
       "relation": "contains",
@@ -806,9 +1554,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L217",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi",
-      "target": "notifikasi_notifikasi_renderfilters",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_renderfilters"
     },
     {
       "relation": "contains",
@@ -816,9 +1564,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L248",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi",
-      "target": "notifikasi_notifikasi_rendernotificationlist",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_rendernotificationlist"
     },
     {
       "relation": "contains",
@@ -826,9 +1574,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L310",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi",
-      "target": "notifikasi_notifikasi_selectnotification",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_selectnotification"
     },
     {
       "relation": "contains",
@@ -836,9 +1584,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L196",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi",
-      "target": "notifikasi_notifikasi_setfilter",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_setfilter"
     },
     {
       "relation": "contains",
@@ -846,9 +1594,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L410",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi",
-      "target": "notifikasi_notifikasi_showemptydetails",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_showemptydetails"
     },
     {
       "relation": "calls",
@@ -857,9 +1605,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L202",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_setfilter",
-      "target": "notifikasi_notifikasi_getfilterednotifications",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_getfilterednotifications"
     },
     {
       "relation": "calls",
@@ -868,9 +1616,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L209",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_setfilter",
-      "target": "notifikasi_notifikasi_loadnotificationdetails",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_loadnotificationdetails"
     },
     {
       "relation": "calls",
@@ -879,9 +1627,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L198",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_setfilter",
-      "target": "notifikasi_notifikasi_renderfilters",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_renderfilters"
     },
     {
       "relation": "calls",
@@ -890,9 +1638,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L199",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_setfilter",
-      "target": "notifikasi_notifikasi_rendernotificationlist",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_rendernotificationlist"
     },
     {
       "relation": "calls",
@@ -901,9 +1649,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L212",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_setfilter",
-      "target": "notifikasi_notifikasi_showemptydetails",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_showemptydetails"
     },
     {
       "relation": "calls",
@@ -912,9 +1660,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L421",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_markcurrentasread",
-      "target": "notifikasi_notifikasi_renderfilters",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_renderfilters"
     },
     {
       "relation": "calls",
@@ -923,9 +1671,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L334",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_selectnotification",
-      "target": "notifikasi_notifikasi_renderfilters",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_renderfilters"
     },
     {
       "relation": "calls",
@@ -934,9 +1682,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L433",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_deletecurrentnotification",
-      "target": "notifikasi_notifikasi_getfilterednotifications",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_getfilterednotifications"
     },
     {
       "relation": "calls",
@@ -945,9 +1693,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L252",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_rendernotificationlist",
-      "target": "notifikasi_notifikasi_getfilterednotifications",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_getfilterednotifications"
     },
     {
       "relation": "calls",
@@ -956,9 +1704,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L442",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_deletecurrentnotification",
-      "target": "notifikasi_notifikasi_rendernotificationlist",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_rendernotificationlist"
     },
     {
       "relation": "calls",
@@ -967,9 +1715,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L420",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_markcurrentasread",
-      "target": "notifikasi_notifikasi_rendernotificationlist",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_rendernotificationlist"
     },
     {
       "relation": "calls",
@@ -978,9 +1726,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L333",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_selectnotification",
-      "target": "notifikasi_notifikasi_rendernotificationlist",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_rendernotificationlist"
     },
     {
       "relation": "calls",
@@ -989,9 +1737,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L327",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_selectnotification",
-      "target": "notifikasi_notifikasi_loadnotificationdetails",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_loadnotificationdetails"
     },
     {
       "relation": "calls",
@@ -1000,9 +1748,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L436",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_deletecurrentnotification",
-      "target": "notifikasi_notifikasi_loadnotificationdetails",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_loadnotificationdetails"
     },
     {
       "relation": "calls",
@@ -1011,9 +1759,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L354",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_loadnotificationdetails",
-      "target": "notifikasi_notifikasi_showemptydetails",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_showemptydetails"
     },
     {
       "relation": "calls",
@@ -1022,9 +1770,9 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L422",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_markcurrentasread",
-      "target": "notifikasi_notifikasi_loadnotificationdetails",
-      "confidence_score": 1.0
+      "target": "notifikasi_notifikasi_loadnotificationdetails"
     },
     {
       "relation": "calls",
@@ -1033,8 +1781,468 @@
       "source_file": "pages/notifikasi/notifikasi.js",
       "source_location": "L439",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "notifikasi_notifikasi_deletecurrentnotification",
-      "target": "notifikasi_notifikasi_showemptydetails",
+      "target": "notifikasi_notifikasi_showemptydetails"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L127",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_calendargrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_calendarmonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_calendarviewdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_calendarweekdays",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L129",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_cancelschedulebtn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L211",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_closedetailmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_closeqrbtn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L242",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_closeschedulemodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L130",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_continueschedulebtn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_detailabout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_detailbackbtn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_detailmodaloverlay",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_detailname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_detailphoto",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L113",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_detailspecialization",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_doctorgrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_doctors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L136",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_downloadqrbtn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_emptystate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L327",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_generatebookingcode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_makeappointmentbtn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_month_names",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L190",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_opendetailmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_polifilter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_qrimage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_qrmodaloverlay",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_qrsummary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L256",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_rendercalendar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_renderdoctors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L305",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_rendertimeslots",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L121",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_schedulebackbtn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L123",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_scheduledoctorname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_scheduledoctorphoto",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_scheduledoctorspec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_schedulemodaloverlay",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_schedulesaturday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_schedulesunday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_scheduleweekday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L379",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_showtoast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L142",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_time_slots",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_timegrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L138",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_toast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L322",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_updatecontinuebuttonstate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/poli.js",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "poli_poli",
+      "target": "poli_poli_weekday_names",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/qrcode.js",
+      "source_location": "L1182",
+      "weight": 1.0,
+      "source": "poli_qrcode",
+      "target": "poli_qrcode_qrpolynomial",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/poli/qrcode.js",
+      "source_location": "L2254",
+      "weight": 1.0,
+      "source": "poli_qrcode",
+      "target": "poli_qrcode_toutf8array",
       "confidence_score": 1.0
     },
     {
@@ -1103,9 +2311,9 @@
       "source_file": "public/navbar.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "public_navbar",
-      "target": "public_navbar_initnavbar",
-      "confidence_score": 1.0
+      "target": "public_navbar_initnavbar"
     },
     {
       "relation": "references",
@@ -1146,6 +2354,246 @@
       "weight": 1.0,
       "source": "verifikasinomor_index",
       "target": "public_navbar"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "rootData.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "rootdata",
+      "target": "rootdata_rootdata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/rules/graphify.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "rules_graphify",
+      "target": "rules_graphify_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/workflows/graphify.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "workflows_graphify",
+      "target": "workflows_graphify_workflow_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "agents",
+      "target": "agents_caution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "agents",
+      "target": "agents_please_do",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "agents",
+      "target": "agents_rules_of_design",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "agents",
+      "target": "agents_you_r_task",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "agents_caution",
+      "target": "agents_knowledge_graph_graphify_wajib_selalu_update",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "agents_knowledge_graph_graphify_wajib_selalu_update",
+      "target": "agents_sebelum_kerja",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "readme_panduan_struktur_proyek_git",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "readme_panduan_struktur_proyek_git",
+      "target": "readme_1_kenapa_perlu_struktur_folder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "readme_panduan_struktur_proyek_git",
+      "target": "readme_2_struktur_folder_lengkap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "readme_panduan_struktur_proyek_git",
+      "target": "readme_3_panduan_git_untuk_kerja_tim",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "readme_2_struktur_folder_lengkap",
+      "target": "readme_aturan_sederhana_biar_nggak_bingung",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "readme_2_struktur_folder_lengkap",
+      "target": "readme_contoh_penggunaan_di_html",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "readme_2_struktur_folder_lengkap",
+      "target": "readme_penjelasan_tiap_bagian",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "readme_3_panduan_git_untuk_kerja_tim",
+      "target": "readme_3_1_istilah_dasar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "readme_3_panduan_git_untuk_kerja_tim",
+      "target": "readme_3_2_membuat_branch_baru",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "readme_3_panduan_git_untuk_kerja_tim",
+      "target": "readme_3_3_menyimpan_mengirim_perubahan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "readme_3_panduan_git_untuk_kerja_tim",
+      "target": "readme_3_4_mengambil_perubahan_terbaru_dari_main_ke_branch_kamu",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L187",
+      "weight": 1.0,
+      "source": "readme_3_panduan_git_untuk_kerja_tim",
+      "target": "readme_3_5_menggabungkan_branch_kamu_ke_main_setelah_fitur_selesai",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L199",
+      "weight": 1.0,
+      "source": "readme_3_panduan_git_untuk_kerja_tim",
+      "target": "readme_3_6_cheat_sheet_ringkas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L215",
+      "weight": 1.0,
+      "source": "readme_3_panduan_git_untuk_kerja_tim",
+      "target": "readme_3_7_tips_biar_kerja_tim_lancar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Readme.md",
+      "source_location": "L162",
+      "weight": 1.0,
+      "source": "readme_3_4_mengambil_perubahan_terbaru_dari_main_ke_branch_kamu",
+      "target": "readme_kalau_muncul_konflik_merge_conflict",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -1521,21 +2969,21 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "index_notLogin.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_notlogin",
-      "target": "index"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
       "source": "index",
       "target": "profil_index"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index_notLogin.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_notlogin",
+      "target": "index"
     },
     {
       "relation": "references",
@@ -2116,5 +3564,5 @@
       "source_file": "pages/profil/index.html"
     }
   ],
-  "built_at_commit": "bdfd660259fbb9807cad6198027a13b1ce2fcfc3"
+  "built_at_commit": "10a756d95b857df0788b63668c3647b9fd1f851a"
 }

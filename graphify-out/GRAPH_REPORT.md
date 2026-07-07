@@ -1,27 +1,33 @@
-# Graph Report - .  (2026-07-07)
+# Graph Report - TR  (2026-07-07)
 
 ## Corpus Check
-- 40 files · ~358,668 words
+- 12 files · ~378,233 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 57 nodes · 134 edges · 18 communities (11 shown, 7 thin omitted)
+- 132 nodes · 205 edges · 19 communities (12 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
+## Graph Freshness
+- Built from commit: `10a756d9`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
+
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Homepage and Landing Assets|Homepage and Landing Assets]]
-- [[_COMMUNITY_Notification Center Logic|Notification Center Logic]]
-- [[_COMMUNITY_Core Navigation and Patient Flow|Core Navigation and Patient Flow]]
-- [[_COMMUNITY_Patient Profile and Support Pages|Patient Profile and Support Pages]]
-- [[_COMMUNITY_Verification and Global Styling|Verification and Global Styling]]
-- [[_COMMUNITY_Medical Records Management|Medical Records Management]]
-- [[_COMMUNITY_Project Design Guidelines (AGENTS.md)|Project Design Guidelines (AGENTS.md)]]
-- [[_COMMUNITY_Authentication Interface Assets|Authentication Interface Assets]]
-- [[_COMMUNITY_Contact Ahmad Image Asset|Contact Ahmad Image Asset]]
-- [[_COMMUNITY_Contact Form Illustration Asset|Contact Form Illustration Asset]]
-- [[_COMMUNITY_Contact Siti Image Asset|Contact Siti Image Asset]]
-- [[_COMMUNITY_Project Readme Documentation|Project Readme Documentation]]
+- [[_COMMUNITY_Community 0|Community 0]]
+- [[_COMMUNITY_Community 1|Community 1]]
+- [[_COMMUNITY_Community 2|Community 2]]
+- [[_COMMUNITY_Community 3|Community 3]]
+- [[_COMMUNITY_Community 6|Community 6]]
+- [[_COMMUNITY_Community 7|Community 7]]
+- [[_COMMUNITY_Community 8|Community 8]]
+- [[_COMMUNITY_Community 9|Community 9]]
+- [[_COMMUNITY_Community 10|Community 10]]
+- [[_COMMUNITY_Community 13|Community 13]]
+- [[_COMMUNITY_Community 14|Community 14]]
+- [[_COMMUNITY_Community 17|Community 17]]
+- [[_COMMUNITY_Community 18|Community 18]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `HealthFlow Clinic` - 24 edges
@@ -44,8 +50,8 @@
   index.html → public/LOGO.svg
 - `HealthFlow Clinic` --references--> `Hospital Logo Asset`  [EXTRACTED]
   index_notLogin.html → public/LOGO.svg
-- `Profil Pasien` --references--> `Hospital Logo Asset`  [EXTRACTED]
-  pages/profil/index.html → public/LOGO.svg
+- `Ubah Email - HealthFlow` --references--> `Image Asset: icon untuk verifikasi.svg`  [EXTRACTED]
+  pages/profil/verifikasiEmail/index.html → public/icon untuk verifikasi.svg
 
 ## Import Cycles
 - None detected.
@@ -54,41 +60,49 @@
 - **Patient Registration Flow** — pendaftaran_index, pendaftaran_menghubungiserver, ticket_index [INFERRED 0.95]
 - **User Profile Verification Flow** — profil_index, verifikasiemail_index, verifikasinomor_index [INFERRED 0.95]
 
-## Communities (18 total, 7 thin omitted)
+## Communities (19 total, 7 thin omitted)
 
-### Community 0 - "Homepage and Landing Assets"
-Cohesion: 0.30
-Nodes (11): Hero Carousel Image 1, Hero Carousel Image 2, Hero Carousel Image 3, Hero Carousel Image 4, Hero Carousel Image 5, Hero Carousel Image 6, Pendaftaran Pasien - HealthFlow Clinic, Image Asset: header images.png (+3 more)
+### Community 0 - "Community 0"
+Cohesion: 0.27
+Nodes (12): User Profile Default Avatar, Hero Carousel Image 1, Hero Carousel Image 2, Hero Carousel Image 3, Hero Carousel Image 4, Hero Carousel Image 5, Hero Carousel Image 6, Pendaftaran Pasien - HealthFlow Clinic (+4 more)
 
-### Community 1 - "Notification Center Logic"
-Cohesion: 0.42
-Nodes (10): deleteCurrentNotification(), getFilteredNotifications(), loadNotificationDetails(), markCurrentAsRead(), notificationsData, renderFilters(), renderNotificationList(), selectNotification() (+2 more)
+### Community 1 - "Community 1"
+Cohesion: 0.49
+Nodes (9): deleteCurrentNotification(), getFilteredNotifications(), loadNotificationDetails(), markCurrentAsRead(), renderFilters(), renderNotificationList(), selectNotification(), setFilter() (+1 more)
 
-### Community 2 - "Core Navigation and Patient Flow"
-Cohesion: 0.76
-Nodes (5): Hospital Logo Asset, Lokasi Klinik, Notifikasi - HealthFlow Clinic, Pendaftaran, Tiket Reservasi - HealthFlow
+### Community 2 - "Community 2"
+Cohesion: 0.35
+Nodes (14): Clinic Banner Image, Image Asset: Contact Us.svg, Image Asset: files_and_doc.svg, Image Asset: icon untuk verifikasi.svg, Hospital Logo Asset, Lokasi Klinik, Notifikasi - HealthFlow Clinic, Pendaftaran (+6 more)
 
-### Community 3 - "Patient Profile and Support Pages"
-Cohesion: 0.40
-Nodes (5): Clinic Banner Image, Image Asset: Contact Us.svg, Image Asset: files_and_doc.svg, User Profile Default Avatar, Profil Pasien
+### Community 3 - "Community 3"
+Cohesion: 0.04
+Nodes (35): calendarGrid, calendarMonth, calendarViewDate, calendarWeekdays, cancelScheduleBtn, closeQrBtn, continueScheduleBtn, detailAbout (+27 more)
 
-### Community 4 - "Verification and Global Styling"
-Cohesion: 0.53
-Nodes (4): Image Asset: icon untuk verifikasi.svg, Document, Ubah Email - HealthFlow, Ubah Nomor Telepon - HealthFlow
+### Community 6 - "Community 6"
+Cohesion: 0.29
+Nodes (6): CAUTION, Knowledge Graph (Graphify) — Wajib Selalu Update, PLEASE DO, RULES OF DESIGN, Sebelum kerja, YOU'R TASK
+
+### Community 13 - "Community 13"
+Cohesion: 0.12
+Nodes (15): 1. Kenapa Perlu Struktur Folder?, 2. Struktur Folder Lengkap, 3.1 Istilah Dasar, 3.2 Membuat Branch Baru, 3.3 Menyimpan & Mengirim Perubahan, 3.4 Mengambil Perubahan Terbaru dari `main` ke Branch Kamu, 3.5 Menggabungkan Branch Kamu ke `main` (Setelah Fitur Selesai), 3.6 Cheat Sheet Ringkas (+7 more)
 
 ## Knowledge Gaps
-- **10 isolated node(s):** `notificationsData`, `Login Background Graphic`, `Image Asset: Contact Us.svg`, `Clinic Banner Image`, `Image Asset: contact_ahmad.png` (+5 more)
+- **60 isolated node(s):** `doctors`, `calendarViewDate`, `doctorGrid`, `emptyState`, `poliFilter` (+55 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Notifikasi - HealthFlow Clinic` connect `Core Navigation and Patient Flow` to `Homepage and Landing Assets`, `Notification Center Logic`, `Patient Profile and Support Pages`, `Verification and Global Styling`, `Medical Records Management`?**
-  _High betweenness centrality (0.250) - this node is a cross-community bridge._
-- **Why does `HealthFlow Clinic` connect `Homepage and Landing Assets` to `Core Navigation and Patient Flow`, `Patient Profile and Support Pages`, `Verification and Global Styling`, `Medical Records Management`?**
-  _High betweenness centrality (0.212) - this node is a cross-community bridge._
-- **Why does `Profil Pasien` connect `Patient Profile and Support Pages` to `Homepage and Landing Assets`, `Core Navigation and Patient Flow`, `Verification and Global Styling`, `Medical Records Management`?**
-  _High betweenness centrality (0.126) - this node is a cross-community bridge._
-- **What connects `notificationsData`, `Login Background Graphic`, `Image Asset: Contact Us.svg` to the rest of the system?**
-  _10 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `Notifikasi - HealthFlow Clinic` connect `Community 2` to `Community 0`, `Community 1`?**
+  _High betweenness centrality (0.041) - this node is a cross-community bridge._
+- **Why does `HealthFlow Clinic` connect `Community 0` to `Community 2`?**
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+- **Why does `Profil Pasien` connect `Community 2` to `Community 0`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+- **What connects `doctors`, `calendarViewDate`, `doctorGrid` to the rest of the system?**
+  _60 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Community 3` be split into smaller, more focused modules?**
+  _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
+- **Should `Community 13` be split into smaller, more focused modules?**
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._

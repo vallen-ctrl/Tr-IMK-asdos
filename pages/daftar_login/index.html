@@ -146,8 +146,11 @@
                                 <i data-lucide="eye" class="w-5 h-5"></i>
                             </button>
                         </div>
-                        <div class="flex justify-start mt-2">
-                            <a href="PulihkanAkunAnda/index.html?from=../index.html" class="text-sm text-[#3D6FA8] hover:underline font-medium">Lupa Kata Sandi?</a>
+                        <div class="flex justify-between items-center mt-2">
+                            <a href="PulihkanAkunAnda/index.html?from=../index.html"
+                                class="text-sm text-[#3D6FA8] hover:underline font-medium">Lupa Kata Sandi?</a>
+                            <span id="login-error-msg" class="text-sm text-red-600 font-semibold hidden">ID atau Kata
+                                Sandi salah</span>
                         </div>
                     </div>
 
@@ -690,9 +693,79 @@
         }
 
         function handleLoginSubmit() {
-            RootData.setLoggedIn(true);
-            // Simulated login: redirect to index.html (logged in main page)
-            window.location.href = '../../index.html';
+            const identifierInput = document.getElementById('login_identifier');
+            const passwordInput = document.getElementById('login_password');
+            const errorMsg = document.getElementById('login-error-msg');
+
+            const identifier = identifierInput.value.trim();
+            const password = passwordInput.value;
+            console.log(identifier);
+
+            // Load user data
+            const user = RootData.getCurrentUser();
+
+            // Check if matches Email / NIK / No Telepon and Password
+            const cleanIdentifier = identifier.replace(/[-\s]/g, '').toLowerCase();
+            const cleanUserTelp = (user.noTelp || '').replace(/[-\s]/g, '').toLowerCase();
+            const cleanUserNik = (user.nik || '').replace(/[-\s]/g, '').toLowerCase();
+            const cleanUserEmail = (user.email || '').toLowerCase();
+
+            // Default user hardcoded values as fallback
+            const defaultEmail = "jsondeoformalin@gmail.com";
+            const defaultNik = "136586362396004";
+            const defaultTelp = "087687876774";
+            const defaultPassword = "pakwowow";
+
+            const isIdentifierMatch = (
+                cleanIdentifier === cleanUserEmail ||
+                cleanIdentifier === cleanUserNik ||
+                cleanIdentifier === cleanUserTelp ||
+                cleanIdentifier === defaultEmail ||
+                cleanIdentifier === defaultNik ||
+                cleanIdentifier === defaultTelp
+            );
+
+            const isPasswordMatch = (password === (user.password || defaultPassword));
+
+            if (isIdentifierMatch && isPasswordMatch) {
+                // Set login state
+                RootData.setLoggedIn(true);
+                // Sync password to stored user if missing
+                if (!user.password) {
+                    RootData.saveUser({ password: defaultPassword });
+                }
+                if (errorMsg) {
+                    errorMsg.classList.add('hidden');
+                }
+                // Redirect back to root index.html
+                window.location.href = '../../index.html';
+            } else {
+                // Show error message
+                if (errorMsg) {
+                    errorMsg.classList.remove('hidden');
+                } else {
+                    alert('Email/NIK/No Telepon atau Kata Sandi salah!');
+                }
+                // Highlight input borders to red
+                identifierInput.classList.add('!border-red-500', 'focus:!border-red-500');
+                passwordInput.classList.add('!border-red-500', 'focus:!border-red-500');
+            }
+        }
+
+        // Clear error styling on input
+        function setupLoginInputListeners() {
+            const identifierInput = document.getElementById('login_identifier');
+            const passwordInput = document.getElementById('login_password');
+            const errorMsg = document.getElementById('login-error-msg');
+
+            const clearError = () => {
+                if (errorMsg) errorMsg.classList.add('hidden');
+                identifierInput.classList.remove('!border-red-500', 'focus:!border-red-500');
+                passwordInput.classList.remove('!border-red-500', 'focus:!border-red-500');
+            };
+
+            identifierInput.addEventListener('input', clearError);
+            passwordInput.addEventListener('input', clearError);
         }
 
         // On document load, initialize Lucide Icons
@@ -700,6 +773,7 @@
             lucide.createIcons();
             setupOtpNavigation();
             setupKtpUpload();
+            setupLoginInputListeners();
 
             // Check if register query param is present to show registration form
             const urlParams = new URLSearchParams(window.location.search);
@@ -753,16 +827,18 @@
         // Function to toggle password visibility
         function togglePasswordVisibility(fieldId, button) {
             const input = document.getElementById(fieldId);
-            const icon = button.querySelector('i');
+            const icon = button.querySelector('[data-lucide]') || button.querySelector('svg') || button.querySelector('i');
 
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.setAttribute('data-lucide', 'eye-off');
-            } else {
-                input.type = 'password';
-                icon.setAttribute('data-lucide', 'eye');
+            if (input && icon) {
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.setAttribute('data-lucide', 'eye-off');
+                } else {
+                    input.type = 'password';
+                    icon.setAttribute('data-lucide', 'eye');
+                }
+                lucide.createIcons();
             }
-            lucide.createIcons();
         }
 
         // Navigation function between pages/steps

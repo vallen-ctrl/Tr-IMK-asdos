@@ -1,9 +1,3 @@
-/**
- * rootData.js — Satu sumber kebenaran untuk semua data di HealthFlow Clinic
- * 
- * Semua pages mengimpor file ini dan menggunakan object `RootData`
- * untuk mengakses data statis maupun dinamis (localStorage).
- */
 
 const RootData = (() => {
 
@@ -38,7 +32,7 @@ const RootData = (() => {
         alergi: "Ikan laut, Udang",
         riwayatPenyakitKronis: "Tumor otak, Jantung, Diabetes (bawaan), Hipertensi (bawaan)",
         subHeader: "Kepala Keluarga dari Ibu Nurul Nuruni dan 4 anaknya",
-        password: ""
+        password: "pakwowow"
     };
 
     // =====================================================================
@@ -430,7 +424,15 @@ const RootData = (() => {
     function _getLS(key, fallback) {
         try {
             const data = localStorage.getItem(key);
-            return data ? JSON.parse(data) : fallback;
+            if (data) {
+                const parsed = JSON.parse(data);
+                if (key === LS_KEYS.currentUser && parsed && !parsed.password && fallback && fallback.password) {
+                    parsed.password = fallback.password;
+                    localStorage.setItem(key, JSON.stringify(parsed));
+                }
+                return parsed;
+            }
+            return fallback;
         } catch (e) {
             return fallback;
         }

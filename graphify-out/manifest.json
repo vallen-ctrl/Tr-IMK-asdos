@@ -1,202 +1,272 @@
 {
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\.vscode\\settings.json": {
+  ".vscode/settings.json": {
     "mtime": 1783069791.4534404,
     "ast_hash": "ba0bd008eac4f43a8348cd4c939a8bfd",
     "semantic_hash": "ba0bd008eac4f43a8348cd4c939a8bfd"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\notifikasi\\notifikasi.js": {
-    "mtime": 1783353154.6860135,
-    "ast_hash": "20f1e7a3fe9bec7a2d2dd99c23a3842d",
-    "semantic_hash": "20f1e7a3fe9bec7a2d2dd99c23a3842d"
+  "pages/notifikasi/notifikasi.js": {
+    "mtime": 1783406006.9134634,
+    "ast_hash": "24108ca6b2d5f6fa46997bf0f557487b",
+    "semantic_hash": ""
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\public\\navbar.js": {
-    "mtime": 1783392159.3753004,
-    "ast_hash": "5e961999be6b5a58dee0d625c7f62ca0",
-    "semantic_hash": "5e961999be6b5a58dee0d625c7f62ca0"
+  "public/navbar.js": {
+    "mtime": 1783407454.5652702,
+    "ast_hash": "812acd5e1c6e34c6770372334db3017f",
+    "semantic_hash": ""
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\tailwind.config.js": {
+  "tailwind.config.js": {
     "mtime": 1783069227.5075393,
     "ast_hash": "a5e5a4d1387db843150e082cd01c4ee9",
     "semantic_hash": "a5e5a4d1387db843150e082cd01c4ee9"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\.agents\\rules\\graphify.md": {
-    "mtime": 1783392133.5035918,
+  ".agents/rules/graphify.md": {
+    "mtime": 1783406006.8899329,
     "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
     "semantic_hash": "a0e4d192b9e2e17256124dbfc8e24e6a"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\.agents\\workflows\\graphify.md": {
-    "mtime": 1783392133.504097,
+  ".agents/workflows/graphify.md": {
+    "mtime": 1783406006.8899329,
     "ast_hash": "637776aa6f7496d069afe7520c845c8a",
     "semantic_hash": "637776aa6f7496d069afe7520c845c8a"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\AGENTS.md": {
-    "mtime": 1783353154.6696117,
-    "ast_hash": "205577d52fd1065a378bdfb8ac81ecff",
-    "semantic_hash": "205577d52fd1065a378bdfb8ac81ecff"
+  "AGENTS.md": {
+    "mtime": 1783407336.510172,
+    "ast_hash": "4f9150380769a67867318e094d11a3f4",
+    "semantic_hash": ""
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\Readme.md": {
+  "Readme.md": {
     "mtime": 1782964272.6991704,
     "ast_hash": "43d6cd2c1a6314be435b25e460cff86f",
     "semantic_hash": "43d6cd2c1a6314be435b25e460cff86f"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\contohparams.txt": {
-    "mtime": 1783360736.8142579,
-    "ast_hash": "b5e5efbb5bd313ebdc11457a2c3647e3",
-    "semantic_hash": "b5e5efbb5bd313ebdc11457a2c3647e3"
+  "contohparams.txt": {
+    "mtime": 1783406006.8929434,
+    "ast_hash": "a7b7eb2d8c2f871deb931252d1095866",
+    "semantic_hash": ""
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\index.html": {
-    "mtime": 1783390907.4091365,
-    "ast_hash": "e187b1833eb069cf26321212ee8bf905",
-    "semantic_hash": "e187b1833eb069cf26321212ee8bf905"
+  "index.html": {
+    "mtime": 1783406006.8981404,
+    "ast_hash": "c110a91ff5c7cc954c7cbc404b6731d3",
+    "semantic_hash": ""
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\index_notLogin.html": {
-    "mtime": 1783390912.970593,
-    "ast_hash": "5af95bf683b71489dc2a7348580fa5b9",
-    "semantic_hash": "5af95bf683b71489dc2a7348580fa5b9"
+  "pages/daftar_login/index.html": {
+    "mtime": 1783418537.9143684,
+    "ast_hash": "6a56c2af6f1374de0db708c05f73dc67",
+    "semantic_hash": ""
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\daftar_login\\index.html": {
-    "mtime": 1783392123.91725,
-    "ast_hash": "e54a6dc6cbb985c0ccadc8aeda791512",
-    "semantic_hash": "e54a6dc6cbb985c0ccadc8aeda791512"
-  },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\hi.txt": {
+  "pages/hi.txt": {
     "mtime": 1783069070.6018162,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\lokasi\\index.html": {
-    "mtime": 1783390961.8183131,
-    "ast_hash": "c7b230e93a86ae3d68a2c7b20a037788",
-    "semantic_hash": "c7b230e93a86ae3d68a2c7b20a037788"
+  "pages/lokasi/index.html": {
+    "mtime": 1783406006.9106958,
+    "ast_hash": "c56a8b316bb9229e12816d5a667dae11",
+    "semantic_hash": ""
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\notifikasi\\index.html": {
-    "mtime": 1783390955.7471292,
-    "ast_hash": "3bd94fb92f5a3d7847144441d19d5404",
-    "semantic_hash": "3bd94fb92f5a3d7847144441d19d5404"
+  "pages/notifikasi/index.html": {
+    "mtime": 1783406006.9129457,
+    "ast_hash": "98cf1dc97da3aa679171d3bac52a24cb",
+    "semantic_hash": ""
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\pendaftaran\\index.html": {
-    "mtime": 1783390942.172529,
-    "ast_hash": "e690cb8172fe55b40a9e8fe1d11c6e59",
-    "semantic_hash": "e690cb8172fe55b40a9e8fe1d11c6e59"
+  "pages/pendaftaran/index.html": {
+    "mtime": 1783406006.9145415,
+    "ast_hash": "11e5581ac228963cd31b1312f27c06db",
+    "semantic_hash": ""
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\pendaftaran\\menghubungiServer.html": {
-    "mtime": 1783360328.206497,
+  "pages/pendaftaran/menghubungiServer.html": {
+    "mtime": 1783406006.91506,
     "ast_hash": "916bc0f412def392a988d2036e9430f5",
     "semantic_hash": "916bc0f412def392a988d2036e9430f5"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\pendaftaran\\ticket\\index.html": {
-    "mtime": 1783390949.97556,
+  "pages/pendaftaran/ticket/index.html": {
+    "mtime": 1783406006.915687,
     "ast_hash": "230a87d95320a57160b552b7f289691d",
     "semantic_hash": "230a87d95320a57160b552b7f289691d"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\profil\\index.html": {
-    "mtime": 1783390924.5093975,
-    "ast_hash": "8d03a1041d8436c5f89e59996068db83",
-    "semantic_hash": "8d03a1041d8436c5f89e59996068db83"
+  "pages/profil/index.html": {
+    "mtime": 1783406903.512847,
+    "ast_hash": "732bf805a35f30f49936edad7271c225",
+    "semantic_hash": ""
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\profil\\verifikasiEmail\\index.html": {
-    "mtime": 1783390936.4032364,
+  "pages/profil/verifikasiEmail/index.html": {
+    "mtime": 1783406006.992197,
     "ast_hash": "b6bee23689777debe06f8fb254160dea",
     "semantic_hash": "b6bee23689777debe06f8fb254160dea"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\profil\\verifikasiNomor\\index.html": {
-    "mtime": 1783390931.2391324,
+  "pages/profil/verifikasiNomor/index.html": {
+    "mtime": 1783406006.992197,
     "ast_hash": "8e3a8187829675da2ed89d55afbfb7cf",
     "semantic_hash": "8e3a8187829675da2ed89d55afbfb7cf"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\rekam_medis\\index.html": {
-    "mtime": 1783390919.8275685,
-    "ast_hash": "689bdb2800d01b8309571bc1ffb228fe",
-    "semantic_hash": "689bdb2800d01b8309571bc1ffb228fe"
+  "pages/rekam_medis/index.html": {
+    "mtime": 1783406006.992197,
+    "ast_hash": "17c11fdebd680374ed2109ff1d0e17ac",
+    "semantic_hash": ""
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\daftar_login\\asset\\background.png": {
-    "mtime": 1783353154.6811109,
+  "pages/daftar_login/asset/background.png": {
+    "mtime": 1783406006.9086907,
     "ast_hash": "ad06df9787aca46835388a69f89cc6a4",
     "semantic_hash": "ad06df9787aca46835388a69f89cc6a4"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\profil\\assets\\Contact Us.svg": {
-    "mtime": 1783353154.7412467,
+  "pages/profil/assets/Contact Us.svg": {
+    "mtime": 1783406006.970444,
     "ast_hash": "0b80e62f7faa16ecaae85259a888b5bc",
     "semantic_hash": "0b80e62f7faa16ecaae85259a888b5bc"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\profil\\assets\\clinic_banner.png": {
-    "mtime": 1783353154.74855,
+  "pages/profil/assets/clinic_banner.png": {
+    "mtime": 1783406006.9768324,
     "ast_hash": "14b1b8b6509a4c484c7496a2d2e31ab0",
     "semantic_hash": "14b1b8b6509a4c484c7496a2d2e31ab0"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\profil\\assets\\contact_ahmad.png": {
-    "mtime": 1783353154.7551217,
+  "pages/profil/assets/contact_ahmad.png": {
+    "mtime": 1783406006.9821527,
     "ast_hash": "d9ab6e6835031a54e1677f8bf5e3f187",
     "semantic_hash": "d9ab6e6835031a54e1677f8bf5e3f187"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\profil\\assets\\contact_illustration.png": {
-    "mtime": 1783353154.7551217,
+  "pages/profil/assets/contact_illustration.png": {
+    "mtime": 1783406006.9831588,
     "ast_hash": "6c9948bf047fd0786b1b5f0f5bdd970f",
     "semantic_hash": "6c9948bf047fd0786b1b5f0f5bdd970f"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\profil\\assets\\contact_siti.png": {
-    "mtime": 1783353154.7602088,
+  "pages/profil/assets/contact_siti.png": {
+    "mtime": 1783406006.9881759,
     "ast_hash": "2ee0c5e9c9f34ad9496e09a5874ae0fd",
     "semantic_hash": "2ee0c5e9c9f34ad9496e09a5874ae0fd"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\profil\\assets\\files_and_doc.svg": {
-    "mtime": 1783353154.763805,
+  "pages/profil/assets/files_and_doc.svg": {
+    "mtime": 1783406006.9891796,
     "ast_hash": "ce40b998732a02e645b0460383269f75",
     "semantic_hash": "ce40b998732a02e645b0460383269f75"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\pages\\profil\\assets\\profile_avatar.png": {
-    "mtime": 1783353154.7751603,
+  "pages/profil/assets/profile_avatar.png": {
+    "mtime": 1783406006.992197,
     "ast_hash": "c7e19c32864265d6fbebddc8b3d191b0",
     "semantic_hash": "c7e19c32864265d6fbebddc8b3d191b0"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\public\\LOGO.svg": {
-    "mtime": 1783353154.7934866,
+  "public/LOGO.svg": {
+    "mtime": 1783406007.0117784,
     "ast_hash": "1b74be05b81135a35c319364b7eb13f6",
     "semantic_hash": "1b74be05b81135a35c319364b7eb13f6"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\public\\icon untuk verifikasi.svg": {
-    "mtime": 1783353154.7949922,
+  "public/icon untuk verifikasi.svg": {
+    "mtime": 1783406007.0117784,
     "ast_hash": "9cf14cac5f638097feaa342a1a7fed9f",
     "semantic_hash": "9cf14cac5f638097feaa342a1a7fed9f"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\root images\\carousel 1.png": {
-    "mtime": 1783353154.7971003,
+  "root images/carousel 1.png": {
+    "mtime": 1783406007.0117784,
     "ast_hash": "49f3064d8ce407c0ae8fc572a3a5ce33",
     "semantic_hash": "49f3064d8ce407c0ae8fc572a3a5ce33"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\root images\\carousel 2.png": {
-    "mtime": 1783353154.7981024,
+  "root images/carousel 2.png": {
+    "mtime": 1783406007.0117784,
     "ast_hash": "57ecca01eb8d30c556c3ff71e18ec100",
     "semantic_hash": "57ecca01eb8d30c556c3ff71e18ec100"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\root images\\carousel 3.png": {
-    "mtime": 1783353154.7993302,
+  "root images/carousel 3.png": {
+    "mtime": 1783406007.0117784,
     "ast_hash": "cbc932eb51cb629e22c7f6a54226fc6a",
     "semantic_hash": "cbc932eb51cb629e22c7f6a54226fc6a"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\root images\\carousel 4.png": {
-    "mtime": 1783353154.800418,
+  "root images/carousel 4.png": {
+    "mtime": 1783406007.0117784,
     "ast_hash": "1aa0bcfa2a781cfadd64e9dda9a0c80f",
     "semantic_hash": "1aa0bcfa2a781cfadd64e9dda9a0c80f"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\root images\\carousel 5.png": {
-    "mtime": 1783353154.8026717,
+  "root images/carousel 5.png": {
+    "mtime": 1783406007.0117784,
     "ast_hash": "288c269b95e26e80f8855aa071446f88",
     "semantic_hash": "288c269b95e26e80f8855aa071446f88"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\root images\\carousel 6.png": {
-    "mtime": 1783353154.8036718,
+  "root images/carousel 6.png": {
+    "mtime": 1783406007.0117784,
     "ast_hash": "2bde1c690846c3a9bc18f02bbe48a9b9",
     "semantic_hash": "2bde1c690846c3a9bc18f02bbe48a9b9"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\root images\\header images.png": {
-    "mtime": 1783353154.8112116,
+  "root images/header images.png": {
+    "mtime": 1783406007.024029,
     "ast_hash": "0db686704f446108ba1b53e38d74e834",
     "semantic_hash": "0db686704f446108ba1b53e38d74e834"
   },
-  "D:\\TUGAS KULIAH SEM 2\\IMK\\Asdos\\TR\\root images\\pantauMoodAnda.png": {
-    "mtime": 1783353154.8132915,
+  "root images/pantauMoodAnda.png": {
+    "mtime": 1783406007.024029,
     "ast_hash": "48d4719d211582d7a6ff246014bdad59",
     "semantic_hash": "48d4719d211582d7a6ff246014bdad59"
+  },
+  "pages/kalkulator/kalkulator.js": {
+    "mtime": 1783407280.944217,
+    "ast_hash": "91bdf7e0c980120b4ca4df50102085f9",
+    "semantic_hash": ""
+  },
+  "pages/poli/poli.js": {
+    "mtime": 1783406018.3201385,
+    "ast_hash": "b95d7be953d3a474f063e17a82854953",
+    "semantic_hash": ""
+  },
+  "pages/poli/qrcode.js": {
+    "mtime": 1783406018.3216898,
+    "ast_hash": "aa71c3f51825ea242e6e02b0bfe40192",
+    "semantic_hash": ""
+  },
+  "rootData.js": {
+    "mtime": 1783418527.743882,
+    "ast_hash": "6ae729c1d3ffb7be825027bbb0c2c75c",
+    "semantic_hash": ""
+  },
+  "pages/daftar_login/BuatKatasandiBaru/index.html": {
+    "mtime": 1783406716.716898,
+    "ast_hash": "4367e0dd71e9394cb04958794a3a0755",
+    "semantic_hash": ""
+  },
+  "pages/daftar_login/PulihkanAkunAnda/index.html": {
+    "mtime": 1783406705.0668328,
+    "ast_hash": "8ae99d60f5b32961852daee31a2a1b24",
+    "semantic_hash": ""
+  },
+  "pages/kalkulator/index.html": {
+    "mtime": 1783407558.785496,
+    "ast_hash": "a2633f878ac69e10b59bd1038f80ec41",
+    "semantic_hash": ""
+  },
+  "pages/kalkulator/kalkulator-kuis.html": {
+    "mtime": 1783406018.3180764,
+    "ast_hash": "63f4f402e3fe938c260147f28491a998",
+    "semantic_hash": ""
+  },
+  "pages/poli/index.html": {
+    "mtime": 1783407527.0439062,
+    "ast_hash": "5877ae58c3c72d1f2e7833522542756d",
+    "semantic_hash": ""
+  },
+  "pages/kalkulator/images/baik.png": {
+    "mtime": 1783406018.3149884,
+    "ast_hash": "aaa2731bce7a6e41099695627b83b08a",
+    "semantic_hash": ""
+  },
+  "pages/kalkulator/images/buruk.png": {
+    "mtime": 1783406018.3155043,
+    "ast_hash": "3d0ee2b2e9dae7a85396ee6ab60300a2",
+    "semantic_hash": ""
+  },
+  "pages/kalkulator/images/netral.png": {
+    "mtime": 1783406018.31653,
+    "ast_hash": "c39eeee1c4d029e13e89af2bb1b6e1b3",
+    "semantic_hash": ""
+  },
+  "pages/kalkulator/images/sangat-baik.png": {
+    "mtime": 1783406018.31653,
+    "ast_hash": "2ac735270f908c348cb4eebafab737b0",
+    "semantic_hash": ""
+  },
+  "pages/kalkulator/images/sangat-buruk.png": {
+    "mtime": 1783406018.3170457,
+    "ast_hash": "c679f3394864102ce33496e1fd346233",
+    "semantic_hash": ""
+  },
+  "pages/poli/qr-placeholder.svg": {
+    "mtime": 1783406018.3206556,
+    "ast_hash": "afc8b1fbb30b18b07624e5776bafa005",
+    "semantic_hash": ""
   }
 }
