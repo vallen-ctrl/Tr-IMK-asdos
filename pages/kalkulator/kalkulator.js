@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Lucide icons
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
   
   // ==========================================
   // LOGIKA 1: UNTUK HALAMAN UTAMA (DASHBOARD)

@@ -12,7 +12,9 @@
 
         // Check if page is protected and user is not logged in
         const isProtectedPage = (pathname.includes('/pages/pendaftaran/') && !pathname.includes('menghubungiServer.html')) || 
-                                pathname.includes('/pages/rekam_medis/');
+                                pathname.includes('/pages/rekam_medis/') ||
+                                pathname.includes('/pages/poli/') ||
+                                pathname.includes('/pages/kalkulator/');
 
         if (isProtectedPage && !isLoggedIn) {
             // Hide main contents
