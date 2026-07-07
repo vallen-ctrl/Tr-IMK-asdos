@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthFlow Clinic - Kalkulator Stres</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <link rel="stylesheet" href="../../public/global.css">
+  <link rel="stylesheet" href="./kalkulator.css">
+</head>
+<body class="bg-[#F0F3FA] text-gray-800 min-h-screen">
+
+  <main class="max-w-6xl mx-auto px-6 pt-12 pb-8">
+    
+    <div class="mb-6">
+      <h1 class="headerText text-gray-900 font-bold">Hai, User 👋</h1>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div class="bg-white p-6 rounded-2xl boxshadow card-kalkulator flex flex-col justify-between">
+        <div>
+          <h2 class="subheaderText text-gray-800 font-semibold mb-6">Bagaimana Perasaanmu Hari Ini?</h2>
+          
+          <div class="grid grid-cols-5 gap-2 text-center mb-6">
+            <div class="flex flex-col items-center cursor-pointer group">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center mb-1 shadow group-hover:scale-110 transition overflow-hidden">
+                <img src="./images/sangat-baik.png" alt="Sangat Baik" class="w-full h-full object-cover">
+              </div>
+              <span class="footerText text-gray-600">Sangat Baik</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center mb-1 shadow group-hover:scale-110 transition overflow-hidden">
+                <img src="./images/baik.png" alt="Baik" class="w-full h-full object-cover">
+              </div>
+              <span class="footerText text-gray-600">Baik</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center mb-1 shadow group-hover:scale-110 transition overflow-hidden">
+                <img src="./images/netral.png" alt="Netral" class="w-full h-full object-cover">
+              </div>
+              <span class="footerText text-gray-600">Netral</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center mb-1 shadow group-hover:scale-110 transition overflow-hidden">
+                <img src="./images/buruk.png" alt="Buruk" class="w-full h-full object-cover">
+              </div>
+              <span class="footerText text-gray-600">Buruk</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center mb-1 shadow group-hover:scale-110 transition overflow-hidden">
+                <img src="./images/sangat-buruk.png" alt="Sangat Buruk" class="w-full h-full object-cover">
+              </div>
+              <span class="footerText text-gray-600">Sangat Buruk</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="kalkulator-kuis.html" class="block text-center bg-[#3B5998] text-white py-3 rounded-xl font-semibold">Mulai Kalkulator</a>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl boxshadow card-kalkulator flex flex-col justify-between">
+        <h2 class="subheaderText text-gray-800 font-semibold mb-4">Ringkasan Skor Hari Ini</h2>
+        
+        <div class="grid grid-cols-2 flex-1 w-full relative items-center">
+          
+          <div class="flex flex-col items-center justify-center pr-2">
+            <div class="relative w-28 h-28 flex-shrink-0">
+              <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" stroke="#E5E7EB" stroke-width="8" fill="transparent" />
+                <circle id="score-progress-ring" cx="50" cy="50" r="40" fill="transparent"
+                        stroke-width="8" stroke-linecap="round"
+                        stroke-dasharray="251.2" stroke-dashoffset="251.2"
+                        class="stroke-green-500 transition-all duration-700 ease-out" />
+              </svg>
+              
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center leading-tight">
+                <span id="score-text" class="text-2xl font-bold text-gray-800">-</span>
+                <span id="score-label" class="text-xs text-gray-500 font-medium">-</span>
+              </div>
+            </div>
+            <span id="stress-status-text" class="text-xs font-semibold text-gray-600 mt-4 text-center block w-full px-1">
+              Belum mengukur
+            </span>
+          </div>
+
+          <div class="absolute inset-y-0 left-1/2 w-[1px] bg-gray-200 -translate-x-1/2 my-2"></div>
+
+          <div class="flex flex-col items-center justify-center pl-2 text-center">
+            <p class="text-xs text-gray-500 font-medium mb-1">Emosi Dominan</p>
+            <p id="dominant-emotion-text" class="text-sm font-bold text-gray-400 mb-3">-</p>
+            
+            <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center rounded-full overflow-hidden">
+              <img id="score-emoji" src="images/netral.png" alt="Emoji Status" class="w-full h-full object-contain">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl boxshadow card-kalkulator flex flex-col justify-between">
+        <h2 class="subheaderText text-gray-800 font-semibold mb-6">Grafik Mingguan</h2>
+        
+        <div class="flex items-start">
+          
+          <div class="flex flex-col justify-between h-36 text-xs text-gray-600 pr-4 font-medium select-none py-0.5">
+            <span>Tinggi</span>
+            <span>Sedang</span>
+            <span>Rendah</span>
+          </div>
+
+          <div class="flex-1 relative">
+            
+            <div class="absolute inset-x-0 top-0 h-36 flex flex-col justify-between pointer-events-none z-0 border-l border-[#D5DEEF]">
+              <div class="w-full border-t border-[#D5DEEF]"></div>
+              <div class="w-full border-t border-[#D5DEEF]"></div>
+              <div class="w-full border-b border-[#D5DEEF]"></div>
+            </div>
+
+            <div id="chart-container" class="w-full flex items-start justify-between px-2 relative z-10">
+              </div>
+            
+          </div>
+
+        </div>
+
+        <p class="text-center text-xs text-gray-500 mt-6 font-medium">Stresmu Stabil Minggu Ini.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl boxshadow card-kalkulator flex flex-col justify-between">
+        <h2 class="subheaderText text-gray-800 font-semibold mb-5">Tips Kesehatan Mental</h2>
+        
+        <div class="flex flex-col gap-4 flex-1 justify-center">
+          <div class="bg-[#5B84C4] text-white py-3.5 px-5 rounded-xl text-xs md:text-sm font-medium tracking-wide shadow-sm transition-all duration-200">
+            Melakukan hobi ringan atau mendengarkan musik favorit malam ini
+          </div>
+          <div class="bg-[#5B84C4] text-white py-3.5 px-5 rounded-xl text-xs md:text-sm font-medium tracking-wide shadow-sm transition-all duration-200">
+            Tidur yang cukup (7-8 jam) agar energimu pulih besok pagi
+          </div>
+          <div class="bg-[#5B84C4] text-white py-3.5 px-5 rounded-xl text-xs md:text-sm font-medium tracking-wide shadow-sm transition-all duration-200">
+            Tetaplah terhidrasi jangan lupa minum air putih!
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="kalkulator.js"></script>
+</body>
+</html>

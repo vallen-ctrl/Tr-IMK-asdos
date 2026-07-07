@@ -1,0 +1,24 @@
+/* Custom CSS untuk keperluan interaksi grafik */
+.chart-bar-container {
+  position: relative;
+}
+
+.chart-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.chart-bar-container:hover .chart-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Efek Hover Mengikuti Warna Hasil Asli Tiang */
+.chart-bar-item {
+  transition: filter 0.2s ease-in-out, height 0.7s ease-out;
+}
+.chart-bar-item:hover {
+  filter: brightness(1.1) !important;
+}
