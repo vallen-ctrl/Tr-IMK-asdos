@@ -1,16 +1,16 @@
-# Graph Report - TR  (2026-07-07)
+# Graph Report - TR  (2026-07-08)
 
 ## Corpus Check
-- 12 files · ~392,792 words
+- 13 files · ~394,010 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 135 nodes · 208 edges · 19 communities (12 shown, 7 thin omitted)
+- 137 nodes · 209 edges · 20 communities (13 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9f525983`
+- Built from commit: `9847f992`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -60,7 +60,7 @@
 - **Patient Registration Flow** — pendaftaran_index, pendaftaran_menghubungiserver, ticket_index [INFERRED 0.95]
 - **User Profile Verification Flow** — profil_index, verifikasiemail_index, verifikasinomor_index [INFERRED 0.95]
 
-## Communities (19 total, 7 thin omitted)
+## Communities (20 total, 7 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.27
@@ -95,11 +95,11 @@ Nodes (15): 1. Kenapa Perlu Struktur Folder?, 2. Struktur Folder Lengkap, 3.1 Is
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Notifikasi - HealthFlow Clinic` connect `Community 2` to `Community 0`, `Community 1`?**
-  _High betweenness centrality (0.040) - this node is a cross-community bridge._
+  _High betweenness centrality (0.038) - this node is a cross-community bridge._
 - **Why does `HealthFlow Clinic` connect `Community 0` to `Community 2`?**
-  _High betweenness centrality (0.036) - this node is a cross-community bridge._
+  _High betweenness centrality (0.035) - this node is a cross-community bridge._
 - **Why does `Profil Pasien` connect `Community 2` to `Community 0`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **What connects `doctors`, `calendarViewDate`, `doctorGrid` to the rest of the system?**
   _62 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 3` be split into smaller, more focused modules?**

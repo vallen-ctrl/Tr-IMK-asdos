@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cetak Tiket Reservasi - HealthFlow</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- QR Code Generator -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"
+        crossorigin="anonymous"></script>
+    <!-- html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+        crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #EAF0FB;
+        }
+
+        .boxshadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Print styling */
+        @media print {
+            body {
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .print-container {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                min-height: 100vh !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                background: white !important;
+            }
+
+            .ticket-card-print {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                background: #F5F8FC !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Container Utama -->
+    <div class="print-container flex flex-col items-center gap-6 w-full max-w-md">
+
+        <!-- Tombol Aksi (no-print) -->
+        <div
+            class="no-print flex items-center justify-between w-full bg-white px-5 py-3 rounded-2xl shadow-sm border border-[#E2ECF8]">
+            <button id="back-btn" onclick="window.history.back()"
+                class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Kembali
+            </button>
+            <div class="flex items-center gap-2">
+                <button id="print-btn"
+                    class="bg-white border border-[#3D6FA8] text-[#3D6FA8] hover:bg-[#EAF0FB] font-semibold text-sm px-4 py-2 rounded-xl flex items-center gap-2 transition-colors cursor-pointer">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    Cetak
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Kartu Tiket -->
+        <div id="ticket-card"
+            class="ticket-card-print bg-[#F5F8FC] border border-[#E2ECF8] rounded-[32px] w-full p-8 flex flex-col items-center boxshadow">
+
+            <!-- Logo Klinik -->
+            <div class="w-full flex justify-start mb-6">
+                <img id="ticket-logo" src="../public/LOGO.svg" alt="Logo HealthFlow Clinic"
+                    class="h-14 w-auto object-contain">
+            </div>
+
+            <!-- Judul -->
+            <h1 class="text-xl font-bold text-gray-900 mb-6 text-center">Tiket reservasi anda</h1>
+
+            <!-- QR Code Box -->
+            <div
+                class="bg-white p-4.5 rounded-[24px] border border-[#EAF0FB] flex items-center justify-center w-[240px] h-[240px] shadow-sm mb-6">
+                <img id="ticket-qr" src="" alt="Kode QR Reservasi" class="w-full h-full object-contain">
+            </div>
+
+            <!-- Info Detail Reservasi -->
+            <div class="text-center w-full mb-8">
+                <div id="ticket-code" class="text-xl font-bold text-gray-900 mb-1 leading-snug">A0012</div>
+                <div id="ticket-name" class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Jhon deo formalin
+                </div>
+                <div id="ticket-room" class="text-xs text-gray-500 font-normal leading-relaxed max-w-[280px] mx-auto">
+                    Melati/2/12/12/b</div>
+            </div>
+
+            <!-- Divider -->
+            <div class="w-full h-[1px] bg-[#E2ECF8] mb-6"></div>
+
+            <!-- Bantuan Deskripsi -->
+            <p class="text-[10px] text-gray-500 leading-relaxed text-left w-full mb-5">
+                Jika ada kendala di perjalanan atau ingin mengubah jadwal kedatangan, silakan hubungi layanan pelanggan
+                kami dengan menyebutkan Kode Pegawai Verifikator Anda. Jika anda ada yang ingin ditanyakan dapat
+                menghubungi:
+            </p>
+
+            <!-- Kontak Bantuan -->
+            <div class="w-full flex flex-col gap-2.5">
+                <div class="flex items-center gap-2 text-[10px] text-gray-600">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3D6FA8" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                        <polyline points="3 7 12 13 21 7"></polyline>
+                    </svg>
+                    <a href="mailto:HealtyFlow@gmail.com"
+                        class="underline text-[#3D6FA8] font-medium">HealtyFlow@gmail.com</a>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] text-gray-600">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3D6FA8" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.76.65 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.83.31 1.71.53 2.61.65A2 2 0 0 1 22 16.92z">
+                        </path>
+                    </svg>
+                    <a href="tel:08729872-9982" class="underline text-[#3D6FA8] font-medium">0872-9872-9982</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Script Rendering -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Parse Query Parameters
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code') || 'A0012';
+            const name = params.get('name') || 'Jhon deo formalin';
+            const room = params.get('room') || 'Melati/2/12/12/b';
+            const qrText = params.get('qr') || `${code}-${name}-Reservasi`;
+
+            // Update DOM Elements
+            document.getElementById('ticket-code').textContent = code;
+            document.getElementById('ticket-name').textContent = name;
+            document.getElementById('ticket-room').textContent = room;
+
+            // Render QR Code (direct base64 image or generate locally)
+            if (qrText.startsWith('data:')) {
+                document.getElementById('ticket-qr').src = qrText;
+            } else {
+                if (typeof qrcode === 'function') {
+                    try {
+                        const qr = qrcode(0, 'M');
+                        qr.addData(qrText);
+                        qr.make();
+                        document.getElementById('ticket-qr').src = qr.createDataURL(4, 8);
+                    } catch (e) {
+                        console.error("Gagal men-generate QR Code", e);
+                    }
+                }
+            }
+
+            // Print Event
+            document.getElementById('print-btn').addEventListener('click', () => {
+                window.print();
+            });
+
+            // Auto-print if param is present
+            if (params.get('print') === 'true') {
+                setTimeout(() => {
+                    window.print();
+                }, 600);
+            }
+
+            // Download PNG Event
+
+        });
+    </script>
+</body>
+
+</html>

@@ -340,6 +340,7 @@ continueScheduleBtn.addEventListener("click", () => {
   });
 
   lastBookingCode = generateBookingCode();
+  window.lastBookingCode = lastBookingCode;
   qrSummary.textContent = `${activeDoctor.fullName} · ${formattedDate}, pukul ${selectedTime}`;
 
   // Generate QR code secara dinamis menggunakan library qrcode.js
@@ -351,6 +352,7 @@ continueScheduleBtn.addEventListener("click", () => {
 
   qrImage.src = qrDataURL;
   lastQrDataUrl = qrDataURL; // simpan untuk diunduh
+  window.lastQrDataUrl = qrDataURL;
 
   closeScheduleModal();
   qrModalOverlay.classList.remove("hidden");
@@ -362,13 +364,17 @@ closeQrBtn.addEventListener("click", () => {
 });
 
 downloadQrBtn.addEventListener("click", () => {
-  const link = document.createElement("a");
-  link.href = lastQrDataUrl; // gunakan data URL hasil generate
-  link.download = `qr-janji-temu-${lastBookingCode || "healthflow"}.png`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  showToast("QR berhasil diunduh!");
+  if (typeof window.downloadTicket === 'function') {
+    window.downloadTicket('poli');
+  } else {
+    const link = document.createElement("a");
+    link.href = lastQrDataUrl; // gunakan data URL hasil generate
+    link.download = `qr-janji-temu-${lastBookingCode || "healthflow"}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast("QR berhasil diunduh!");
+  }
 });
 
 qrModalOverlay.addEventListener("click", (e) => {
